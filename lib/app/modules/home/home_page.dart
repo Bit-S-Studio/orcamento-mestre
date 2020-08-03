@@ -95,7 +95,7 @@ class _MyDropDownWidgetState extends State<MyDropDownWidget> {
       icon: Icon(Icons.arrow_downward,
         color: Colors.white,
       ),
-      dropdownColor: Colors.black87,
+      dropdownColor: Colors.grey,
       iconSize: 24,
       elevation: 16,
       style: TextStyle(color: Colors.deepPurple),
