@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mobx/mobx.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_modal.dart';
 
@@ -11,7 +12,7 @@ abstract class _OrcamentoControllerBase with Store {
   String tipo;
 
   @observable
-  String logo;
+  PickedFile logo;
 
   @observable
   String nomeEmpresa;
