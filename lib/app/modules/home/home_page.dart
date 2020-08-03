@@ -56,7 +56,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                     child: Center(child: MyDropDownWidget()),
                   ),
                   Container(
-                    color: Colors.grey[600],
+                    color: Colors.grey[700],
                     height: MediaQuery.of(context).size.height *.08,
                     width: MediaQuery.of(context).size.width *.8,
                     child: RaisedButton(

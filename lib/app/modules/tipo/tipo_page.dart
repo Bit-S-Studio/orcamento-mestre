@@ -22,53 +22,69 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          SingleChildScrollView(
-            child: Center(
-              child: Column(
-                children: [
-                  Container(
-                    color: Colors.blue[900],
-                    height: height * .08,
-                    width: width * .8,
-                    margin: EdgeInsets.only(
-                      top: height * .18,
-                    ),
-                    padding: EdgeInsets.only(
-                      left: height * .02,
-                      top: height * .026,
-                    ),
-                    child: Text('Escolha um padrão para seu orçamento',
-                        textAlign: TextAlign.center, style: letraBranca),
-                  ),
-                  Container(
-                    color: Colors.blue[900],
-                    height: height * .4,
-                    width: width * .8,
-                    margin: EdgeInsets.only(
-                      top: height * .005,
-                    ),
-                    child: Center(child: dropDown()),
-                  ),
-                  Container(
-                    color: Colors.grey[600],
-                    height: height * .08,
-                    width: width * .8,
-                    child: RaisedButton(
-                        child: Text(
-                          'Continuar',
-                          style: TextStyle(color: Colors.white, fontSize: 22),
+      backgroundColor: Colors.grey[900],
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Container(
+                margin: EdgeInsets.all(16),
+                child: Center(
+                  child: Column(
+                    children: [
+                      Container(
+                        height: height * .16,
+                        width: width * .8,
+                        margin: EdgeInsets.only(
+                          top: height * .25,
                         ),
-                        onPressed: () {
-                          Modular.to.pushNamed('/dadosEmpresa');
-                        }),
-                  )
-                ],
+                        decoration: BoxDecoration(
+                            color: Colors.blue[900],
+                            borderRadius: BorderRadius.only(
+                               topLeft:  Radius.circular(16),
+                              topRight:  Radius.circular(16)
+                            )
+                        ),
+                        child: Center(
+                          child: Text('Escolha um padrão para seu orçamento',
+                              textAlign: TextAlign.center, style: letraBranca),
+                        ),
+                      ),
+                      Container(
+                        color: Colors.blue[900],
+                        height: height * .4,
+                        width: width * .8,
+                        margin: EdgeInsets.only(
+                          top: height * .005,
+                        ),
+                        child: Center(child: dropDown()),
+                      ),
+                      Container(
+                        height: height * .08,
+                        width: width * .8,
+                        decoration: BoxDecoration(
+                            color: Colors.grey[600],
+                            borderRadius: BorderRadius.only(
+                               bottomLeft:  Radius.circular(16),
+                                bottomRight:  Radius.circular(16)
+                            )
+                        ),
+                        child: RaisedButton(
+                            color: Colors.grey[600],
+                            child: Text(
+                              'Continuar',
+                              style: TextStyle(color: Colors.white, fontSize: 22),
+                            ),
+                            shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(16.0)),
+                            onPressed: () {
+                              Modular.to.pushNamed('/dadosEmpresa');
+                            }),
+                      )
+                    ],
+                  ),
+                ),
               ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -83,7 +99,7 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
           Icons.arrow_downward,
           color: Colors.white,
         ),
-        dropdownColor: Colors.black87,
+        dropdownColor: Colors.grey[800],
         iconSize: 24,
         elevation: 16,
         style: TextStyle(color: Colors.deepPurple),
@@ -98,7 +114,7 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
               value,
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 18,
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
             ),

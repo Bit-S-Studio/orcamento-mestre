@@ -7,7 +7,7 @@ TextStyle listTitleDefaultTextStyle =
 TextStyle listTitleSelectedTextStyle =
     TextStyle(color: Colors.white, fontSize: 16.0);
 TextStyle letraBranca = TextStyle(
-    fontFamily: "WorkSansSemiBold", fontSize: 16.0, color: Colors.white);
+    fontFamily: "WorkSansSemiBold", fontSize: 18.0, color: Colors.white);
 TextStyle letraAzul = TextStyle(
     fontFamily: "WorkSansSemiBold", fontSize: 16.0, color: Colors.blue);
 TextStyle letraPreta = TextStyle(
