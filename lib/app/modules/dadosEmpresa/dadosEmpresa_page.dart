@@ -1,7 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
+import 'package:provider/provider.dart';
 import 'empresa_controller.dart';
+import 'dart:io';
 
 class DadosEmpresaPage extends StatefulWidget {
   final String title;
@@ -15,12 +20,11 @@ class DadosEmpresaPage extends StatefulWidget {
 
 class _DadosEmpresaPageState
     extends ModularState<DadosEmpresaPage, EmpresaController> {
-  final _nameEmpresa = TextEditingController();
-
   //use 'controller' variable to access controller
 
   @override
   Widget build(BuildContext context) {
+    final oController = Provider.of<OrcamentoController>(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -43,29 +47,50 @@ class _DadosEmpresaPageState
                 decoration: BoxDecoration(
                     color: Colors.blue[900],
                     borderRadius: BorderRadius.only(
-                        topLeft:  Radius.circular(16),
-                        topRight:  Radius.circular(16)
-                    )
-                ),
+                        topLeft: Radius.circular(16),
+                        topRight: Radius.circular(16))),
                 child: Center(
                   child: Row(
                     children: [
-                      Container(
-                        height: height * .15,
-                        width: width * .15,
-                        decoration: BoxDecoration(
-                            color: Colors.grey[600],
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(16))),
-                        margin: EdgeInsets.only(left: width * .02),
-                        child: Center(
-                          child: Text(
-                            'Adicione sua Logo aqui',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
+                      Observer(builder: (_) {
+                        return GestureDetector(
+                          onTap: () async {
+                            var image = await controller.getImage();
+                            image = oController.logo;
+                          },
+                          child: (controller.logoStatus)
+                              ? (kIsWeb)
+                                  ? Image.network(controller.imageFile.path)
+                                  : Image.file(File(controller.imageFile.path))
+                              : Container(
+                                  height: height * .15,
+                                  width: width * .15,
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey[600],
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(16))),
+                                  margin: EdgeInsets.only(left: width * .02),
+                                  child: Center(
+                                    child: (controller.logoStatus)
+                                        ? (kIsWeb)
+                                            ? Image.network(
+                                                controller.imageFile.path,
+                                                fit: BoxFit.cover,
+                                              )
+                                            : Image.file(
+                                                File(controller.imageFile.path),
+                                                fit: BoxFit.cover,
+                                              )
+                                        : Text(
+                                            'Adicione sua Logo aqui',
+                                            textAlign: TextAlign.center,
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                  ),
+                                ),
+                        );
+                      }),
                       Container(
                         height: height * .06,
                         width: width * .35,
@@ -73,7 +98,10 @@ class _DadosEmpresaPageState
                           left: width * .012,
                         ),
                         child: TextFormField(
-                          controller: _nameEmpresa,
+                          controller: controller.nameEmpresa,
+                          onChanged: (newName) {
+                            oController.nomeEmpresa = newName;
+                          },
                           decoration: InputDecoration(
                             contentPadding: new EdgeInsets.symmetric(
                                 vertical: 10.0, horizontal: 10.0),
@@ -96,18 +124,14 @@ class _DadosEmpresaPageState
                 ),
               ),
               Container(
-                height: height *.56,
+                height: height * .56,
                 width: width,
-                margin: EdgeInsets.only(
-                  top: height *.005
-                ),
+                margin: EdgeInsets.only(top: height * .005),
                 decoration: BoxDecoration(
                     color: Colors.blue[900],
                     borderRadius: BorderRadius.only(
-                        bottomLeft:  Radius.circular(16),
-                        bottomRight:  Radius.circular(16)
-                    )
-                ),
+                        bottomLeft: Radius.circular(16),
+                        bottomRight: Radius.circular(16))),
               ),
             ],
           ),

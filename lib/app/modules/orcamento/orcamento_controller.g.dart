@@ -27,13 +27,13 @@ mixin _$OrcamentoController on _OrcamentoControllerBase, Store {
   final _$logoAtom = Atom(name: '_OrcamentoControllerBase.logo');
 
   @override
-  String get logo {
+  PickedFile get logo {
     _$logoAtom.reportRead();
     return super.logo;
   }
 
   @override
-  set logo(String value) {
+  set logo(PickedFile value) {
     _$logoAtom.reportWrite(value, super.logo, () {
       super.logo = value;
     });
