@@ -6,10 +6,13 @@ class TipoController = _TipoControllerBase with _$TipoController;
 
 abstract class _TipoControllerBase with Store {
   @observable
-  int value = 0;
+  List<String> listTipos = <String>[
+    'Desenvolvedor Mobile',
+    'Web Designer',
+    'Interior Designer',
+    'Digital Illustrator'
+  ];
 
   @action
-  void increment() {
-    value++;
-  }
+  void increment() {}
 }

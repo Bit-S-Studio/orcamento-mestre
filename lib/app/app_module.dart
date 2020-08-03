@@ -1,7 +1,7 @@
 import 'package:orcamento_mestre/app/modules/budget/budget_controller.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_module.dart';
 import 'package:orcamento_mestre/app/modules/tipo/tipo_controller.dart';
-
+import 'package:orcamento_mestre/app/modules/tipo/tipo_module.dart';
 import 'app_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,7 @@ class AppModule extends MainModule {
 
   @override
   List<Router> get routers => [
-        Router(Modular.initialRoute, module: OrcamentoModule()),
+        Router(Modular.initialRoute, module: TipoModule()),
       ];
 
   @override
