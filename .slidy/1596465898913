@@ -1,0 +1,4 @@
+lib/app/modules/tipo/tipo_page.dart
+test/app/modules/tipo/tipo_page_test.dart
+lib/app/modules/tipo/tipo_controller.dart
+test/app/modules/tipo/tipo_controller_test.dart
