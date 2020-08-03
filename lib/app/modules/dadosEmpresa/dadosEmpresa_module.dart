@@ -1,6 +1,6 @@
+import 'package:orcamento_mestre/app/modules/dadosEmpresa/dadosEmpresa_page.dart';
 import 'empresa_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:dio/dio.dart';
 
 class DadosEmpresaModule extends ChildModule {
   @override
@@ -9,7 +9,10 @@ class DadosEmpresaModule extends ChildModule {
       ];
 
   @override
-  List<Router> get routers => [];
+  List<Router> get routers => [
+        Router(Modular.initialRoute, child: (_, args) => DadosEmpresaPage()),
+        Router('/', child: (_, args) => DadosEmpresaPage()),
+      ];
 
   static Inject get to => Inject<DadosEmpresaModule>.of();
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:orcamento_mestre/app/modules/home/home_page.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
 import 'package:orcamento_mestre/app/utils/theme.dart';
 import 'package:provider/provider.dart';
@@ -61,7 +61,7 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
                           style: TextStyle(color: Colors.white, fontSize: 22),
                         ),
                         onPressed: () {
-                          Modular.to.pushNamed('/tipo/dadosEmpresa');
+                          Modular.to.pushNamed('/dadosEmpresa');
                         }),
                   )
                 ],
@@ -75,34 +75,36 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
 
   Widget dropDown() {
     final oController = Provider.of<OrcamentoController>(context);
-    String dropdownValue = 'Desenvolvedor Mobile';
-    return DropdownButton<String>(
-      value: dropdownValue,
-      icon: Icon(
-        Icons.arrow_downward,
-        color: Colors.white,
-      ),
-      dropdownColor: Colors.black87,
-      iconSize: 24,
-      elevation: 16,
-      style: TextStyle(color: Colors.deepPurple),
-      onChanged: (String newValue) {
-        setState(() {
-          dropdownValue = newValue;
+    oController.tipo = 'Desenvolvedor Mobile';
+    return Observer(builder: (_) {
+      return DropdownButton<String>(
+        value: oController.tipo,
+        icon: Icon(
+          Icons.arrow_downward,
+          color: Colors.white,
+        ),
+        dropdownColor: Colors.black87,
+        iconSize: 24,
+        elevation: 16,
+        style: TextStyle(color: Colors.deepPurple),
+        onChanged: (String newValue) {
           oController.tipo = newValue;
-        });
-      },
-      items: controller.listTipos.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(
-            value,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-        );
-      }).toList(),
-    );
+        },
+        items:
+            controller.listTipos.map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem<String>(
+            value: value,
+            child: Text(
+              value,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
+            ),
+          );
+        }).toList(),
+      );
+    });
   }
 }
