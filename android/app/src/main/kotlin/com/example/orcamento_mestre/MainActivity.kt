@@ -1,4 +1,4 @@
-package com.example.orcamento_mestre
+package com.origemstudio.orcamento_mestre
 
 import io.flutter.embedding.android.FlutterActivity
 

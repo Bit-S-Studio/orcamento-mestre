@@ -4,7 +4,7 @@ import 'package:hasura_connect/hasura_connect.dart';
 
 class CustomHasuraConnect {
   static HasuraConnect getConnect(FirebaseAuth auth) {
-    return HasuraConnect('https://iomedicamentos.herokuapp.com/v1/graphql',
+    return HasuraConnect('https://orcamentomestre.herokuapp.com/v1/graphql',
         token: (_) async {
       var user = await auth.currentUser();
 

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "437527813122",
+    "firebase_url": "https://orcamento-mestre.firebaseio.com",
+    "project_id": "orcamento-mestre",
+    "storage_bucket": "orcamento-mestre.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:437527813122:android:d6d2c642cda47354411b1b",
+        "android_client_info": {
+          "package_name": "com.origemstudio.orcamento_mestre"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "437527813122-gsbtdfi1pnuq35tdkkpic1kveffrqvs0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANGFxuYyT6DJdocKTBiLmoX2spwvyaH54"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "437527813122-gsbtdfi1pnuq35tdkkpic1kveffrqvs0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
