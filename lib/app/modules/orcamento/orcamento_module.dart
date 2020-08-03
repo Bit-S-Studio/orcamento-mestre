@@ -1,6 +1,7 @@
+import 'package:orcamento_mestre/app/modules/orcamento/orcamento_page.dart';
+
 import 'orcamento_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:dio/dio.dart';
 
 class OrcamentoModule extends ChildModule {
   @override
@@ -9,7 +10,10 @@ class OrcamentoModule extends ChildModule {
       ];
 
   @override
-  List<Router> get routers => [];
+  List<Router> get routers => [
+        Router(Modular.initialRoute, child: (_, args) => OrcamentoPage()),
+        Router('/', child: (_, args) => OrcamentoPage()),
+      ];
 
   static Inject get to => Inject<OrcamentoModule>.of();
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:orcamento_mestre/app/modules/orcamento/orcamento_pdf.dart';
 import 'orcamento_controller.dart';
 
 class OrcamentoPage extends StatefulWidget {
@@ -17,12 +18,9 @@ class _OrcamentoPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Column(
-        children: <Widget>[],
-      ),
-    );
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        body: PdfOrcamento());
   }
 }
