@@ -16,6 +16,7 @@ class DadosEmpresaPage extends StatefulWidget {
 class _DadosEmpresaPageState
     extends ModularState<DadosEmpresaPage, EmpresaController> {
   final _nameEmpresa = TextEditingController();
+  final _nameLogradouro = TextEditingController();
 
   //use 'controller' variable to access controller
 
@@ -35,10 +36,23 @@ class _DadosEmpresaPageState
           child: Column(
             children: <Widget>[
               Container(
+                color: Colors.white,
+                height: height *.30,
+                width: width,
+                child: Center(
+                  child: Text(
+                    'Espaço para Admob',
+                    style: TextStyle(
+                      color: Colors.white
+                    ),
+                  ),
+                ),
+              ),
+              Container(
                 height: height * .28,
                 width: width,
                 margin: EdgeInsets.only(
-                  top: height * .07,
+                  top: height * .025,
                 ),
                 decoration: BoxDecoration(
                     color: Colors.blue[900],
@@ -107,6 +121,232 @@ class _DadosEmpresaPageState
                         bottomLeft:  Radius.circular(16),
                         bottomRight:  Radius.circular(16)
                     )
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      height: height *.05,
+                      width: width,
+                      padding: EdgeInsets.only(
+                        top: height *.008,
+                        left: width *.01
+                      ),
+                      child: Text('Complementos',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18
+                        ),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          height: height *.07,
+                          width: width *.395,
+                          padding: EdgeInsets.only(
+                            top: height *.006,
+                            bottom: height *.006,
+                            left: width *.014,
+                            right: width *.004,
+                          ),
+                          child: TextFormField(
+                            controller: _nameLogradouro,
+                            decoration: InputDecoration(
+                              contentPadding: new EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 10.0),
+                              labelText: "Logradouro",
+                              border: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                    const Radius.circular(12.0)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            validator: (text) {
+                              if (text.isEmpty) return "O campo Lagradouro, está vazio";
+                            },
+                          ),
+                        ),
+                        Container(
+                          height: height *.07,
+                          width: width *.16,
+                          padding: EdgeInsets.only(
+                            top: height *.006,
+                            bottom: height *.006,
+                            left: width *.008,
+                            right: width *.014,
+                          ),
+                          child: TextFormField(
+                            controller: _nameLogradouro,
+                            decoration: InputDecoration(
+                              contentPadding: new EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 10.0),
+                              labelText: "Número",
+                              border: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                    const Radius.circular(12.0)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            validator: (text) {
+                              if (text.isEmpty) return "O campo Lagradouro, está vazio";
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      height: height *.07,
+                      width: width,
+                      padding: EdgeInsets.only(
+                        top: height *.006,
+                        bottom: height *.006,
+                        left: width *.014,
+                        right: width *.014,
+                      ),
+                      child: TextFormField(
+                        controller: _nameLogradouro,
+                        decoration: InputDecoration(
+                          contentPadding: new EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 10.0),
+                          labelText: "Bairro",
+                          border: OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                                const Radius.circular(12.0)),
+                            borderSide: BorderSide(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        validator: (text) {
+                          if (text.isEmpty) return "O campo Lagradouro, está vazio";
+                        },
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          height: height *.07,
+                          width: width *.395,
+                          padding: EdgeInsets.only(
+                            top: height *.006,
+                            bottom: height *.006,
+                            left: width *.014,
+                            right: width *.004,
+                          ),
+                          child: TextFormField(
+                            controller: _nameLogradouro,
+                            decoration: InputDecoration(
+                              contentPadding: new EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 10.0),
+                              labelText: "Cidade",
+                              border: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                    const Radius.circular(12.0)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            validator: (text) {
+                              if (text.isEmpty) return "O campo Lagradouro, está vazio";
+                            },
+                          ),
+                        ),
+                        Container(
+                          height: height *.07,
+                          width: width *.16,
+                          padding: EdgeInsets.only(
+                            top: height *.006,
+                            bottom: height *.006,
+                            left: width *.008,
+                            right: width *.014,
+                          ),
+                          child: TextFormField(
+                            controller: _nameLogradouro,
+                            decoration: InputDecoration(
+                              contentPadding: new EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 10.0),
+                              labelText: "UF",
+                              border: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                    const Radius.circular(12.0)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            validator: (text) {
+                              if (text.isEmpty) return "O campo Lagradouro, está vazio";
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          height: height *.07,
+                          width: width *.275,
+                          padding: EdgeInsets.only(
+                            top: height *.006,
+                            bottom: height *.006,
+                            left: width *.014,
+                            right: width *.004,
+                          ),
+                          child: TextFormField(
+                            controller: _nameLogradouro,
+                            decoration: InputDecoration(
+                              contentPadding: new EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 10.0),
+                              labelText: "Celular 1",
+                              border: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                    const Radius.circular(12.0)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            validator: (text) {
+                              if (text.isEmpty) return "O campo Lagradouro, está vazio";
+                            },
+                          ),
+                        ),
+                        Container(
+                          height: height *.07,
+                          width: width *.275,
+                          padding: EdgeInsets.only(
+                            top: height *.006,
+                            bottom: height *.006,
+                            left: width *.008,
+                            right: width *.014,
+                          ),
+                          child: TextFormField(
+                            controller: _nameLogradouro,
+                            decoration: InputDecoration(
+                              contentPadding: new EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 10.0),
+                              labelText: "Celular 2",
+                              border: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                    const Radius.circular(12.0)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            validator: (text) {
+                              if (text.isEmpty) return "O campo Lagradouro, está vazio";
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ],
