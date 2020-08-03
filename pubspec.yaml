@@ -21,6 +21,14 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  after_layout: ^1.0.7+2
+  line_awesome_icons: ^1.0.4+2
+  fluttertoast: ^7.0.2
+  firebase_analytics: ^5.0.16
+  firebase_auth: ^0.16.1
+  firebase: ^7.3.0
+  firebase_core: ^0.4.5
+  hasura_connect: ^1.2.2+1
   dio: ^3.0.9
   flutter_mobx: ^1.1.0+1
   mobx: ^1.2.1+1
@@ -35,7 +43,7 @@ dependencies:
 dev_dependencies:
   mockito: ^4.1.1
   mobx_codegen: ^1.1.0+1
-  build_runner: ^1.10.2
+  build_runner: ^1.10.0
   flutter_test:
     sdk: flutter
 
