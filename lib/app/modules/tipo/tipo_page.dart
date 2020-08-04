@@ -32,14 +32,19 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
                   child: Column(
                     children: [
                       Container(
-                        color: Colors.white,
                         height: height *.30,
                         width: width,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(16)
+                            )
+                        ),
                         child: Center(
                           child: Text(
                             'Espaço para Admob',
                             style: TextStyle(
-                                color: Colors.white
+                                color: Colors.black
                             ),
                           ),
                         ),

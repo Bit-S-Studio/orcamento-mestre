@@ -39,10 +39,28 @@ class _DadosEmpresaPageState
           child: Column(
             children: <Widget>[
               Container(
+                height: height *.30,
+                width: width,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(
+                        Radius.circular(16)
+                    )
+                ),
+                child: Center(
+                  child: Text(
+                    'Espaço para Admob',
+                    style: TextStyle(
+                        color: Colors.black
+                    ),
+                  ),
+                ),
+              ),
+              Container(
                 height: height * .28,
                 width: width,
                 margin: EdgeInsets.only(
-                  top: height * .07,
+                  top: height * .02,
                 ),
                 decoration: BoxDecoration(
                     color: Colors.blue[900],
@@ -126,12 +144,270 @@ class _DadosEmpresaPageState
               Container(
                 height: height * .56,
                 width: width,
-                margin: EdgeInsets.only(top: height * .005),
+                margin: EdgeInsets.only(
+                    top: height * .005
+                ),
                 decoration: BoxDecoration(
                     color: Colors.blue[900],
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(16),
                         bottomRight: Radius.circular(16))),
+                child: Column(
+                  children: [
+                    Container(
+                      height: height *.06,
+                      width: width,
+                      padding: EdgeInsets.only(
+                        top: height *.02,
+                        left: width *.02
+                      ),
+                      child: Text('Complementos',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16
+                        ),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          height: height *.06,
+                          width: width *.39,
+                          margin: EdgeInsets.only(
+                            left: width *.02
+                          ),
+                          child: TextFormField(
+                            controller: controller.nameEmpresa,
+                            onChanged: (newName) {
+                              oController.nomeEmpresa = newName;
+                            },
+                            decoration: InputDecoration(
+                              contentPadding: new EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 10.0),
+                              labelText: "Logradouro",
+                              border: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                    const Radius.circular(12.0)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            validator: (text) {
+                              if (text.isEmpty) return "O campo nome, está vazio";
+                            },
+                          ),
+                        ),
+                        Container(
+                          height: height *.06,
+                          width: width *.12,
+                          margin: EdgeInsets.only(
+                              left: width *.005
+                          ),
+                          child: TextFormField(
+                            controller: controller.nameEmpresa,
+                            onChanged: (newName) {
+                              oController.nomeEmpresa = newName;
+                            },
+                            decoration: InputDecoration(
+                              contentPadding: new EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 10.0),
+                              labelText: "Número",
+                              border: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                    const Radius.circular(12.0)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            validator: (text) {
+                              if (text.isEmpty) return "O campo nome, está vazio";
+                            },
+                          ),
+                        )
+                      ],
+                    ),
+                    Container(
+                      height: height *.06,
+                      width: width,
+                      margin: EdgeInsets.only(
+                        top: height *.015,
+                          left: width *.02,
+                        right: width *.02
+                      ),
+                      child: TextFormField(
+                        controller: controller.nameEmpresa,
+                        onChanged: (newName) {
+                          oController.nomeEmpresa = newName;
+                        },
+                        decoration: InputDecoration(
+                          contentPadding: new EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 10.0),
+                          labelText: "Bairro",
+                          border: OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                                const Radius.circular(12.0)),
+                            borderSide: BorderSide(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        validator: (text) {
+                          if (text.isEmpty) return "O campo nome, está vazio";
+                        },
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          height: height *.06,
+                          width: width *.39,
+                          margin: EdgeInsets.only(
+                              top: height *.015,
+                              left: width *.02
+                          ),
+                          child: TextFormField(
+                            controller: controller.nameEmpresa,
+                            onChanged: (newName) {
+                              oController.nomeEmpresa = newName;
+                            },
+                            decoration: InputDecoration(
+                              contentPadding: new EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 10.0),
+                              labelText: "Cidade",
+                              border: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                    const Radius.circular(12.0)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            validator: (text) {
+                              if (text.isEmpty) return "O campo nome, está vazio";
+                            },
+                          ),
+                        ),
+                        Container(
+                          height: height *.06,
+                          width: width *.12,
+                          margin: EdgeInsets.only(
+                              top: height *.015,
+                              left: width *.005
+                          ),
+                          child: TextFormField(
+                            controller: controller.nameEmpresa,
+                            onChanged: (newName) {
+                              oController.nomeEmpresa = newName;
+                            },
+                            decoration: InputDecoration(
+                              contentPadding: new EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 10.0),
+                              labelText: "UF",
+                              border: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                    const Radius.circular(12.0)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            validator: (text) {
+                              if (text.isEmpty) return "O campo UF, está vazio";
+                            },
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          height: height *.06,
+                          width: width *.255,
+                          margin: EdgeInsets.only(
+                              top: height *.015,
+                              left: width *.02
+                          ),
+                          child: TextFormField(
+                            controller: controller.nameEmpresa,
+                            onChanged: (newName) {
+                              oController.nomeEmpresa = newName;
+                            },
+                            decoration: InputDecoration(
+                              contentPadding: new EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 10.0),
+                              labelText: "Telefone 1",
+                              border: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                    const Radius.circular(12.0)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            validator: (text) {
+                              if (text.isEmpty) return "O campo Telefone 1, está vazio";
+                            },
+                          ),
+                        ),
+                        Container(
+                          height: height *.06,
+                          width: width *.255,
+                          margin: EdgeInsets.only(
+                              top: height *.015,
+                              left: width *.005
+                          ),
+                          child: TextFormField(
+                            controller: controller.nameEmpresa,
+                            onChanged: (newName) {
+                              oController.nomeEmpresa = newName;
+                            },
+                            decoration: InputDecoration(
+                              contentPadding: new EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 10.0),
+                              labelText: "Telefone 2",
+                              border: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                    const Radius.circular(12.0)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            validator: (text) {
+                              if (text.isEmpty) return "O campo Telefone 2, está vazio";
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      height: height * .08,
+                      width: width * .8,
+                      margin: EdgeInsets.only(
+                        top: height *.135
+                      ),
+                      decoration: BoxDecoration(
+                          color: Colors.grey[600],
+                          borderRadius: BorderRadius.only(
+                              bottomLeft:  Radius.circular(16),
+                              bottomRight:  Radius.circular(16)
+                          )
+                      ),
+                      child: RaisedButton(
+                          color: Colors.grey[600],
+                          child: Text(
+                            'Continuar',
+                            style: TextStyle(color: Colors.white, fontSize: 22),
+                          ),
+                          shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(16.0)),
+                          onPressed: () {
+
+                          }),
+                    )
+                  ],
+                ),
               ),
             ],
           ),
