@@ -1,3 +1,4 @@
+import 'package:orcamento_mestre/app/modules/dadosFreelancer/freelancer_controller.dart';
 import 'package:orcamento_mestre/app/modules/layout/layout_controller.dart';
 import 'package:orcamento_mestre/app/modules/budget/budget_controller.dart';
 import 'package:orcamento_mestre/app/modules/tipo/tipo_controller.dart';
@@ -10,6 +11,7 @@ import 'package:orcamento_mestre/app/app_widget.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
+        Bind((i) => FreelancerController()),
         Bind((i) => LayoutController()),
         Bind((i) => TipoController()),
         Bind((i) => BudgetController()),

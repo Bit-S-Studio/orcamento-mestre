@@ -13,6 +13,15 @@ abstract class _TipoControllerBase with Store {
     'Digital Illustrator'
   ];
 
+  @observable
+  List<String> listTipos2 = <String>[
+    'Empresa',
+    'Freelancer',
+  ];
+
+  @observable
+  String dropdownValue = 'Empresa';
+
   @action
   void increment() {}
 }

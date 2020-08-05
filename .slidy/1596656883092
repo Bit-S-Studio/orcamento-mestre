@@ -1,0 +1,4 @@
+lib/app/modules/dadosFreelancer/dadosFreelancer_page.dart
+test/app/modules/dadosFreelancer/dadosFreelancer_page_test.dart
+lib/app/modules/dadosFreelancer/dadosFreelancer_controller.dart
+test/app/modules/dadosFreelancer/dadosFreelancer_controller_test.dart

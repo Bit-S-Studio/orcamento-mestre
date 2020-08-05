@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  via_cep: ^1.0.6
   image_picker_for_web: ^0.1.0+1
   image_picker: ^0.6.7+4
   pdf: ^1.10.0

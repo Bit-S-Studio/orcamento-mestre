@@ -19,6 +19,7 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
 
   @override
   Widget build(BuildContext context) {
+    final oController = Provider.of<OrcamentoController>(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -27,133 +28,123 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
         child: Column(
           children: <Widget>[
             Container(
-                margin: EdgeInsets.all(16),
-                child: Center(
-                  child: Column(
-                    children: [
-                      Container(
-                        height: height *.30,
-                        width: width,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(16)
-                            )
+              margin: EdgeInsets.all(16),
+              child: Center(
+                child: Column(
+                  children: [
+                    Container(
+                      height: height * .30,
+                      width: width,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(16))),
+                      child: Center(
+                        child: Text(
+                          'Espaço para Admob',
+                          style: TextStyle(color: Colors.black),
                         ),
-                        child: Center(
-                          child: Text(
-                            'Espaço para Admob',
-                            style: TextStyle(
-                                color: Colors.black
+                      ),
+                    ),
+                    Container(
+                      height: height * .16,
+                      width: width * .8,
+                      margin: EdgeInsets.only(
+                        top: height * .025,
+                      ),
+                      decoration: BoxDecoration(
+                          color: Colors.blue[900],
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(16),
+                              topRight: Radius.circular(16))),
+                      child: Center(
+                        child: Text('Escolha um padrão para seu orçamento',
+                            textAlign: TextAlign.center, style: letraBranca),
+                      ),
+                    ),
+                    Container(
+                      color: Colors.blue[900],
+                      height: height * .4,
+                      width: width * .8,
+                      margin: EdgeInsets.only(
+                        top: height * .005,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: height * .08,
+                            width: width * .33,
+                            margin: EdgeInsets.only(
+                                left: width * .04, right: width * .04),
+                            child: Row(
+                              children: [
+                                Container(
+                                  height: height * .023,
+                                  width: width * .07,
+                                  child: Text(
+                                    'Eu sou:',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                                Container(
+                                    height: height * .08,
+                                    width: width * .18,
+                                    child: Center(child: dropDown2())),
+                              ],
                             ),
                           ),
-                        ),
-                      ),
-                      Container(
-                        height: height * .16,
-                        width: width * .8,
-                        margin: EdgeInsets.only(
-                          top: height * .025,
-                        ),
-                        decoration: BoxDecoration(
-                            color: Colors.blue[900],
-                            borderRadius: BorderRadius.only(
-                               topLeft:  Radius.circular(16),
-                              topRight:  Radius.circular(16)
-                            )
-                        ),
-                        child: Center(
-                          child: Text('Escolha um padrão para seu orçamento',
-                              textAlign: TextAlign.center, style: letraBranca),
-                        ),
-                      ),
-                      Container(
-                        color: Colors.blue[900],
-                        height: height * .4,
-                        width: width * .8,
-                        margin: EdgeInsets.only(
-                          top: height * .005,
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              height: height *.08,
-                              width: width *.33,
-                              margin: EdgeInsets.only(
-                                left: width *.04,
-                                right: width *.04
-                              ),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    height: height *.023,
-                                    width: width *.07,
-                                    child: Text('Eu sou:',
-                                      style: TextStyle(
-                                        color: Colors.white
-                                      ),
-                                    ),
+                          Container(
+                            height: height * .08,
+                            width: width * .45,
+                            child: Row(
+                              children: [
+                                Container(
+                                  height: height * .02,
+                                  width: width * .135,
+                                  child: Text(
+                                    'Trabalho com:',
+                                    style: TextStyle(color: Colors.white),
                                   ),
-                                  Container(
-                                      height: height *.08,
-                                      width: width *.18,
-                                      child: Center(child: DropDownLevel())
-                                  ),
-                                ],
-                              ),
+                                ),
+                                Container(
+                                    height: height * .08,
+                                    width: width * .31,
+                                    child: Center(child: dropDown())),
+                              ],
                             ),
-                            Container(
-                              height: height *.08,
-                              width: width *.45,
-                              child: Row(
-                                children: [
-                                  Container(
-                                    height: height *.02,
-                                    width: width *.135,
-                                    child: Text('Trabalho com:',
-                                      style: TextStyle(
-                                          color: Colors.white
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                      height: height *.08,
-                                      width: width *.31,
-                                      child: Center(child: dropDown())
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      Container(
-                        height: height * .08,
-                        width: width * .8,
-                        decoration: BoxDecoration(
-                            color: Colors.grey[600],
-                            borderRadius: BorderRadius.only(
-                               bottomLeft:  Radius.circular(16),
-                                bottomRight:  Radius.circular(16)
-                            )
-                        ),
-                        child: RaisedButton(
-                            color: Colors.grey[600],
-                            child: Text(
-                              'Continuar',
-                              style: TextStyle(color: Colors.white, fontSize: 22),
-                            ),
-                            shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(16.0)),
-                            onPressed: () {
+                    ),
+                    Container(
+                      height: height * .08,
+                      width: width * .8,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[600],
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(16),
+                              bottomRight: Radius.circular(16))),
+                      child: RaisedButton(
+                          color: Colors.grey[600],
+                          child: Text(
+                            'Continuar',
+                            style: TextStyle(color: Colors.white, fontSize: 22),
+                          ),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(16.0)),
+                          onPressed: () {
+                            if (oController.tipo2 == "Empresa") {
                               Modular.to.pushNamed('/dadosEmpresa');
-                            }),
-                      )
-                    ],
-                  ),
+                            } else {
+                              Modular.to.pushNamed('/dadosFreelancer');
+                            }
+                          }),
+                    )
+                  ],
                 ),
               ),
+            ),
           ],
         ),
       ),
@@ -194,50 +185,39 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
       );
     });
   }
-}
 
-class DropDownLevel extends StatefulWidget {
-  DropDownLevel({Key key}) : super(key: key);
-
-  @override
-  _DropDownLevelState createState() => _DropDownLevelState();
-}
-
-class _DropDownLevelState extends State<DropDownLevel> {
-  String dropdownValue = 'Empresa';
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      value: dropdownValue,
-      icon: Icon(
-        Icons.arrow_downward,
-        color: Colors.white,
-      ),
-      dropdownColor: Colors.grey[800],
-      iconSize: 24,
-      elevation: 16,
-      style: TextStyle(color: Colors.deepPurple),
-      onChanged: (String newValue) {
-        setState(() {
-          dropdownValue = newValue;
-        });
-      },
-      items: <String>['Empresa', 'FreeLancer']
-          .map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(
-            value,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontSize: 18,
-                color: Colors.white,
-                fontWeight: FontWeight.bold),
-          ),
-        );
-      }).toList(),
-    );
+  Widget dropDown2() {
+    final oController = Provider.of<OrcamentoController>(context);
+    oController.tipo2 = 'Empresa';
+    return Observer(builder: (_) {
+      return DropdownButton<String>(
+        value: oController.tipo2,
+        icon: Icon(
+          Icons.arrow_downward,
+          color: Colors.white,
+        ),
+        dropdownColor: Colors.grey[800],
+        iconSize: 24,
+        elevation: 16,
+        style: TextStyle(color: Colors.deepPurple),
+        onChanged: (String newValue) {
+          oController.tipo2 = newValue;
+        },
+        items:
+            controller.listTipos2.map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem<String>(
+            value: value,
+            child: Text(
+              value,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
+            ),
+          );
+        }).toList(),
+      );
+    });
   }
 }
-

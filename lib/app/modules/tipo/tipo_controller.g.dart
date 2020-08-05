@@ -24,6 +24,36 @@ mixin _$TipoController on _TipoControllerBase, Store {
     });
   }
 
+  final _$listTipos2Atom = Atom(name: '_TipoControllerBase.listTipos2');
+
+  @override
+  List<String> get listTipos2 {
+    _$listTipos2Atom.reportRead();
+    return super.listTipos2;
+  }
+
+  @override
+  set listTipos2(List<String> value) {
+    _$listTipos2Atom.reportWrite(value, super.listTipos2, () {
+      super.listTipos2 = value;
+    });
+  }
+
+  final _$dropdownValueAtom = Atom(name: '_TipoControllerBase.dropdownValue');
+
+  @override
+  String get dropdownValue {
+    _$dropdownValueAtom.reportRead();
+    return super.dropdownValue;
+  }
+
+  @override
+  set dropdownValue(String value) {
+    _$dropdownValueAtom.reportWrite(value, super.dropdownValue, () {
+      super.dropdownValue = value;
+    });
+  }
+
   final _$_TipoControllerBaseActionController =
       ActionController(name: '_TipoControllerBase');
 
@@ -41,7 +71,9 @@ mixin _$TipoController on _TipoControllerBase, Store {
   @override
   String toString() {
     return '''
-listTipos: ${listTipos}
+listTipos: ${listTipos},
+listTipos2: ${listTipos2},
+dropdownValue: ${dropdownValue}
     ''';
   }
 }

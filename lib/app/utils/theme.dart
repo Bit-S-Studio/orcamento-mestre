@@ -37,3 +37,20 @@ BoxDecoration buttonDecoration = new BoxDecoration(
       stops: [0.0, 1.0],
       tileMode: TileMode.clamp),
 );
+BoxDecoration boxContainer = new BoxDecoration(
+    color: Colors.blue[900],
+    borderRadius: BorderRadius.only(
+        bottomLeft: Radius.circular(16), bottomRight: Radius.circular(16)));
+
+InputDecoration inputDecoration(String label) {
+  return InputDecoration(
+      contentPadding:
+          new EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+      labelText: label,
+      border: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(const Radius.circular(12.0)),
+        borderSide: BorderSide(
+          color: Colors.white,
+        ),
+      ));
+}
