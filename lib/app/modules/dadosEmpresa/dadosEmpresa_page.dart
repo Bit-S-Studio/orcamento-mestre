@@ -20,6 +20,9 @@ class DadosEmpresaPage extends StatefulWidget {
 
 class _DadosEmpresaPageState
     extends ModularState<DadosEmpresaPage, EmpresaController> {
+
+  final _nameController = TextEditingController();
+
   //use 'controller' variable to access controller
 
   @override
@@ -142,7 +145,7 @@ class _DadosEmpresaPageState
                 ),
               ),
               Container(
-                height: height * .56,
+                height: height * .60,
                 width: width,
                 margin: EdgeInsets.only(
                     top: height * .005
@@ -383,10 +386,70 @@ class _DadosEmpresaPageState
                       ],
                     ),
                     Container(
+                      height: height *.06,
+                      width: width,
+                      margin: EdgeInsets.only(
+                          top: height *.015,
+                          left: width *.02,
+                          right: width *.02
+                      ),
+                      child: TextFormField(
+                        controller: controller.nameEmpresa,
+                        onChanged: (newName) {
+                          oController.nomeEmpresa = newName;
+                        },
+                        decoration: InputDecoration(
+                          contentPadding: new EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 10.0),
+                          labelText: "E-mail",
+                          border: OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                                const Radius.circular(12.0)),
+                            borderSide: BorderSide(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        validator: (text) {
+                          if (text.isEmpty) return "O campo nome, está vazio";
+                        },
+                      ),
+                    ),
+                    Container(
+                      height: height *.06,
+                      width: width,
+                      margin: EdgeInsets.only(
+                          top: height *.015,
+                          left: width *.02,
+                          right: width *.02
+                      ),
+                      child: TextFormField(
+                        controller: controller.nameEmpresa,
+                        onChanged: (newName) {
+                          oController.nomeEmpresa = newName;
+                        },
+                        decoration: InputDecoration(
+                          contentPadding: new EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 10.0),
+                          labelText: "Site",
+                          border: OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                                const Radius.circular(12.0)),
+                            borderSide: BorderSide(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        validator: (text) {
+                          if (text.isEmpty) return "O campo nome, está vazio";
+                        },
+                      ),
+                    ),
+                    Container(
                       height: height * .08,
                       width: width * .8,
                       margin: EdgeInsets.only(
-                        top: height *.135
+                        top: height *.025
                       ),
                       decoration: BoxDecoration(
                           color: Colors.grey[600],

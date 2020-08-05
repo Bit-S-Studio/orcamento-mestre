@@ -74,7 +74,60 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
                         margin: EdgeInsets.only(
                           top: height * .005,
                         ),
-                        child: Center(child: dropDown()),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: height *.08,
+                              width: width *.33,
+                              margin: EdgeInsets.only(
+                                left: width *.04,
+                                right: width *.04
+                              ),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    height: height *.023,
+                                    width: width *.07,
+                                    child: Text('Eu sou:',
+                                      style: TextStyle(
+                                        color: Colors.white
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                      height: height *.08,
+                                      width: width *.18,
+                                      child: Center(child: DropDownLevel())
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              height: height *.08,
+                              width: width *.45,
+                              child: Row(
+                                children: [
+                                  Container(
+                                    height: height *.02,
+                                    width: width *.135,
+                                    child: Text('Trabalho com:',
+                                      style: TextStyle(
+                                          color: Colors.white
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                      height: height *.08,
+                                      width: width *.31,
+                                      child: Center(child: dropDown())
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       Container(
                         height: height * .08,
@@ -142,3 +195,49 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
     });
   }
 }
+
+class DropDownLevel extends StatefulWidget {
+  DropDownLevel({Key key}) : super(key: key);
+
+  @override
+  _DropDownLevelState createState() => _DropDownLevelState();
+}
+
+class _DropDownLevelState extends State<DropDownLevel> {
+  String dropdownValue = 'Empresa';
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton<String>(
+      value: dropdownValue,
+      icon: Icon(
+        Icons.arrow_downward,
+        color: Colors.white,
+      ),
+      dropdownColor: Colors.grey[800],
+      iconSize: 24,
+      elevation: 16,
+      style: TextStyle(color: Colors.deepPurple),
+      onChanged: (String newValue) {
+        setState(() {
+          dropdownValue = newValue;
+        });
+      },
+      items: <String>['Empresa', 'FreeLancer']
+          .map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(
+            value,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+                fontWeight: FontWeight.bold),
+          ),
+        );
+      }).toList(),
+    );
+  }
+}
+
