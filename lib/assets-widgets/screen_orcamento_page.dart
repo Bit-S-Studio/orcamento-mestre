@@ -1,5 +1,5 @@
-import 'package:assets_orcamento/assets-widgets/category_item_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:orcamento_mestre/assets-widgets/category_item_widget.dart';
 
 import 'item_description_widget.dart';
 
