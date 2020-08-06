@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:orcamento_mestre/assets-widgets/item_description_widget.dart';
 
+import 'item_description_widget.dart';
+
 class CategoryItemWidget extends StatefulWidget {
   @override
   _CategoryItemWidgetState createState() => _CategoryItemWidgetState();

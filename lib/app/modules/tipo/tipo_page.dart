@@ -28,13 +28,18 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.all(16),
               child: Center(
                 child: Column(
                   children: [
                     Container(
-                      height: height * .30,
+                      height: height * .38,
                       width: width,
+                      margin: EdgeInsets.only(
+                        top: height *.07,
+                        bottom: height *.06,
+                        left: width *.03,
+                        right: width *.03,
+                      ),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(16))),
@@ -46,16 +51,14 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
                       ),
                     ),
                     Container(
-                      height: height * .16,
+                      height: height * .08,
                       width: width * .8,
                       margin: EdgeInsets.only(
-                        top: height * .025,
+                        top: height * .005,
                       ),
                       decoration: BoxDecoration(
                           color: Colors.blue[900],
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(16),
-                              topRight: Radius.circular(16))),
+                          ),
                       child: Center(
                         child: Text('Escolha um padrão para seu orçamento',
                             textAlign: TextAlign.center, style: letraBranca),
@@ -63,28 +66,38 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
                     ),
                     Container(
                       color: Colors.blue[900],
-                      height: height * .4,
+                      height: height * .25,
                       width: width * .8,
-                      margin: EdgeInsets.only(
-                        top: height * .005,
-                      ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
                             height: height * .08,
-                            width: width * .33,
+                            width: width,
                             margin: EdgeInsets.only(
-                                left: width * .04, right: width * .04),
+                                left: width * .015,
+                                right: width * .015),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.all(Radius.circular(12)),
+                                boxShadow: [
+                                  new BoxShadow(
+                                      color: Colors.black.withAlpha(70),
+                                      offset: const Offset(3.0, 10.0),
+                                      blurRadius: 15.0)
+                                ]),
                             child: Row(
                               children: [
                                 Container(
                                   height: height * .023,
                                   width: width * .07,
+                                  margin: EdgeInsets.only(
+                                      left: width * .015,
+                                      right: width * .015),
                                   child: Text(
                                     'Eu sou:',
-                                    style: TextStyle(color: Colors.white),
+                                    style: TextStyle(color: Colors.black),
                                   ),
                                 ),
                                 Container(
@@ -96,15 +109,31 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
                           ),
                           Container(
                             height: height * .08,
-                            width: width * .45,
+                            width: width,
+                            margin: EdgeInsets.only(
+                              top: height *.025,
+                                left: width * .015,
+                                right: width * .015),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.all(Radius.circular(12)),
+                                boxShadow: [
+                                  new BoxShadow(
+                                      color: Colors.black.withAlpha(70),
+                                      offset: const Offset(3.0, 10.0),
+                                      blurRadius: 15.0)
+                                ]),
                             child: Row(
                               children: [
                                 Container(
                                   height: height * .02,
                                   width: width * .135,
+                                  margin: EdgeInsets.only(
+                                      left: width * .015,
+                                      right: width * .015),
                                   child: Text(
                                     'Trabalho com:',
-                                    style: TextStyle(color: Colors.white),
+                                    style: TextStyle(color: Colors.black),
                                   ),
                                 ),
                                 Container(
@@ -122,9 +151,7 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
                       width: width * .8,
                       decoration: BoxDecoration(
                           color: Colors.grey[600],
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(16),
-                              bottomRight: Radius.circular(16))),
+                          ),
                       child: RaisedButton(
                           color: Colors.grey[600],
                           child: Text(
@@ -159,9 +186,9 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
         value: oController.tipo,
         icon: Icon(
           Icons.arrow_downward,
-          color: Colors.white,
+          color: Colors.black87,
         ),
-        dropdownColor: Colors.grey[800],
+        dropdownColor: Colors.blue[900],
         iconSize: 24,
         elevation: 16,
         style: TextStyle(color: Colors.deepPurple),
@@ -177,7 +204,7 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 18,
-                  color: Colors.white,
+                  color: Colors.black87,
                   fontWeight: FontWeight.bold),
             ),
           );
@@ -194,9 +221,9 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
         value: oController.tipo2,
         icon: Icon(
           Icons.arrow_downward,
-          color: Colors.white,
+          color: Colors.black87,
         ),
-        dropdownColor: Colors.grey[800],
+        dropdownColor: Colors.blue[900],
         iconSize: 24,
         elevation: 16,
         style: TextStyle(color: Colors.deepPurple),
@@ -212,7 +239,7 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 18,
-                  color: Colors.white,
+                  color: Colors.black87,
                   fontWeight: FontWeight.bold),
             ),
           );
