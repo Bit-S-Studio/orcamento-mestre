@@ -1,6 +1,6 @@
-import 'package:assets_orcamento/assets-widgets/category_item_widget.dart';
 import 'package:flutter/material.dart';
 
+import 'category_item_widget.dart';
 import 'item_description_widget.dart';
 
 class ScreenOrcamentoPage extends StatefulWidget {

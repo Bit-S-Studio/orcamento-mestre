@@ -1,5 +1,6 @@
-import 'package:assets_orcamento/assets-widgets/item_description_widget.dart';
 import 'package:flutter/material.dart';
+
+import 'item_description_widget.dart';
 
 class CategoryItemWidget extends StatefulWidget {
   @override
