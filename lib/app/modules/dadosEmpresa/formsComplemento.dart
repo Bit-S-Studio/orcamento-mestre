@@ -18,7 +18,7 @@ class _FormsComplementoState
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Container(
-        height: height * .52,
+        height: height * .54,
         width: width,
         margin: EdgeInsets.only(top: height * .005),
         decoration: boxContainer,
@@ -27,7 +27,7 @@ class _FormsComplementoState
             height: height * .064,
             width: width,
             margin: EdgeInsets.only(
-                top: height * .015, left: width * .02, right: width * .02),
+                top: height * .005, left: width * .02, right: width * .02),
             child: TextFormField(
               controller: oController.cepController,
               onChanged: (newCep) {
@@ -44,7 +44,8 @@ class _FormsComplementoState
               Container(
                 height: height * .06,
                 width: width * .39,
-                margin: EdgeInsets.only(left: width * .02),
+                margin: EdgeInsets.only(
+                    top: height * .015, left: width * .02, right: width * .005),
                 child: TextFormField(
                   controller: oController.enderecoController,
                   onChanged: (newEndereco) {
@@ -59,7 +60,8 @@ class _FormsComplementoState
               Container(
                 height: height * .06,
                 width: width * .12,
-                margin: EdgeInsets.only(left: width * .005),
+                margin: EdgeInsets.only(
+                    top: height * .015, right: width * .02),
                 child: TextFormField(
                   controller: oController.numController,
                   onChanged: (newNum) {

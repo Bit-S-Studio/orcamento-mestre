@@ -22,7 +22,6 @@ class DadosEmpresaPage extends StatefulWidget {
 
 class _DadosEmpresaPageState
     extends ModularState<DadosEmpresaPage, EmpresaController> {
-  final _nameController = TextEditingController();
 
   //use 'controller' variable to access controller
 
@@ -141,7 +140,7 @@ class _DadosEmpresaPageState
                 ),
               ),
               Container(
-                height: height * .69,
+                height: height * .71,
                 width: width,
                 margin: EdgeInsets.only(top: height * .005),
                 decoration: boxContainer,
