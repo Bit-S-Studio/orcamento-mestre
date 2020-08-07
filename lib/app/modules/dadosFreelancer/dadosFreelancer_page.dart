@@ -49,7 +49,7 @@ class _DadosFreelancerPageState
                   ),
                 ),
                 Container(
-                  height: height * .68,
+                  height: height * .08,
                   width: width,
                   margin: EdgeInsets.only(
                     top: height * .02,
