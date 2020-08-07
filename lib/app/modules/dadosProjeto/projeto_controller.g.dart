@@ -9,39 +9,77 @@ part of 'projeto_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$ProjetoController on _ProjetoControllerBase, Store {
-  final _$valueAtom = Atom(name: '_ProjetoControllerBase.value');
+  final _$categoriaControllerAtom =
+      Atom(name: '_ProjetoControllerBase.categoriaController');
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  TextEditingController get categoriaController {
+    _$categoriaControllerAtom.reportRead();
+    return super.categoriaController;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set categoriaController(TextEditingController value) {
+    _$categoriaControllerAtom.reportWrite(value, super.categoriaController, () {
+      super.categoriaController = value;
     });
   }
 
-  final _$_ProjetoControllerBaseActionController =
-      ActionController(name: '_ProjetoControllerBase');
+  final _$itemControllerAtom =
+      Atom(name: '_ProjetoControllerBase.itemController');
 
   @override
-  void increment() {
-    final _$actionInfo = _$_ProjetoControllerBaseActionController.startAction(
-        name: '_ProjetoControllerBase.increment');
-    try {
-      return super.increment();
-    } finally {
-      _$_ProjetoControllerBaseActionController.endAction(_$actionInfo);
-    }
+  TextEditingController get itemController {
+    _$itemControllerAtom.reportRead();
+    return super.itemController;
+  }
+
+  @override
+  set itemController(TextEditingController value) {
+    _$itemControllerAtom.reportWrite(value, super.itemController, () {
+      super.itemController = value;
+    });
+  }
+
+  final _$valorControllerAtom =
+      Atom(name: '_ProjetoControllerBase.valorController');
+
+  @override
+  TextEditingController get valorController {
+    _$valorControllerAtom.reportRead();
+    return super.valorController;
+  }
+
+  @override
+  set valorController(TextEditingController value) {
+    _$valorControllerAtom.reportWrite(value, super.valorController, () {
+      super.valorController = value;
+    });
+  }
+
+  final _$tempoControllerAtom =
+      Atom(name: '_ProjetoControllerBase.tempoController');
+
+  @override
+  TextEditingController get tempoController {
+    _$tempoControllerAtom.reportRead();
+    return super.tempoController;
+  }
+
+  @override
+  set tempoController(TextEditingController value) {
+    _$tempoControllerAtom.reportWrite(value, super.tempoController, () {
+      super.tempoController = value;
+    });
   }
 
   @override
   String toString() {
     return '''
-value: ${value}
+categoriaController: ${categoriaController},
+itemController: ${itemController},
+valorController: ${valorController},
+tempoController: ${tempoController}
     ''';
   }
 }

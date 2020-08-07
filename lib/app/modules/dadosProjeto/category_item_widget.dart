@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:orcamento_mestre/assets-widgets/item_description_widget.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:orcamento_mestre/app/modules/dadosProjeto/projeto_controller.dart';
+import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
+import 'package:provider/provider.dart';
 
 import 'item_description_widget.dart';
 
@@ -8,11 +12,13 @@ class CategoryItemWidget extends StatefulWidget {
   _CategoryItemWidgetState createState() => _CategoryItemWidgetState();
 }
 
-class _CategoryItemWidgetState extends State<CategoryItemWidget> {
+class _CategoryItemWidgetState
+    extends ModularState<CategoryItemWidget, ProjetoController> {
   final _categoryController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final oController = Provider.of<OrcamentoController>(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Column(
@@ -48,22 +54,34 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
                   Container(
                     height: height * .06,
                     width: width * .08,
-                    child: IconButton(
-                        icon: Icon(
-                          Icons.add_circle,
-                          color: Colors.white,
-                        ),
-                        onPressed: null),
+                    child: Observer(builder: (_) {
+                      return IconButton(
+                          icon: Icon(
+                            Icons.add_circle,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            String categoria =
+                                controller.categoriaController.text;
+                            oController.categoriasProjeto.add(categoria);
+                          });
+                    }),
                   ),
                   Container(
                     height: height * .06,
                     width: width * .08,
-                    child: IconButton(
-                        icon: Icon(
-                          Icons.delete_forever,
-                          color: Colors.white,
-                        ),
-                        onPressed: null),
+                    child: Observer(builder: (_) {
+                      return IconButton(
+                          icon: Icon(
+                            Icons.delete_forever,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            String categoria =
+                                controller.categoriaController.text;
+                            oController.categoriasProjeto.remove(categoria);
+                          });
+                    }),
                   ),
                 ],
               ),
@@ -92,11 +110,11 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
                     right: width * .02),
                 child: Center(
                   child: TextFormField(
-                    controller: _categoryController,
+                    controller: controller.categoriaController,
                     decoration: InputDecoration(
                       contentPadding: new EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 10.0),
-                      labelText: "Front End",
+                      labelText: "Categoria",
                       labelStyle: TextStyle(fontSize: 12),
                       border: OutlineInputBorder(
                         borderRadius:

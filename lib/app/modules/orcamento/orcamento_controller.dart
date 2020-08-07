@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobx/mobx.dart';
+import 'package:orcamento_mestre/app/modules/dadosProjeto/itemModel.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_modal.dart';
 import 'package:via_cep/via_cep.dart';
 
@@ -149,7 +150,7 @@ abstract class _OrcamentoControllerBase with Store {
   String texto;
 
   @observable
-  List<OrcamentoModal> listOrcamento = [];
+  List<ItemModel> listItens = [];
 
   @observable
   double valorTotal;
@@ -168,4 +169,9 @@ abstract class _OrcamentoControllerBase with Store {
 
   @observable
   String nomeProjeto;
+
+  @observable
+  List<String> categoriasProjeto = [];
 }
+
+class ItensModel {}

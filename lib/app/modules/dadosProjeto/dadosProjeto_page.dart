@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:orcamento_mestre/app/modules/dadosProjeto/category_item_widget.dart';
 import 'projeto_controller.dart';
 
 class DadosProjetoPage extends StatefulWidget {
@@ -17,12 +18,33 @@ class _DadosProjetoPageState
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: Colors.grey[900],
       appBar: AppBar(
+        backgroundColor: Colors.blue[900],
         title: Text(widget.title),
       ),
-      body: Column(
-        children: <Widget>[],
+      body: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: [
+              Container(
+                height: height * .06,
+                width: width,
+                margin:
+                    EdgeInsets.only(top: height * .025, bottom: height * .015),
+                child: Center(
+                    child: Text(
+                  'Adicione ou remova ítens do seu orçamento',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                )),
+              ),
+              CategoryItemWidget()
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:orcamento_mestre/app/modules/dadosProjeto/itemModel.dart';
+import 'package:orcamento_mestre/app/modules/dadosProjeto/projeto_controller.dart';
+import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
+import 'package:provider/provider.dart';
 
 class ItemDescritionWidget extends StatefulWidget {
   @override
   _ItemDescritionWidgetState createState() => _ItemDescritionWidgetState();
 }
 
-class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
-
-  final _itemController = TextEditingController();
-  final _valorController = TextEditingController();
-
+class _ItemDescritionWidgetState
+    extends ModularState<ItemDescritionWidget, ProjetoController> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
+    final oController = Provider.of<OrcamentoController>(context);
     return Container(
       color: Colors.blue[900],
       child: Container(
-        height: height *.16,
+        height: height * .16,
         width: width,
         margin: EdgeInsets.only(
             top: height * .015,
@@ -46,12 +50,10 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                       margin: EdgeInsets.only(left: width * .02),
                       child: Center(
                         child: TextFormField(
-                          controller: _itemController,
+                          controller: controller.itemController,
                           decoration: InputDecoration(
-                            contentPadding:
-                            new EdgeInsets.symmetric(
-                                vertical: 10.0,
-                                horizontal: 10.0),
+                            contentPadding: new EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 10.0),
                             labelText: "Descrição do Ítem",
                             labelStyle: TextStyle(fontSize: 12),
                             border: OutlineInputBorder(
@@ -75,12 +77,10 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                       margin: EdgeInsets.only(left: width * .005),
                       child: Center(
                         child: TextFormField(
-                          controller: _valorController,
+                          controller: controller.valorController,
                           decoration: InputDecoration(
-                            contentPadding:
-                            new EdgeInsets.symmetric(
-                                vertical: 10.0,
-                                horizontal: 10.0),
+                            contentPadding: new EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 10.0),
                             labelText: "R\$ 0.000,00",
                             labelStyle: TextStyle(fontSize: 12),
                             border: OutlineInputBorder(
@@ -105,18 +105,16 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                     Container(
                       height: height * .06,
                       width: width * .32,
-                      margin: EdgeInsets.only(
-                          top: height * .01, left: width * .02),
+                      margin:
+                          EdgeInsets.only(top: height * .01, left: width * .02),
                       decoration: BoxDecoration(
                           color: Colors.blue[900],
-                          borderRadius: BorderRadius.all(
-                              Radius.circular(12))),
+                          borderRadius: BorderRadius.all(Radius.circular(12))),
                       child: Center(
                           child: Text(
-                            'Estimativa de tempo de execução',
-                            style: TextStyle(
-                                color: Colors.white, fontSize: 12),
-                          )),
+                        'Estimativa de tempo de execução',
+                        style: TextStyle(color: Colors.white, fontSize: 12),
+                      )),
                     ),
                     Container(
                       height: height * .06,
@@ -125,12 +123,10 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                           top: height * .01, left: width * .005),
                       child: Center(
                         child: TextFormField(
-                          controller: _valorController,
+                          controller: controller.tempoController,
                           decoration: InputDecoration(
-                            contentPadding:
-                            new EdgeInsets.symmetric(
-                                vertical: 10.0,
-                                horizontal: 10.0),
+                            contentPadding: new EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 10.0),
                             labelText: "12:30h",
                             labelStyle: TextStyle(fontSize: 12),
                             border: OutlineInputBorder(
@@ -158,30 +154,47 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
               margin: EdgeInsets.only(left: width * .02),
               decoration: BoxDecoration(
                   color: Colors.blue[900],
-                  borderRadius:
-                  BorderRadius.all(Radius.circular(12))),
+                  borderRadius: BorderRadius.all(Radius.circular(12))),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     height: height * .06,
                     width: width * .1,
-                    child: IconButton(
-                        icon: Icon(
-                          Icons.add_circle,
-                          color: Colors.white,
-                        ),
-                        onPressed: null),
+                    child: Observer(builder: (_) {
+                      return IconButton(
+                          icon: Icon(
+                            Icons.add_circle,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            String categoria;
+                            String item = controller.itemController.text;
+                            double valor =
+                                double.parse(controller.valorController.text);
+                            oController.listItens
+                                .add(ItemModel(item, valor, categoria));
+                          });
+                    }),
                   ),
                   Container(
                     height: height * .06,
                     width: width * .1,
-                    child: IconButton(
-                        icon: Icon(
-                          Icons.delete_forever,
-                          color: Colors.white,
-                        ),
-                        onPressed: null),
+                    child: Observer(builder: (_) {
+                      return IconButton(
+                          icon: Icon(
+                            Icons.delete_forever,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            String categoria;
+                            String item = controller.itemController.text;
+                            double valor =
+                                double.parse(controller.valorController.text);
+                            oController.listItens
+                                .remove(ItemModel(item, valor, categoria));
+                          });
+                    }),
                   ),
                 ],
               ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:orcamento_mestre/app/modules/dadosFreelancer/freelancer_controller.dart';
 import 'package:provider/provider.dart';
-
 import '../dadosEmpresa/formsComplemento.dart';
 import '../orcamento/orcamento_controller.dart';
 
@@ -50,7 +49,7 @@ class _DadosFreelancerPageState
                   ),
                 ),
                 Container(
-                  height: height *.65,
+                  height: height * .65,
                   width: width,
                   margin: EdgeInsets.only(
                     top: height * .02,
@@ -64,7 +63,7 @@ class _DadosFreelancerPageState
                     height: height * .06,
                     width: width,
                     padding:
-                    EdgeInsets.only(top: height * .02, left: width * .02),
+                        EdgeInsets.only(top: height * .02, left: width * .02),
                     child: Text(
                       'Complementos',
                       style: TextStyle(color: Colors.white, fontSize: 16),

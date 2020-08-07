@@ -424,19 +424,18 @@ mixin _$OrcamentoController on _OrcamentoControllerBase, Store {
     });
   }
 
-  final _$listOrcamentoAtom =
-      Atom(name: '_OrcamentoControllerBase.listOrcamento');
+  final _$listItensAtom = Atom(name: '_OrcamentoControllerBase.listItens');
 
   @override
-  List<OrcamentoModal> get listOrcamento {
-    _$listOrcamentoAtom.reportRead();
-    return super.listOrcamento;
+  List<ItemModel> get listItens {
+    _$listItensAtom.reportRead();
+    return super.listItens;
   }
 
   @override
-  set listOrcamento(List<OrcamentoModal> value) {
-    _$listOrcamentoAtom.reportWrite(value, super.listOrcamento, () {
-      super.listOrcamento = value;
+  set listItens(List<ItemModel> value) {
+    _$listItensAtom.reportWrite(value, super.listItens, () {
+      super.listItens = value;
     });
   }
 
@@ -528,6 +527,22 @@ mixin _$OrcamentoController on _OrcamentoControllerBase, Store {
   set nomeProjeto(String value) {
     _$nomeProjetoAtom.reportWrite(value, super.nomeProjeto, () {
       super.nomeProjeto = value;
+    });
+  }
+
+  final _$categoriasProjetoAtom =
+      Atom(name: '_OrcamentoControllerBase.categoriasProjeto');
+
+  @override
+  List<String> get categoriasProjeto {
+    _$categoriasProjetoAtom.reportRead();
+    return super.categoriasProjeto;
+  }
+
+  @override
+  set categoriasProjeto(List<String> value) {
+    _$categoriasProjetoAtom.reportWrite(value, super.categoriasProjeto, () {
+      super.categoriasProjeto = value;
     });
   }
 
@@ -714,13 +729,14 @@ numero1: ${numero1},
 ufController: ${ufController},
 uf: ${uf},
 texto: ${texto},
-listOrcamento: ${listOrcamento},
+listItens: ${listItens},
 valorTotal: ${valorTotal},
 colorCabecalio: ${colorCabecalio},
 colorRodape: ${colorRodape},
 colorBase: ${colorBase},
 colorLetra: ${colorLetra},
-nomeProjeto: ${nomeProjeto}
+nomeProjeto: ${nomeProjeto},
+categoriasProjeto: ${categoriasProjeto}
     ''';
   }
 }
