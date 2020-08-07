@@ -22,20 +22,14 @@ abstract class _OrcamentoControllerBase with Store {
   @observable
   String nomeEmpresa;
 
-  @action
-  changeNome(String newNome) => nomeEmpresa = newNome;
+  @observable
+  String nomeFreelancer;
 
   @observable
   String documento;
 
-  @action
-  changeDoc(String newDoc) => documento = newDoc;
-
   @observable
   String telefone1;
-
-  @action
-  changeTelefone(String newTelefone1) => telefone1 = newTelefone1;
 
   @observable
   TextEditingController tel1Controller = TextEditingController();
@@ -43,17 +37,11 @@ abstract class _OrcamentoControllerBase with Store {
   @observable
   String telefone2;
 
-  @action
-  changeTelefone2(String newTelefone1) => telefone2 = newTelefone1;
-
   @observable
   TextEditingController tel2Controller = TextEditingController();
 
   @observable
   String email;
-
-  @action
-  changeEmail(String newEmail) => email = newEmail;
 
   @observable
   TextEditingController emailController = TextEditingController();
@@ -61,17 +49,11 @@ abstract class _OrcamentoControllerBase with Store {
   @observable
   String site;
 
-  @action
-  changeSite(String newSite) => site = newSite;
-
   @observable
   TextEditingController siteController = TextEditingController();
 
   @observable
   String cep;
-
-  @action
-  changeCep(String newCep) => cep = newCep;
 
   @observable
   TextEditingController cepController = TextEditingController();
@@ -82,23 +64,14 @@ abstract class _OrcamentoControllerBase with Store {
   @observable
   String endereco;
 
-  @action
-  changeEndereco(String newEndereco) => endereco = newEndereco;
-
   @observable
   TextEditingController numController = TextEditingController();
 
   @observable
   String numero;
 
-  @action
-  changeNum(String newNum) => numero = newNum;
-
   @observable
   String cidade;
-
-  @action
-  changeCidade(String newCidade) => cidade = newCidade;
 
   @observable
   TextEditingController cidadeController = TextEditingController();
@@ -106,26 +79,17 @@ abstract class _OrcamentoControllerBase with Store {
   @observable
   String bairro;
 
-  @action
-  changeBairro(String newBairro) => bairro = newBairro;
-
   @observable
   TextEditingController bairroController = TextEditingController();
 
   @observable
   String numero1;
 
-  @action
-  changeNumero(String newNumero) => numero1 = newNumero;
-
   @observable
   TextEditingController ufController = TextEditingController();
 
   @observable
   String uf;
-
-  @action
-  changeUF(String newUF) => uf = newUF;
 
   @action
   Future getCEP(String cep) async {

@@ -69,6 +69,22 @@ mixin _$OrcamentoController on _OrcamentoControllerBase, Store {
     });
   }
 
+  final _$nomeFreelancerAtom =
+      Atom(name: '_OrcamentoControllerBase.nomeFreelancer');
+
+  @override
+  String get nomeFreelancer {
+    _$nomeFreelancerAtom.reportRead();
+    return super.nomeFreelancer;
+  }
+
+  @override
+  set nomeFreelancer(String value) {
+    _$nomeFreelancerAtom.reportWrite(value, super.nomeFreelancer, () {
+      super.nomeFreelancer = value;
+    });
+  }
+
   final _$documentoAtom = Atom(name: '_OrcamentoControllerBase.documento');
 
   @override
@@ -553,152 +569,6 @@ mixin _$OrcamentoController on _OrcamentoControllerBase, Store {
     return _$getCEPAsyncAction.run(() => super.getCEP(cep));
   }
 
-  final _$_OrcamentoControllerBaseActionController =
-      ActionController(name: '_OrcamentoControllerBase');
-
-  @override
-  dynamic changeNome(String newNome) {
-    final _$actionInfo = _$_OrcamentoControllerBaseActionController.startAction(
-        name: '_OrcamentoControllerBase.changeNome');
-    try {
-      return super.changeNome(newNome);
-    } finally {
-      _$_OrcamentoControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic changeDoc(String newDoc) {
-    final _$actionInfo = _$_OrcamentoControllerBaseActionController.startAction(
-        name: '_OrcamentoControllerBase.changeDoc');
-    try {
-      return super.changeDoc(newDoc);
-    } finally {
-      _$_OrcamentoControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic changeTelefone(String newTelefone1) {
-    final _$actionInfo = _$_OrcamentoControllerBaseActionController.startAction(
-        name: '_OrcamentoControllerBase.changeTelefone');
-    try {
-      return super.changeTelefone(newTelefone1);
-    } finally {
-      _$_OrcamentoControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic changeTelefone2(String newTelefone1) {
-    final _$actionInfo = _$_OrcamentoControllerBaseActionController.startAction(
-        name: '_OrcamentoControllerBase.changeTelefone2');
-    try {
-      return super.changeTelefone2(newTelefone1);
-    } finally {
-      _$_OrcamentoControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic changeEmail(String newEmail) {
-    final _$actionInfo = _$_OrcamentoControllerBaseActionController.startAction(
-        name: '_OrcamentoControllerBase.changeEmail');
-    try {
-      return super.changeEmail(newEmail);
-    } finally {
-      _$_OrcamentoControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic changeSite(String newSite) {
-    final _$actionInfo = _$_OrcamentoControllerBaseActionController.startAction(
-        name: '_OrcamentoControllerBase.changeSite');
-    try {
-      return super.changeSite(newSite);
-    } finally {
-      _$_OrcamentoControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic changeCep(String newCep) {
-    final _$actionInfo = _$_OrcamentoControllerBaseActionController.startAction(
-        name: '_OrcamentoControllerBase.changeCep');
-    try {
-      return super.changeCep(newCep);
-    } finally {
-      _$_OrcamentoControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic changeEndereco(String newEndereco) {
-    final _$actionInfo = _$_OrcamentoControllerBaseActionController.startAction(
-        name: '_OrcamentoControllerBase.changeEndereco');
-    try {
-      return super.changeEndereco(newEndereco);
-    } finally {
-      _$_OrcamentoControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic changeNum(String newNum) {
-    final _$actionInfo = _$_OrcamentoControllerBaseActionController.startAction(
-        name: '_OrcamentoControllerBase.changeNum');
-    try {
-      return super.changeNum(newNum);
-    } finally {
-      _$_OrcamentoControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic changeCidade(String newCidade) {
-    final _$actionInfo = _$_OrcamentoControllerBaseActionController.startAction(
-        name: '_OrcamentoControllerBase.changeCidade');
-    try {
-      return super.changeCidade(newCidade);
-    } finally {
-      _$_OrcamentoControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic changeBairro(String newBairro) {
-    final _$actionInfo = _$_OrcamentoControllerBaseActionController.startAction(
-        name: '_OrcamentoControllerBase.changeBairro');
-    try {
-      return super.changeBairro(newBairro);
-    } finally {
-      _$_OrcamentoControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic changeNumero(String newNumero) {
-    final _$actionInfo = _$_OrcamentoControllerBaseActionController.startAction(
-        name: '_OrcamentoControllerBase.changeNumero');
-    try {
-      return super.changeNumero(newNumero);
-    } finally {
-      _$_OrcamentoControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic changeUF(String newUF) {
-    final _$actionInfo = _$_OrcamentoControllerBaseActionController.startAction(
-        name: '_OrcamentoControllerBase.changeUF');
-    try {
-      return super.changeUF(newUF);
-    } finally {
-      _$_OrcamentoControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
   @override
   String toString() {
     return '''
@@ -706,6 +576,7 @@ tipo: ${tipo},
 tipo2: ${tipo2},
 logo: ${logo},
 nomeEmpresa: ${nomeEmpresa},
+nomeFreelancer: ${nomeFreelancer},
 documento: ${documento},
 telefone1: ${telefone1},
 tel1Controller: ${tel1Controller},
