@@ -27,7 +27,7 @@ class _FormsComplementoState
             height: height * .064,
             width: width,
             margin: EdgeInsets.only(
-                top: height * .005, left: width * .02, right: width * .02),
+                top: height * .012, left: width * .02, right: width * .02),
             child: TextFormField(
               controller: oController.cepController,
               onChanged: (newCep) {
