@@ -1,14 +1,15 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:orcamento_mestre/app/modules/dadosEmpresa/empresa_controller.dart';
 import 'package:orcamento_mestre/app/modules/dadosFreelancer/dadosFreelancer_page.dart';
 import 'package:orcamento_mestre/app/modules/dadosFreelancer/freelancer_controller.dart';
 
-class DadosFreelancerModule extends ChildModule {
+class DadosFreelancerModule extends WidgetModule {
   @override
   List<Bind> get binds => [
         Bind((i) => FreelancerController()),
-    Bind((i) => EmpresaController()),
+        Bind((i) => EmpresaController()),
       ];
 
   @override
@@ -18,4 +19,7 @@ class DadosFreelancerModule extends ChildModule {
       ];
 
   static Inject get to => Inject<DadosFreelancerModule>.of();
+
+  @override
+  Widget get view => DadosFreelancerPage();
 }

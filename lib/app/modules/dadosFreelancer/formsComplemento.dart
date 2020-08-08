@@ -18,7 +18,7 @@ class _FormsComplementoState
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Container(
-        height: height * .54,
+        height: height * .6,
         width: width,
         margin: EdgeInsets.only(top: height * .005),
         decoration: boxContainer,

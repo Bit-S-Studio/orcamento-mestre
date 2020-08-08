@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/category_item_widget.dart';
 import 'projeto_controller.dart';
@@ -41,7 +42,18 @@ class _DadosProjetoPageState
                   style: TextStyle(color: Colors.white, fontSize: 16),
                 )),
               ),
-              CategoryItemWidget()
+              Observer(builder: (_) {
+                return Container(
+                  height: height * 0.8,
+                  width: width,
+                  child: ListView.builder(
+                    itemCount: controller.indexCategoria,
+                    itemBuilder: (context, index) {
+                      return CategoryItemWidget();
+                    },
+                  ),
+                );
+              })
             ],
           ),
         ),

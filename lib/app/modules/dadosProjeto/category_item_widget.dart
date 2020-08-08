@@ -63,6 +63,8 @@ class _CategoryItemWidgetState
                           onPressed: () {
                             String categoria =
                                 controller.categoriaController.text;
+                            controller.indexCategoria =
+                                controller.indexCategoria + 1;
                             oController.categoriasProjeto.add(categoria);
                           });
                     }),
@@ -80,6 +82,8 @@ class _CategoryItemWidgetState
                             String categoria =
                                 controller.categoriaController.text;
                             oController.categoriasProjeto.remove(categoria);
+                            controller.indexCategoria =
+                                controller.indexCategoria - 1;
                           });
                     }),
                   ),
@@ -134,20 +138,21 @@ class _CategoryItemWidgetState
             ),
           ],
         ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ListView(
+        Observer(builder: (_) {
+          return Container(
+            height: controller.itemHeight * controller.indexItem,
+            width: width,
+            child: ListView.builder(
+              itemCount: controller.indexItem,
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              children: [
-                ItemDescritionWidget(),
-                ItemDescritionWidget(),
-              ],
+              itemBuilder: (context, index) {
+                return ItemDescritionWidget();
+              },
             ),
-          ],
-        )
+          );
+        }),
+        Container(height: 12, width: width, color: Colors.grey[900])
       ],
     );
   }

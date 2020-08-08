@@ -3,7 +3,6 @@ import 'package:orcamento_mestre/app/modules/login/login_page.dart';
 import 'package:orcamento_mestre/app/modules/login/register/register_page.dart';
 import 'package:orcamento_mestre/app/modules/login/reset/reset_page.dart';
 import 'package:orcamento_mestre/app/utils/customHasuraConnect.dart';
-
 import 'reset/reset_controller.dart';
 import 'register/register_controller.dart';
 import 'login_controller.dart';

@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_page.dart';
-
 import 'orcamento_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-class OrcamentoModule extends ChildModule {
+class OrcamentoModule extends WidgetModule {
   @override
   List<Bind> get binds => [
         Bind((i) => OrcamentoController()),
@@ -16,4 +16,7 @@ class OrcamentoModule extends ChildModule {
       ];
 
   static Inject get to => Inject<OrcamentoModule>.of();
+
+  @override
+  Widget get view => OrcamentoPage();
 }

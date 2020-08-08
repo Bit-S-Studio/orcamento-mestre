@@ -73,13 +73,62 @@ mixin _$ProjetoController on _ProjetoControllerBase, Store {
     });
   }
 
+  final _$indexCategoriaAtom =
+      Atom(name: '_ProjetoControllerBase.indexCategoria');
+
+  @override
+  int get indexCategoria {
+    _$indexCategoriaAtom.reportRead();
+    return super.indexCategoria;
+  }
+
+  @override
+  set indexCategoria(int value) {
+    _$indexCategoriaAtom.reportWrite(value, super.indexCategoria, () {
+      super.indexCategoria = value;
+    });
+  }
+
+  final _$indexItemAtom = Atom(name: '_ProjetoControllerBase.indexItem');
+
+  @override
+  int get indexItem {
+    _$indexItemAtom.reportRead();
+    return super.indexItem;
+  }
+
+  @override
+  set indexItem(int value) {
+    _$indexItemAtom.reportWrite(value, super.indexItem, () {
+      super.indexItem = value;
+    });
+  }
+
+  final _$itemHeightAtom = Atom(name: '_ProjetoControllerBase.itemHeight');
+
+  @override
+  double get itemHeight {
+    _$itemHeightAtom.reportRead();
+    return super.itemHeight;
+  }
+
+  @override
+  set itemHeight(double value) {
+    _$itemHeightAtom.reportWrite(value, super.itemHeight, () {
+      super.itemHeight = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
 categoriaController: ${categoriaController},
 itemController: ${itemController},
 valorController: ${valorController},
-tempoController: ${tempoController}
+tempoController: ${tempoController},
+indexCategoria: ${indexCategoria},
+indexItem: ${indexItem},
+itemHeight: ${itemHeight}
     ''';
   }
 }

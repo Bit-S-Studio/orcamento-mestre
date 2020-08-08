@@ -17,4 +17,13 @@ abstract class _ProjetoControllerBase with Store {
 
   @observable
   TextEditingController tempoController = TextEditingController();
+
+  @observable
+  int indexCategoria = 1;
+
+  @observable
+  int indexItem = 1;
+
+  @observable
+  double itemHeight = 1;
 }

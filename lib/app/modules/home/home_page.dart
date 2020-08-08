@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:orcamento_mestre/app/modules/dadosEmpresa/dadosEmpresa_page.dart';
+import 'package:orcamento_mestre/app/modules/dadosFreelancer/dadosFreelancer_page.dart';
+import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
+import 'package:provider/provider.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,14 +20,14 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Column(
-        children: <Widget>[
-          SingleChildScrollView(child: Container()),
-        ],
-      ),
+      body: page(),
     );
+  }
+
+  Widget page() {
+    final oController = Provider.of<OrcamentoController>(context);
+    return (oController.tipo2 == "Empresa")
+        ? DadosEmpresaPage()
+        : DadosFreelancerPage();
   }
 }

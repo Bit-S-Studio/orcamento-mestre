@@ -1,10 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/dadosProjeto_page.dart';
-
 import 'projeto_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:dio/dio.dart';
 
-class DadosProjetoModule extends ChildModule {
+class DadosProjetoModule extends WidgetModule {
   @override
   List<Bind> get binds => [
         Bind((i) => ProjetoController()),
@@ -17,4 +16,8 @@ class DadosProjetoModule extends ChildModule {
       ];
 
   static Inject get to => Inject<DadosProjetoModule>.of();
+
+  @override
+  // TODO: implement view
+  Widget get view => DadosProjetoPage();
 }
