@@ -54,10 +54,16 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
                       height: height * .08,
                       width: width * .8,
                       margin: EdgeInsets.only(
-                        top: height * .005,
+                        top: height *.005,
+                        left: width *.03,
+                        right: width *.03,
                       ),
                       decoration: BoxDecoration(
                           color: Colors.blue[900],
+                        borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(12),
+                          topRight: Radius.circular(12),
+                        ),
                           ),
                       child: Center(
                         child: Text('Escolha um padrão para seu orçamento',
@@ -65,9 +71,19 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
                       ),
                     ),
                     Container(
-                      color: Colors.blue[900],
                       height: height * .25,
                       width: width * .8,
+                      margin: EdgeInsets.only(
+                        left: width *.03,
+                        right: width *.03,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.blue[900],
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(12),
+                          bottomLeft: Radius.circular(12),
+                        ),
+                      ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -146,6 +162,7 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
                         ],
                       ),
                     ),
+                    /**
                     Container(
                       height: height * .08,
                       width: width * .8,
@@ -168,6 +185,7 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
                             }
                           }),
                     )
+                    */
                   ],
                 ),
               ),
