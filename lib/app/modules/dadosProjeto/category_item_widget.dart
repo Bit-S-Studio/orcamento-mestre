@@ -21,6 +21,8 @@ class _CategoryItemWidgetState
     final oController = Provider.of<OrcamentoController>(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
+    int itemIndex = 0;
+
     return Column(
       children: [
         Stack(
@@ -61,11 +63,8 @@ class _CategoryItemWidgetState
                             color: Colors.white,
                           ),
                           onPressed: () {
-                            String categoria =
-                                controller.categoriaController.text;
-                            controller.indexCategoria =
-                                controller.indexCategoria + 1;
-                            oController.categoriasProjeto.add(categoria);
+                            controller.indexItem = controller.indexItem + 1;
+                            print(controller.indexItem);
                           });
                     }),
                   ),
@@ -114,7 +113,11 @@ class _CategoryItemWidgetState
                     right: width * .02),
                 child: Center(
                   child: TextFormField(
-                    controller: controller.categoriaController,
+                    onChanged: (newCategoria) {
+                      oController.categoriasProjeto.add(newCategoria);
+                      print(oController.categoriasProjeto);
+                    },
+                    controller: _categoryController,
                     decoration: InputDecoration(
                       contentPadding: new EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 10.0),
@@ -140,13 +143,12 @@ class _CategoryItemWidgetState
         ),
         Observer(builder: (_) {
           return Container(
-            height: controller.itemHeight * controller.indexItem,
+            height: controller.itemHeight * itemIndex,
             width: width,
             child: ListView.builder(
               itemCount: controller.indexItem,
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
               itemBuilder: (context, index) {
+                print(controller.indexItem);
                 return ItemDescritionWidget();
               },
             ),

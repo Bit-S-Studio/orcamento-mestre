@@ -18,6 +18,9 @@ class _ItemDescritionWidgetState
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     final oController = Provider.of<OrcamentoController>(context);
+    TextEditingController _descricaoController = TextEditingController();
+    TextEditingController _valorController = TextEditingController();
+    TextEditingController _tempoController = TextEditingController();
     var itemheight = height * 0.2;
     controller.itemHeight = itemheight;
     return Observer(builder: (context) {
@@ -53,7 +56,7 @@ class _ItemDescritionWidgetState
                         margin: EdgeInsets.only(left: width * .02),
                         child: Center(
                           child: TextFormField(
-                            controller: controller.itemController,
+                            controller: _descricaoController,
                             decoration: InputDecoration(
                               contentPadding: new EdgeInsets.symmetric(
                                   vertical: 10.0, horizontal: 10.0),
@@ -80,7 +83,7 @@ class _ItemDescritionWidgetState
                         margin: EdgeInsets.only(left: width * .005),
                         child: Center(
                           child: TextFormField(
-                            controller: controller.valorController,
+                            controller: _valorController,
                             decoration: InputDecoration(
                               contentPadding: new EdgeInsets.symmetric(
                                   vertical: 10.0, horizontal: 10.0),
@@ -127,7 +130,7 @@ class _ItemDescritionWidgetState
                             top: height * .01, left: width * .005),
                         child: Center(
                           child: TextFormField(
-                            controller: controller.tempoController,
+                            controller: _tempoController,
                             decoration: InputDecoration(
                               contentPadding: new EdgeInsets.symmetric(
                                   vertical: 10.0, horizontal: 10.0),
@@ -168,7 +171,7 @@ class _ItemDescritionWidgetState
                       child: Observer(builder: (_) {
                         return IconButton(
                             icon: Icon(
-                              Icons.add_circle,
+                              Icons.save,
                               color: Colors.white,
                             ),
                             onPressed: () {
