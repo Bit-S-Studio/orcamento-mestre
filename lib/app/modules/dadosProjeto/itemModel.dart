@@ -2,6 +2,7 @@ class ItemModel {
   final String item;
   final double valor;
   final String categoria;
+  final DateTime tempo;
 
-  ItemModel(this.item, this.valor, this.categoria);
+  ItemModel({this.tempo, this.item, this.valor, this.categoria});
 }

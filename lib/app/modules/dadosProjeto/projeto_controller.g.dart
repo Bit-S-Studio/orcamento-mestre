@@ -119,6 +119,21 @@ mixin _$ProjetoController on _ProjetoControllerBase, Store {
     });
   }
 
+  final _$listItensAtom = Atom(name: '_ProjetoControllerBase.listItens');
+
+  @override
+  ObservableList<ItemModel> get listItens {
+    _$listItensAtom.reportRead();
+    return super.listItens;
+  }
+
+  @override
+  set listItens(ObservableList<ItemModel> value) {
+    _$listItensAtom.reportWrite(value, super.listItens, () {
+      super.listItens = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
@@ -128,7 +143,8 @@ valorController: ${valorController},
 tempoController: ${tempoController},
 indexCategoria: ${indexCategoria},
 indexItem: ${indexItem},
-itemHeight: ${itemHeight}
+itemHeight: ${itemHeight},
+listItens: ${listItens}
     ''';
   }
 }
