@@ -1,41 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:intl/intl.dart';
+import 'package:orcamento_mestre/app/modules/dadosProjeto/addItem.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/projeto_controller.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
 import 'package:provider/provider.dart';
+
+import 'itemModel.dart';
 
 class ItemList extends StatefulWidget {
   final String categoria;
   final String descricao;
   final double valor;
   final DateTime tempo;
+  final ItemModel itemModel;
 
-  const ItemList(
-      {Key key,
-      @required this.categoria,
-      @required this.descricao,
-      @required this.valor,
-      @required this.tempo})
-      : super(key: key);
+  const ItemList({
+    Key key,
+    @required this.categoria,
+    @required this.descricao,
+    @required this.valor,
+    @required this.tempo,
+    @required this.itemModel,
+  }) : super(key: key);
   @override
   _ItemListState createState() => _ItemListState();
 }
 
-class _ItemListState extends ModularState<ItemList, ProjetoController> {
+class _ItemListState extends State<ItemList> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     final oController = Provider.of<OrcamentoController>(context);
-    TextEditingController _categoriaController = TextEditingController();
-    TextEditingController _descricaoController = TextEditingController();
-    TextEditingController _valorController = TextEditingController();
-    TextEditingController _tempoController = TextEditingController();
+    final controller = Provider.of<ProjetoController>(context);
     var itemheight = height * 0.2;
     controller.itemHeight = itemheight;
-    return Column(children: <Widget>[
-      Container(
-        height: height * 0.16,
+    String format = DateFormat('HH:mm').format(widget.tempo);
+    return Container(
+        height: height * 0.08,
         width: width,
         margin: EdgeInsets.only(
             top: height * .015,
@@ -51,205 +53,54 @@ class _ItemListState extends ModularState<ItemList, ProjetoController> {
                   offset: const Offset(3.0, 10.0),
                   blurRadius: 15.0)
             ]),
-        child: Center(
-          child: TextFormField(
-            controller: _categoriaController,
-            decoration: InputDecoration(
-              contentPadding:
-                  new EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-              labelText: "Descrição do Ítem",
-              labelStyle: TextStyle(fontSize: 12),
-              border: OutlineInputBorder(
-                borderRadius:
-                    const BorderRadius.all(const Radius.circular(12.0)),
-                borderSide: BorderSide(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            validator: (text) {
-              if (text.isEmpty) return "O campo categoria do ítem está vazio!";
-            },
+        child: ListTile(
+          title: Text(
+            widget.descricao,
+            style: TextStyle(fontSize: 20),
           ),
-        ),
-      ),
-      Container(
-        color: Colors.blue[900],
-        child: Container(
-          height: height * 0.16,
-          width: width,
-          margin: EdgeInsets.only(
-              top: height * .015,
-              bottom: height * .015,
-              left: width * .015,
-              right: width * .015),
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(12)),
-              boxShadow: [
-                new BoxShadow(
-                    color: Colors.black.withAlpha(70),
-                    offset: const Offset(3.0, 10.0),
-                    blurRadius: 15.0)
-              ]),
-          child: Row(
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: height * .06,
-                        width: width * .32,
-                        margin: EdgeInsets.only(left: width * .02),
-                        child: Center(
-                          child: TextFormField(
-                            controller: _descricaoController,
-                            decoration: InputDecoration(
-                              contentPadding: new EdgeInsets.symmetric(
-                                  vertical: 10.0, horizontal: 10.0),
-                              labelText: "Descrição do Ítem",
-                              labelStyle: TextStyle(fontSize: 12),
-                              border: OutlineInputBorder(
-                                borderRadius: const BorderRadius.all(
-                                    const Radius.circular(12.0)),
-                                borderSide: BorderSide(
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                            validator: (text) {
-                              if (text.isEmpty)
-                                return "O campo Descrição do ítem está vazio!";
-                            },
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: height * .06,
-                        width: width * .13,
-                        margin: EdgeInsets.only(left: width * .005),
-                        child: Center(
-                          child: TextFormField(
-                            controller: _valorController,
-                            decoration: InputDecoration(
-                              contentPadding: new EdgeInsets.symmetric(
-                                  vertical: 10.0, horizontal: 10.0),
-                              labelText: "R\$ 0.000,00",
-                              labelStyle: TextStyle(fontSize: 12),
-                              border: OutlineInputBorder(
-                                borderRadius: const BorderRadius.all(
-                                    const Radius.circular(12.0)),
-                                borderSide: BorderSide(
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                            validator: (text) {
-                              if (text.isEmpty)
-                                return "O campo Valor está vazio!";
-                            },
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        height: height * .06,
-                        width: width * .32,
-                        margin: EdgeInsets.only(
-                            top: height * .01, left: width * .02),
-                        decoration: BoxDecoration(
-                            color: Colors.blue[900],
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(12))),
-                        child: Center(
-                            child: Text(
-                          'Estimativa de tempo de execução',
-                          style: TextStyle(color: Colors.white, fontSize: 12),
-                        )),
-                      ),
-                      Container(
-                        height: height * .06,
-                        width: width * .13,
-                        margin: EdgeInsets.only(
-                            top: height * .01, left: width * .005),
-                        child: Center(
-                          child: TextFormField(
-                            controller: _tempoController,
-                            decoration: InputDecoration(
-                              contentPadding: new EdgeInsets.symmetric(
-                                  vertical: 10.0, horizontal: 10.0),
-                              labelText: "12:30h",
-                              labelStyle: TextStyle(fontSize: 12),
-                              border: OutlineInputBorder(
-                                borderRadius: const BorderRadius.all(
-                                    const Radius.circular(12.0)),
-                                borderSide: BorderSide(
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                            validator: (text) {
-                              if (text.isEmpty)
-                                return "O campo Valor está vazio!";
-                            },
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              Container(
-                height: height * .12,
-                width: width * .06,
-                margin: EdgeInsets.only(left: width * .02),
-                decoration: BoxDecoration(
-                    color: Colors.blue[900],
-                    borderRadius: BorderRadius.all(Radius.circular(12))),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                        height: height * .06,
-                        width: width * .1,
-                        child: IconButton(
-                            icon: Icon(
-                              Icons.save,
-                              color: Colors.white,
-                            ),
-                            onPressed: () {
-                              controller.indexItem = controller.indexItem + 1;
-                              String categoria;
-                              String item = controller.itemController.text;
-                              double valor =
-                                  double.parse(controller.valorController.text);
-                            })),
-                    Container(
-                        height: height * .06,
-                        width: width * .1,
-                        child: IconButton(
-                            icon: Icon(
-                              Icons.delete_forever,
-                              color: Colors.white,
-                            ),
-                            onPressed: () {
-                              String categoria;
-                              String item = controller.itemController.text;
-                              double valor =
-                                  double.parse(controller.valorController.text);
-                            })),
-                  ],
-                ),
-              )
+          subtitle: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Icon(Icons.money_off),
+              Text('${widget.valor}'),
+              Flexible(fit: FlexFit.tight, child: SizedBox()),
+              Icon(Icons.timer),
+              Text(format),
             ],
           ),
-        ),
-      ),
-    ]);
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              IconButton(
+                  icon: Icon(Icons.edit),
+                  onPressed: () {
+                    showAlertDialog1(controller, context, widget.categoria,
+                        widget.descricao, widget.valor, widget.tempo);
+                  }),
+              IconButton(
+                  icon: Icon(Icons.delete_forever),
+                  onPressed: () {
+                    controller.listItens.remove(widget.itemModel);
+                  }),
+            ],
+          ),
+        ));
+  }
+
+  showAlertDialog1(controller, BuildContext context, String categoria,
+      String descricao, double valor, DateTime tempo) {
+    controller.listItens.remove(widget.itemModel);
+    String valorS = '$valor';
+    String tempoS = DateFormat('HH:mm').format(widget.tempo);
+    controller.categoriaController.text = categoria;
+    controller.itemController.text = descricao;
+    controller.valorController.text = valorS;
+    controller.tempoController.text = tempoS;
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AddItem();
+      },
+    );
   }
 }

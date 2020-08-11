@@ -134,6 +134,139 @@ mixin _$ProjetoController on _ProjetoControllerBase, Store {
     });
   }
 
+  final _$listCategoriasAtom =
+      Atom(name: '_ProjetoControllerBase.listCategorias');
+
+  @override
+  ObservableList<String> get listCategorias {
+    _$listCategoriasAtom.reportRead();
+    return super.listCategorias;
+  }
+
+  @override
+  set listCategorias(ObservableList<String> value) {
+    _$listCategoriasAtom.reportWrite(value, super.listCategorias, () {
+      super.listCategorias = value;
+    });
+  }
+
+  final _$valorAtom = Atom(name: '_ProjetoControllerBase.valor');
+
+  @override
+  double get valor {
+    _$valorAtom.reportRead();
+    return super.valor;
+  }
+
+  @override
+  set valor(double value) {
+    _$valorAtom.reportWrite(value, super.valor, () {
+      super.valor = value;
+    });
+  }
+
+  final _$categoriaAtom = Atom(name: '_ProjetoControllerBase.categoria');
+
+  @override
+  String get categoria {
+    _$categoriaAtom.reportRead();
+    return super.categoria;
+  }
+
+  @override
+  set categoria(String value) {
+    _$categoriaAtom.reportWrite(value, super.categoria, () {
+      super.categoria = value;
+    });
+  }
+
+  final _$descricaoAtom = Atom(name: '_ProjetoControllerBase.descricao');
+
+  @override
+  String get descricao {
+    _$descricaoAtom.reportRead();
+    return super.descricao;
+  }
+
+  @override
+  set descricao(String value) {
+    _$descricaoAtom.reportWrite(value, super.descricao, () {
+      super.descricao = value;
+    });
+  }
+
+  final _$tempoAtom = Atom(name: '_ProjetoControllerBase.tempo');
+
+  @override
+  DateTime get tempo {
+    _$tempoAtom.reportRead();
+    return super.tempo;
+  }
+
+  @override
+  set tempo(DateTime value) {
+    _$tempoAtom.reportWrite(value, super.tempo, () {
+      super.tempo = value;
+    });
+  }
+
+  final _$setValorAsyncAction = AsyncAction('_ProjetoControllerBase.setValor');
+
+  @override
+  Future<double> setValor(String newValor) {
+    return _$setValorAsyncAction.run(() => super.setValor(newValor));
+  }
+
+  final _$setItemAsyncAction = AsyncAction('_ProjetoControllerBase.setItem');
+
+  @override
+  Future<dynamic> setItem() {
+    return _$setItemAsyncAction.run(() => super.setItem());
+  }
+
+  final _$getItensAsyncAction = AsyncAction('_ProjetoControllerBase.getItens');
+
+  @override
+  Future<ObservableList<ItemModel>> getItens(String query) {
+    return _$getItensAsyncAction.run(() => super.getItens(query));
+  }
+
+  final _$_ProjetoControllerBaseActionController =
+      ActionController(name: '_ProjetoControllerBase');
+
+  @override
+  dynamic changeTempo(DateTime newTempo) {
+    final _$actionInfo = _$_ProjetoControllerBaseActionController.startAction(
+        name: '_ProjetoControllerBase.changeTempo');
+    try {
+      return super.changeTempo(newTempo);
+    } finally {
+      _$_ProjetoControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic changeCategoria(String newCategoria) {
+    final _$actionInfo = _$_ProjetoControllerBaseActionController.startAction(
+        name: '_ProjetoControllerBase.changeCategoria');
+    try {
+      return super.changeCategoria(newCategoria);
+    } finally {
+      _$_ProjetoControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic changeDescricao(String newDescricao) {
+    final _$actionInfo = _$_ProjetoControllerBaseActionController.startAction(
+        name: '_ProjetoControllerBase.changeDescricao');
+    try {
+      return super.changeDescricao(newDescricao);
+    } finally {
+      _$_ProjetoControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
@@ -144,7 +277,12 @@ tempoController: ${tempoController},
 indexCategoria: ${indexCategoria},
 indexItem: ${indexItem},
 itemHeight: ${itemHeight},
-listItens: ${listItens}
+listItens: ${listItens},
+listCategorias: ${listCategorias},
+valor: ${valor},
+categoria: ${categoria},
+descricao: ${descricao},
+tempo: ${tempo}
     ''';
   }
 }

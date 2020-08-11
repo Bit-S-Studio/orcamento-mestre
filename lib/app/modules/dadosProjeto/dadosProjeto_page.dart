@@ -1,8 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:grouped_listview/grouped_listview.dart';
+import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:mobx/mobx.dart';
-import 'package:orcamento_mestre/app/modules/dadosProjeto/category_item_widget.dart';
+import 'package:orcamento_mestre/app/modules/dadosProjeto/addItem.dart';
+import 'package:orcamento_mestre/app/modules/dadosProjeto/itemModel.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/item_list.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
 import 'package:provider/provider.dart';
@@ -17,8 +21,7 @@ class DadosProjetoPage extends StatefulWidget {
   _DadosProjetoPageState createState() => _DadosProjetoPageState();
 }
 
-class _DadosProjetoPageState
-    extends ModularState<DadosProjetoPage, ProjetoController> {
+class _DadosProjetoPageState extends State<DadosProjetoPage> {
   //use 'controller' variable to access controller
   ObservableList<int> listItens = ObservableList<int>();
   @override
@@ -26,53 +29,55 @@ class _DadosProjetoPageState
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     final oController = Provider.of<OrcamentoController>(context);
+    final controller = Provider.of<ProjetoController>(context);
     return Scaffold(
-      backgroundColor: Colors.grey[900],
-      appBar: AppBar(
-        backgroundColor: Colors.blue[900],
-        title: Text(widget.title),
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: [
-              Container(
-                height: height * .06,
-                width: width,
-                margin:
-                    EdgeInsets.only(top: height * .025, bottom: height * .015),
-                child: Center(
-                    child: Text(
-                  'Adicione ou remova ítens do seu orçamento',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                )),
-              ),
-              SizedBox(
-                height: 12,
-              ),
-              CategoryItemWidget(),
-              SizedBox(
-                height: 12,
-              ),
-              Container(
-                height: height * 0.8,
-                width: width,
-                child: ListView.builder(
-                  itemCount: controller.listItens.length,
-                  itemBuilder: (context, index) {
-                    return ItemList(
-                      categoria: controller.listItens[index].categoria,
-                      descricao: controller.listItens[index].item,
-                      valor: controller.listItens[index].valor,
-                      tempo: controller.listItens[index].tempo,
-                    );
-                  },
-                ),
-              )
-            ],
-          ),
+        backgroundColor: Colors.grey[900],
+        appBar: AppBar(
+          backgroundColor: Colors.blue[900],
+          title: Text(widget.title),
+          actions: [
+            IconButton(
+                icon: Icon(LineAwesomeIcons.plus_circle),
+                onPressed: () {
+                  showAlertDialog1(context, controller);
+                })
+          ],
         ),
+        body: Observer(builder: (_) {
+          return item();
+        }));
+  }
+
+  Widget item() {
+    final controller = Provider.of<ProjetoController>(context);
+    return GroupedListView<ItemModel, String>(
+      collection: controller.listItens,
+      groupBy: (ItemModel g) => g.categoria,
+      groupBuilder: (BuildContext context, String name) => Container(
+        height: MediaQuery.of(context).size.height * 0.06,
+        child: Center(
+            child: Text(name,
+                style: TextStyle(color: Colors.white, fontSize: 24))),
       ),
+      listBuilder: (BuildContext context, ItemModel g) => ItemList(
+          itemModel: g,
+          descricao: g.descricao,
+          categoria: g.categoria,
+          valor: g.valor,
+          tempo: g.tempo),
+    );
+  }
+
+  showAlertDialog1(BuildContext context, controller) {
+    controller.categoriaController.text = '';
+    controller.itemController.text = '';
+    controller.valorController.text = '';
+    controller.tempoController.text = '';
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AddItem();
+      },
     );
   }
 }

@@ -21,6 +21,12 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  grouped_listview: ^0.0.2
+  grouped_list: ^3.3.0
+  collection: ^1.14.13
+  datetime_picker_formfield: ^1.0.0
+  intl: ^0.16.1
+  flutter_datetime_formfield: ^0.1.2
   via_cep: ^1.0.6
   image_picker_for_web: ^0.1.0+1
   image_picker: ^0.6.7+4
