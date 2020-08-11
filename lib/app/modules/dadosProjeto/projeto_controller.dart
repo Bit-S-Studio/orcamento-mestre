@@ -32,9 +32,6 @@ abstract class _ProjetoControllerBase with Store {
   ObservableList<ItemModel> listItens = ObservableList<ItemModel>();
 
   @observable
-  ObservableList<String> listCategorias = ObservableList<String>();
-
-  @observable
   double valor;
 
   @observable

@@ -21,6 +21,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  flutter_full_pdf_viewer: ^1.0.6
+  path_provider: ^1.6.11
   grouped_listview: ^0.0.2
   grouped_list: ^3.3.0
   collection: ^1.14.13

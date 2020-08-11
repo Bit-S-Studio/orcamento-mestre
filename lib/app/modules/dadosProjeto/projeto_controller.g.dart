@@ -134,22 +134,6 @@ mixin _$ProjetoController on _ProjetoControllerBase, Store {
     });
   }
 
-  final _$listCategoriasAtom =
-      Atom(name: '_ProjetoControllerBase.listCategorias');
-
-  @override
-  ObservableList<String> get listCategorias {
-    _$listCategoriasAtom.reportRead();
-    return super.listCategorias;
-  }
-
-  @override
-  set listCategorias(ObservableList<String> value) {
-    _$listCategoriasAtom.reportWrite(value, super.listCategorias, () {
-      super.listCategorias = value;
-    });
-  }
-
   final _$valorAtom = Atom(name: '_ProjetoControllerBase.valor');
 
   @override
@@ -278,7 +262,6 @@ indexCategoria: ${indexCategoria},
 indexItem: ${indexItem},
 itemHeight: ${itemHeight},
 listItens: ${listItens},
-listCategorias: ${listCategorias},
 valor: ${valor},
 categoria: ${categoria},
 descricao: ${descricao},
