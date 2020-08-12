@@ -1,3 +1,4 @@
+import 'package:orcamento_mestre/app/modules/pdf/pdf_controller.dart';
 import 'package:orcamento_mestre/app/modules/base/base_controller.dart';
 import 'package:orcamento_mestre/app/modules/base/base_module.dart';
 import 'package:orcamento_mestre/app/modules/dadosFreelancer/freelancer_controller.dart';
@@ -12,6 +13,7 @@ import 'package:orcamento_mestre/app/app_widget.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
+        Bind((i) => PdfController()),
         Bind((i) => BaseController()),
         Bind((i) => FreelancerController()),
         Bind((i) => LayoutController()),

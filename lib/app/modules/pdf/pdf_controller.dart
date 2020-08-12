@@ -1,17 +1,24 @@
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mobx/mobx.dart';
 import 'dart:io';
-
-import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
+part 'pdf_controller.g.dart';
 
-class PdfOrcamento extends StatefulWidget {
-  @override
-  _PdfOrcamentoState createState() => _PdfOrcamentoState();
-}
+class PdfController = _PdfControllerBase with _$PdfController;
 
-class _PdfOrcamentoState extends State<PdfOrcamento> {
-  final pdf = pw.Document();
+abstract class _PdfControllerBase with Store {
+  @observable
+  var pdf = pw.Document();
+
+  @observable
+  String pdfName;
+
+  @observable
+  String fullPath;
+
+  @action
   writeOnPdf() {
     pdf.addPage(pw.MultiPage(
         pageFormat: PdfPageFormat.a4,
@@ -24,15 +31,21 @@ class _PdfOrcamentoState extends State<PdfOrcamento> {
         }));
   }
 
+  @action
   Future savePdf() async {
     Directory documentDirectory = await getApplicationDocumentsDirectory();
     String documentPath = documentDirectory.path;
-    File file = File("$documentPath/example.pdf");
+    File file = File("$documentPath/$pdfName.pdf");
     file.writeAsBytesSync(pdf.save());
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Container());
+  @action
+  Future viewPdf(String name) async {
+    Directory documentDirectory = await getApplicationDocumentsDirectory();
+    String documentPath = documentDirectory.path;
+    fullPath = "$documentPath/$name.pdf";
+    Modular.to.pushNamed(
+      '/pdf',
+    );
   }
 }
