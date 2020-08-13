@@ -6,7 +6,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:orcamento_mestre/app/modules/dadosEmpresa/formsComplemento.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
-import 'package:orcamento_mestre/app/utils/theme.dart';
 import 'package:provider/provider.dart';
 import 'empresa_controller.dart';
 import 'dart:io';
@@ -207,7 +206,13 @@ class _DadosEmpresaPageState
                 height: height * .65,
                 width: width,
                 margin: EdgeInsets.only(top: height * .005),
-                decoration: boxContainer,
+                decoration: BoxDecoration(
+                  color: Colors.blue[900],
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(16),
+                    bottomRight: Radius.circular(16)
+                  )
+                ),
                 child: Column(
                   children: [
                     Container(
