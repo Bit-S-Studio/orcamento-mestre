@@ -18,16 +18,20 @@ class _FormsComplementoState
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Container(
-        height: height * .54,
-        width: width,
-        margin: EdgeInsets.only(top: height * .005),
-        decoration: boxContainer,
+        height: height * .565,
+        width: width *.52,
+        margin: EdgeInsets.only(
+            top: height * .005,
+        ),
+
         child: Column(children: [
           Container(
             height: height * .064,
             width: width,
             margin: EdgeInsets.only(
-                top: height * .012, left: width * .02, right: width * .02),
+                top: height * .023,
+                left: width * .02,
+                right: width * .02),
             child: TextFormField(
               controller: oController.cepController,
               onChanged: (newCep) {
@@ -43,7 +47,7 @@ class _FormsComplementoState
             children: [
               Container(
                 height: height * .06,
-                width: width * .39,
+                width: width * .355,
                 margin: EdgeInsets.only(
                     top: height * .015, left: width * .02, right: width * .005),
                 child: TextFormField(
@@ -95,7 +99,7 @@ class _FormsComplementoState
             children: [
               Container(
                 height: height * .06,
-                width: width * .39,
+                width: width * .355,
                 margin: EdgeInsets.only(top: height * .015, left: width * .02),
                 child: TextFormField(
                   controller: oController.cidadeController,
@@ -129,7 +133,7 @@ class _FormsComplementoState
             children: [
               Container(
                 height: height * .06,
-                width: width * .255,
+                width: width * .238,
                 margin: EdgeInsets.only(top: height * .015, left: width * .02),
                 child: TextFormField(
                   controller: oController.tel1Controller,
@@ -144,7 +148,7 @@ class _FormsComplementoState
               ),
               Container(
                 height: height * .06,
-                width: width * .255,
+                width: width * .238,
                 margin: EdgeInsets.only(top: height * .015, left: width * .005),
                 child: TextFormField(
                   controller: oController.tel2Controller,

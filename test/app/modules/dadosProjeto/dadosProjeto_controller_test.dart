@@ -1,7 +1,5 @@
 import 'package:flutter_modular/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:orcamento_mestre/app/modules/dadosProjeto/projeto_controller.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/dadosProjeto_module.dart';
 
 void main() {

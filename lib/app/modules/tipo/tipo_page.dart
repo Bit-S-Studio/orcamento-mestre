@@ -1,3 +1,4 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -15,6 +16,61 @@ class TipoPage extends StatefulWidget {
 }
 
 class _TipoPageState extends ModularState<TipoPage, TipoController> {
+
+  MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+    keywords: <String>['cursos', 'beautiful apps'],
+    contentUrl: 'https://flutter.io',
+    childDirected: false,
+    //testDevices: <String>[],
+  );
+
+  BannerAd myBanner;
+
+  void startBanner() {
+    myBanner = BannerAd(
+      adUnitId: BannerAd.testAdUnitId,
+      size: AdSize.smartBanner,
+      targetingInfo: targetingInfo,
+      listener: (MobileAdEvent event) {
+        if (event == MobileAdEvent.opened) {
+          // MobileAdEvent.opened
+          // MobileAdEvent.clicked
+          // MobileAdEvent.closed
+          // MobileAdEvent.failedToLoad
+          // MobileAdEvent.impression
+          // MobileAdEvent.leftApplication
+        }
+        print("BannerAd event is $event");
+      },
+    );
+  }
+
+  void displayBanner() {
+    myBanner
+      ..load()
+      ..show(
+        anchorOffset: 95.0,
+        anchorType: AnchorType.top,
+      );
+  }
+
+  @override
+  void dispose() {
+    myBanner?.dispose();
+    myBanner?.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance
+        .initialize(appId: "ca-app-pub-3740593238666941~2885272429");
+
+    startBanner();
+    displayBanner();
+  }
+
   //use 'controller' variable to access controller
 
   @override
@@ -32,29 +88,10 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
                 child: Column(
                   children: [
                     Container(
-                      height: height * .38,
-                      width: width,
-                      margin: EdgeInsets.only(
-                        top: height *.07,
-                        bottom: height *.06,
-                        left: width *.03,
-                        right: width *.03,
-                      ),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(16))),
-                      child: Center(
-                        child: Text(
-                          'Espaço para Admob',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ),
-                    ),
-                    Container(
                       height: height * .08,
                       width: width * .8,
                       margin: EdgeInsets.only(
-                        top: height *.005,
+                        top: height *.5,
                         left: width *.03,
                         right: width *.03,
                       ),

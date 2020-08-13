@@ -14,7 +14,7 @@ import 'projeto_controller.dart';
 
 class DadosProjetoPage extends StatefulWidget {
   final String title;
-  const DadosProjetoPage({Key key, this.title = "DadosProjeto"})
+  const DadosProjetoPage({Key key, this.title = "Projeto"})
       : super(key: key);
 
   @override
@@ -33,8 +33,15 @@ class _DadosProjetoPageState extends State<DadosProjetoPage> {
     return Scaffold(
         backgroundColor: Colors.grey[900],
         appBar: AppBar(
-          backgroundColor: Colors.blue[900],
-          title: Text(widget.title),
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          title: Text(widget.title,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 23,
+              color: Colors.blue[900]
+            ),
+          ),
           actions: [
             IconButton(
                 icon: Icon(LineAwesomeIcons.plus_circle),
@@ -55,9 +62,16 @@ class _DadosProjetoPageState extends State<DadosProjetoPage> {
       groupBy: (ItemModel g) => g.categoria,
       groupBuilder: (BuildContext context, String name) => Container(
         height: MediaQuery.of(context).size.height * 0.06,
-        child: Center(
-            child: Text(name,
-                style: TextStyle(color: Colors.white, fontSize: 24))),
+        child: Container(
+          height: MediaQuery.of(context).size.height *.01,
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.only(
+            top: MediaQuery.of(context).size.height *.02,
+            left: MediaQuery.of(context).size.width *.025
+          ),
+          child: Text(name,
+              style: TextStyle(color: Colors.white, fontSize: 24))
+        ),
       ),
       listBuilder: (BuildContext context, ItemModel g) => ItemList(
           itemModel: g,

@@ -1,3 +1,4 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ import 'dart:io';
 class DadosEmpresaPage extends StatefulWidget {
   final String title;
 
-  const DadosEmpresaPage({Key key, this.title = "DadosEmpresa"})
+  const DadosEmpresaPage({Key key, this.title = "Meus Dados"})
       : super(key: key);
 
   @override
@@ -22,6 +23,60 @@ class DadosEmpresaPage extends StatefulWidget {
 
 class _DadosEmpresaPageState
     extends ModularState<DadosEmpresaPage, EmpresaController> {
+
+  MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+    keywords: <String>['cursos', 'beautiful apps'],
+    contentUrl: 'https://flutter.io',
+    childDirected: false,
+    //testDevices: <String>[],
+  );
+
+  BannerAd myBanner;
+
+  void startBanner() {
+    myBanner = BannerAd(
+      adUnitId: BannerAd.testAdUnitId,
+      size: AdSize.smartBanner,
+      targetingInfo: targetingInfo,
+      listener: (MobileAdEvent event) {
+        if (event == MobileAdEvent.opened) {
+          // MobileAdEvent.opened
+          // MobileAdEvent.clicked
+          // MobileAdEvent.closed
+          // MobileAdEvent.failedToLoad
+          // MobileAdEvent.impression
+          // MobileAdEvent.leftApplication
+        }
+        print("BannerAd event is $event");
+      },
+    );
+  }
+
+  void displayBanner() {
+    myBanner
+      ..load()
+      ..show(
+        anchorOffset: 95.0,
+        anchorType: AnchorType.top,
+      );
+  }
+
+  @override
+  void dispose() {
+    myBanner?.dispose();
+    myBanner?.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance
+        .initialize(appId: "ca-app-pub-3740593238666941~2885272429");
+
+    startBanner();
+    displayBanner();
+  }
 
   //use 'controller' variable to access controller
 
@@ -33,8 +88,15 @@ class _DadosEmpresaPageState
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
-        backgroundColor: Colors.blue[900],
-        title: Text(widget.title),
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        title: Text(widget.title,
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 23,
+              color: Colors.blue[900]
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -42,30 +104,32 @@ class _DadosEmpresaPageState
           child: Column(
             children: <Widget>[
               Container(
-                height: height * .30,
-                width: width,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(16))),
-                child: Center(
-                  child: Text(
-                    'Espaço para Admob',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ),
-              ),
-              Container(
-                height: height * .28,
+                height: height * .20,
                 width: width,
                 margin: EdgeInsets.only(
-                  top: height * .02,
+                  top: height * .1,
                 ),
                 decoration: BoxDecoration(
                     color: Colors.blue[900],
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(16),
                         topRight: Radius.circular(16))),
-                child: Center(
+                child: Container(
+                  height: height *.18,
+                  width: width *.52,
+                  padding: EdgeInsets.only(
+                    right: width *.005,
+                  ),
+                  margin: EdgeInsets.only(
+                    top: height *.015,
+                    bottom: height *.015,
+                    left: width *.015,
+                    right: width *.015,
+                  ),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(16)
+                          )),
                   child: Row(
                     children: [
                       Observer(builder: (_) {
@@ -76,40 +140,40 @@ class _DadosEmpresaPageState
                           },
                           child: (controller.logoStatus)
                               ? (kIsWeb)
-                                  ? Image.network(controller.imageFile.path)
-                                  : Image.file(File(controller.imageFile.path))
+                              ? Image.network(controller.imageFile.path)
+                              : Image.file(File(controller.imageFile.path))
                               : Container(
-                                  height: height * .15,
-                                  width: width * .15,
-                                  decoration: BoxDecoration(
-                                      color: Colors.grey[600],
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(16))),
-                                  margin: EdgeInsets.only(left: width * .02),
-                                  child: Center(
-                                    child: (controller.logoStatus)
-                                        ? (kIsWeb)
-                                            ? Image.network(
-                                                controller.imageFile.path,
-                                                fit: BoxFit.cover,
-                                              )
-                                            : Image.file(
-                                                File(controller.imageFile.path),
-                                                fit: BoxFit.cover,
-                                              )
-                                        : Text(
-                                            'Adicione sua Logo aqui',
-                                            textAlign: TextAlign.center,
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                  ),
-                                ),
+                            height: height * .15,
+                            width: width * .15,
+                            decoration: BoxDecoration(
+                                color: Colors.grey[600],
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(16))),
+                            margin: EdgeInsets.only(left: width * .02),
+                            child: Center(
+                              child: (controller.logoStatus)
+                                  ? (kIsWeb)
+                                  ? Image.network(
+                                controller.imageFile.path,
+                                fit: BoxFit.cover,
+                              )
+                                  : Image.file(
+                                File(controller.imageFile.path),
+                                fit: BoxFit.cover,
+                              )
+                                  : Text(
+                                'Adicione sua Logo aqui',
+                                textAlign: TextAlign.center,
+                                style:
+                                TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
                         );
                       }),
                       Container(
                         height: height * .06,
-                        width: width * .35,
+                        width: width * .33,
                         margin: EdgeInsets.only(
                           left: width * .012,
                         ),
@@ -140,7 +204,7 @@ class _DadosEmpresaPageState
                 ),
               ),
               Container(
-                height: height * .71,
+                height: height * .65,
                 width: width,
                 margin: EdgeInsets.only(top: height * .005),
                 decoration: boxContainer,
@@ -156,26 +220,12 @@ class _DadosEmpresaPageState
                         style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ),
-                    FormsComplemento(),
                     Container(
-                      height: height * .08,
-                      width: width * .8,
-                      margin: EdgeInsets.only(top: height * .025),
                       decoration: BoxDecoration(
-                          color: Colors.grey[600],
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(16),
-                              bottomRight: Radius.circular(16))),
-                      child: RaisedButton(
-                          color: Colors.grey[600],
-                          child: Text(
-                            'Continuar',
-                            style: TextStyle(color: Colors.white, fontSize: 22),
-                          ),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(16.0)),
-                          onPressed: () {}),
-                    )
+                          color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(16))
+                      ),
+                        child: FormsComplemento()),
                   ],
                 ),
               ),

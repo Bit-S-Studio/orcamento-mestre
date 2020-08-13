@@ -1,5 +1,4 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:orcamento_mestre/app/modules/dadosEmpresa/empresa_controller.dart';
 import 'package:orcamento_mestre/app/modules/dadosFreelancer/dadosFreelancer_page.dart';

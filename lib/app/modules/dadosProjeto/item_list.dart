@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/addItem.dart';
@@ -22,6 +23,7 @@ class ItemList extends StatefulWidget {
     @required this.tempo,
     @required this.itemModel,
   }) : super(key: key);
+
   @override
   _ItemListState createState() => _ItemListState();
 }
@@ -37,7 +39,7 @@ class _ItemListState extends State<ItemList> {
     controller.itemHeight = itemheight;
     String format = DateFormat('HH:mm').format(widget.tempo);
     return Container(
-        height: height * 0.08,
+        height: height * 0.175,
         width: width,
         margin: EdgeInsets.only(
             top: height * .015,
@@ -45,43 +47,145 @@ class _ItemListState extends State<ItemList> {
             left: width * .015,
             right: width * .015),
         decoration: BoxDecoration(
-            color: Colors.white,
+            color: Colors.blue[900],
             borderRadius: BorderRadius.all(Radius.circular(12)),
-            boxShadow: [
-              new BoxShadow(
-                  color: Colors.black.withAlpha(70),
-                  offset: const Offset(3.0, 10.0),
-                  blurRadius: 15.0)
-            ]),
-        child: ListTile(
-          title: Text(
-            widget.descricao,
-            style: TextStyle(fontSize: 20),
-          ),
-          subtitle: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(Icons.money_off),
-              Text('${widget.valor}'),
-              Flexible(fit: FlexFit.tight, child: SizedBox()),
-              Icon(Icons.timer),
-              Text(format),
-            ],
-          ),
-          trailing: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              IconButton(
-                  icon: Icon(Icons.edit),
-                  onPressed: () {
-                    showAlertDialog1(controller, context, widget.categoria,
-                        widget.descricao, widget.valor, widget.tempo);
-                  }),
-              IconButton(
-                  icon: Icon(Icons.delete_forever),
-                  onPressed: () {
-                    controller.listItens.remove(widget.itemModel);
-                  }),
+            ),
+        child: Container(
+          height: height,
+          width: width,
+          padding: EdgeInsets.all(12.0),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Container(
+                    height: height *.036,
+                    width: width *.4,
+                    margin: EdgeInsets.only(
+                        top: height *.005,
+                        bottom: height *.005,
+                        right: width *.005
+                    ),
+                    child: Text(
+                      widget.descricao,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20),
+                    ),
+                  ),
+                  Container(
+                    color: Colors.white,
+                    height: height *.03,
+                    width: width *.001,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(
+                        top: height *.005,
+                        bottom: height *.005,
+                      left: width *.012
+                    ),
+                    child: Text('R\$ ${widget.valor.toStringAsFixed(2)}',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16),
+                    )
+                  ),
+                ],
+              ),
+              Container(
+                color: Colors.white,
+                height: height *.001,
+                width: width,
+              ),
+              Container(
+                height: height *.05,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(
+                          top: height *.005,
+                          bottom: height *.005,
+                          right: width *.25
+                      ),
+                      child: Text(
+                        'Tempo de execução',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                          top: height *.005,
+                          bottom: height *.005,
+                      ),
+                      child: Icon(Icons.timer,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                          top: height *.005,
+                          bottom: height *.005,
+                      ),
+                      child: Text(format,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                color: Colors.white,
+                height: height *.001,
+                width: width,
+              ),
+              Stack(
+                children: [
+                  Container(
+                    width: width,
+                    margin: EdgeInsets.only(
+                        top: height *.001,
+                        left: width *.44
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: <Widget>[
+                        Container(
+
+                          height: height *.04,
+                          width: width *.045,
+                          child: IconButton(
+                              icon: Icon(
+                                Icons.edit,
+                                color: Colors.white,
+                              ),
+                              onPressed: () {
+                                showAlertDialog1(controller, context, widget.categoria,
+                                    widget.descricao, widget.valor, widget.tempo);
+                              }),
+                        ),
+                        Container(
+                          height: height *.04,
+                          width: width *.045,
+                          child: IconButton(
+                              icon: Icon(
+                                Icons.delete_forever,
+                                color: Colors.white,
+                              ),
+                              onPressed: () {
+                                controller.listItens.remove(widget.itemModel);
+                              }),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ));
