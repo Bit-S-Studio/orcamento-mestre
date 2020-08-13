@@ -19,6 +19,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
@@ -29,7 +31,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
               ),
               logo(),
               SizedBox(
-                height: 40,
+                height: height,
+                width: width,
               ),
               Stack(
                 children: [
@@ -46,7 +49,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   Widget logo() {
     return Container(
       height: 200,
-      child: Image.asset('assets/logo.png'),
+      child: Image.asset('assets/logo_orcamento_mestre.png'),
     );
   }
 

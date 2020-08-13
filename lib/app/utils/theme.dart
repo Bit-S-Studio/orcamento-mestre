@@ -38,9 +38,11 @@ BoxDecoration buttonDecoration = new BoxDecoration(
       tileMode: TileMode.clamp),
 );
 BoxDecoration boxContainer = new BoxDecoration(
-    color: Colors.blue[900],
+    color: Colors.white,
     borderRadius: BorderRadius.only(
-        bottomLeft: Radius.circular(16), bottomRight: Radius.circular(16)));
+        bottomLeft: Radius.circular(16),
+        bottomRight: Radius.circular(16),
+    ));
 
 InputDecoration inputDecoration(String label) {
   return InputDecoration(

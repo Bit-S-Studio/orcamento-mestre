@@ -41,7 +41,7 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                 children: [
                   Container(
                     height: height * .06,
-                    width: width * .32,
+                    width: width * .28,
                     child: Center(
                       child: TextFormField(
                         controller: controller.itemController,
@@ -69,7 +69,8 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                   Container(
                     height: height * .06,
                     width: width * .13,
-                    margin: EdgeInsets.only(left: width * .005),
+                    margin: EdgeInsets.only(
+                        left: width * .005),
                     child: Center(
                       child: TextFormField(
                         controller: controller.valorController,
@@ -99,7 +100,10 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                 children: [
                   Container(
                     height: height * .06,
-                    width: width * .32,
+                    width: width * .28,
+                    margin: EdgeInsets.only(
+                        top: height *.01,
+                        ),
                     decoration: BoxDecoration(
                         color: Colors.blue[900],
                         borderRadius: BorderRadius.all(Radius.circular(12))),
@@ -112,7 +116,9 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                   Container(
                       height: height * .06,
                       width: width * .13,
-                      margin: EdgeInsets.only(left: width * .005),
+                      margin: EdgeInsets.only(
+                          top: height *.01,
+                          left: width * .005),
                       child: Center(
                           child: DateTimeField(
                         controller: controller.tempoController,

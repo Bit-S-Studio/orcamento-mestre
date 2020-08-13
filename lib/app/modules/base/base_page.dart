@@ -60,18 +60,48 @@ class _BasePageState extends ModularState<BasePage, BaseController> {
               onTap: (value) => controller.updateCurrentIndex(value),
               items: [
                 BottomNavigationBarItem(
-                    icon: Icon(LineAwesomeIcons.flag), title: Text('Start')),
+                    icon: Icon(LineAwesomeIcons.flag,
+                      color: Colors.white,
+                    ), title: Text('Start',
+                  style: TextStyle(
+                      color: Colors.white
+                  ),
+                )),
                 BottomNavigationBarItem(
-                    icon: Icon(LineAwesomeIcons.paste), title: Text('Dados')),
+                    icon: Icon(LineAwesomeIcons.paste,
+                      color: Colors.white,
+                    ), title: Text('Dados',
+                  style: TextStyle(
+                      color: Colors.white
+                  ),
+                )),
                 BottomNavigationBarItem(
-                    icon: Icon(LineAwesomeIcons.paper_plane),
-                    title: Text('Projeto')),
+                    icon: Icon(LineAwesomeIcons.paper_plane,
+                      color: Colors.white,
+                    ),
+                    title: Text('Projeto',
+                      style: TextStyle(
+                          color: Colors.white
+                      ),
+                    )),
                 BottomNavigationBarItem(
-                    icon: Icon(LineAwesomeIcons.connectdevelop),
-                    title: Text('Layout')),
+                    icon: Icon(LineAwesomeIcons.connectdevelop,
+                      color: Colors.white,
+                    ),
+                    title: Text('Layout',
+                      style: TextStyle(
+                          color: Colors.white
+                      ),
+                    )),
                 BottomNavigationBarItem(
-                    icon: Icon(LineAwesomeIcons.calculator),
-                    title: Text('Orçamento'))
+                    icon: Icon(LineAwesomeIcons.calculator,
+                      color: Colors.white,
+                    ),
+                    title: Text('Orçamento',
+                      style: TextStyle(
+                        color: Colors.white
+                      ),
+                    ))
               ]));
     });
   }
