@@ -11,6 +11,7 @@ class CustomHasuraConnect {
       var token = await user.getIdToken(refresh: true);
 
       if (token != null) {
+        print(token);
         return "Bearer ${token.token}";
       } else {
         Modular.to.pushNamed('/login');

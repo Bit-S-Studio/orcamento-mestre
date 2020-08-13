@@ -1,9 +1,13 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:orcamento_mestre/app/utils/theme.dart';
+import 'package:provider/provider.dart';
 import 'register_controller.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -14,12 +18,12 @@ class RegisterPage extends StatefulWidget {
   _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _RegisterPageState
-    extends ModularState<RegisterPage, RegisterController> {
+class _RegisterPageState extends State<RegisterPage> {
   //use 'controller' variable to access controller
 
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<RegisterController>(context);
     return Scaffold(
         appBar: AppBar(
           elevation: 0.0,
@@ -35,7 +39,7 @@ class _RegisterPageState
               SizedBox(
                 height: 40,
               ),
-              logo(),
+              //logo(),
               SizedBox(
                 height: 40,
               ),
@@ -43,6 +47,7 @@ class _RegisterPageState
                 children: [
                   forms(),
                   buttons(),
+                  image(),
                 ],
               ),
               SizedBox(
@@ -51,6 +56,40 @@ class _RegisterPageState
             ],
           ),
         ));
+  }
+
+  Widget image() {
+    final controller = Provider.of<RegisterController>(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        GestureDetector(onTap: () async {
+          await controller.getImage();
+        }, child: Observer(builder: (_) {
+          return Center(
+              child: (controller.logoStatus)
+                  ? (kIsWeb)
+                      ? Container(
+                          height: 120,
+                          width: 120,
+                          child: CircleAvatar(
+                              backgroundImage:
+                                  NetworkImage(controller.imageFile.path)))
+                      : Container(
+                          height: 120,
+                          width: 120,
+                          child: CircleAvatar(
+                              backgroundImage: FileImage(
+                            File(controller.imageFile.path),
+                          )))
+                  : CircleAvatar(
+                      backgroundColor: Colors.blue[900],
+                      radius: 60,
+                      child: Text('Foto'),
+                    ));
+        }))
+      ],
+    );
   }
 
   Widget logo() {
@@ -89,9 +128,10 @@ class _RegisterPageState
   }
 
   Widget forms() {
+    final controller = Provider.of<RegisterController>(context);
     return Center(
         child: Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
+            padding: const EdgeInsets.only(top: 60, left: 20, right: 20),
             child: Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)),
@@ -100,22 +140,35 @@ class _RegisterPageState
                     alignment: Alignment.center,
                     constraints: BoxConstraints(
                       maxWidth: 400,
-                      minWidth: 200,
-                      maxHeight: 200,
+                      minWidth: 280,
+                      maxHeight: 280,
                       minHeight: 100,
                     ),
                     color: Colors.white,
                     child: Center(
                         child: Padding(
                             padding: const EdgeInsets.only(
-                                left: 20.0, right: 20, top: 26),
+                                left: 20.0, right: 20, top: 50),
                             child: Column(children: <Widget>[
                               textForm(
                                 context: context,
-                                icon: LineAwesomeIcons.envelope,
+                                icon: LineAwesomeIcons.user,
                                 obscure: false,
                                 hint: 'Nome',
                                 onChanged: controller.changeNome,
+                              ),
+                              Container(
+                                width: 250.0,
+                                height: 1.0,
+                                color: Colors.grey[400],
+                              ),
+                              textForm(
+                                context: context,
+                                icon: LineAwesomeIcons.mobile_phone,
+                                obscure: false,
+                                tipo: TextInputType.phone,
+                                hint: 'Telefone',
+                                onChanged: controller.changeTelefone,
                               ),
                               Container(
                                 width: 250.0,
@@ -156,11 +209,12 @@ class _RegisterPageState
   }
 
   Widget buttons() {
+    final controller = Provider.of<RegisterController>(context);
     return Center(
       child: Column(
         children: [
           SizedBox(
-            height: 180,
+            height: 320,
           ),
           Observer(builder: (_) {
             return Stack(
@@ -178,14 +232,16 @@ class _RegisterPageState
   }
 
   Widget button() {
+    final controller = Provider.of<RegisterController>(context);
     return Observer(builder: (_) {
       return Container(
         decoration: buttonDecoration,
         child: MaterialButton(
           onPressed: controller.isValid
-              ? () {
-                  controller.register(
-                      controller.nome, controller.email, controller.senha);
+              ? () async {
+                  await controller.register(controller.nome, controller.email,
+                      controller.senha, controller.telefone, controller.imgUrl);
+                  Modular.to.pushNamed('/pos');
                 }
               : () {
                   Fluttertoast.showToast(msg: controller.validate());

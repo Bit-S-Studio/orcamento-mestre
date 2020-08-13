@@ -39,11 +39,33 @@ mixin _$PdfController on _PdfControllerBase, Store {
     });
   }
 
+  final _$fullPathAtom = Atom(name: '_PdfControllerBase.fullPath');
+
+  @override
+  String get fullPath {
+    _$fullPathAtom.reportRead();
+    return super.fullPath;
+  }
+
+  @override
+  set fullPath(String value) {
+    _$fullPathAtom.reportWrite(value, super.fullPath, () {
+      super.fullPath = value;
+    });
+  }
+
   final _$savePdfAsyncAction = AsyncAction('_PdfControllerBase.savePdf');
 
   @override
   Future<dynamic> savePdf() {
     return _$savePdfAsyncAction.run(() => super.savePdf());
+  }
+
+  final _$viewPdfAsyncAction = AsyncAction('_PdfControllerBase.viewPdf');
+
+  @override
+  Future<dynamic> viewPdf(String name) {
+    return _$viewPdfAsyncAction.run(() => super.viewPdf(name));
   }
 
   final _$_PdfControllerBaseActionController =
@@ -64,7 +86,8 @@ mixin _$PdfController on _PdfControllerBase, Store {
   String toString() {
     return '''
 pdf: ${pdf},
-pdfName: ${pdfName}
+pdfName: ${pdfName},
+fullPath: ${fullPath}
     ''';
   }
 }

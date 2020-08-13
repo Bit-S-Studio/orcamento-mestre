@@ -21,6 +21,10 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  firebase_storage: ^3.1.6
+  geolocator: ^5.3.2+2
+  geolocation: ^1.1.2
+  location: ^3.0.2
   flutter_full_pdf_viewer: ^1.0.6
   path_provider: ^1.6.11
   grouped_listview: ^0.0.2

@@ -124,6 +124,21 @@ mixin _$RegisterController on _RegisterControllerBase, Store {
     });
   }
 
+  final _$telefoneAtom = Atom(name: '_RegisterControllerBase.telefone');
+
+  @override
+  String get telefone {
+    _$telefoneAtom.reportRead();
+    return super.telefone;
+  }
+
+  @override
+  set telefone(String value) {
+    _$telefoneAtom.reportWrite(value, super.telefone, () {
+      super.telefone = value;
+    });
+  }
+
   final _$senhaObscureAtom = Atom(name: '_RegisterControllerBase.senhaObscure');
 
   @override
@@ -169,6 +184,21 @@ mixin _$RegisterController on _RegisterControllerBase, Store {
     });
   }
 
+  final _$logoStatusAtom = Atom(name: '_RegisterControllerBase.logoStatus');
+
+  @override
+  bool get logoStatus {
+    _$logoStatusAtom.reportRead();
+    return super.logoStatus;
+  }
+
+  @override
+  set logoStatus(bool value) {
+    _$logoStatusAtom.reportWrite(value, super.logoStatus, () {
+      super.logoStatus = value;
+    });
+  }
+
   final _$userAtom = Atom(name: '_RegisterControllerBase.user');
 
   @override
@@ -184,18 +214,96 @@ mixin _$RegisterController on _RegisterControllerBase, Store {
     });
   }
 
+  final _$imageAtom = Atom(name: '_RegisterControllerBase.image');
+
+  @override
+  FileImage get image {
+    _$imageAtom.reportRead();
+    return super.image;
+  }
+
+  @override
+  set image(FileImage value) {
+    _$imageAtom.reportWrite(value, super.image, () {
+      super.image = value;
+    });
+  }
+
+  final _$imageFileAtom = Atom(name: '_RegisterControllerBase.imageFile');
+
+  @override
+  PickedFile get imageFile {
+    _$imageFileAtom.reportRead();
+    return super.imageFile;
+  }
+
+  @override
+  set imageFile(PickedFile value) {
+    _$imageFileAtom.reportWrite(value, super.imageFile, () {
+      super.imageFile = value;
+    });
+  }
+
+  final _$pickerAtom = Atom(name: '_RegisterControllerBase.picker');
+
+  @override
+  ImagePicker get picker {
+    _$pickerAtom.reportRead();
+    return super.picker;
+  }
+
+  @override
+  set picker(ImagePicker value) {
+    _$pickerAtom.reportWrite(value, super.picker, () {
+      super.picker = value;
+    });
+  }
+
+  final _$imgUrlAtom = Atom(name: '_RegisterControllerBase.imgUrl');
+
+  @override
+  String get imgUrl {
+    _$imgUrlAtom.reportRead();
+    return super.imgUrl;
+  }
+
+  @override
+  set imgUrl(String value) {
+    _$imgUrlAtom.reportWrite(value, super.imgUrl, () {
+      super.imgUrl = value;
+    });
+  }
+
+  final _$getImageAsyncAction = AsyncAction('_RegisterControllerBase.getImage');
+
+  @override
+  Future<PickedFile> getImage() {
+    return _$getImageAsyncAction.run(() => super.getImage());
+  }
+
+  final _$upImageAsyncAction = AsyncAction('_RegisterControllerBase.upImage');
+
+  @override
+  Future<String> upImage(PickedFile image) {
+    return _$upImageAsyncAction.run(() => super.upImage(image));
+  }
+
   final _$registerAsyncAction = AsyncAction('_RegisterControllerBase.register');
 
   @override
-  Future<FirebaseUser> register(String nome, String email, String senha) {
-    return _$registerAsyncAction.run(() => super.register(nome, email, senha));
+  Future<FirebaseUser> register(
+      String nome, String email, String senha, String telefone, String imagem) {
+    return _$registerAsyncAction
+        .run(() => super.register(nome, email, senha, telefone, imagem));
   }
 
   final _$setUserAsyncAction = AsyncAction('_RegisterControllerBase.setUser');
 
   @override
-  Future<dynamic> setUser(String email, String nome, String id) {
-    return _$setUserAsyncAction.run(() => super.setUser(email, nome, id));
+  Future<dynamic> setUser(
+      String email, String nome, String id, String telefone, String imagem) {
+    return _$setUserAsyncAction
+        .run(() => super.setUser(email, nome, id, telefone, imagem));
   }
 
   final _$_RegisterControllerBaseActionController =
@@ -207,6 +315,17 @@ mixin _$RegisterController on _RegisterControllerBase, Store {
         name: '_RegisterControllerBase.changeEmail');
     try {
       return super.changeEmail(newEmail);
+    } finally {
+      _$_RegisterControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic changeTelefone(String newTelefone) {
+    final _$actionInfo = _$_RegisterControllerBaseActionController.startAction(
+        name: '_RegisterControllerBase.changeTelefone');
+    try {
+      return super.changeTelefone(newTelefone);
     } finally {
       _$_RegisterControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -244,10 +363,16 @@ nomeController: ${nomeController},
 email: ${email},
 senha: ${senha},
 nome: ${nome},
+telefone: ${telefone},
 senhaObscure: ${senhaObscure},
 box1: ${box1},
 box2: ${box2},
+logoStatus: ${logoStatus},
 user: ${user},
+image: ${image},
+imageFile: ${imageFile},
+picker: ${picker},
+imgUrl: ${imgUrl},
 isValid: ${isValid}
     ''';
   }

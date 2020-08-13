@@ -27,7 +27,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
               SizedBox(
                 height: 40,
               ),
-              logo(),
+              //logo(),
               SizedBox(
                 height: 40,
               ),
@@ -165,7 +165,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
           Container(
               child: FlatButton(
             onPressed: () {
-              Modular.to.pushNamed('/login/reset');
+              Modular.to.pushNamed('/reset');
             },
             child: Text('Esqueceu a senha?', style: letraPreta),
           )),
@@ -175,7 +175,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
           Container(
               child: FlatButton(
             onPressed: () {
-              Modular.to.pushNamed('/login/register');
+              Modular.to.pushNamed('/register');
             },
             child: RichText(
               text: TextSpan(

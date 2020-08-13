@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:orcamento_mestre/app/modules/base/base_controller.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/projeto_controller.dart';
+import 'package:orcamento_mestre/app/modules/login/register/register_controller.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
 import 'package:orcamento_mestre/app/modules/pdf/pdf_controller.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +16,7 @@ class AppWidget extends StatelessWidget {
         Provider<BaseController>(create: (_) => BaseController()),
         Provider<ProjetoController>(create: (_) => ProjetoController()),
         Provider<PdfController>(create: (_) => PdfController()),
+        Provider<RegisterController>(create: (_) => RegisterController()),
       ],
       child: MaterialApp(
         navigatorKey: Modular.navigatorKey,
