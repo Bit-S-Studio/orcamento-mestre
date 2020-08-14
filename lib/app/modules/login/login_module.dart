@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:orcamento_mestre/app/modules/base/base_module.dart';
 import 'package:orcamento_mestre/app/modules/dadosEmpresa/empresa_controller.dart';
 import 'package:orcamento_mestre/app/modules/dadosFreelancer/freelancer_controller.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/dadosProjeto_page.dart';
@@ -35,6 +36,7 @@ class LoginModule extends ChildModule {
         Router('/pos', child: (_, args) => PosRegister()),
         Router('/dados', child: (_, args) => DadosRegister()),
         Router('/home', module: HomeModule()),
+        Router('/base', module: BaseModule()),
       ];
 
   static Inject get to => Inject<LoginModule>.of();

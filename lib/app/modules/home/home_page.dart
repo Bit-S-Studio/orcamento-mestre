@@ -194,7 +194,7 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.all(Radius.circular(12))),
                 child: MaterialButton(
                   onPressed: () async {
-                    Modular.to.pushNamed('/dados');
+                    Modular.to.pushNamed(rota);
                   },
                   child: Container(
                     decoration: BoxDecoration(
