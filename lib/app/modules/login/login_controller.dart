@@ -60,13 +60,13 @@ abstract class _LoginControllerBase with Store {
   FirebaseUser user;
 
   @action
-  Future<FirebaseUser> logar(String email, String senha) async {
+  Future<FirebaseUser> logar(
+      String email, String senha, BuildContext context) async {
     try {
       user = (await FirebaseAuth.instance
               .signInWithEmailAndPassword(email: email, password: senha))
           .user;
       Fluttertoast.showToast(msg: 'Logado com sucesso');
-      Modular.to.pushReplacementNamed('/login/home');
     } catch (e) {
       Fluttertoast.showToast(
           msg: 'Email ou senha inválidos', backgroundColor: Colors.blue);

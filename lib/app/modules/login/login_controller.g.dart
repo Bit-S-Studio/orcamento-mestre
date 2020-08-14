@@ -156,8 +156,8 @@ mixin _$LoginController on _LoginControllerBase, Store {
   final _$logarAsyncAction = AsyncAction('_LoginControllerBase.logar');
 
   @override
-  Future<FirebaseUser> logar(String email, String senha) {
-    return _$logarAsyncAction.run(() => super.logar(email, senha));
+  Future<FirebaseUser> logar(String email, String senha, BuildContext context) {
+    return _$logarAsyncAction.run(() => super.logar(email, senha, context));
   }
 
   final _$_LoginControllerBaseActionController =

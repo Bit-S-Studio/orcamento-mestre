@@ -3,6 +3,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:orcamento_mestre/app/utils/theme.dart';
+import 'package:orcamento_mestre/app/utils/users/user_controller.dart';
+import 'package:provider/provider.dart';
 import 'login_controller.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 
@@ -30,10 +32,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                 height: 40,
               ),
               //logo(),
-              SizedBox(
-                height: height,
-                width: width,
-              ),
               Stack(
                 children: [
                   forms(),
@@ -195,13 +193,18 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   }
 
   Widget button() {
+    final userController = Provider.of<UserController>(context);
     return Observer(builder: (_) {
       return Container(
         decoration: buttonDecoration,
         child: MaterialButton(
           onPressed: controller.isValid
-              ? () {
-                  controller.logar(controller.email, controller.senha);
+              ? () async {
+                  var user = await controller.logar(
+                      controller.email, controller.senha, context);
+                  await userController.getUser(user.uid);
+                  print(userController.imagem);
+                  Modular.to.pushReplacementNamed('/home');
                 }
               : () {
                   Fluttertoast.showToast(msg: controller.validate());

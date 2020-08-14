@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hasura_connect/hasura_connect.dart';
 import 'package:mobx/mobx.dart';
 
-part '../user_controller.g.dart';
+part 'user_controller.g.dart';
 
 class UserController = _UserControllerBase with _$UserController;
 
@@ -61,6 +61,7 @@ abstract class _UserControllerBase with Store {
       currentUser = await firebaseAuth.currentUser();
       if (currentUser == null) {
         uid = currentUser.uid.toString();
+        getUser(uid);
       } else {
         uid = 'null';
       }

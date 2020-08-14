@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'users/user_controller.dart';
+part of 'user_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -69,6 +69,96 @@ mixin _$UserController on _UserControllerBase, Store {
     });
   }
 
+  final _$nomeAtom = Atom(name: '_UserControllerBase.nome');
+
+  @override
+  String get nome {
+    _$nomeAtom.reportRead();
+    return super.nome;
+  }
+
+  @override
+  set nome(String value) {
+    _$nomeAtom.reportWrite(value, super.nome, () {
+      super.nome = value;
+    });
+  }
+
+  final _$imagemAtom = Atom(name: '_UserControllerBase.imagem');
+
+  @override
+  String get imagem {
+    _$imagemAtom.reportRead();
+    return super.imagem;
+  }
+
+  @override
+  set imagem(String value) {
+    _$imagemAtom.reportWrite(value, super.imagem, () {
+      super.imagem = value;
+    });
+  }
+
+  final _$emailAtom = Atom(name: '_UserControllerBase.email');
+
+  @override
+  String get email {
+    _$emailAtom.reportRead();
+    return super.email;
+  }
+
+  @override
+  set email(String value) {
+    _$emailAtom.reportWrite(value, super.email, () {
+      super.email = value;
+    });
+  }
+
+  final _$senhaAtom = Atom(name: '_UserControllerBase.senha');
+
+  @override
+  String get senha {
+    _$senhaAtom.reportRead();
+    return super.senha;
+  }
+
+  @override
+  set senha(String value) {
+    _$senhaAtom.reportWrite(value, super.senha, () {
+      super.senha = value;
+    });
+  }
+
+  final _$planoAtom = Atom(name: '_UserControllerBase.plano');
+
+  @override
+  String get plano {
+    _$planoAtom.reportRead();
+    return super.plano;
+  }
+
+  @override
+  set plano(String value) {
+    _$planoAtom.reportWrite(value, super.plano, () {
+      super.plano = value;
+    });
+  }
+
+  final _$telefoneAtom = Atom(name: '_UserControllerBase.telefone');
+
+  @override
+  String get telefone {
+    _$telefoneAtom.reportRead();
+    return super.telefone;
+  }
+
+  @override
+  set telefone(String value) {
+    _$telefoneAtom.reportWrite(value, super.telefone, () {
+      super.telefone = value;
+    });
+  }
+
   final _$setUserAsyncAction = AsyncAction('_UserControllerBase.setUser');
 
   @override
@@ -83,13 +173,26 @@ mixin _$UserController on _UserControllerBase, Store {
     return _$setUidAsyncAction.run(() => super.setUid());
   }
 
+  final _$getUserAsyncAction = AsyncAction('_UserControllerBase.getUser');
+
+  @override
+  Future<dynamic> getUser(String id) {
+    return _$getUserAsyncAction.run(() => super.getUser(id));
+  }
+
   @override
   String toString() {
     return '''
 firebaseAuth: ${firebaseAuth},
 logado: ${logado},
 currentUser: ${currentUser},
-uid: ${uid}
+uid: ${uid},
+nome: ${nome},
+imagem: ${imagem},
+email: ${email},
+senha: ${senha},
+plano: ${plano},
+telefone: ${telefone}
     ''';
   }
 }

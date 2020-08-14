@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
-import 'package:orcamento_mestre/app/modules/dadosEmpresa/dadosEmpresa_page.dart';
-import 'package:orcamento_mestre/app/modules/dadosFreelancer/dadosFreelancer_page.dart';
-import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
 import 'package:orcamento_mestre/app/utils/users/user_controller.dart';
 import 'package:provider/provider.dart';
-import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
@@ -16,7 +13,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends ModularState<HomePage, HomeController> {
+class _HomePageState extends State<HomePage> {
   //use 'controller' variable to access controller
   @override
   Widget build(BuildContext context) {
@@ -54,15 +51,24 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     return Column(
       children: <Widget>[
         SizedBox(
-          height: height * 0.22,
+          height: height * 0.23,
         ),
         Padding(
           padding: const EdgeInsets.only(left: 200),
           child: Center(
-            child: CircleAvatar(
-              backgroundColor: Colors.white,
-              radius: 60,
-            ),
+            child: StreamBuilder<Object>(
+                stream: null,
+                builder: (context, snapshot) {
+                  return CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 60,
+                    child: CircleAvatar(
+                      backgroundImage:
+                          NetworkImage(controller.imagem.toString()),
+                      radius: 56,
+                    ),
+                  );
+                }),
           ),
         ),
       ],
@@ -73,27 +79,46 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     final controller = Provider.of<UserController>(context);
+    var teste = controller.setUser();
+    print(teste);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         SizedBox(
+          height: height * 0.14,
+        ),
+        SizedBox(
           height: height * 0.02,
-        ),
-        SizedBox(
-          height: height * 0.08,
           child: FractionallySizedBox(
-              alignment: Alignment.centerLeft,
-              widthFactor: 0.24,
-              child: IconButton(
-                  icon: Icon(
-                    LineAwesomeIcons.cog,
-                    color: Colors.white,
-                    size: height * 0.04,
-                  ),
-                  onPressed: () {})),
-        ),
-        SizedBox(
-          height: height * 0.06,
+            widthFactor: 1,
+            alignment: Alignment.topRight,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(
+                    icon: Icon(
+                      LineAwesomeIcons.bell_o,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {}),
+                IconButton(
+                    icon: Icon(
+                      LineAwesomeIcons.comments_o,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {}),
+                IconButton(
+                    icon: Icon(
+                      LineAwesomeIcons.cog,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {}),
+                SizedBox(
+                  width: width * 0.04,
+                )
+              ],
+            ),
+          ),
         ),
         SizedBox(
           height: height * 0.1,
@@ -107,14 +132,16 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                   style: TextStyle(color: Colors.white, fontSize: 20),
                   textAlign: TextAlign.left,
                 ),
-                Text(
-                  'Mestre ${controller.nome}',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.left,
-                )
+                Observer(builder: (_) {
+                  return Text(
+                    'Mestre ${controller.nome}',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.left,
+                  );
+                }),
               ],
             ),
           ),
@@ -135,11 +162,15 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                   SizedBox(
                     height: height * 0.05,
                   ),
-                  buttons('Solicitar orçamento', '/solicitar'),
-                  buttons('Gerar orçamento', '/base'),
-                  buttons('Minhas solicitações', '/solicitacoes'),
-                  buttons('Meus Orçamentos', '/orcamentos'),
-                  buttons('Meu perfil', '/perfil'),
+                  buttons('Solicitar orçamento', '/solicitar',
+                      LineAwesomeIcons.paper_plane_o),
+                  buttons(
+                      'Gerar orçamento', '/base', LineAwesomeIcons.file_pdf_o),
+                  buttons('Minhas solicitações', '/solicitacoes',
+                      LineAwesomeIcons.sort_amount_asc),
+                  buttons(
+                      'Meus Orçamentos', '/orcamentos', LineAwesomeIcons.copy),
+                  buttons('Meu perfil', '/perfil', LineAwesomeIcons.user),
                 ],
               ),
             ),
@@ -149,7 +180,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     );
   }
 
-  Widget buttons(String texto, String rota) {
+  Widget buttons(String texto, String rota, IconData icon) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Center(
@@ -186,6 +217,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                                       Colors.grey[800],
                                       Colors.blue[900]
                                     ])),
+                            child: Center(
+                              child: Icon(icon, color: Colors.white),
+                            ),
                           ),
                           Flexible(fit: FlexFit.tight, child: SizedBox()),
                           Text(

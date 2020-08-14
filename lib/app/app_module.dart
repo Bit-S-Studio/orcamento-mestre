@@ -1,12 +1,11 @@
-import 'package:orcamento_mestre/app/modules/home/home_module.dart';
 import 'package:orcamento_mestre/app/modules/login/login_module.dart';
-import 'package:orcamento_mestre/app/modules/login/splash/splash_module.dart';
 import 'package:orcamento_mestre/app/modules/pdf/pdf_controller.dart';
 import 'package:orcamento_mestre/app/modules/base/base_controller.dart';
 import 'package:orcamento_mestre/app/modules/dadosFreelancer/freelancer_controller.dart';
 import 'package:orcamento_mestre/app/modules/layout/layout_controller.dart';
 import 'package:orcamento_mestre/app/modules/budget/budget_controller.dart';
 import 'package:orcamento_mestre/app/modules/tipo/tipo_controller.dart';
+import 'package:orcamento_mestre/app/utils/users/user_controller.dart';
 import 'app_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +14,7 @@ import 'package:orcamento_mestre/app/app_widget.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
+        Bind((i) => UserController()),
         Bind((i) => PdfController()),
         Bind((i) => BaseController()),
         Bind((i) => FreelancerController()),
@@ -26,7 +26,7 @@ class AppModule extends MainModule {
 
   @override
   List<Router> get routers => [
-        Router(Modular.initialRoute, module: HomeModule()),
+        Router(Modular.initialRoute, module: LoginModule()),
       ];
 
   @override

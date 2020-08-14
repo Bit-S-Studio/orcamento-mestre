@@ -94,6 +94,21 @@ mixin _$RegisterController on _RegisterControllerBase, Store {
     });
   }
 
+  final _$tipoAtom = Atom(name: '_RegisterControllerBase.tipo');
+
+  @override
+  String get tipo {
+    _$tipoAtom.reportRead();
+    return super.tipo;
+  }
+
+  @override
+  set tipo(String value) {
+    _$tipoAtom.reportWrite(value, super.tipo, () {
+      super.tipo = value;
+    });
+  }
+
   final _$senhaAtom = Atom(name: '_RegisterControllerBase.senha');
 
   @override
@@ -361,6 +376,7 @@ emailController: ${emailController},
 senhaController: ${senhaController},
 nomeController: ${nomeController},
 email: ${email},
+tipo: ${tipo},
 senha: ${senha},
 nome: ${nome},
 telefone: ${telefone},
