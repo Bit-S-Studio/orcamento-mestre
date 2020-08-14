@@ -1,7 +1,7 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:orcamento_mestre/app/utils/user_controller.dart';
+import 'package:orcamento_mestre/app/utils/users/user_controller.dart';
 
 class SplashPage extends StatefulWidget {
   final String title;
@@ -44,10 +44,10 @@ class _SplashPageState extends ModularState<SplashPage, UserController>
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Container(
-                  height: 200,
-                  child: Image.asset('assets/logo.png'),
-                ),
+                //Container(
+                //height: 200,
+                //child: Image.asset('assets/logo.png'),
+                //),
                 SizedBox(
                   height: 40,
                 ),

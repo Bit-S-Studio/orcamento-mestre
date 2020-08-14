@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_controller.dart';
+part of 'users/user_controller.dart';
 
 // **************************************************************************
 // StoreGenerator

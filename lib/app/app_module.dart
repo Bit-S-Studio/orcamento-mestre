@@ -1,8 +1,8 @@
 import 'package:orcamento_mestre/app/modules/home/home_module.dart';
 import 'package:orcamento_mestre/app/modules/login/login_module.dart';
+import 'package:orcamento_mestre/app/modules/login/splash/splash_module.dart';
 import 'package:orcamento_mestre/app/modules/pdf/pdf_controller.dart';
 import 'package:orcamento_mestre/app/modules/base/base_controller.dart';
-import 'package:orcamento_mestre/app/modules/base/base_module.dart';
 import 'package:orcamento_mestre/app/modules/dadosFreelancer/freelancer_controller.dart';
 import 'package:orcamento_mestre/app/modules/layout/layout_controller.dart';
 import 'package:orcamento_mestre/app/modules/budget/budget_controller.dart';
@@ -26,7 +26,7 @@ class AppModule extends MainModule {
 
   @override
   List<Router> get routers => [
-        Router(Modular.initialRoute, module: BaseModule()),
+        Router(Modular.initialRoute, module: HomeModule()),
       ];
 
   @override

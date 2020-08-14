@@ -5,6 +5,7 @@ import 'package:orcamento_mestre/app/modules/dadosProjeto/projeto_controller.dar
 import 'package:orcamento_mestre/app/modules/login/register/register_controller.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
 import 'package:orcamento_mestre/app/modules/pdf/pdf_controller.dart';
+import 'package:orcamento_mestre/app/utils/users/user_controller.dart';
 import 'package:provider/provider.dart';
 
 class AppWidget extends StatelessWidget {
@@ -17,6 +18,7 @@ class AppWidget extends StatelessWidget {
         Provider<ProjetoController>(create: (_) => ProjetoController()),
         Provider<PdfController>(create: (_) => PdfController()),
         Provider<RegisterController>(create: (_) => RegisterController()),
+        Provider<UserController>(create: (_) => UserController()),
       ],
       child: MaterialApp(
         navigatorKey: Modular.navigatorKey,

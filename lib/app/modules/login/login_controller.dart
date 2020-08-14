@@ -66,7 +66,7 @@ abstract class _LoginControllerBase with Store {
               .signInWithEmailAndPassword(email: email, password: senha))
           .user;
       Fluttertoast.showToast(msg: 'Logado com sucesso');
-      Modular.to.pushReplacementNamed('/login/base');
+      Modular.to.pushReplacementNamed('/login/home');
     } catch (e) {
       Fluttertoast.showToast(
           msg: 'Email ou senha inválidos', backgroundColor: Colors.blue);

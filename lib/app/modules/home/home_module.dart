@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:orcamento_mestre/app/modules/base/base_module.dart';
 import 'package:orcamento_mestre/app/modules/dadosEmpresa/empresa_controller.dart';
 import 'package:orcamento_mestre/app/modules/dadosFreelancer/freelancer_controller.dart';
+import 'package:orcamento_mestre/app/utils/users/user_controller.dart';
 
 import 'home_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -11,6 +12,7 @@ class HomeModule extends WidgetModule {
   @override
   List<Bind> get binds => [
         Bind((i) => HomeController()),
+        Bind((i) => UserController()),
         Bind((i) => EmpresaController()),
         Bind((i) => FreelancerController()),
       ];

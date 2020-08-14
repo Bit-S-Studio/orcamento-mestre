@@ -4,6 +4,7 @@ import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:orcamento_mestre/app/modules/dadosEmpresa/dadosEmpresa_page.dart';
 import 'package:orcamento_mestre/app/modules/dadosFreelancer/dadosFreelancer_page.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
+import 'package:orcamento_mestre/app/utils/users/user_controller.dart';
 import 'package:provider/provider.dart';
 import 'home_controller.dart';
 
@@ -47,6 +48,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   }
 
   Widget foto() {
+    final controller = Provider.of<UserController>(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Column(
@@ -70,6 +72,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   Widget page() {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
+    final controller = Provider.of<UserController>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -105,7 +108,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                   textAlign: TextAlign.left,
                 ),
                 Text(
-                  'Mestre Lucas',
+                  'Mestre ${controller.nome}',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 24,
