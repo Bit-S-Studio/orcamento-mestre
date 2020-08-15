@@ -1,3 +1,5 @@
+import 'package:orcamento_mestre/app/modules/chat/chat_controller.dart';
+import 'package:orcamento_mestre/app/modules/config/config_controller.dart';
 import 'package:orcamento_mestre/app/modules/login/login_module.dart';
 import 'package:orcamento_mestre/app/modules/pdf/pdf_controller.dart';
 import 'package:orcamento_mestre/app/modules/base/base_controller.dart';
@@ -5,6 +7,7 @@ import 'package:orcamento_mestre/app/modules/dadosFreelancer/freelancer_controll
 import 'package:orcamento_mestre/app/modules/layout/layout_controller.dart';
 import 'package:orcamento_mestre/app/modules/budget/budget_controller.dart';
 import 'package:orcamento_mestre/app/modules/tipo/tipo_controller.dart';
+import 'package:orcamento_mestre/app/utils/servicos_controller.dart';
 import 'package:orcamento_mestre/app/utils/users/user_controller.dart';
 import 'app_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -14,6 +17,9 @@ import 'package:orcamento_mestre/app/app_widget.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
+        Bind((i) => ServicosController()),
+        Bind((i) => ConfigController()),
+        Bind((i) => ChatController()),
         Bind((i) => UserController()),
         Bind((i) => PdfController()),
         Bind((i) => BaseController()),

@@ -1,0 +1,4 @@
+lib/app/modules/config/config_page.dart
+test/app/modules/config/config_page_test.dart
+lib/app/modules/config/config_controller.dart
+test/app/modules/config/config_controller_test.dart

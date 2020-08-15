@@ -31,7 +31,7 @@ class LoginModule extends ChildModule {
   List<Router> get routers => [
         Router(Modular.initialRoute, child: (_, args) => LoginPage()),
         Router('/', child: (_, args) => LoginPage()),
-        Router('/register', child: (_, args) => RegisterPage()),
+        Router('/register', child: (_, args) => DadosRegister()),
         Router('/reset', child: (_, args) => ResetPage()),
         Router('/pos', child: (_, args) => PosRegister()),
         Router('/dados', child: (_, args) => DadosRegister()),

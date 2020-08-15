@@ -21,6 +21,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  combos: ^1.2.0
+  flutter_tags: ^0.4.8+2
   firebase_storage: ^3.1.6
   geolocator: ^5.3.2+2
   geolocation: ^1.1.2
