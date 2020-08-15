@@ -86,27 +86,17 @@ class _DadosEmpresaPageState
     var width = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.grey[900],
-      appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: Colors.transparent,
-        title: Text(widget.title,
-          style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 23,
-              color: Colors.blue[900]
-          ),
-        ),
-      ),
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.all(16),
           child: Column(
+            mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               Container(
                 height: height * .20,
                 width: width,
                 margin: EdgeInsets.only(
-                  top: height * .1,
+                  top: height * .03,
                 ),
                 decoration: BoxDecoration(
                     color: Colors.blue[900],
@@ -128,7 +118,7 @@ class _DadosEmpresaPageState
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(16)
-                          )),
+                      )),
                   child: Row(
                     children: [
                       Observer(builder: (_) {
@@ -207,11 +197,11 @@ class _DadosEmpresaPageState
                 width: width,
                 margin: EdgeInsets.only(top: height * .005),
                 decoration: BoxDecoration(
-                  color: Colors.blue[900],
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(16),
-                    bottomRight: Radius.circular(16)
-                  )
+                    color: Colors.blue[900],
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(16),
+                        bottomRight: Radius.circular(16)
+                    )
                 ),
                 child: Column(
                   children: [
@@ -219,17 +209,17 @@ class _DadosEmpresaPageState
                       height: height * .06,
                       width: width,
                       padding:
-                          EdgeInsets.only(top: height * .02, left: width * .02),
+                      EdgeInsets.only(top: height * .02, left: width * .02),
                       child: Text(
                         'Complementos',
                         style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ),
                     Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(16))
-                      ),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(16))
+                        ),
                         child: FormsComplemento()),
                   ],
                 ),

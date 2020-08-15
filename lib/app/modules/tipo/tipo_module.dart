@@ -1,13 +1,19 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:orcamento_mestre/app/modules/dadosEmpresa/dadosEmpresa_module.dart';
+import 'package:orcamento_mestre/app/modules/dadosEmpresa/empresa_controller.dart';
 import 'package:orcamento_mestre/app/modules/dadosFreelancer/dadosFreelancer_module.dart';
+import 'package:orcamento_mestre/app/modules/dadosFreelancer/freelancer_controller.dart';
 import 'package:orcamento_mestre/app/modules/tipo/tipo_controller.dart';
 import 'package:orcamento_mestre/app/modules/tipo/tipo_page.dart';
 
 class TipoModule extends WidgetModule {
   @override
-  List<Bind> get binds => [Bind((i) => TipoController())];
+  List<Bind> get binds => [
+    Bind((i) => TipoController()),
+    Bind((i) => EmpresaController()),
+    Bind((i) => FreelancerController())
+  ];
 
   @override
   List<Router> get routers => [

@@ -10,6 +10,7 @@ import 'package:line_awesome_icons/line_awesome_icons.dart';
 
 class LoginPage extends StatefulWidget {
   final String title;
+
   const LoginPage({Key key, this.title = "Login"}) : super(key: key);
 
   @override
@@ -28,26 +29,35 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
-                height: 40,
+              logo(),
+              Container(
+                height: height * .29,
+                child: Stack(
+                  children: [
+                    forms(),
+                    Container(
+                        margin: EdgeInsets.only(top: height * .005),
+                        child: buttons()),
+                  ],
+                ),
               ),
-              //logo(),
-              Stack(
-                children: [
-                  forms(),
-                  buttons(),
-                ],
-              ),
-              buttons2(),
+              Container(child: buttons2()),
             ],
           ),
         ));
   }
 
   Widget logo() {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.height;
     return Container(
-      height: 200,
-      child: Image.asset('assets/logo_orcamento_mestre.png'),
+      height: height * .2,
+      width: width * .2,
+      margin: EdgeInsets.only(top: width * .2),
+      child: Image.asset(
+        'assets/logo_orcamento_mestre.png',
+        scale: 1.0,
+      ),
     );
   }
 
@@ -193,37 +203,48 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   }
 
   Widget button() {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.height;
     final userController = Provider.of<UserController>(context);
     return Observer(builder: (_) {
       return Container(
-        decoration: buttonDecoration,
-        child: MaterialButton(
-          onPressed: controller.isValid
-              ? () async {
-                  var user = await controller.logar(
-                      controller.email, controller.senha, context);
-                  await userController.getUser(user.uid);
-                  print(userController.imagem);
-                  Modular.to.pushReplacementNamed('/home');
-                }
-              : () {
-                  Fluttertoast.showToast(msg: controller.validate());
-                },
-          highlightColor: Colors.transparent,
-          splashColor: Colors.lightBlueAccent,
-          //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
-          child: Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
-            child: Text(
-              "Entrar",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 25.0,
-              ),
+        decoration: BoxDecoration(
+          color: Colors.blue[900],
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.black,
+              offset: Offset(1.0, 6.0),
+              blurRadius: 20.0,
             ),
-          ),
+          ],
         ),
+        child: MaterialButton(
+            onPressed: controller.isValid
+                ? () async {
+                    var user = await controller.logar(
+                        controller.email, controller.senha, context);
+                    await userController.getUser(user.uid);
+                    print(userController.imagem);
+                    Modular.to.pushReplacementNamed('/home');
+                  }
+                : () {
+                    Fluttertoast.showToast(msg: controller.validate());
+                  },
+            highlightColor: Colors.transparent,
+            splashColor: Colors.black,
+            //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
+            child: Container(
+              width: width * .2,
+              child: Text(
+                "Entrar",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25.0,
+                ),
+              ),
+            )),
       );
     });
   }

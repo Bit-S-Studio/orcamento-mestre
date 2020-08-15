@@ -147,7 +147,12 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.only(
+            top: height *.05,
+            left: width *.02,
+            right: width *.02,
+
+          ),
           child: Container(
             height: height * 0.6,
             width: width,
@@ -156,12 +161,9 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.circular(40),
                 color: Colors.grey[100]),
             child: Padding(
-              padding: const EdgeInsets.all(28.0),
+              padding: const EdgeInsets.all(22.0),
               child: Column(
                 children: [
-                  SizedBox(
-                    height: height * 0.05,
-                  ),
                   buttons('Solicitar orçamento', '/solicitar',
                       LineAwesomeIcons.paper_plane_o),
                   buttons(
@@ -229,7 +231,8 @@ class _HomePageState extends State<HomePage> {
                           Flexible(fit: FlexFit.tight, child: SizedBox()),
                           Padding(
                             padding: const EdgeInsets.only(right: 8.0),
-                            child: Icon(LineAwesomeIcons.arrow_circle_o_right,
+                            child: Icon(Icons.arrow_forward_ios,
+                                size: 16,
                                 color: Colors.black),
                           )
                         ]),

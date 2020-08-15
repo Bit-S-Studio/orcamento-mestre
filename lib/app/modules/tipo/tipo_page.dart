@@ -1,7 +1,10 @@
 import 'package:firebase_admob/firebase_admob.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:orcamento_mestre/app/modules/dadosEmpresa/dadosEmpresa_page.dart';
+import 'package:orcamento_mestre/app/modules/dadosFreelancer/dadosFreelancer_page.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
 import 'package:orcamento_mestre/app/utils/theme.dart';
 import 'package:provider/provider.dart';
@@ -75,7 +78,6 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
 
   @override
   Widget build(BuildContext context) {
-    final oController = Provider.of<OrcamentoController>(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -92,52 +94,24 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
         ),
       ),
       body: SingleChildScrollView(
-          child: Container(
-        margin: EdgeInsets.all(16),
         child: Column(
           children: [
             Container(
-              height: height * .09,
+              height: height *.1,
               width: width,
-              margin: EdgeInsets.only(top: height * .13),
-          decoration: BoxDecoration(
-            color: Colors.blue[900],
-            borderRadius: BorderRadius.all(Radius.circular(12)),
-          ),
-              child: Container(
-                margin: EdgeInsets.only(
-                    top: height * .01,
-                  bottom: height * .01,
-                  left: width *.01,
-                  right: width *.01
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(12)),
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      height: height * .023,
-                      width: width * .07,
-                      margin: EdgeInsets.only(
-                          left: width * .015, right: width * .015),
-                      child: Text(
-                        'Eu sou:',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ),
-                    Container(
-                        height: height * .08,
-                        width: width * .18,
-                        child: Center(child: dropDown2())),
-                  ],
-                ),
+              margin: EdgeInsets.only(
+                top: height *.12
               ),
+              child: widDropDown(),
             ),
+            Container(
+              height: height *.58,
+              width: width,
+              child: callFreeEmpresa(),
+            )
           ],
         ),
-      )),
+      )
     );
   }
 
@@ -149,7 +123,7 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
         value: oController.tipo2,
         icon: Icon(
           Icons.arrow_downward,
-          color: Colors.black87,
+          color: Colors.white,
         ),
         dropdownColor: Colors.blue[900],
         iconSize: 24,
@@ -167,7 +141,7 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 18,
-                  color: Colors.black87,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold),
             ),
           );
@@ -175,4 +149,55 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
       );
     });
   }
+
+  Widget widDropDown() {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.height;
+    return Container(
+      margin: EdgeInsets.only(
+          top: height * .01,
+          bottom: height * .01,
+          left: width *.015,
+          right: width *.015
+      ),
+      decoration: BoxDecoration(
+        color: Colors.blue[900],
+        borderRadius: BorderRadius.all(Radius.circular(12)),
+      ),
+      child: Row(
+        children: [
+          Container(
+            height: height * .023,
+            width: width * .07,
+            margin: EdgeInsets.only(
+                left: width * .025, right: width * .015),
+            child: Text(
+              'Eu sou:',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          Container(
+              height: height * .08,
+              width: width * .18,
+              child: Center(child: dropDown2())),
+        ],
+      ),
+    );
+  }
+
+  Widget callFreeEmpresa() {
+    final oController = Provider.of<OrcamentoController>(context);
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.height;
+    return Observer(builder: (_){
+      return Container(
+          height: height *5,
+          child: (oController.tipo2 == 'Empresa')
+              ? DadosEmpresaPage()
+              : DadosFreelancerPage()
+
+      );
+    });
+  }
+
 }
