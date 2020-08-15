@@ -26,30 +26,14 @@ class _DadosFreelancerPageState
     var width = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: Colors.grey[900],
-        appBar: AppBar(
-          title: Text(widget.title),
-          backgroundColor: Colors.blue[900],
-        ),
         body: SingleChildScrollView(
+          physics: ClampingScrollPhysics(),
           child: Container(
             margin: EdgeInsets.all(16),
             child: Column(
               children: [
                 Container(
-                  height: height * .30,
-                  width: width,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(16))),
-                  child: Center(
-                    child: Text(
-                      'Espaço para Admob',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                ),
-                Container(
-                  height: height * .66,
+                  height: height * .68,
                   width: width,
                   margin: EdgeInsets.only(
                     top: height * .02,
