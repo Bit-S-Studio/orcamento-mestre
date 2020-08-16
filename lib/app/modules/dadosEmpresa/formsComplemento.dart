@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:orcamento_mestre/app/modules/dadosEmpresa/empresa_controller.dart';
-import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
+import 'package:orcamento_mestre/app/utils/dados_controller.dart';
 import 'package:orcamento_mestre/app/utils/theme.dart';
 import 'package:provider/provider.dart';
 
@@ -10,71 +8,73 @@ class FormsComplemento extends StatefulWidget {
   _FormsComplementoState createState() => _FormsComplementoState();
 }
 
-class _FormsComplementoState
-    extends ModularState<FormsComplemento, EmpresaController> {
+class _FormsComplementoState extends State<FormsComplemento> {
   @override
   Widget build(BuildContext context) {
-    final oController = Provider.of<OrcamentoController>(context);
+    final controller = Provider.of<DadosController>(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Container(
         height: height * .565,
-        width: width *.52,
+        width: width * .52,
         margin: EdgeInsets.only(
-            top: height * .005,
+          top: height * .005,
         ),
-
         child: Column(children: [
           Container(
             height: height * .064,
             width: width,
             margin: EdgeInsets.only(
-                top: height * .023,
-                left: width * .02,
-                right: width * .02),
+                top: height * .023, left: width * .02, right: width * .02),
             child: TextFormField(
-              controller: oController.cepController,
+              controller: controller.cepController,
               onChanged: (newCep) {
-                oController.getCEP(newCep);
+                controller.getCEP(newCep);
               },
-              decoration: inputDecoration('Cep'),
+              decoration: inputDecoration('Cep*'),
               validator: (text) {
-                if (text.isEmpty) return "O campo cep, está vazio";
+                if (text.isEmpty) return "O campo cep está vazio";
               },
             ),
           ),
           Row(
             children: [
-              Container(
-                height: height * .06,
-                width: width * .355,
-                margin: EdgeInsets.only(
-                    top: height * .015, left: width * .02, right: width * .005),
-                child: TextFormField(
-                  controller: oController.enderecoController,
-                  onChanged: (newEndereco) {
-                    oController.endereco = newEndereco;
-                  },
-                  decoration: inputDecoration('Logradouro'),
-                  validator: (text) {
-                    if (text.isEmpty) return "O campo logradouro, está vazio";
-                  },
+              Flexible(
+                flex: 7,
+                child: Container(
+                  height: height * .06,
+                  margin: EdgeInsets.only(
+                      top: height * .015,
+                      left: width * .02,
+                      right: width * .005),
+                  child: TextFormField(
+                    controller: controller.enderecoController,
+                    onChanged: (newEndereco) {
+                      controller.endereco = newEndereco;
+                    },
+                    decoration: inputDecoration('Logradouro*'),
+                    validator: (text) {
+                      if (text.isEmpty) return "O campo logradouro está vazio";
+                    },
+                  ),
                 ),
               ),
-              Container(
-                height: height * .06,
-                width: width * .12,
-                margin: EdgeInsets.only(
-                    top: height * .015, right: width * .02),
-                child: TextFormField(
-                  controller: oController.numController,
-                  onChanged: (newNum) {
-                    oController.numero1 = newNum;
-                  },
-                  decoration: inputDecoration('Numero'),
-                  validator: (text) {
-                    if (text.isEmpty) return "O campo numero, está vazio";
-                  },
+              Flexible(
+                flex: 3,
+                child: Container(
+                  height: height * .06,
+                  margin:
+                      EdgeInsets.only(top: height * .015, right: width * .02),
+                  child: TextFormField(
+                    controller: controller.numController,
+                    onChanged: (newNum) {
+                      controller.numero1 = newNum;
+                    },
+                    decoration: inputDecoration('Numero*'),
+                    validator: (text) {
+                      if (text.isEmpty) return "O campo numero está vazio";
+                    },
+                  ),
                 ),
               )
             ],
@@ -85,80 +85,93 @@ class _FormsComplementoState
             margin: EdgeInsets.only(
                 top: height * .015, left: width * .02, right: width * .02),
             child: TextFormField(
-              controller: oController.bairroController,
+              controller: controller.bairroController,
               onChanged: (newBairro) {
-                oController.bairro = newBairro;
+                controller.bairro = newBairro;
               },
-              decoration: inputDecoration('Bairro'),
+              decoration: inputDecoration('Bairro*'),
               validator: (text) {
-                if (text.isEmpty) return "O campo bairro, está vazio";
+                if (text.isEmpty) return "O campo bairro está vazio";
               },
             ),
           ),
           Row(
             children: [
-              Container(
-                height: height * .06,
-                width: width * .355,
-                margin: EdgeInsets.only(top: height * .015, left: width * .02),
-                child: TextFormField(
-                  controller: oController.cidadeController,
-                  onChanged: (newCidade) {
-                    oController.cidade = newCidade;
-                  },
-                  decoration: inputDecoration('Cidade'),
-                  validator: (text) {
-                    if (text.isEmpty) return "O campo cidade, está vazio";
-                  },
+              Flexible(
+                flex: 7,
+                child: Container(
+                  height: height * .06,
+                  width: width * .355,
+                  margin:
+                      EdgeInsets.only(top: height * .015, left: width * .02),
+                  child: TextFormField(
+                    controller: controller.cidadeController,
+                    onChanged: (newCidade) {
+                      controller.cidade = newCidade;
+                    },
+                    decoration: inputDecoration('Cidade*'),
+                    validator: (text) {
+                      if (text.isEmpty) return "O campo cidade está vazio";
+                    },
+                  ),
                 ),
               ),
-              Container(
-                height: height * .06,
-                width: width * .12,
-                margin: EdgeInsets.only(top: height * .015, left: width * .005),
-                child: TextFormField(
-                  controller: oController.ufController,
-                  onChanged: (newUF) {
-                    oController.uf = newUF;
-                  },
-                  decoration: inputDecoration('UF'),
-                  validator: (text) {
-                    if (text.isEmpty) return "O campo UF, está vazio";
-                  },
+              Flexible(
+                flex: 3,
+                child: Container(
+                  height: height * .06,
+                  width: width * .12,
+                  margin:
+                      EdgeInsets.only(top: height * .015, left: width * .005),
+                  child: TextFormField(
+                    controller: controller.ufController,
+                    onChanged: (newUF) {
+                      controller.uf = newUF;
+                    },
+                    decoration: inputDecoration('UF*'),
+                    validator: (text) {
+                      if (text.isEmpty) return "O campo UF está vazio";
+                    },
+                  ),
                 ),
               )
             ],
           ),
           Row(
             children: [
-              Container(
-                height: height * .06,
-                width: width * .238,
-                margin: EdgeInsets.only(top: height * .015, left: width * .02),
-                child: TextFormField(
-                  controller: oController.tel1Controller,
-                  onChanged: (newTel1) {
-                    oController.telefone1 = newTel1;
-                  },
-                  decoration: inputDecoration('Telefone 1'),
-                  validator: (text) {
-                    if (text.isEmpty) return "O campo Telefone 1, está vazio";
-                  },
+              Flexible(
+                flex: 5,
+                child: Container(
+                  height: height * .06,
+                  width: width * .238,
+                  margin:
+                      EdgeInsets.only(top: height * .015, left: width * .02),
+                  child: TextFormField(
+                    controller: controller.tel1Controller,
+                    onChanged: (newTel1) {
+                      controller.telefone1 = newTel1;
+                    },
+                    decoration: inputDecoration('Telefone 1*'),
+                    validator: (text) {
+                      if (text.isEmpty) return "O campo Telefone 1 está vazio";
+                    },
+                  ),
                 ),
               ),
-              Container(
-                height: height * .06,
-                width: width * .238,
-                margin: EdgeInsets.only(top: height * .015, left: width * .005),
-                child: TextFormField(
-                  controller: oController.tel2Controller,
-                  onChanged: (newTel2) {
-                    oController.telefone2 = newTel2;
-                  },
-                  decoration: inputDecoration('Telefone 2'),
-                  validator: (text) {
-                    if (text.isEmpty) return "O campo Telefone 2, está vazio";
-                  },
+              Flexible(
+                flex: 5,
+                child: Container(
+                  height: height * .06,
+                  width: width * .238,
+                  margin:
+                      EdgeInsets.only(top: height * .015, left: width * .005),
+                  child: TextFormField(
+                    controller: controller.tel2Controller,
+                    onChanged: (newTel2) {
+                      controller.telefone2 = newTel2;
+                    },
+                    decoration: inputDecoration('Telefone 2'),
+                  ),
                 ),
               ),
             ],
@@ -169,13 +182,13 @@ class _FormsComplementoState
             margin: EdgeInsets.only(
                 top: height * .015, left: width * .02, right: width * .02),
             child: TextFormField(
-              controller: oController.emailController,
+              controller: controller.emailController,
               onChanged: (newEmail) {
-                oController.email = newEmail;
+                controller.email = newEmail;
               },
-              decoration: inputDecoration('E-mail'),
+              decoration: inputDecoration('E-mail*'),
               validator: (text) {
-                if (text.isEmpty) return "O campo nome, está vazio";
+                if (text.isEmpty) return "O campo e-mail está vazio";
               },
             ),
           ),
@@ -185,9 +198,9 @@ class _FormsComplementoState
             margin: EdgeInsets.only(
                 top: height * .015, left: width * .02, right: width * .02),
             child: TextFormField(
-              controller: oController.siteController,
+              controller: controller.siteController,
               onChanged: (newSite) {
-                oController.site = newSite;
+                controller.site = newSite;
               },
               decoration: InputDecoration(
                 contentPadding:
@@ -201,9 +214,6 @@ class _FormsComplementoState
                   ),
                 ),
               ),
-              validator: (text) {
-                if (text.isEmpty) return "O campo nome, está vazio";
-              },
             ),
           )
         ]));

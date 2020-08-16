@@ -1,12 +1,9 @@
 import 'package:orcamento_mestre/app/modules/dadosEmpresa/dadosEmpresa_page.dart';
-import 'empresa_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class DadosEmpresaModule extends ChildModule {
   @override
-  List<Bind> get binds => [
-        Bind((i) => EmpresaController()),
-      ];
+  List<Bind> get binds => [];
 
   @override
   List<Router> get routers => [

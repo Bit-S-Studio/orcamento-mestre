@@ -9,6 +9,21 @@ part of 'servicos_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$ServicosController on _ServicosControllerBase, Store {
+  final _$servicoAtom = Atom(name: '_ServicosControllerBase.servico');
+
+  @override
+  String get servico {
+    _$servicoAtom.reportRead();
+    return super.servico;
+  }
+
+  @override
+  set servico(String value) {
+    _$servicoAtom.reportWrite(value, super.servico, () {
+      super.servico = value;
+    });
+  }
+
   final _$listServicosAtom = Atom(name: '_ServicosControllerBase.listServicos');
 
   @override
@@ -59,6 +74,7 @@ mixin _$ServicosController on _ServicosControllerBase, Store {
   @override
   String toString() {
     return '''
+servico: ${servico},
 listServicos: ${listServicos},
 listServicosE: ${listServicosE}
     ''';

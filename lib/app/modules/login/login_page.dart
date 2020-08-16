@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:orcamento_mestre/app/utils/dados_controller.dart';
 import 'package:orcamento_mestre/app/utils/theme.dart';
 import 'package:orcamento_mestre/app/utils/users/user_controller.dart';
 import 'package:provider/provider.dart';
@@ -206,6 +207,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     final userController = Provider.of<UserController>(context);
+    final dadosController = Provider.of<DadosController>(context);
     return Observer(builder: (_) {
       return Container(
         decoration: BoxDecoration(
@@ -224,6 +226,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                 ? () async {
                     var user = await controller.logar(
                         controller.email, controller.senha, context);
+                    dadosController.uid = user.uid;
                     await userController.getUser(user.uid);
                     print(userController.imagem);
                     Modular.to.pushReplacementNamed('/home');

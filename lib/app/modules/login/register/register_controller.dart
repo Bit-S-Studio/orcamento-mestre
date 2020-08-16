@@ -136,15 +136,13 @@ abstract class _RegisterControllerBase with Store {
   @action
   Future<FirebaseUser> register(String nome, String email, String senha,
       String telefone, String imagem) async {
-    print(imagem);
     try {
       user = (await FirebaseAuth.instance
               .createUserWithEmailAndPassword(email: email, password: senha))
           .user;
-
       Fluttertoast.showToast(msg: 'Registrado com sucesso');
       setUser(email, nome, user.uid, telefone, imagem);
-      Modular.to.pushNamed('/login/register/pos');
+      Modular.to.pushNamed('/pos');
     } catch (e) {
       Fluttertoast.showToast(
           msg: 'Email ou senha inválidos', backgroundColor: Colors.blue);

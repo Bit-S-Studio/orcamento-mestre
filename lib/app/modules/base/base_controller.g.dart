@@ -24,6 +24,29 @@ mixin _$BaseController on _BaseControllerBase, Store {
     });
   }
 
+  final _$nomePageAtom = Atom(name: '_BaseControllerBase.nomePage');
+
+  @override
+  String get nomePage {
+    _$nomePageAtom.reportRead();
+    return super.nomePage;
+  }
+
+  @override
+  set nomePage(String value) {
+    _$nomePageAtom.reportWrite(value, super.nomePage, () {
+      super.nomePage = value;
+    });
+  }
+
+  final _$getNomePageAsyncAction =
+      AsyncAction('_BaseControllerBase.getNomePage');
+
+  @override
+  Future<String> getNomePage(int index) {
+    return _$getNomePageAsyncAction.run(() => super.getNomePage(index));
+  }
+
   final _$_BaseControllerBaseActionController =
       ActionController(name: '_BaseControllerBase');
 
@@ -41,7 +64,8 @@ mixin _$BaseController on _BaseControllerBase, Store {
   @override
   String toString() {
     return '''
-currentIndex: ${currentIndex}
+currentIndex: ${currentIndex},
+nomePage: ${nomePage}
     ''';
   }
 }

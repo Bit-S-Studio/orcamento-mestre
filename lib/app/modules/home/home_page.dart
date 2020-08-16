@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
+import 'package:orcamento_mestre/app/utils/dados_controller.dart';
 import 'package:orcamento_mestre/app/utils/users/user_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -148,10 +149,9 @@ class _HomePageState extends State<HomePage> {
         ),
         Padding(
           padding: EdgeInsets.only(
-            top: height *.05,
-            left: width *.02,
-            right: width *.02,
-
+            top: height * .05,
+            left: width * .02,
+            right: width * .02,
           ),
           child: Container(
             height: height * 0.6,
@@ -185,6 +185,7 @@ class _HomePageState extends State<HomePage> {
   Widget buttons(String texto, String rota, IconData icon) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
+    final dadosController = Provider.of<DadosController>(context);
     return Center(
       child: Stack(
         children: [
@@ -196,6 +197,7 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.all(Radius.circular(12))),
                 child: MaterialButton(
                   onPressed: () async {
+                    dadosController.getDados(dadosController.uid);
                     Modular.to.pushNamed(rota);
                   },
                   child: Container(
@@ -232,8 +234,7 @@ class _HomePageState extends State<HomePage> {
                           Padding(
                             padding: const EdgeInsets.only(right: 8.0),
                             child: Icon(Icons.arrow_forward_ios,
-                                size: 16,
-                                color: Colors.black),
+                                size: 16, color: Colors.black),
                           )
                         ]),
                   ),

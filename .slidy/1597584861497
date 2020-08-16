@@ -1,0 +1,2 @@
+lib/app/modules/login/register/dados_controller.dart
+test/app/modules/login/register/dados_controller_test.dart

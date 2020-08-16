@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:orcamento_mestre/app/modules/login/register/register_controller.dart';
+import 'package:orcamento_mestre/app/utils/dados_controller.dart';
+import 'package:orcamento_mestre/app/utils/users/user_controller.dart';
 import 'package:provider/provider.dart';
 
 class PosRegister extends StatefulWidget {
@@ -11,14 +13,30 @@ class PosRegister extends StatefulWidget {
 class _PosRegisterState extends State<PosRegister> {
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.grey[900],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Modular.to.pushNamedAndRemoveUntil(
+              '/home', (Route<dynamic> route) => false);
+        },
+        child: Text(
+          'Pular',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+          ),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            SizedBox(height: height * 0.02),
             Text(
               'E ai Mestre! Quer faturar uma grana? Então completa seu cadastro pra poder receber solicitações de orçamento',
               style: TextStyle(
@@ -27,7 +45,7 @@ class _PosRegisterState extends State<PosRegister> {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 48),
+            SizedBox(height: height * 0.04),
             Text(
               'Pra começar, diz ai, você é:',
               style: TextStyle(
@@ -36,30 +54,10 @@ class _PosRegisterState extends State<PosRegister> {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 24),
+            SizedBox(height: height * 0.04),
             button('Empresa'),
-            SizedBox(height: 24),
+            SizedBox(height: height * 0.04),
             button('Freelancer'),
-            SizedBox(height: 200),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: FlatButton(
-                  onPressed: () {
-                    Modular.to.pushNamedAndRemoveUntil(
-                        '/home', (Route<dynamic> route) => false);
-                  },
-                  child: Text(
-                    'Pular >>',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-              ),
-            )
           ],
         ),
       ),
@@ -67,7 +65,8 @@ class _PosRegisterState extends State<PosRegister> {
   }
 
   Widget button(String nome) {
-    final controller = Provider.of<RegisterController>(context);
+    final dadosController = Provider.of<DadosController>(context);
+    final userController = Provider.of<UserController>(context);
     return Center(
       child: Stack(
         children: [
@@ -78,7 +77,9 @@ class _PosRegisterState extends State<PosRegister> {
                 color: Colors.white),
             child: MaterialButton(
               onPressed: () async {
-                controller.tipo = nome;
+                dadosController.tipo = nome;
+                dadosController.getUser(dadosController.uid);
+                print(dadosController.uid);
                 Modular.to.pushNamed('/dados');
               },
               highlightColor: Colors.transparent,

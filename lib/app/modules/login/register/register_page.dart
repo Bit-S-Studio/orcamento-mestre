@@ -6,6 +6,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
+import 'package:orcamento_mestre/app/utils/dados_controller.dart';
 import 'package:orcamento_mestre/app/utils/theme.dart';
 import 'package:provider/provider.dart';
 import 'register_controller.dart';
@@ -233,14 +234,21 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget button() {
     final controller = Provider.of<RegisterController>(context);
+    final dadosController = Provider.of<DadosController>(context);
     return Observer(builder: (_) {
       return Container(
         decoration: buttonDecoration,
         child: MaterialButton(
           onPressed: controller.isValid
               ? () async {
-                  await controller.register(controller.nome, controller.email,
-                      controller.senha, controller.telefone, controller.imgUrl);
+                  var user = await controller.register(
+                      controller.nome,
+                      controller.email,
+                      controller.senha,
+                      controller.telefone,
+                      controller.imgUrl);
+                  dadosController.uid = user.uid;
+                  print(dadosController.uid = user.uid);
                   Modular.to.pushNamed('/pos');
                 }
               : () {

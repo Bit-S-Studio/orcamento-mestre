@@ -2,13 +2,11 @@ import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:orcamento_mestre/app/modules/dadosEmpresa/dadosEmpresa_page.dart';
 import 'package:orcamento_mestre/app/modules/dadosFreelancer/dadosFreelancer_page.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
-import 'package:orcamento_mestre/app/utils/theme.dart';
+import 'package:orcamento_mestre/app/utils/dados_controller.dart';
 import 'package:provider/provider.dart';
-import 'tipo_controller.dart';
 
 class TipoPage extends StatefulWidget {
   final String title;
@@ -19,61 +17,7 @@ class TipoPage extends StatefulWidget {
   _TipoPageState createState() => _TipoPageState();
 }
 
-class _TipoPageState extends ModularState<TipoPage, TipoController> {
-  MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
-    keywords: <String>['cursos', 'beautiful apps'],
-    contentUrl: 'https://flutter.io',
-    childDirected: false,
-    //testDevices: <String>[],
-  );
-
-  BannerAd myBanner;
-
-  void startBanner() {
-    myBanner = BannerAd(
-      adUnitId: BannerAd.testAdUnitId,
-      size: AdSize.smartBanner,
-      targetingInfo: targetingInfo,
-      listener: (MobileAdEvent event) {
-        if (event == MobileAdEvent.opened) {
-          // MobileAdEvent.opened
-          // MobileAdEvent.clicked
-          // MobileAdEvent.closed
-          // MobileAdEvent.failedToLoad
-          // MobileAdEvent.impression
-          // MobileAdEvent.leftApplication
-        }
-        print("BannerAd event is $event");
-      },
-    );
-  }
-
-  void displayBanner() {
-    myBanner
-      ..load()
-      ..show(
-        anchorOffset: 95.0,
-        anchorType: AnchorType.top,
-      );
-  }
-
-  @override
-  void dispose() {
-    myBanner?.dispose();
-    myBanner?.dispose();
-    super.dispose();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    FirebaseAdMob.instance
-        .initialize(appId: "ca-app-pub-3740593238666941~2885272429");
-
-    startBanner();
-    displayBanner();
-  }
-
+class _TipoPageState extends State<TipoPage> {
   //use 'controller' variable to access controller
 
   @override
@@ -81,46 +25,31 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.grey[900],
-      appBar: AppBar(
-        elevation: 0.0,
         backgroundColor: Colors.transparent,
-        title: Text(
-          widget.title,
-          style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 23,
-              color: Colors.blue[900]),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              height: height *.1,
-              width: width,
-              margin: EdgeInsets.only(
-                top: height *.12
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                height: height * .1,
+                width: width,
+                child: widDropDown(),
               ),
-              child: widDropDown(),
-            ),
-            Container(
-              height: height *.58,
-              width: width,
-              child: callFreeEmpresa(),
-            )
-          ],
-        ),
-      )
-    );
+              Container(
+                height: height * .58,
+                width: width,
+                child: callFreeEmpresa(),
+              )
+            ],
+          ),
+        ));
   }
 
   Widget dropDown2() {
-    final oController = Provider.of<OrcamentoController>(context);
-    oController.tipo2 = 'Empresa';
+    final controller = Provider.of<DadosController>(context);
+    controller.tipo = 'Empresa';
     return Observer(builder: (_) {
       return DropdownButton<String>(
-        value: oController.tipo2,
+        value: controller.tipo,
         icon: Icon(
           Icons.arrow_downward,
           color: Colors.white,
@@ -130,10 +59,10 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
         elevation: 16,
         style: TextStyle(color: Colors.deepPurple),
         onChanged: (String newValue) {
-          oController.tipo2 = newValue;
+          controller.tipo = newValue;
         },
         items:
-            controller.listTipos2.map<DropdownMenuItem<String>>((String value) {
+            controller.listTipos.map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(
             value: value,
             child: Text(
@@ -155,11 +84,7 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
     var width = MediaQuery.of(context).size.height;
     return Container(
       margin: EdgeInsets.only(
-          top: height * .01,
-          bottom: height * .01,
-          left: width *.015,
-          right: width *.015
-      ),
+          bottom: height * .01, left: width * .015, right: width * .015),
       decoration: BoxDecoration(
         color: Colors.blue[900],
         borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -169,8 +94,7 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
           Container(
             height: height * .023,
             width: width * .07,
-            margin: EdgeInsets.only(
-                left: width * .025, right: width * .015),
+            margin: EdgeInsets.only(left: width * .025, right: width * .015),
             child: Text(
               'Eu sou:',
               style: TextStyle(color: Colors.white),
@@ -186,18 +110,14 @@ class _TipoPageState extends ModularState<TipoPage, TipoController> {
   }
 
   Widget callFreeEmpresa() {
-    final oController = Provider.of<OrcamentoController>(context);
+    final controller = Provider.of<DadosController>(context);
     var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.height;
-    return Observer(builder: (_){
+    return Observer(builder: (_) {
       return Container(
-          height: height *5,
-          child: (oController.tipo2 == 'Empresa')
+          height: height * 5,
+          child: (controller.tipo == 'Empresa')
               ? DadosEmpresaPage()
-              : DadosFreelancerPage()
-
-      );
+              : DadosFreelancerPage());
     });
   }
-
 }

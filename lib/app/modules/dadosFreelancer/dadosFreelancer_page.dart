@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:orcamento_mestre/app/modules/dadosFreelancer/formsComplemento.dart';
-import 'package:orcamento_mestre/app/modules/dadosFreelancer/freelancer_controller.dart';
+import 'package:orcamento_mestre/app/utils/dados_controller.dart';
 import 'package:provider/provider.dart';
 import '../orcamento/orcamento_controller.dart';
 
@@ -15,21 +15,20 @@ class DadosFreelancerPage extends StatefulWidget {
   _DadosFreelancerPageState createState() => _DadosFreelancerPageState();
 }
 
-class _DadosFreelancerPageState
-    extends ModularState<DadosFreelancerPage, FreelancerController> {
+class _DadosFreelancerPageState extends State<DadosFreelancerPage> {
   //use 'controller' variable to access controller
 
   @override
   Widget build(BuildContext context) {
-    final oController = Provider.of<OrcamentoController>(context);
+    final controller = Provider.of<DadosController>(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Scaffold(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
           physics: ClampingScrollPhysics(),
           child: Container(
-            margin: EdgeInsets.all(16),
+            margin: EdgeInsets.only(top: 16, left: 16, right: 16),
             child: Column(
               children: [
                 Container(
