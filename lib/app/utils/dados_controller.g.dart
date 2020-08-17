@@ -54,21 +54,6 @@ mixin _$DadosController on _DadosControllerBase, Store {
     });
   }
 
-  final _$tipo2Atom = Atom(name: '_DadosControllerBase.tipo2');
-
-  @override
-  String get tipo2 {
-    _$tipo2Atom.reportRead();
-    return super.tipo2;
-  }
-
-  @override
-  set tipo2(String value) {
-    _$tipo2Atom.reportWrite(value, super.tipo2, () {
-      super.tipo2 = value;
-    });
-  }
-
   final _$logoAtom = Atom(name: '_DadosControllerBase.logo');
 
   @override
@@ -127,6 +112,21 @@ mixin _$DadosController on _DadosControllerBase, Store {
   set documento(String value) {
     _$documentoAtom.reportWrite(value, super.documento, () {
       super.documento = value;
+    });
+  }
+
+  final _$docControllerAtom = Atom(name: '_DadosControllerBase.docController');
+
+  @override
+  TextEditingController get docController {
+    _$docControllerAtom.reportRead();
+    return super.docController;
+  }
+
+  @override
+  set docController(TextEditingController value) {
+    _$docControllerAtom.reportWrite(value, super.docController, () {
+      super.docController = value;
     });
   }
 
@@ -583,6 +583,7 @@ mixin _$DadosController on _DadosControllerBase, Store {
       String bairro,
       String cidade,
       String uf,
+      String documento,
       String telefone1,
       String telefone2,
       String email,
@@ -598,6 +599,7 @@ mixin _$DadosController on _DadosControllerBase, Store {
         bairro: bairro,
         cidade: cidade,
         uf: uf,
+        documento: documento,
         telefone1: telefone1,
         telefone2: telefone2,
         email: email,
@@ -642,11 +644,11 @@ mixin _$DadosController on _DadosControllerBase, Store {
 listTipos: ${listTipos},
 listServicos: ${listServicos},
 tipo: ${tipo},
-tipo2: ${tipo2},
 logo: ${logo},
 nome: ${nome},
 nomeController: ${nomeController},
 documento: ${documento},
+docController: ${docController},
 telefone1: ${telefone1},
 tel1Controller: ${tel1Controller},
 telefone2: ${telefone2},

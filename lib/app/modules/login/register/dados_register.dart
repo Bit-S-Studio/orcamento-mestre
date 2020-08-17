@@ -167,19 +167,9 @@ class _DadosRegisterState extends State<DadosRegister> {
             controller.telefone2 = 'vazio';
           } else if (controller.site == null) {
             controller.site = 'vazio';
+          } else if (controller.documento == null) {
+            controller.documento = 'vazio';
           }
-          print(controller.uid);
-          print(controller.imgUrl);
-          print(controller.nome);
-          print(controller.email);
-          print(controller.cep);
-          print(controller.endereco);
-          print(controller.bairro);
-          print(controller.cidade);
-          print(controller.uf);
-          print(controller.telefone1);
-          print(controller.telefone2);
-          print(controller.site);
           await controller.setDados(
               tipo: controller.tipo,
               id: controller.uid,
@@ -191,6 +181,7 @@ class _DadosRegisterState extends State<DadosRegister> {
               bairro: controller.bairro,
               cidade: controller.cidade,
               uf: controller.uf,
+              documento: controller.documento,
               telefone1: controller.telefone1,
               telefone2: controller.telefone2,
               site: controller.site,

@@ -152,6 +152,18 @@ class _FormsComplementoState extends State<FormsComplemento> {
               )
             ],
           ),
+          Container(
+            height: height * .064,
+            width: width,
+            margin: EdgeInsets.only(top: height * .015, left: width * .02),
+            child: TextFormField(
+              controller: controller.docController,
+              onChanged: (newDoc) {
+                controller.documento = newDoc;
+              },
+              decoration: inputDecoration('CNPJ ou CPF'),
+            ),
+          ),
           Row(
             children: [
               Flexible(
