@@ -7,6 +7,7 @@ import 'package:orcamento_mestre/app/modules/dadosProjeto/projeto_controller.dar
 import 'package:orcamento_mestre/app/modules/login/register/register_controller.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
 import 'package:orcamento_mestre/app/modules/pdf/pdf_controller.dart';
+import 'package:orcamento_mestre/app/modules/perfil/perfil_controller.dart';
 import 'package:orcamento_mestre/app/utils/customHasuraConnect.dart';
 import 'package:orcamento_mestre/app/utils/dados_controller.dart';
 import 'package:orcamento_mestre/app/utils/servicos_controller.dart';
@@ -25,6 +26,7 @@ class AppWidget extends StatelessWidget {
         Provider<RegisterController>(create: (_) => RegisterController()),
         Provider<UserController>(create: (_) => UserController()),
         Provider<ServicosController>(create: (_) => ServicosController()),
+        Provider<PerfilController>(create: (_) => PerfilController()),
         Provider<CustomHasuraConnect>(create: (_) => CustomHasuraConnect()),
         Provider<DadosController>(
             create: (_) => DadosController(
