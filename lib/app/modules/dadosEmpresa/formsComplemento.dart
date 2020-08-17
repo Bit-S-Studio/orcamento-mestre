@@ -68,7 +68,7 @@ class _FormsComplementoState extends State<FormsComplemento> {
                   child: TextFormField(
                     controller: controller.numController,
                     onChanged: (newNum) {
-                      controller.numero1 = newNum;
+                      controller.numero = newNum;
                     },
                     decoration: inputDecoration('Numero*'),
                     validator: (text) {

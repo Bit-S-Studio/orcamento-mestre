@@ -285,13 +285,11 @@ abstract class _DadosControllerBase with Store {
 
   @action
   Future<dynamic> setServicos(String id, ObservableList<String> servicos) {
-    print(servicos[0]);
-
-    String servico1;
-    String servico2;
-    String servico3;
-    String servico4;
-    String servico5;
+    String servico1 = 'vazio';
+    String servico2 = 'vazio';
+    String servico3 = 'vazio';
+    String servico4 = 'vazio';
+    String servico5 = 'vazio';
 
     if (servicos.length == 1) {
       servico1 = servicos[0];
@@ -315,17 +313,12 @@ abstract class _DadosControllerBase with Store {
       servico5 = servicos[4];
     }
 
-    if (servico1 == null) {
-      servico1 = 'vazio';
-    } else if (servico2 == null) {
-      servico2 = 'vazio';
-    } else if (servico3 == null) {
-      servico3 = 'vazio';
-    } else if (servico4 == null) {
-      servico4 = 'vazio';
-    } else if (servico5 == null) {
-      servico5 = 'vazio';
-    }
+    print(id);
+    print(servico1);
+    print(servico2);
+    print(servico3);
+    print(servico4);
+    print(servico5);
 
     setService(id, servico1, servico2, servico3, servico4, servico5);
   }

@@ -143,7 +143,7 @@ class _DadosEmpresaPageState extends State<DadosEmpresaPage> {
                 ),
               ),
               Container(
-                height: height * .7,
+                height: height * .75,
                 width: width,
                 margin: EdgeInsets.only(top: height * .005),
                 decoration: BoxDecoration(

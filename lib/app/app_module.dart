@@ -6,6 +6,7 @@ import 'package:orcamento_mestre/app/modules/pdf/pdf_controller.dart';
 import 'package:orcamento_mestre/app/modules/base/base_controller.dart';
 import 'package:orcamento_mestre/app/modules/layout/layout_controller.dart';
 import 'package:orcamento_mestre/app/modules/budget/budget_controller.dart';
+import 'package:orcamento_mestre/app/modules/perfil/perfil_controller.dart';
 import 'package:orcamento_mestre/app/utils/servicos_controller.dart';
 import 'package:orcamento_mestre/app/utils/users/user_controller.dart';
 import 'app_controller.dart';
@@ -16,6 +17,7 @@ import 'package:orcamento_mestre/app/app_widget.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
+        Bind((i) => PerfilController()),
         Bind((i) => ClientesController()),
         Bind((i) => ServicosController()),
         Bind((i) => ConfigController()),
