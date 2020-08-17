@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:orcamento_mestre/app/modules/dadosFreelancer/formsComplemento.dart';
 import 'package:orcamento_mestre/app/utils/dados_controller.dart';
 import 'package:provider/provider.dart';
-import '../orcamento/orcamento_controller.dart';
 
 class DadosFreelancerPage extends StatefulWidget {
   final String title;
@@ -28,14 +26,14 @@ class _DadosFreelancerPageState extends State<DadosFreelancerPage> {
         body: SingleChildScrollView(
           physics: ClampingScrollPhysics(),
           child: Container(
-            margin: EdgeInsets.only(top: 16, left: 16, right: 16),
+            margin: EdgeInsets.only(top: height *.001,),
             child: Column(
               children: [
                 Container(
-                  height: height * .74,
+                  height: height * .9,
                   width: width,
                   margin: EdgeInsets.only(
-                    top: height * .02,
+                    top: height * .01,
                   ),
                   decoration: BoxDecoration(
                       color: Colors.blue[900],

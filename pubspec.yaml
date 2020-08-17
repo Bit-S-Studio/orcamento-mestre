@@ -52,6 +52,7 @@ dependencies:
   firebase_core: ^0.4.5
   hasura_connect: ^1.2.2+1
   firebase_admob: ^0.9.3+4
+  flutter_screenutil: ^0.5.3
   dio: ^3.0.9
   flutter_mobx: ^1.1.0+1
   mobx: ^1.2.1+1

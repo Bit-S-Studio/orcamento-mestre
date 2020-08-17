@@ -68,86 +68,88 @@ class _BasePageState extends State<BasePage> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     final controller = Provider.of<BaseController>(context);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        SizedBox(
-          height: height * 0.08,
-        ),
-        SizedBox(
-          height: height * 0.02,
-          child: FractionallySizedBox(
-            widthFactor: 1,
-            alignment: Alignment.topRight,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                IconButton(
-                    icon: Icon(
-                      LineAwesomeIcons.bell_o,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {}),
-                IconButton(
-                    icon: Icon(
-                      LineAwesomeIcons.comments_o,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {}),
-                IconButton(
-                    icon: Icon(
-                      LineAwesomeIcons.cog,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {}),
-                SizedBox(
-                  width: width * 0.04,
-                )
-              ],
-            ),
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          SizedBox(
+            height: height * 0.08,
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 24.0),
-          child: SizedBox(
-            height: height * 0.1,
+          SizedBox(
+            height: height * 0.02,
             child: FractionallySizedBox(
-              alignment: Alignment.topLeft,
-              widthFactor: 0.5,
-              child: Observer(builder: (_) {
-                return Text(
-                  controller.nomePage,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 22,
-                  ),
-                  textAlign: TextAlign.left,
-                );
-              }),
+              widthFactor: 1,
+              alignment: Alignment.topRight,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                      icon: Icon(
+                        LineAwesomeIcons.bell_o,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {}),
+                  IconButton(
+                      icon: Icon(
+                        LineAwesomeIcons.comments_o,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {}),
+                  IconButton(
+                      icon: Icon(
+                        LineAwesomeIcons.cog,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {}),
+                  SizedBox(
+                    width: width * 0.04,
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(
-            top: height * .01,
-            left: width * .01,
-            right: width * .01,
-          ),
-          child: Container(
-            height: height * 0.66,
-            width: width,
-            margin: EdgeInsets.only(left: 24, right: 24),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40), color: Colors.white),
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Observer(builder: (_) {
-                return widgetOptions.elementAt(controller.currentIndex);
-              }),
+          Padding(
+            padding: const EdgeInsets.only(left: 24.0),
+            child: SizedBox(
+              height: height * 0.1,
+              child: FractionallySizedBox(
+                alignment: Alignment.topLeft,
+                widthFactor: 0.5,
+                child: Observer(builder: (_) {
+                  return Text(
+                    controller.nomePage,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 22,
+                    ),
+                    textAlign: TextAlign.left,
+                  );
+                }),
+              ),
             ),
           ),
-        )
-      ],
+          Padding(
+            padding: EdgeInsets.only(
+              top: height * .01,
+              left: width * .01,
+              right: width * .01,
+            ),
+            child: Container(
+              height: height * 0.66,
+              width: width,
+              margin: EdgeInsets.only(left: 18, right: 18),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(24), color: Colors.white),
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Observer(builder: (_) {
+                  return widgetOptions.elementAt(controller.currentIndex);
+                }),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 

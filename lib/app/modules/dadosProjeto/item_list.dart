@@ -39,7 +39,7 @@ class _ItemListState extends State<ItemList> {
     controller.itemHeight = itemheight;
     String format = DateFormat('HH:mm').format(widget.tempo);
     return Container(
-        height: height * 0.175,
+        height: height * 0.18,
         width: width,
         margin: EdgeInsets.only(
             top: height * .015,
@@ -49,6 +49,12 @@ class _ItemListState extends State<ItemList> {
         decoration: BoxDecoration(
           color: Colors.blue[900],
           borderRadius: BorderRadius.all(Radius.circular(12)),
+            boxShadow: [
+              new BoxShadow(
+                  color: Colors.black.withAlpha(70),
+                  offset: const Offset(3.0, 10.0),
+                  blurRadius: 15.0)
+            ]
         ),
         child: Container(
           height: height,
@@ -59,9 +65,10 @@ class _ItemListState extends State<ItemList> {
               Row(
                 children: [
                   Flexible(
-                    flex: 7,
+                    flex: 9,
                     child: Container(
                       height: height * .036,
+                      width: width *5,
                       margin: EdgeInsets.only(
                           top: height * .005,
                           bottom: height * .005,
@@ -78,8 +85,9 @@ class _ItemListState extends State<ItemList> {
                     width: width * .001,
                   ),
                   Flexible(
-                    flex: 3,
+                    flex: 5,
                     child: Container(
+                      height: height *.03,
                         margin: EdgeInsets.only(
                             top: height * .005,
                             bottom: height * .005,
@@ -102,12 +110,14 @@ class _ItemListState extends State<ItemList> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Flexible(
-                      flex: 7,
+                      flex: 10,
                       child: Container(
+                        height: height * .03,
+                        width: width *15,
                         margin: EdgeInsets.only(
                             top: height * .005,
                             bottom: height * .005,
-                            right: width * .25),
+                            right: width * .05),
                         child: Text(
                           'Tempo de execução',
                           style: TextStyle(color: Colors.white, fontSize: 14),
@@ -153,7 +163,10 @@ class _ItemListState extends State<ItemList> {
                   Container(
                     width: width,
                     margin:
-                        EdgeInsets.only(top: height * .001, left: width * .44),
+                        EdgeInsets.only(
+                            top: height * .001,
+                            left: width * .33
+                        ),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[

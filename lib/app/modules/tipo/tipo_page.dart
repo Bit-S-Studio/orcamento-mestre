@@ -2,6 +2,7 @@ import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:orcamento_mestre/app/modules/dadosEmpresa/dadosEmpresa_page.dart';
 import 'package:orcamento_mestre/app/modules/dadosFreelancer/dadosFreelancer_page.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
@@ -22,6 +23,7 @@ class _TipoPageState extends State<TipoPage> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.getInstance()..init(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -57,7 +59,10 @@ class _TipoPageState extends State<TipoPage> {
         dropdownColor: Colors.blue[900],
         iconSize: 24,
         elevation: 16,
-        style: TextStyle(color: Colors.deepPurple),
+        style: TextStyle(
+            color: Colors.deepPurple,
+          fontSize: ScreenUtil.instance.setSp(50),
+        ),
         onChanged: (String newValue) {
           controller.tipo = newValue;
         },
@@ -69,7 +74,7 @@ class _TipoPageState extends State<TipoPage> {
               value,
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: 18,
+                  fontSize: ScreenUtil.instance.setSp(60),
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
             ),
@@ -83,8 +88,10 @@ class _TipoPageState extends State<TipoPage> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Container(
+      width: width,
       margin: EdgeInsets.only(
-          bottom: height * .01, left: width * .015, right: width * .015),
+          bottom: height * .01,
+          ),
       decoration: BoxDecoration(
         color: Colors.blue[900],
         borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -93,7 +100,7 @@ class _TipoPageState extends State<TipoPage> {
         children: [
           Container(
             height: height * .023,
-            width: width * .07,
+            width: width * .09,
             margin: EdgeInsets.only(left: width * .025, right: width * .015),
             child: Text(
               'Eu sou:',
@@ -102,7 +109,7 @@ class _TipoPageState extends State<TipoPage> {
           ),
           Container(
               height: height * .08,
-              width: width * .18,
+              width: width * .25,
               child: Center(child: dropDown2())),
         ],
       ),

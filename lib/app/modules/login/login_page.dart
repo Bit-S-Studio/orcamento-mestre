@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:orcamento_mestre/app/utils/dados_controller.dart';
 import 'package:orcamento_mestre/app/utils/theme.dart';
@@ -23,6 +24,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.getInstance()..init(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -32,7 +34,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
             children: [
               logo(),
               Container(
-                height: height * .29,
+                height: height * .35,
                 child: Stack(
                   children: [
                     forms(),
@@ -54,7 +56,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
     return Container(
       height: height * .2,
       width: width * .2,
-      margin: EdgeInsets.only(top: width * .2),
+      margin: EdgeInsets.only(top: width * .13),
       child: Image.asset(
         'assets/logo_orcamento_mestre.png',
         scale: 1.0,
@@ -85,7 +87,10 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
         ),
         hintText: hint,
         suffixIcon: iconButton,
-        hintStyle: TextStyle(fontFamily: "WorkSansSemiBold", fontSize: 16.0),
+        hintStyle: TextStyle(
+            fontFamily: "WorkSansSemiBold",
+            fontSize: ScreenUtil.instance.setSp(50),
+        ),
       ),
     );
   }
@@ -150,7 +155,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
       child: Column(
         children: [
           SizedBox(
-            height: 140,
+            height: 136,
           ),
           Observer(builder: (_) {
             return Stack(

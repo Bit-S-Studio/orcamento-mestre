@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:orcamento_mestre/app/utils/dados_controller.dart';
 import 'package:orcamento_mestre/app/utils/users/user_controller.dart';
@@ -18,6 +19,9 @@ class _HomePageState extends State<HomePage> {
   //use 'controller' variable to access controller
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.height;
+    ScreenUtil.getInstance()..init(context);
     return Scaffold(
       backgroundColor: Colors.blue[900],
       body: Stack(
@@ -62,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                 builder: (context, snapshot) {
                   return CircleAvatar(
                     backgroundColor: Colors.white,
-                    radius: 60,
+                    radius: 50,
                     child: CircleAvatar(
                       backgroundImage:
                           NetworkImage(controller.imagem.toString()),
@@ -130,7 +134,9 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Text(
                   'Seja Bem-vindo!',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: ScreenUtil.instance.setSp(50),),
                   textAlign: TextAlign.left,
                 ),
                 Observer(builder: (_) {
@@ -138,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                     'Mestre ${controller.nome}',
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 24,
+                        fontSize: ScreenUtil.instance.setSp(50),
                         fontWeight: FontWeight.bold),
                     textAlign: TextAlign.left,
                   );
@@ -156,12 +162,15 @@ class _HomePageState extends State<HomePage> {
           child: Container(
             height: height * 0.6,
             width: width,
-            margin: EdgeInsets.all(24),
+            margin: EdgeInsets.all(12),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40),
+                borderRadius: BorderRadius.circular(12),
                 color: Colors.grey[100]),
             child: Padding(
-              padding: const EdgeInsets.all(22.0),
+              padding: EdgeInsets.only(
+                top: height *.005,
+
+              ),
               child: Column(
                 children: [
                   buttons('Solicitar orçamento', '/solicitar',
@@ -190,9 +199,11 @@ class _HomePageState extends State<HomePage> {
       child: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 12.0, bottom: 12),
+            padding: EdgeInsets.only(
+                top: height *.015,
+                bottom: height *.01,
+            ),
             child: Container(
-                width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(12))),
                 child: MaterialButton(

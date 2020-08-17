@@ -32,7 +32,9 @@ class _DadosEmpresaPageState extends State<DadosEmpresaPage> {
       backgroundColor: Colors.transparent,
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.all(16),
+          margin: EdgeInsets.only(
+            top: height *.001,
+          ),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
@@ -40,7 +42,7 @@ class _DadosEmpresaPageState extends State<DadosEmpresaPage> {
                 height: height * .20,
                 width: width,
                 margin: EdgeInsets.only(
-                  top: height * .03,
+                  top: height * .01,
                 ),
                 decoration: BoxDecoration(
                     color: Colors.blue[900],
@@ -78,7 +80,7 @@ class _DadosEmpresaPageState extends State<DadosEmpresaPage> {
                                     : Image.file(
                                         File(controller.imageFile.path))
                                 : Container(
-                                    height: height * .15,
+                                    height: height * .125,
                                     decoration: BoxDecoration(
                                         color: Colors.grey[600],
                                         borderRadius: BorderRadius.all(

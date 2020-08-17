@@ -15,7 +15,7 @@ class _FormsComplementoState extends State<FormsComplemento> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Container(
-        height: height * .64,
+        height: height * .8,
         width: width,
         margin: EdgeInsets.only(top: height * .005),
         decoration: boxContainer,
@@ -24,7 +24,8 @@ class _FormsComplementoState extends State<FormsComplemento> {
             height: height * .064,
             width: width,
             margin: EdgeInsets.only(
-                top: height * .005, left: width * .02, right: width * .02),
+              top: height * .015,
+            ),
             child: TextFormField(
               controller: controller.nomeController,
               onChanged: (newNome) {
@@ -40,7 +41,8 @@ class _FormsComplementoState extends State<FormsComplemento> {
             height: height * .064,
             width: width,
             margin: EdgeInsets.only(
-                top: height * .005, left: width * .02, right: width * .02),
+              top: height * .015,
+            ),
             child: TextFormField(
               controller: controller.cepController,
               onChanged: (newCep) {
@@ -58,10 +60,8 @@ class _FormsComplementoState extends State<FormsComplemento> {
                 flex: 7,
                 child: Container(
                   height: height * .06,
-                  margin: EdgeInsets.only(
-                      top: height * .015,
-                      left: width * .02,
-                      right: width * .005),
+                  margin:
+                      EdgeInsets.only(top: height * .015, right: width * .005),
                   child: TextFormField(
                     controller: controller.enderecoController,
                     onChanged: (newEndereco) {
@@ -78,14 +78,15 @@ class _FormsComplementoState extends State<FormsComplemento> {
                 flex: 3,
                 child: Container(
                   height: height * .06,
-                  margin:
-                      EdgeInsets.only(top: height * .015, right: width * .02),
+                  margin: EdgeInsets.only(
+                    top: height * .015,
+                  ),
                   child: TextFormField(
                     controller: controller.numController,
                     onChanged: (newNum) {
                       controller.numero = newNum;
                     },
-                    decoration: inputDecoration('Numero*'),
+                    decoration: inputDecoration('N°*'),
                     validator: (text) {
                       if (text.isEmpty) return "O campo numero está vazio";
                     },
@@ -98,7 +99,8 @@ class _FormsComplementoState extends State<FormsComplemento> {
             height: height * .06,
             width: width,
             margin: EdgeInsets.only(
-                top: height * .015, left: width * .02, right: width * .02),
+                top: height * .015,
+            ),
             child: TextFormField(
               controller: controller.bairroController,
               onChanged: (newBairro) {
@@ -118,7 +120,9 @@ class _FormsComplementoState extends State<FormsComplemento> {
                   height: height * .06,
                   width: width * .355,
                   margin:
-                      EdgeInsets.only(top: height * .015, left: width * .02),
+                      EdgeInsets.only(
+                          top: height * .015,
+                      ),
                   child: TextFormField(
                     controller: controller.cidadeController,
                     onChanged: (newCidade) {
@@ -135,7 +139,7 @@ class _FormsComplementoState extends State<FormsComplemento> {
                 flex: 3,
                 child: Container(
                   height: height * .06,
-                  width: width * .12,
+                  width: width,
                   margin:
                       EdgeInsets.only(top: height * .015, left: width * .005),
                   child: TextFormField(
@@ -155,7 +159,9 @@ class _FormsComplementoState extends State<FormsComplemento> {
           Container(
             height: height * .064,
             width: width,
-            margin: EdgeInsets.only(top: height * .015, left: width * .02),
+            margin: EdgeInsets.only(
+                top: height * .015,
+            ),
             child: TextFormField(
               controller: controller.docController,
               onChanged: (newDoc) {
@@ -170,9 +176,11 @@ class _FormsComplementoState extends State<FormsComplemento> {
                 flex: 5,
                 child: Container(
                   height: height * .06,
-                  width: width * .238,
+                  width: width,
                   margin:
-                      EdgeInsets.only(top: height * .015, left: width * .02),
+                      EdgeInsets.only(
+                          top: height * .015,
+                      ),
                   child: TextFormField(
                     controller: controller.tel1Controller,
                     onChanged: (newTel1) {
@@ -189,7 +197,7 @@ class _FormsComplementoState extends State<FormsComplemento> {
                 flex: 5,
                 child: Container(
                   height: height * .06,
-                  width: width * .238,
+                  width: width,
                   margin:
                       EdgeInsets.only(top: height * .015, left: width * .005),
                   child: TextFormField(
@@ -207,7 +215,8 @@ class _FormsComplementoState extends State<FormsComplemento> {
             height: height * .06,
             width: width,
             margin: EdgeInsets.only(
-                top: height * .015, left: width * .02, right: width * .02),
+                top: height * .015,
+            ),
             child: TextFormField(
               controller: controller.emailController,
               onChanged: (newEmail) {
@@ -223,7 +232,8 @@ class _FormsComplementoState extends State<FormsComplemento> {
             height: height * .06,
             width: width,
             margin: EdgeInsets.only(
-                top: height * .015, left: width * .02, right: width * .02),
+                top: height * .015,
+            ),
             child: TextFormField(
               controller: controller.siteController,
               onChanged: (newSite) {
