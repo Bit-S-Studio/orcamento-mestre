@@ -214,6 +214,7 @@ abstract class _DadosControllerBase with Store {
     String logo,
     String cep,
     String logradouro,
+    String numero,
     String bairro,
     String cidade,
     String uf,
@@ -226,8 +227,8 @@ abstract class _DadosControllerBase with Store {
   }) async {
     if (tipo == 'Empresa') {
       var query = r"""
-        mutation setDados($id:String!, $nome:String!, $logo:String!, $cep:String!, $logradouro:String!, $bairro:String!, $cidade:String!, $uf:String!, $telefone1:String!, $documento:String!, $telefone2:String!, $email:String!, $site:String! ) {
-            insert_empresas(objects: {bairro: $bairro, cep: $cep, cidade: $cidade, email: $email, logo: $logo, id: $id, logradouro: $logradouro, nome: $nome, site: $site, telefone1: $telefone1, documento: $documento, telefone2: $telefone2, uf: $uf}) {
+        mutation setDados($id:String!, $nome:String!, $logo:String!, $cep:String!, $logradouro:String!, $numero:String! $bairro:String!, $cidade:String!, $uf:String!, $telefone1:String!, $documento:String!, $telefone2:String!, $email:String!, $site:String! ) {
+            insert_empresas(objects: {bairro: $bairro, cep: $cep, cidade: $cidade, email: $email, logo: $logo, id: $id, logradouro: $logradouro, numero: $numero, nome: $nome, site: $site, telefone1: $telefone1, documento: $documento, telefone2: $telefone2, uf: $uf}) {
               affected_rows
             }
           }
@@ -238,6 +239,7 @@ abstract class _DadosControllerBase with Store {
         "logo": logo,
         "cep": cep,
         "logradouro": logradouro,
+        "numero": numero,
         "bairro": bairro,
         "cidade": cidade,
         "uf": uf,
@@ -255,8 +257,8 @@ abstract class _DadosControllerBase with Store {
       return doc;
     } else {
       var query = r"""
-        mutation setDados($id:String!, $nome:String!, $cep:String!, $logradouro:String!, $bairro:String!, $cidade:String!, $uf:String!, $documento:String!, $telefone1:String!, $telefone2:String!, $email:String!, $site:String! ) {
-            insert_freelancers(objects: {bairro: $bairro, cep: $cep, cidade: $cidade, email: $email, id: $id, logradouro: $logradouro, nome: $nome, site: $site, documento: $documento, telefone1: $telefone1, telefone2: $telefone2, uf: $uf}) {
+        mutation setDados($id:String!, $nome:String!, $cep:String!, $logradouro:String!, $numero:String!, $bairro:String!, $cidade:String!, $uf:String!, $documento:String!, $telefone1:String!, $telefone2:String!, $email:String!, $site:String! ) {
+            insert_freelancers(objects: {bairro: $bairro, cep: $cep, cidade: $cidade, email: $email, id: $id, logradouro: $logradouro, numero: $numero, nome: $nome, site: $site, documento: $documento, telefone1: $telefone1, telefone2: $telefone2, uf: $uf}) {
               affected_rows
             }
           }
@@ -269,6 +271,7 @@ abstract class _DadosControllerBase with Store {
         "bairro": bairro,
         "cidade": cidade,
         "uf": uf,
+        "numero": numero,
         "documento": documento,
         "telefone1": telefone1,
         "telefone2": telefone2,

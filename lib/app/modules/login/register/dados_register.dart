@@ -32,7 +32,7 @@ class _DadosRegisterState extends State<DadosRegister> {
             return Container(
               height: (controller.tipo == 'Empresa')
                   ? (height * 1.04)
-                  : (height * 0.72),
+                  : (height * 0.74),
               width: width,
               child: callFreeEmpresa(),
             );
@@ -163,13 +163,30 @@ class _DadosRegisterState extends State<DadosRegister> {
         onPressed: () async {
           if (controller.imgUrl == null) {
             controller.imgUrl = 'vazio';
-          } else if (controller.telefone2 == null) {
+          }
+          if (controller.telefone2 == null) {
             controller.telefone2 = 'vazio';
-          } else if (controller.site == null) {
+          }
+          if (controller.site == null) {
             controller.site = 'vazio';
-          } else if (controller.documento == null) {
+          }
+          if (controller.documento == null) {
             controller.documento = 'vazio';
           }
+          print(controller.uid);
+          print(controller.imgUrl);
+          print(controller.nome);
+          print(controller.email);
+          print(controller.cep);
+          print(controller.endereco);
+          print(controller.numero);
+          print(controller.bairro);
+          print(controller.cidade);
+          print(controller.uf);
+          print(controller.documento);
+          print(controller.telefone1);
+          print(controller.telefone2);
+          print(controller.site);
           await controller.setDados(
               tipo: controller.tipo,
               id: controller.uid,
@@ -178,6 +195,7 @@ class _DadosRegisterState extends State<DadosRegister> {
               email: controller.email,
               cep: controller.cep,
               logradouro: controller.endereco,
+              numero: controller.numero,
               bairro: controller.bairro,
               cidade: controller.cidade,
               uf: controller.uf,

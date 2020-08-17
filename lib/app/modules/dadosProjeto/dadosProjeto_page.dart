@@ -27,23 +27,15 @@ class _DadosProjetoPageState extends State<DadosProjetoPage> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
-    final oController = Provider.of<OrcamentoController>(context);
     final controller = Provider.of<ProjetoController>(context);
     return Scaffold(
         backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
-          actions: [
-            IconButton(
-                icon: Icon(LineAwesomeIcons.plus_circle),
-                onPressed: () {
-                  showAlertDialog1(context, controller);
-                })
-          ],
-        ),
         body: Observer(builder: (_) {
-          return item();
+          return (controller.listItens.length == 0)
+              ? Center(
+                  child: Text('Adicione os itens do seu projeto'),
+                )
+              : item();
         }));
   }
 
@@ -61,7 +53,7 @@ class _DadosProjetoPageState extends State<DadosProjetoPage> {
                 top: MediaQuery.of(context).size.height * .02,
                 left: MediaQuery.of(context).size.width * .025),
             child: Text(name,
-                style: TextStyle(color: Colors.white, fontSize: 24))),
+                style: TextStyle(color: Colors.black, fontSize: 24))),
       ),
       listBuilder: (BuildContext context, ItemModel g) => ItemList(
           itemModel: g,
@@ -69,19 +61,6 @@ class _DadosProjetoPageState extends State<DadosProjetoPage> {
           categoria: g.categoria,
           valor: g.valor,
           tempo: g.tempo),
-    );
-  }
-
-  showAlertDialog1(BuildContext context, controller) {
-    controller.categoriaController.text = '';
-    controller.itemController.text = '';
-    controller.valorController.text = '';
-    controller.tempoController.text = '';
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AddItem();
-      },
     );
   }
 }

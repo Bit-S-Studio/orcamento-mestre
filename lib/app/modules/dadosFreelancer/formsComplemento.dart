@@ -15,7 +15,7 @@ class _FormsComplementoState extends State<FormsComplemento> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Container(
-        height: height * .6,
+        height: height * .64,
         width: width,
         margin: EdgeInsets.only(top: height * .005),
         decoration: boxContainer,
@@ -83,7 +83,7 @@ class _FormsComplementoState extends State<FormsComplemento> {
                   child: TextFormField(
                     controller: controller.numController,
                     onChanged: (newNum) {
-                      controller.numero1 = newNum;
+                      controller.numero = newNum;
                     },
                     decoration: inputDecoration('Numero*'),
                     validator: (text) {

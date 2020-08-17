@@ -32,7 +32,7 @@ class _DadosFreelancerPageState extends State<DadosFreelancerPage> {
             child: Column(
               children: [
                 Container(
-                  height: height * .68,
+                  height: height * .74,
                   width: width,
                   margin: EdgeInsets.only(
                     top: height * .02,

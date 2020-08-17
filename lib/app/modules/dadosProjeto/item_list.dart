@@ -47,9 +47,9 @@ class _ItemListState extends State<ItemList> {
             left: width * .015,
             right: width * .015),
         decoration: BoxDecoration(
-            color: Colors.blue[900],
-            borderRadius: BorderRadius.all(Radius.circular(12)),
-            ),
+          color: Colors.blue[900],
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+        ),
         child: Container(
           height: height,
           width: width,
@@ -58,81 +58,85 @@ class _ItemListState extends State<ItemList> {
             children: [
               Row(
                 children: [
-                  Container(
-                    height: height *.036,
-                    width: width *.4,
-                    margin: EdgeInsets.only(
-                        top: height *.005,
-                        bottom: height *.005,
-                        right: width *.005
-                    ),
-                    child: Text(
-                      widget.descricao,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20),
+                  Flexible(
+                    flex: 7,
+                    child: Container(
+                      height: height * .036,
+                      margin: EdgeInsets.only(
+                          top: height * .005,
+                          bottom: height * .005,
+                          right: width * .005),
+                      child: Text(
+                        widget.descricao,
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
                     ),
                   ),
                   Container(
                     color: Colors.white,
-                    height: height *.03,
-                    width: width *.001,
+                    height: height * .03,
+                    width: width * .001,
                   ),
-                  Container(
-                    margin: EdgeInsets.only(
-                        top: height *.005,
-                        bottom: height *.005,
-                      left: width *.012
-                    ),
-                    child: Text('R\$ ${widget.valor.toStringAsFixed(2)}',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16),
-                    )
+                  Flexible(
+                    flex: 3,
+                    child: Container(
+                        margin: EdgeInsets.only(
+                            top: height * .005,
+                            bottom: height * .005,
+                            left: width * .012),
+                        child: Text(
+                          'R\$ ${widget.valor.toStringAsFixed(2)}',
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        )),
                   ),
                 ],
               ),
               Container(
                 color: Colors.white,
-                height: height *.001,
+                height: height * .001,
                 width: width,
               ),
               Container(
-                height: height *.05,
+                height: height * .05,
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.only(
-                          top: height *.005,
-                          bottom: height *.005,
-                          right: width *.25
-                      ),
-                      child: Text(
-                        'Tempo de execução',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(
-                          top: height *.005,
-                          bottom: height *.005,
-                      ),
-                      child: Icon(Icons.timer,
-                        color: Colors.white,
+                    Flexible(
+                      flex: 7,
+                      child: Container(
+                        margin: EdgeInsets.only(
+                            top: height * .005,
+                            bottom: height * .005,
+                            right: width * .25),
+                        child: Text(
+                          'Tempo de execução',
+                          style: TextStyle(color: Colors.white, fontSize: 14),
+                        ),
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(
-                          top: height *.005,
-                          bottom: height *.005,
+                    Flexible(
+                      flex: 1,
+                      child: Container(
+                        margin: EdgeInsets.only(
+                          top: height * .005,
+                          bottom: height * .005,
+                        ),
+                        child: Icon(
+                          Icons.timer,
+                          color: Colors.white,
+                        ),
                       ),
-                      child: Text(format,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18
+                    ),
+                    Flexible(
+                      flex: 2,
+                      child: Container(
+                        margin: EdgeInsets.only(
+                          top: height * .005,
+                          bottom: height * .005,
+                        ),
+                        child: Text(
+                          format,
+                          style: TextStyle(color: Colors.white, fontSize: 18),
                         ),
                       ),
                     ),
@@ -141,37 +145,39 @@ class _ItemListState extends State<ItemList> {
               ),
               Container(
                 color: Colors.white,
-                height: height *.001,
+                height: height * .001,
                 width: width,
               ),
               Stack(
                 children: [
                   Container(
                     width: width,
-                    margin: EdgeInsets.only(
-                        top: height *.001,
-                        left: width *.44
-                    ),
+                    margin:
+                        EdgeInsets.only(top: height * .001, left: width * .44),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
                         Container(
-
-                          height: height *.04,
-                          width: width *.045,
+                          height: height * .04,
+                          width: width * .045,
                           child: IconButton(
                               icon: Icon(
                                 Icons.edit,
                                 color: Colors.white,
                               ),
                               onPressed: () {
-                                showAlertDialog1(controller, context, widget.categoria,
-                                    widget.descricao, widget.valor, widget.tempo);
+                                showAlertDialog1(
+                                    controller,
+                                    context,
+                                    widget.categoria,
+                                    widget.descricao,
+                                    widget.valor,
+                                    widget.tempo);
                               }),
                         ),
                         Container(
-                          height: height *.04,
-                          width: width *.045,
+                          height: height * .04,
+                          width: width * .045,
                           child: IconButton(
                               icon: Icon(
                                 Icons.delete_forever,

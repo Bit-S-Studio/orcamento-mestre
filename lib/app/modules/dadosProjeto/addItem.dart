@@ -23,9 +23,7 @@ class _AddItemState extends State<AddItem> {
       elevation: 0.0,
       backgroundColor: Colors.transparent,
       child: Container(
-        height: height *.5,
-          width: width *5,
-          child: dialogContent(context)),
+          height: height * .5, width: width, child: dialogContent(context)),
     );
   }
 
@@ -36,10 +34,10 @@ class _AddItemState extends State<AddItem> {
     return SingleChildScrollView(
       child: Container(
         padding: EdgeInsets.only(
-          top: height *.02,
-          bottom: height *.02,
-          left: width *.02,
-          right: width *.02,
+          top: height * .01,
+          bottom: height * .01,
+          left: width * .01,
+          right: width * .01,
         ),
         margin: EdgeInsets.only(top: Consts.avatarRadius),
         decoration: new BoxDecoration(

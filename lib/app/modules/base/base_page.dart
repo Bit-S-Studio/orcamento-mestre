@@ -1,8 +1,13 @@
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:circle_bottom_navigation/circle_bottom_navigation.dart';
+import 'package:circle_bottom_navigation/widgets/tab_data.dart';
+import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
+import 'package:orcamento_mestre/app/modules/clientes/clientes_page.dart';
+import 'package:orcamento_mestre/app/modules/dadosProjeto/addItem.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/dadosProjeto_module.dart';
+import 'package:orcamento_mestre/app/modules/dadosProjeto/projeto_controller.dart';
 import 'package:orcamento_mestre/app/modules/layout/layout_module.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_module.dart';
 import 'package:orcamento_mestre/app/modules/tipo/tipo_module.dart';
@@ -18,63 +23,9 @@ class BasePage extends StatefulWidget {
 }
 
 class _BasePageState extends State<BasePage> {
-  MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
-    keywords: <String>['cursos', 'beautiful apps'],
-    contentUrl: 'https://flutter.io',
-    childDirected: false,
-    //testDevices: <String>[],
-  );
-
-  BannerAd myBanner;
-
-  void startBanner() {
-    myBanner = BannerAd(
-      adUnitId: BannerAd.testAdUnitId,
-      size: AdSize.smartBanner,
-      targetingInfo: targetingInfo,
-      listener: (MobileAdEvent event) {
-        if (event == MobileAdEvent.opened) {
-          // MobileAdEvent.opened
-          // MobileAdEvent.clicked
-          // MobileAdEvent.closed
-          // MobileAdEvent.failedToLoad
-          // MobileAdEvent.impression
-          // MobileAdEvent.leftApplication
-        }
-        print("BannerAd event is $event");
-      },
-    );
-  }
-
-  void displayBanner() {
-    myBanner
-      ..load()
-      ..show(
-        anchorOffset: 95.0,
-        anchorType: AnchorType.top,
-      );
-  }
-
-  @override
-  void dispose() {
-    myBanner?.dispose();
-    myBanner?.dispose();
-    super.dispose();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    FirebaseAdMob.instance
-        .initialize(appId: "ca-app-pub-3740593238666941~2885272429");
-
-    startBanner();
-    displayBanner();
-  }
-
   List widgetOptions = [
     TipoModule(),
-    DadosProjetoModule(),
+    ClientesPage(),
     DadosProjetoModule(),
     LayoutModule(),
     OrcamentoModule(),
@@ -82,16 +33,18 @@ class _BasePageState extends State<BasePage> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<BaseController>(context);
+    final projetoController = Provider.of<ProjetoController>(context);
     return Stack(
       children: [
         background(),
         Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Observer(builder: (_) {
-            return page();
-          }),
-          bottomNavigationBar: bottomNav(),
-        ),
+            backgroundColor: Colors.transparent,
+            body: Observer(builder: (_) {
+              return page();
+            }),
+            bottomNavigationBar: bottomNav(),
+            floatingActionButton: floation()),
       ],
     );
   }
@@ -201,70 +154,74 @@ class _BasePageState extends State<BasePage> {
   Widget bottomNav() {
     return Observer(builder: (_) {
       final controller = Provider.of<BaseController>(context);
-      return Theme(
-          data: Theme.of(context).copyWith(
-              canvasColor: Colors.transparent,
-              textTheme: Theme.of(context)
-                  .textTheme
-                  .copyWith(caption: new TextStyle(color: Colors.yellow))),
-          child: BottomNavigationBar(
-              elevation: 0.0,
-              type: BottomNavigationBarType.fixed,
-              backgroundColor: Colors.black.withOpacity(0.0),
-              selectedItemColor: Colors.blue[900],
-              unselectedItemColor: Colors.blue[900],
-              currentIndex: controller.currentIndex,
-              onTap: (value) {
-                controller.updateCurrentIndex(value);
-                controller.getNomePage(value);
-              },
-              items: [
-                BottomNavigationBarItem(
-                    icon: Icon(
-                      LineAwesomeIcons.flag,
-                      color: Colors.white,
-                    ),
-                    title: Text(
-                      'Start',
-                      style: TextStyle(color: Colors.white),
-                    )),
-                BottomNavigationBarItem(
-                    icon: Icon(
-                      LineAwesomeIcons.paste,
-                      color: Colors.white,
-                    ),
-                    title: Text(
-                      'Dados',
-                      style: TextStyle(color: Colors.white),
-                    )),
-                BottomNavigationBarItem(
-                    icon: Icon(
-                      LineAwesomeIcons.paper_plane,
-                      color: Colors.white,
-                    ),
-                    title: Text(
-                      'Projeto',
-                      style: TextStyle(color: Colors.white),
-                    )),
-                BottomNavigationBarItem(
-                    icon: Icon(
-                      LineAwesomeIcons.connectdevelop,
-                      color: Colors.white,
-                    ),
-                    title: Text(
-                      'Layout',
-                      style: TextStyle(color: Colors.white),
-                    )),
-                BottomNavigationBarItem(
-                    icon: Icon(
-                      LineAwesomeIcons.calculator,
-                      color: Colors.white,
-                    ),
-                    title: Text(
-                      'Orçamento',
-                      style: TextStyle(color: Colors.white),
-                    ))
-              ]));
+      return CircleBottomNavigation(
+          barBackgroundColor: Colors.black.withOpacity(0.0),
+          circleColor: Colors.blue[900],
+          inactiveIconColor: Colors.white,
+          circleOutline: 0,
+          activeIconColor: Colors.white,
+          circleSize: 50,
+          textColor: Colors.white,
+          initialSelection: controller.currentIndex,
+          onTabChangedListener: (value) {
+            controller.updateCurrentIndex(value);
+            controller.getNomePage(value);
+          },
+          tabs: [
+            TabData(icon: LineAwesomeIcons.user, title: 'Dados'),
+            TabData(icon: Icons.person_outline, title: 'Cliente'),
+            TabData(icon: LineAwesomeIcons.pencil, title: 'Projeto'),
+            TabData(icon: LineAwesomeIcons.edit, title: 'Layout'),
+            TabData(icon: LineAwesomeIcons.file_pdf_o, title: 'PDF'),
+          ]);
     });
+  }
+
+  Widget floation() {
+    final controller = Provider.of<BaseController>(context);
+    final projetoController = Provider.of<ProjetoController>(context);
+    return Observer(builder: (_) {
+      return (controller.currentIndex == 2)
+          ? FloatingActionButton(
+              backgroundColor: Colors.blue[900],
+              child: Icon(LineAwesomeIcons.plus),
+              onPressed: () {
+                showAlertDialog1(context, projetoController);
+              })
+          : FabCircularMenu(
+              fabOpenColor: Colors.blue[900],
+              fabCloseColor: Colors.blue[900],
+              fabColor: Colors.blue[900],
+              fabSize: 56,
+              ringColor: Colors.blue[900].withAlpha(50),
+              ringDiameter: 300.0,
+              fabOpenIcon: Icon(Icons.menu, color: Colors.white),
+              fabCloseIcon: Icon(Icons.close, color: Colors.white),
+              children: <Widget>[
+                  IconButton(
+                      icon: Icon(LineAwesomeIcons.home, color: Colors.white),
+                      onPressed: () {
+                        print('Home');
+                      }),
+                  IconButton(
+                      icon: Icon(LineAwesomeIcons.save, color: Colors.white),
+                      onPressed: () {
+                        print('Salvar');
+                      })
+                ]);
+    });
+  }
+
+  showAlertDialog1(BuildContext context, controller) {
+    controller.categoriaController.text = '';
+    controller.itemController.text = '';
+    controller.valorController.text = '';
+    controller.tempoController.text = '';
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AddItem();
+      },
+    );
   }
 }

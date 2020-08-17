@@ -21,6 +21,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  fab_circular_menu: ^1.0.0
+  circle_bottom_navigation: ^1.0.6
   combos: ^1.2.0
   flutter_tags: ^0.4.8+2
   firebase_storage: ^3.1.6

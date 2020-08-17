@@ -15,7 +15,7 @@ class _FormsComplementoState extends State<FormsComplemento> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Container(
-        height: height * .565,
+        height: height * .68,
         width: width * .52,
         margin: EdgeInsets.only(
           top: height * .005,
