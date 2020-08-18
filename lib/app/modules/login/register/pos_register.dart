@@ -66,7 +66,7 @@ class _PosRegisterState extends State<PosRegister> {
 
   Widget button(String nome) {
     final dadosController = Provider.of<DadosController>(context);
-    final userController = Provider.of<UserController>(context);
+    final registerController = Provider.of<RegisterController>(context);
     return Center(
       child: Stack(
         children: [
@@ -77,6 +77,7 @@ class _PosRegisterState extends State<PosRegister> {
                 color: Colors.white),
             child: MaterialButton(
               onPressed: () async {
+                await registerController.updateTipo(dadosController.uid, nome);
                 dadosController.tipo = nome;
                 dadosController.getUser(dadosController.uid);
                 print(dadosController.uid);

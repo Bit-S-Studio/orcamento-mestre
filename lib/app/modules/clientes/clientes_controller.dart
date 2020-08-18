@@ -30,7 +30,7 @@ abstract class _ClientesControllerBase with Store {
   String numero;
 
   @observable
-  bool status = false;
+  bool status = true;
 
   @observable
   String id;
@@ -58,8 +58,10 @@ abstract class _ClientesControllerBase with Store {
       String telefone, String endereco, String numero) async {
     var query = r"""
       mutation setClientes($id:String!,$nome:String!,$email:String!,$telefone:String!,$endereco:String!,$numero:String!) {
-        insert_clientes(objects: {email: $email, endereco: $indereco, nome: $nome, numero: $numero, telefone: $telefone, user_id: $id}) {
-          id
+        insert_clientes(objects: {email: $email, endereco: $endereco, nome: $nome, numero: $numero, telefone: $telefone, user_id: $id}) {
+          returning {
+            id
+          }
         }
       }
     """;
@@ -107,7 +109,6 @@ abstract class _ClientesControllerBase with Store {
     clientesSugestao.addAll(listClientes);
     clientesSugestao
         .retainWhere((s) => s.toLowerCase().contains(query.toLowerCase()));
-    (clientesSugestao.length == 0) ? status = true : status = false;
     return clientesSugestao;
   }
 
@@ -132,6 +133,7 @@ abstract class _ClientesControllerBase with Store {
       if (doc["data"]["clientes"].length > 0) {
         for (var document in doc["data"]["clientes"]) {
           nome = document['nome'];
+          nomeController = document['nome'];
           email = document['email'];
           emailController = document['email'];
           telefone = document['telefone'];

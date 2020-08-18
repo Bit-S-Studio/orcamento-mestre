@@ -159,6 +159,21 @@ mixin _$UserController on _UserControllerBase, Store {
     });
   }
 
+  final _$tipoAtom = Atom(name: '_UserControllerBase.tipo');
+
+  @override
+  String get tipo {
+    _$tipoAtom.reportRead();
+    return super.tipo;
+  }
+
+  @override
+  set tipo(String value) {
+    _$tipoAtom.reportWrite(value, super.tipo, () {
+      super.tipo = value;
+    });
+  }
+
   final _$setUserAsyncAction = AsyncAction('_UserControllerBase.setUser');
 
   @override
@@ -192,7 +207,8 @@ imagem: ${imagem},
 email: ${email},
 senha: ${senha},
 plano: ${plano},
-telefone: ${telefone}
+telefone: ${telefone},
+tipo: ${tipo}
     ''';
   }
 }

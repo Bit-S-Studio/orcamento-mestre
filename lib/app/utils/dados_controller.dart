@@ -345,9 +345,11 @@ abstract class _DadosControllerBase with Store {
   }
 
   @action
-  Future<dynamic> getDados(String id) async {
-    if (tipo == 'Empresa') {
-      var query = r"""
+  Future<dynamic> getDados(String id, String tipoDados) async {
+    print(tipoDados);
+    if (tipoDados != null) {
+      if (tipoDados == 'Empresa') {
+        var query = r"""
         query getDados($id:String!) {
           empresas(where: {id: {_eq: $id}}) {
             bairro
@@ -365,31 +367,31 @@ abstract class _DadosControllerBase with Store {
           }
         }
       """;
-      var doc = await _hasuraConnect.query(query, variables: {
-        "id": id,
-      });
-      if (doc["data"]["empresas"].isEmpty) {
-        print('vazio');
-      } else {
-        if (doc["data"]["empresas"].length > 0) {
-          for (var document in doc["data"]["empresas"]) {
-            emailController.text = document["email"];
-            logo = document["imagem"];
-            nomeController.text = document["nome"];
-            cepController.text = document["cep"];
-            enderecoController.text = document["logradouro"];
-            tel1Controller.text = document["telefone1"];
-            tel2Controller.text = document["telefone2"];
-            bairroController.text = document["bairro"];
-            cidadeController.text = document["cidade"];
-            ufController.text = document["uf"];
-            siteController.text = document["telefone2"];
+        var doc = await _hasuraConnect.query(query, variables: {
+          "id": id,
+        });
+        if (doc["data"]["empresas"].isEmpty) {
+          print('vazio');
+        } else {
+          if (doc["data"]["empresas"].length > 0) {
+            for (var document in doc["data"]["empresas"]) {
+              emailController.text = document["email"];
+              logo = document["imagem"];
+              nomeController.text = document["nome"];
+              cepController.text = document["cep"];
+              enderecoController.text = document["logradouro"];
+              tel1Controller.text = document["telefone1"];
+              tel2Controller.text = document["telefone2"];
+              bairroController.text = document["bairro"];
+              cidadeController.text = document["cidade"];
+              ufController.text = document["uf"];
+              siteController.text = document["telefone2"];
+            }
           }
         }
-      }
-      return doc;
-    } else {
-      var query = r"""
+        return doc;
+      } else {
+        var query = r"""
         query getDados($id:String!) {
           freelancers(where: {id: {_eq: $id}}) {
             bairro
@@ -406,28 +408,29 @@ abstract class _DadosControllerBase with Store {
           }
         }
       """;
-      var doc = await _hasuraConnect.query(query, variables: {
-        "id": id,
-      });
-      if (doc["data"]["freelancers"].isEmpty) {
-        print('vazio');
-      } else {
-        if (doc["data"]["freelancers"].length > 0) {
-          for (var document in doc["data"]["empresas"]) {
-            emailController.text = document["email"];
-            nomeController.text = document["nome"];
-            cepController.text = document["cep"];
-            enderecoController.text = document["logradouro"];
-            tel1Controller.text = document["telefone1"];
-            tel2Controller.text = document["telefone2"];
-            bairroController.text = document["bairro"];
-            cidadeController.text = document["cidade"];
-            ufController.text = document["uf"];
-            siteController.text = document["telefone2"];
+        var doc = await _hasuraConnect.query(query, variables: {
+          "id": id,
+        });
+        if (doc["data"]["freelancers"].isEmpty) {
+          print('vazio');
+        } else {
+          if (doc["data"]["freelancers"].length > 0) {
+            for (var document in doc["data"]["empresas"]) {
+              emailController.text = document["email"];
+              nomeController.text = document["nome"];
+              cepController.text = document["cep"];
+              enderecoController.text = document["logradouro"];
+              tel1Controller.text = document["telefone1"];
+              tel2Controller.text = document["telefone2"];
+              bairroController.text = document["bairro"];
+              cidadeController.text = document["cidade"];
+              ufController.text = document["uf"];
+              siteController.text = document["telefone2"];
+            }
           }
         }
+        return doc;
       }
-      return doc;
-    }
+    } else {}
   }
 }

@@ -306,19 +306,27 @@ mixin _$RegisterController on _RegisterControllerBase, Store {
   final _$registerAsyncAction = AsyncAction('_RegisterControllerBase.register');
 
   @override
-  Future<FirebaseUser> register(
-      String nome, String email, String senha, String telefone, String imagem) {
+  Future<FirebaseUser> register(String nome, String email, String senha,
+      String telefone, String imagem, String tipo) {
     return _$registerAsyncAction
-        .run(() => super.register(nome, email, senha, telefone, imagem));
+        .run(() => super.register(nome, email, senha, telefone, imagem, tipo));
   }
 
   final _$setUserAsyncAction = AsyncAction('_RegisterControllerBase.setUser');
 
   @override
-  Future<dynamic> setUser(
-      String email, String nome, String id, String telefone, String imagem) {
+  Future<dynamic> setUser(String email, String nome, String id, String telefone,
+      String imagem, String tipo) {
     return _$setUserAsyncAction
-        .run(() => super.setUser(email, nome, id, telefone, imagem));
+        .run(() => super.setUser(email, nome, id, telefone, imagem, tipo));
+  }
+
+  final _$updateTipoAsyncAction =
+      AsyncAction('_RegisterControllerBase.updateTipo');
+
+  @override
+  Future<dynamic> updateTipo(String id, String tipo) {
+    return _$updateTipoAsyncAction.run(() => super.updateTipo(id, tipo));
   }
 
   final _$_RegisterControllerBaseActionController =

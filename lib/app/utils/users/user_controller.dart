@@ -40,6 +40,9 @@ abstract class _UserControllerBase with Store {
   @observable
   String telefone;
 
+  @observable
+  String tipo;
+
   @action
   Future<bool> setUser() async {
     try {
@@ -81,6 +84,7 @@ abstract class _UserControllerBase with Store {
           imagem
           nome
           telefone
+          tipo
         }
       }
     """;
@@ -97,6 +101,7 @@ abstract class _UserControllerBase with Store {
           imagem = document["imagem"];
           nome = document["nome"];
           telefone = document["telefone"];
+          tipo = document["tipo"];
         }
       }
     }

@@ -236,7 +236,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                     dadosController.uid = user.uid;
                     clientesController.userId = user.uid;
                     await userController.getUser(user.uid);
-                    print(userController.imagem);
+                    print(userController.tipo);
+                    await dadosController.getDados(
+                        user.uid, userController.tipo);
                     Modular.to.pushReplacementNamed('/home');
                   }
                 : () {

@@ -220,7 +220,7 @@ class _RegisterPageState extends State<RegisterPage> {
           Observer(builder: (_) {
             return Stack(
               children: [
-                Visibility(visible: true, child: button()),
+                Visibility(visible: controller.box1, child: button()),
                 Visibility(
                     visible: controller.box2,
                     child: CircularProgressIndicator()),
@@ -241,12 +241,16 @@ class _RegisterPageState extends State<RegisterPage> {
         child: MaterialButton(
           onPressed: controller.isValid
               ? () async {
+                  controller.box1 = false;
+                  controller.box2 = true;
+                  var tipo = 'vazio';
                   var user = await controller.register(
                       controller.nome,
                       controller.email,
                       controller.senha,
                       controller.telefone,
-                      controller.imgUrl);
+                      controller.imgUrl,
+                      tipo);
                   dadosController.uid = user.uid;
                   print(dadosController.uid = user.uid);
                   Modular.to.pushNamed('/pos');

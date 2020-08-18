@@ -622,8 +622,8 @@ mixin _$DadosController on _DadosControllerBase, Store {
   final _$getDadosAsyncAction = AsyncAction('_DadosControllerBase.getDados');
 
   @override
-  Future<dynamic> getDados(String id) {
-    return _$getDadosAsyncAction.run(() => super.getDados(id));
+  Future<dynamic> getDados(String id, String tipoDados) {
+    return _$getDadosAsyncAction.run(() => super.getDados(id, tipoDados));
   }
 
   final _$_DadosControllerBaseActionController =

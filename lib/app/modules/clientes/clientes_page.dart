@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:orcamento_mestre/app/utils/users/user_controller.dart';
 import 'package:provider/provider.dart';
 import 'clientes_controller.dart';
@@ -28,6 +29,7 @@ class _ClientesPageState
     final controller = Provider.of<ClientesController>(context);
     final userController = Provider.of<UserController>(context);
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -36,64 +38,85 @@ class _ClientesPageState
             height: height * .62,
             child: Column(
               children: [
-                Container(
-                  child: Observer(builder: (_) {
-                    return (controller.status)
-                        ? Container(
-                            height: height * .06,
-                            margin: EdgeInsets.only(
-                              top: height * .015,
-                            ),
-                            child: TextFormField(
-                              controller: controller.nomeController,
-                              onChanged: (newNome) {
-                                controller.nome = newNome;
-                              },
-                              decoration: InputDecoration(
-                                contentPadding: new EdgeInsets.symmetric(
-                                    vertical: 10.0, horizontal: 10.0),
-                                labelText: "Nome do cliente",
-                                border: OutlineInputBorder(
-                                  borderRadius: const BorderRadius.all(
-                                      const Radius.circular(12.0)),
-                                  borderSide: BorderSide(
-                                    color: Colors.white,
+                Observer(builder: (_) {
+                  return Row(
+                    children: <Widget>[
+                      Flexible(
+                          flex: 9,
+                          child: (controller.status)
+                              ? Container(
+                                  height: height * .06,
+                                  margin: EdgeInsets.only(
+                                    top: height * .015,
                                   ),
-                                ),
-                              ),
-                              validator: (text) {
-                                if (text.isEmpty)
-                                  return "O campo nome, está vazio";
-                              },
-                            ),
-                          )
-                        : TypeaheadCombo(
-                            selected: controller.nome,
-                            getList: (text) async {
-                              await controller.getClientes(userController.uid);
-                              return await controller.getSuggestions(text);
-                            },
-                            itemBuilder:
-                                (context, parameters, item, selected, text) =>
-                                    ListTile(title: Text(item ?? '<Empty>')),
-                            onSelectedChanged: (item) {
-                              setState(() {
-                                controller.nome = item;
-                              });
-                            },
-                            onItemTapped: (item) {
-                              controller.nome = item;
-                            },
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: const BorderRadius.all(
-                                      const Radius.circular(12.0)),
-                                ),
-                                hintText: 'Nome do cliente'),
-                            getItemText: (item) => item,
-                          );
-                  }),
-                ),
+                                  child: TextFormField(
+                                    controller: controller.nomeController,
+                                    onChanged: (newNome) {
+                                      controller.nome = newNome;
+                                    },
+                                    decoration: InputDecoration(
+                                      contentPadding: new EdgeInsets.symmetric(
+                                          vertical: 10.0, horizontal: 10.0),
+                                      labelText: "Nome do cliente",
+                                      border: OutlineInputBorder(
+                                        borderRadius: const BorderRadius.all(
+                                            const Radius.circular(12.0)),
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    validator: (text) {
+                                      if (text.isEmpty)
+                                        return "O campo nome, está vazio";
+                                    },
+                                  ),
+                                )
+                              : TypeaheadCombo(
+                                  selected: controller.nome,
+                                  getList: (text) async {
+                                    await controller
+                                        .getClientes(userController.uid);
+                                    return await controller
+                                        .getSuggestions(text);
+                                  },
+                                  itemBuilder: (context, parameters, item,
+                                          selected, text) =>
+                                      ListTile(title: Text(item ?? '<Empty>')),
+                                  onSelectedChanged: (item) {
+                                    setState(() async {
+                                      controller.nome = item;
+                                      await controller
+                                          .getCliente(userController.uid);
+                                    });
+                                  },
+                                  onItemTapped: (item) {
+                                    controller.nome = item;
+                                  },
+                                  decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                        borderRadius: const BorderRadius.all(
+                                            const Radius.circular(12.0)),
+                                      ),
+                                      hintText: 'Nome do cliente'),
+                                  getItemText: (item) => item,
+                                )),
+                      Flexible(
+                          flex: 1,
+                          child: (controller.status)
+                              ? IconButton(
+                                  icon: Icon(LineAwesomeIcons.search),
+                                  onPressed: () {
+                                    controller.status = false;
+                                  })
+                              : IconButton(
+                                  icon: Icon(LineAwesomeIcons.close),
+                                  onPressed: () {
+                                    controller.status = true;
+                                  })),
+                    ],
+                  );
+                }),
                 Container(
                   height: height * .06,
                   margin: EdgeInsets.only(
@@ -220,7 +243,7 @@ class _ClientesPageState
                   margin: EdgeInsets.only(top: height * .05),
                   padding: EdgeInsets.only(top: height * .09),
                   child: Text(
-                    'Pesquise por um cliente existente, ou adicione um novo cliente',
+                    'Clique na lupa para pesquisar um cliente existente, ou cadastre um novo cliente',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: ScreenUtil.instance.setSp(50),

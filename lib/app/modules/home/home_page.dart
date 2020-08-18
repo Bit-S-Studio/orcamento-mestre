@@ -164,11 +164,10 @@ class _HomePageState extends State<HomePage> {
             height: height * 0.5,
             width: width,
             margin: EdgeInsets.only(
-              top: height *.025,
-              bottom: height *.03,
-              left: width *.045,
-              right: width *.045
-            ),
+                top: height * .025,
+                bottom: height * .03,
+                left: width * .045,
+                right: width * .045),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 color: Colors.grey[100]),
@@ -213,7 +212,6 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.all(Radius.circular(12))),
                 child: MaterialButton(
                   onPressed: () async {
-                    dadosController.getDados(dadosController.uid);
                     Modular.to.pushNamedAndRemoveUntil(
                         rota, ModalRoute.withName('/'));
                   },
