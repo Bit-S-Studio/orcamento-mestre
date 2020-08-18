@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:orcamento_mestre/app/modules/base/base_module.dart';
+import 'package:orcamento_mestre/app/modules/clientes/clientes_controller.dart';
 import 'package:orcamento_mestre/app/modules/home/home_module.dart';
 import 'package:orcamento_mestre/app/modules/login/login_page.dart';
 import 'package:orcamento_mestre/app/modules/login/register/dados_register.dart';
@@ -23,6 +24,8 @@ class LoginModule extends ChildModule {
         Bind((i) => RegisterController()),
         Bind((i) => LoginController()),
         Bind((i) => DadosController(
+            CustomHasuraConnect.getConnect(i.get<FirebaseAuth>()))),
+        Bind((i) => ClientesController(
             CustomHasuraConnect.getConnect(i.get<FirebaseAuth>()))),
       ];
 

@@ -93,7 +93,7 @@ abstract class _UserControllerBase with Store {
       if (doc["data"]["users"].length > 0) {
         for (var document in doc["data"]["users"]) {
           email = document["email"];
-          id = document["id"];
+          uid = document["id"];
           imagem = document["imagem"];
           nome = document["nome"];
           telefone = document["telefone"];

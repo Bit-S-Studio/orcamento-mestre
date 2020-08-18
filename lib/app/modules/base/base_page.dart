@@ -4,6 +4,7 @@ import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
+import 'package:orcamento_mestre/app/modules/clientes/clientes_controller.dart';
 import 'package:orcamento_mestre/app/modules/clientes/clientes_page.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/addItem.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/dadosProjeto_module.dart';
@@ -11,6 +12,7 @@ import 'package:orcamento_mestre/app/modules/dadosProjeto/projeto_controller.dar
 import 'package:orcamento_mestre/app/modules/layout/layout_module.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_module.dart';
 import 'package:orcamento_mestre/app/modules/tipo/tipo_module.dart';
+import 'package:orcamento_mestre/app/utils/users/user_controller.dart';
 import 'package:provider/provider.dart';
 import 'base_controller.dart';
 
@@ -182,6 +184,8 @@ class _BasePageState extends State<BasePage> {
   Widget floation() {
     final controller = Provider.of<BaseController>(context);
     final projetoController = Provider.of<ProjetoController>(context);
+    final clientesController = Provider.of<ClientesController>(context);
+    final userController = Provider.of<UserController>(context);
     return Observer(builder: (_) {
       return (controller.currentIndex == 2)
           ? FloatingActionButton(
@@ -207,7 +211,20 @@ class _BasePageState extends State<BasePage> {
                       }),
                   IconButton(
                       icon: Icon(LineAwesomeIcons.save, color: Colors.white),
-                      onPressed: () {
+                      onPressed: () async {
+                        print(clientesController.userId);
+                        print(clientesController.nome);
+                        print(clientesController.email);
+                        print(clientesController.telefone);
+                        print(clientesController.endereco);
+                        print(clientesController.numero);
+                        await clientesController.setClientes(
+                            clientesController.userId,
+                            clientesController.nome,
+                            clientesController.email,
+                            clientesController.telefone,
+                            clientesController.endereco,
+                            clientesController.numero);
                         print('Salvar');
                       })
                 ]);

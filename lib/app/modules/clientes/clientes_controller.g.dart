@@ -99,6 +99,21 @@ mixin _$ClientesController on _ClientesControllerBase, Store {
     });
   }
 
+  final _$statusAtom = Atom(name: '_ClientesControllerBase.status');
+
+  @override
+  bool get status {
+    _$statusAtom.reportRead();
+    return super.status;
+  }
+
+  @override
+  set status(bool value) {
+    _$statusAtom.reportWrite(value, super.status, () {
+      super.status = value;
+    });
+  }
+
   final _$idAtom = Atom(name: '_ClientesControllerBase.id');
 
   @override
@@ -252,6 +267,7 @@ email: ${email},
 telefone: ${telefone},
 endereco: ${endereco},
 numero: ${numero},
+status: ${status},
 id: ${id},
 userId: ${userId},
 nomeController: ${nomeController},

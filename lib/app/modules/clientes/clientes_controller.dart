@@ -30,6 +30,9 @@ abstract class _ClientesControllerBase with Store {
   String numero;
 
   @observable
+  bool status = false;
+
+  @observable
   String id;
 
   @observable
@@ -104,6 +107,7 @@ abstract class _ClientesControllerBase with Store {
     clientesSugestao.addAll(listClientes);
     clientesSugestao
         .retainWhere((s) => s.toLowerCase().contains(query.toLowerCase()));
+    (clientesSugestao.length == 0) ? status = true : status = false;
     return clientesSugestao;
   }
 

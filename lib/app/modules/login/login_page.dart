@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:orcamento_mestre/app/modules/clientes/clientes_controller.dart';
 import 'package:orcamento_mestre/app/utils/dados_controller.dart';
 import 'package:orcamento_mestre/app/utils/theme.dart';
 import 'package:orcamento_mestre/app/utils/users/user_controller.dart';
@@ -88,8 +89,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
         hintText: hint,
         suffixIcon: iconButton,
         hintStyle: TextStyle(
-            fontFamily: "WorkSansSemiBold",
-            fontSize: ScreenUtil.instance.setSp(50),
+          fontFamily: "WorkSansSemiBold",
+          fontSize: ScreenUtil.instance.setSp(50),
         ),
       ),
     );
@@ -213,6 +214,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
     var width = MediaQuery.of(context).size.height;
     final userController = Provider.of<UserController>(context);
     final dadosController = Provider.of<DadosController>(context);
+    final clientesController = Provider.of<ClientesController>(context);
     return Observer(builder: (_) {
       return Container(
         decoration: BoxDecoration(
@@ -232,6 +234,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                     var user = await controller.logar(
                         controller.email, controller.senha, context);
                     dadosController.uid = user.uid;
+                    clientesController.userId = user.uid;
                     await userController.getUser(user.uid);
                     print(userController.imagem);
                     Modular.to.pushReplacementNamed('/home');
@@ -257,3 +260,5 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
     });
   }
 }
+
+class CadastroController {}

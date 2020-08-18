@@ -171,20 +171,6 @@ class _DadosRegisterState extends State<DadosRegister> {
           if (controller.documento == null) {
             controller.documento = 'vazio';
           }
-          print(controller.uid);
-          print(controller.imgUrl);
-          print(controller.nome);
-          print(controller.email);
-          print(controller.cep);
-          print(controller.endereco);
-          print(controller.numero);
-          print(controller.bairro);
-          print(controller.cidade);
-          print(controller.uf);
-          print(controller.documento);
-          print(controller.telefone1);
-          print(controller.telefone2);
-          print(controller.site);
           await controller.setDados(
               tipo: controller.tipo,
               id: controller.uid,
