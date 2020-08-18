@@ -35,15 +35,14 @@ class _LayoutPageState extends ModularState<LayoutPage, LayoutController> {
           children: [
             Container(
               height: height * .1,
-              width: width *.3,
+              width: width * .3,
               padding: EdgeInsets.only(top: height * .02),
               child: Text(
                 'Personalize as cores do seu orçamento',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: ScreenUtil.instance.setSp(45),
-                  fontWeight: FontWeight.bold
-                ),
+                    fontSize: ScreenUtil.instance.setSp(45),
+                    fontWeight: FontWeight.bold),
               ),
             ),
             Row(
@@ -462,148 +461,163 @@ class _LayoutPageState extends ModularState<LayoutPage, LayoutController> {
                     children: [
                       Container(
                         height: height * .08,
-                        width: width *.08,
+                        width: width * .08,
                         padding: EdgeInsets.only(left: width * .003),
                         child: Material(
                           child: Ink(
-                            decoration: const ShapeDecoration(
-                                color: Colors.transparent, shape: CircleBorder()),
-                            child: RaisedButton(
-                              color: Colors.blue[900],
-                              elevation: 3.0,
-                              onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      titlePadding: const EdgeInsets.all(0.0),
-                                      contentPadding: const EdgeInsets.all(0.0),
-                                      content: SingleChildScrollView(
-                                        child: ColorPicker(
-                                          pickerColor: currentColor,
-                                          onColorChanged: changeColor,
-                                          colorPickerWidth: 300.0,
-                                          pickerAreaHeightPercent: 0.7,
-                                          enableAlpha: true,
-                                          displayThumbColor: true,
-                                          showLabel: true,
-                                          paletteType: PaletteType.hsv,
-                                          pickerAreaBorderRadius: const BorderRadius.only(
-                                            topLeft: const Radius.circular(2.0),
-                                            topRight: const Radius.circular(2.0),
+                            child: CircleAvatar(
+                              child: RaisedButton(
+                                color: Colors.transparent,
+                                elevation: 0.0,
+                                onPressed: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        titlePadding: const EdgeInsets.all(0.0),
+                                        contentPadding:
+                                            const EdgeInsets.all(0.0),
+                                        content: SingleChildScrollView(
+                                          child: ColorPicker(
+                                            pickerColor: currentColor,
+                                            onColorChanged: changeColor,
+                                            colorPickerWidth: 300.0,
+                                            pickerAreaHeightPercent: 0.7,
+                                            enableAlpha: true,
+                                            displayThumbColor: true,
+                                            showLabel: true,
+                                            paletteType: PaletteType.hsv,
+                                            pickerAreaBorderRadius:
+                                                const BorderRadius.only(
+                                              topLeft:
+                                                  const Radius.circular(2.0),
+                                              topRight:
+                                                  const Radius.circular(2.0),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
-                              child: Icon(Icons.edit),
-                              //color: currentColor,
-                              textColor: useWhiteForeground(currentColor)
-                                  ? const Color(0xffffffff)
-                                  : const Color(0xff000000),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: height * .08,
-                        width: width *.08,
-                        margin: EdgeInsets.only(
-                          top: height *.12,
-                            bottom: height *.12,
-                            left: width * .003,
-                        ),
-                        child: Material(
-                          child: Ink(
-                            decoration: const ShapeDecoration(
-                                color: Colors.transparent, shape: CircleBorder()),
-                            child: RaisedButton(
-                              color: Colors.blue[900],
-                              elevation: 3.0,
-                              onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      titlePadding: const EdgeInsets.all(0.0),
-                                      contentPadding: const EdgeInsets.all(0.0),
-                                      content: SingleChildScrollView(
-                                        child: ColorPicker(
-                                          pickerColor: currentColor,
-                                          onColorChanged: changeColor,
-                                          colorPickerWidth: 300.0,
-                                          pickerAreaHeightPercent: 0.7,
-                                          enableAlpha: true,
-                                          displayThumbColor: true,
-                                          showLabel: true,
-                                          paletteType: PaletteType.hsv,
-                                          pickerAreaBorderRadius: const BorderRadius.only(
-                                            topLeft: const Radius.circular(2.0),
-                                            topRight: const Radius.circular(2.0),
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
-                              child: Icon(Icons.edit,
+                                      );
+                                    },
+                                  );
+                                },
+                                child: Icon(Icons.edit),
+                                //color: currentColor,
+                                textColor: useWhiteForeground(currentColor)
+                                    ? const Color(0xffffffff)
+                                    : const Color(0xff000000),
                               ),
-                              //color: currentColor,
-                              textColor: useWhiteForeground(currentColor)
-                                  ? const Color(0xffffffff)
-                                  : const Color(0xff000000),
                             ),
                           ),
                         ),
                       ),
                       Container(
                         height: height * .08,
-                        width: width *.08,
-                        padding: EdgeInsets.only(
-                            left: width * .003,
+                        width: width * .08,
+                        margin: EdgeInsets.only(
+                          top: height * .12,
+                          bottom: height * .12,
+                          left: width * .003,
                         ),
                         child: Material(
                           child: Ink(
                             decoration: const ShapeDecoration(
-                                color: Colors.transparent, shape: CircleBorder()),
-                            child: RaisedButton(
-                              color: Colors.blue[900],
-                              elevation: 3.0,
-                              onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      titlePadding: const EdgeInsets.all(0.0),
-                                      contentPadding: const EdgeInsets.all(0.0),
-                                      content: SingleChildScrollView(
-                                        child: ColorPicker(
-                                          pickerColor: currentColor,
-                                          onColorChanged: changeColor,
-                                          colorPickerWidth: 300.0,
-                                          pickerAreaHeightPercent: 0.7,
-                                          enableAlpha: true,
-                                          displayThumbColor: true,
-                                          showLabel: true,
-                                          paletteType: PaletteType.hsv,
-                                          pickerAreaBorderRadius: const BorderRadius.only(
-                                            topLeft: const Radius.circular(2.0),
-                                            topRight: const Radius.circular(2.0),
+                                color: Colors.transparent,
+                                shape: CircleBorder()),
+                            child: CircleAvatar(
+                              child: RaisedButton(
+                                color: Colors.transparent,
+                                elevation: 0.0,
+                                onPressed: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        titlePadding: const EdgeInsets.all(0.0),
+                                        contentPadding: const EdgeInsets.all(0.0),
+                                        content: SingleChildScrollView(
+                                          child: ColorPicker(
+                                            pickerColor: currentColor,
+                                            onColorChanged: changeColor,
+                                            colorPickerWidth: 300.0,
+                                            pickerAreaHeightPercent: 0.7,
+                                            enableAlpha: true,
+                                            displayThumbColor: true,
+                                            showLabel: true,
+                                            paletteType: PaletteType.hsv,
+                                            pickerAreaBorderRadius:
+                                                const BorderRadius.only(
+                                              topLeft: const Radius.circular(2.0),
+                                              topRight:
+                                                  const Radius.circular(2.0),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
-                              child: Icon(Icons.edit),
-                              //color: currentColor,
-                              textColor: useWhiteForeground(currentColor)
-                                  ? const Color(0xffffffff)
-                                  : const Color(0xff000000),
+                                      );
+                                    },
+                                  );
+                                },
+                                child: Icon(
+                                  Icons.edit,
+                                ),
+                                //color: currentColor,
+                                textColor: useWhiteForeground(currentColor)
+                                    ? const Color(0xffffffff)
+                                    : const Color(0xff000000),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: height * .08,
+                        width: width * .08,
+                        padding: EdgeInsets.only(
+                          left: width * .003,
+                        ),
+                        child: Material(
+                          child: Ink(
+                            decoration: const ShapeDecoration(
+                                color: Colors.transparent,
+                                shape: CircleBorder()),
+                            child: CircleAvatar(
+                              child: RaisedButton(
+                                color: Colors.transparent,
+                                elevation: 0.0,
+                                onPressed: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        titlePadding: const EdgeInsets.all(0.0),
+                                        contentPadding: const EdgeInsets.all(0.0),
+                                        content: SingleChildScrollView(
+                                          child: ColorPicker(
+                                            pickerColor: currentColor,
+                                            onColorChanged: changeColor,
+                                            colorPickerWidth: 300.0,
+                                            pickerAreaHeightPercent: 0.7,
+                                            enableAlpha: true,
+                                            displayThumbColor: true,
+                                            showLabel: true,
+                                            paletteType: PaletteType.hsv,
+                                            pickerAreaBorderRadius:
+                                                const BorderRadius.only(
+                                              topLeft: const Radius.circular(2.0),
+                                              topRight:
+                                                  const Radius.circular(2.0),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
+                                child: Icon(Icons.edit),
+                                //color: currentColor,
+                                textColor: useWhiteForeground(currentColor)
+                                    ? const Color(0xffffffff)
+                                    : const Color(0xff000000),
+                              ),
                             ),
                           ),
                         ),
