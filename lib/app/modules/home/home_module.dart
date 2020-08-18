@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:orcamento_mestre/app/modules/base/base_module.dart';
+import 'package:orcamento_mestre/app/modules/perfil/perfil_module.dart';
 import 'package:orcamento_mestre/app/utils/users/user_controller.dart';
 
 import 'home_controller.dart';
@@ -20,6 +21,7 @@ class HomeModule extends WidgetModule {
         Router('/base', module: BaseModule()),
         Router('/solicitacoes', module: BaseModule()),
         Router('/orcamentos', module: BaseModule()),
+        Router('/perfil', module: PerfilModule()),
       ];
 
   static Inject get to => Inject<HomeModule>.of();
