@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/Consts.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/item_description_widget.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/projeto_controller.dart';

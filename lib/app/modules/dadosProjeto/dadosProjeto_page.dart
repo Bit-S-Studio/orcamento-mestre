@@ -35,7 +35,7 @@ class _DadosProjetoPageState extends State<DadosProjetoPage> {
         body: Observer(builder: (_) {
           return (controller.listItens.length == 0)
               ? Center(
-                  child: Text('Adicione os itens do seu projeto',
+                  child: Text('Adicione itens ao seu projeto',
                     style: TextStyle(
                       fontSize: ScreenUtil.instance.setSp(45),
                     ),
