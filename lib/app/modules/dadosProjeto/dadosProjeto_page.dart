@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grouped_listview/grouped_listview.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:mobx/mobx.dart';
@@ -25,6 +26,7 @@ class _DadosProjetoPageState extends State<DadosProjetoPage> {
   ObservableList<int> listItens = ObservableList<int>();
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.getInstance()..init(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     final controller = Provider.of<ProjetoController>(context);
@@ -33,7 +35,11 @@ class _DadosProjetoPageState extends State<DadosProjetoPage> {
         body: Observer(builder: (_) {
           return (controller.listItens.length == 0)
               ? Center(
-                  child: Text('Adicione os itens do seu projeto'),
+                  child: Text('Adicione os itens do seu projeto',
+                    style: TextStyle(
+                      fontSize: ScreenUtil.instance.setSp(45),
+                    ),
+                  ),
                 )
               : item();
         }));

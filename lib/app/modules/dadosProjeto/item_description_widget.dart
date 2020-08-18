@@ -23,17 +23,8 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
     return Container(
         height: height * 0.16,
         width: width,
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(12)),
-            boxShadow: [
-              new BoxShadow(
-                  color: Colors.black.withAlpha(70),
-                  offset: const Offset(3.0, 10.0),
-                  blurRadius: 15.0)
-            ]),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(2.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -103,24 +94,6 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
               ),
               Row(
                 children: [
-                  Flexible(
-                    flex: 7,
-                    child: Container(
-                      height: height * .06,
-                      width: width * .28,
-                      margin: EdgeInsets.only(
-                        top: height * .01,
-                      ),
-                      decoration: BoxDecoration(
-                          color: Colors.blue[900],
-                          borderRadius: BorderRadius.all(Radius.circular(12))),
-                      child: Center(
-                          child: Text(
-                        'Estimativa de tempo de execução',
-                        style: TextStyle(color: Colors.white, fontSize: 12),
-                      )),
-                    ),
-                  ),
                   Flexible(
                     flex: 3,
                     child: Container(

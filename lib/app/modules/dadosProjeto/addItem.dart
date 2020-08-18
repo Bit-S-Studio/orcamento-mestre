@@ -41,7 +41,7 @@ class _AddItemState extends State<AddItem> {
         ),
         margin: EdgeInsets.only(top: Consts.avatarRadius),
         decoration: new BoxDecoration(
-          color: Colors.blue[900],
+          color: Colors.white,
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(Consts.avatarRadius),
           boxShadow: [
@@ -62,7 +62,7 @@ class _AddItemState extends State<AddItem> {
                   child: Text(
                     'Novo Item',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.blue[900],
                         fontSize: 16,
                         fontWeight: FontWeight.bold),
                   ),
@@ -70,8 +70,8 @@ class _AddItemState extends State<AddItem> {
                 Flexible(fit: FlexFit.tight, child: SizedBox()),
                 IconButton(
                     icon: Icon(
-                      LineAwesomeIcons.close,
-                      color: Colors.white,
+                      Icons.close,
+                      color: Colors.blue[900],
                     ),
                     onPressed: () {
                       Modular.to.pop();
@@ -82,14 +82,9 @@ class _AddItemState extends State<AddItem> {
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(12)),
-                  boxShadow: [
-                    new BoxShadow(
-                        color: Colors.black.withAlpha(70),
-                        offset: const Offset(3.0, 10.0),
-                        blurRadius: 15.0)
-                  ]),
+                  ),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(2.0),
                 child: TextFormField(
                   onChanged: controller.changeCategoria,
                   controller: controller.categoriaController,
@@ -132,7 +127,7 @@ class _AddItemState extends State<AddItem> {
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(12)),
-                color: Colors.white),
+                color: Colors.blue[900]),
             child: MaterialButton(
               onPressed: () async {
                 controller.setItem();
@@ -145,7 +140,7 @@ class _AddItemState extends State<AddItem> {
                 child: Text(
                   "Salvar",
                   style: TextStyle(
-                    color: Colors.blue[900],
+                    color: Colors.white,
                     fontSize: 25.0,
                   ),
                 ),
