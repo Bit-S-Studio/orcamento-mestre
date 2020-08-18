@@ -115,18 +115,66 @@ mixin _$OrcamentoController on _OrcamentoControllerBase, Store {
     });
   }
 
-  final _$nomeProjetoAtom = Atom(name: '_OrcamentoControllerBase.nomeProjeto');
+  final _$nomeAtom = Atom(name: '_OrcamentoControllerBase.nome');
 
   @override
-  String get nomeProjeto {
-    _$nomeProjetoAtom.reportRead();
-    return super.nomeProjeto;
+  String get nome {
+    _$nomeAtom.reportRead();
+    return super.nome;
   }
 
   @override
-  set nomeProjeto(String value) {
-    _$nomeProjetoAtom.reportWrite(value, super.nomeProjeto, () {
-      super.nomeProjeto = value;
+  set nome(String value) {
+    _$nomeAtom.reportWrite(value, super.nome, () {
+      super.nome = value;
+    });
+  }
+
+  final _$nomeControllerAtom =
+      Atom(name: '_OrcamentoControllerBase.nomeController');
+
+  @override
+  TextEditingController get nomeController {
+    _$nomeControllerAtom.reportRead();
+    return super.nomeController;
+  }
+
+  @override
+  set nomeController(TextEditingController value) {
+    _$nomeControllerAtom.reportWrite(value, super.nomeController, () {
+      super.nomeController = value;
+    });
+  }
+
+  final _$observacaoAtom = Atom(name: '_OrcamentoControllerBase.observacao');
+
+  @override
+  String get observacao {
+    _$observacaoAtom.reportRead();
+    return super.observacao;
+  }
+
+  @override
+  set observacao(String value) {
+    _$observacaoAtom.reportWrite(value, super.observacao, () {
+      super.observacao = value;
+    });
+  }
+
+  final _$observacaoControllerAtom =
+      Atom(name: '_OrcamentoControllerBase.observacaoController');
+
+  @override
+  TextEditingController get observacaoController {
+    _$observacaoControllerAtom.reportRead();
+    return super.observacaoController;
+  }
+
+  @override
+  set observacaoController(TextEditingController value) {
+    _$observacaoControllerAtom.reportWrite(value, super.observacaoController,
+        () {
+      super.observacaoController = value;
     });
   }
 
@@ -156,7 +204,10 @@ colorCabecalio: ${colorCabecalio},
 colorRodape: ${colorRodape},
 colorBase: ${colorBase},
 colorLetra: ${colorLetra},
-nomeProjeto: ${nomeProjeto},
+nome: ${nome},
+nomeController: ${nomeController},
+observacao: ${observacao},
+observacaoController: ${observacaoController},
 categoriasProjeto: ${categoriasProjeto}
     ''';
   }

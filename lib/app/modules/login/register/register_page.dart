@@ -223,7 +223,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 Visibility(visible: controller.box1, child: button()),
                 Visibility(
                     visible: controller.box2,
-                    child: CircularProgressIndicator()),
+                    child: CircularProgressIndicator(
+                        backgroundColor: Colors.blue[900])),
               ],
             );
           }),

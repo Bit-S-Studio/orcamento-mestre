@@ -161,10 +161,11 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
           Observer(builder: (_) {
             return Stack(
               children: [
-                Visibility(visible: true, child: button()),
+                Visibility(visible: controller.box1, child: button()),
                 Visibility(
                     visible: controller.box2,
-                    child: CircularProgressIndicator()),
+                    child: CircularProgressIndicator(
+                        backgroundColor: Colors.blue[900])),
               ],
             );
           }),
@@ -231,6 +232,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
         child: MaterialButton(
             onPressed: controller.isValid
                 ? () async {
+                    controller.box1 = false;
+                    controller.box2 = true;
                     var user = await controller.logar(
                         controller.email, controller.senha, context);
                     print(user.uid);

@@ -29,7 +29,16 @@ abstract class _OrcamentoControllerBase with Store {
   Colors colorLetra;
 
   @observable
-  String nomeProjeto;
+  String nome;
+
+  @observable
+  TextEditingController nomeController = TextEditingController();
+
+  @observable
+  String observacao;
+
+  @observable
+  TextEditingController observacaoController = TextEditingController();
 
   @observable
   List<String> categoriasProjeto = [];
