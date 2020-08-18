@@ -233,12 +233,14 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                 ? () async {
                     var user = await controller.logar(
                         controller.email, controller.senha, context);
+                    print(user.uid);
                     dadosController.uid = user.uid;
                     clientesController.userId = user.uid;
+                    await dadosController.getUser(user.uid);
                     await userController.getUser(user.uid);
-                    print(userController.tipo);
+                    print(dadosController.tipo);
                     await dadosController.getDados(
-                        user.uid, userController.tipo);
+                        user.uid, dadosController.tipo);
                     Modular.to.pushReplacementNamed('/home');
                   }
                 : () {

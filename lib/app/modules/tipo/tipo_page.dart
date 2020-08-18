@@ -48,10 +48,11 @@ class _TipoPageState extends State<TipoPage> {
 
   Widget dropDown2() {
     final controller = Provider.of<DadosController>(context);
-    controller.tipo = 'Empresa';
     return Observer(builder: (_) {
       return DropdownButton<String>(
-        value: controller.tipo,
+        value: (controller.tipo != null)
+            ? controller.tipo
+            : controller.tipo = 'Empresa',
         icon: Icon(
           Icons.arrow_downward,
           color: Colors.white,
@@ -60,7 +61,7 @@ class _TipoPageState extends State<TipoPage> {
         iconSize: 24,
         elevation: 16,
         style: TextStyle(
-            color: Colors.deepPurple,
+          color: Colors.deepPurple,
           fontSize: ScreenUtil.instance.setSp(50),
         ),
         onChanged: (String newValue) {
@@ -90,8 +91,8 @@ class _TipoPageState extends State<TipoPage> {
     return Container(
       width: width,
       margin: EdgeInsets.only(
-          bottom: height * .01,
-          ),
+        bottom: height * .01,
+      ),
       decoration: BoxDecoration(
         color: Colors.blue[900],
         borderRadius: BorderRadius.all(Radius.circular(12)),

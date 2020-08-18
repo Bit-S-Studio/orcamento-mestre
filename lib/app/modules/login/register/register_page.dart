@@ -252,7 +252,6 @@ class _RegisterPageState extends State<RegisterPage> {
                       controller.imgUrl,
                       tipo);
                   dadosController.uid = user.uid;
-                  print(dadosController.uid = user.uid);
                   Modular.to.pushNamed('/pos');
                 }
               : () {

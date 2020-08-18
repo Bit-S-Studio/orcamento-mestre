@@ -80,7 +80,6 @@ class _PosRegisterState extends State<PosRegister> {
                 await registerController.updateTipo(dadosController.uid, nome);
                 dadosController.tipo = nome;
                 dadosController.getUser(dadosController.uid);
-                print(dadosController.uid);
                 Modular.to.pushNamed('/dados');
               },
               highlightColor: Colors.transparent,

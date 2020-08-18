@@ -178,8 +178,7 @@ class _ClientesPageState
                       child: Container(
                         height: height * .06,
                         margin: EdgeInsets.only(
-                          top: height * .015,
-                        ),
+                            top: height * .015, right: width * 0.015),
                         child: TextFormField(
                           controller: controller.enderecoController,
                           onChanged: (newEndereco) {

@@ -180,6 +180,7 @@ abstract class _DadosControllerBase with Store {
           imagem
           nome
           telefone
+          tipo
         }
       }
     """;
@@ -197,6 +198,7 @@ abstract class _DadosControllerBase with Store {
           tel1Controller.text = document["telefone"];
           email = document["email"];
           id = document["id"];
+          tipo = document["tipo"];
           nome = document["nome"];
           telefone1 = document["telefone"];
           print(emailController.text);
@@ -405,6 +407,7 @@ abstract class _DadosControllerBase with Store {
             telefone1
             telefone2
             uf
+            documento
           }
         }
       """;
@@ -414,8 +417,10 @@ abstract class _DadosControllerBase with Store {
         if (doc["data"]["freelancers"].isEmpty) {
           print('vazio');
         } else {
+          print('aqui2');
           if (doc["data"]["freelancers"].length > 0) {
-            for (var document in doc["data"]["empresas"]) {
+            print('aqui2');
+            for (var document in doc["data"]["freelancers"]) {
               emailController.text = document["email"];
               nomeController.text = document["nome"];
               cepController.text = document["cep"];
@@ -426,6 +431,7 @@ abstract class _DadosControllerBase with Store {
               cidadeController.text = document["cidade"];
               ufController.text = document["uf"];
               siteController.text = document["telefone2"];
+              docController.text = document["documento"];
             }
           }
         }
