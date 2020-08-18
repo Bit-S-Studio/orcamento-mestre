@@ -160,9 +160,14 @@ class _HomePageState extends State<HomePage> {
             right: width * .02,
           ),
           child: Container(
-            height: height * 0.6,
+            height: height * 0.5,
             width: width,
-            margin: EdgeInsets.all(12),
+            margin: EdgeInsets.only(
+              top: height *.025,
+              bottom: height *.03,
+              left: width *.045,
+              right: width *.045
+            ),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 color: Colors.grey[100]),

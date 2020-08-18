@@ -31,151 +31,119 @@ class _DadosEmpresaPageState extends State<DadosEmpresaPage> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: SingleChildScrollView(
-        child: Container(
-          margin: EdgeInsets.only(
-            top: height *.001,
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              Container(
-                height: height * .20,
-                width: width,
-                margin: EdgeInsets.only(
-                  top: height * .01,
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.blue[900],
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(16),
-                        topRight: Radius.circular(16))),
-                child: Container(
-                  height: height * .18,
-                  width: width * .52,
-                  padding: EdgeInsets.only(
-                    right: width * .005,
-                  ),
-                  margin: EdgeInsets.only(
-                    top: height * .015,
-                    bottom: height * .015,
-                    left: width * .015,
-                    right: width * .015,
-                  ),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(16))),
-                  child: Row(
-                    children: [
-                      Flexible(
-                        flex: 1,
-                        child: Observer(builder: (_) {
-                          return GestureDetector(
-                            onTap: () async {
-                              var image = await controller.getImage();
-                              controller.logo = image;
-                            },
-                            child: (controller.logoStatus)
-                                ? (kIsWeb)
-                                    ? Image.network(controller.imageFile.path)
-                                    : Image.file(
-                                        File(controller.imageFile.path))
-                                : Container(
-                                    height: height * .125,
-                                    decoration: BoxDecoration(
-                                        color: Colors.grey[600],
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(16))),
-                                    margin: EdgeInsets.only(left: width * .02),
-                                    child: Center(
-                                      child: (controller.logoStatus)
-                                          ? (kIsWeb)
-                                              ? Image.network(
-                                                  controller.imageFile.path,
-                                                  fit: BoxFit.cover,
-                                                )
-                                              : Image.file(
-                                                  File(controller
-                                                      .imageFile.path),
-                                                  fit: BoxFit.cover,
-                                                )
-                                          : Text(
-                                              'Adicione sua Logo aqui',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            ),
-                                    ),
-                                  ),
-                          );
-                        }),
-                      ),
-                      Flexible(
-                        flex: 2,
-                        child: Container(
-                          height: height * .06,
-                          margin: EdgeInsets.only(
-                            left: width * .012,
-                          ),
-                          child: TextFormField(
-                            controller: controller.nomeController,
-                            onChanged: (newName) {
-                              controller.nome = newName;
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: new EdgeInsets.symmetric(
-                                  vertical: 10.0, horizontal: 10.0),
-                              labelText: "Nome",
-                              border: OutlineInputBorder(
-                                borderRadius: const BorderRadius.all(
-                                    const Radius.circular(12.0)),
-                                borderSide: BorderSide(
-                                  color: Colors.white,
-                                ),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            Container(
+              height: height * .20,
+              width: width,
+              margin: EdgeInsets.only(
+                top: height * .01,
+              ),
+              child: Container(
+                height: height * .18,
+                width: width * .52,
+                child: Row(
+                  children: [
+                    Flexible(
+                      flex: 1,
+                      child: Observer(builder: (_) {
+                        return GestureDetector(
+                          onTap: () async {
+                            var image = await controller.getImage();
+                            controller.logo = image;
+                          },
+                          child: (controller.logoStatus)
+                              ? (kIsWeb)
+                              ? Image.network(controller.imageFile.path)
+                              : Image.file(
+                              File(controller.imageFile.path))
+                              : Container(
+                            height: height * .125,
+                            decoration: BoxDecoration(
+                                color: Colors.grey[600],
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(16))),
+                            margin: EdgeInsets.only(left: width * .02),
+                            child: Center(
+                              child: (controller.logoStatus)
+                                  ? (kIsWeb)
+                                  ? Image.network(
+                                controller.imageFile.path,
+                                fit: BoxFit.cover,
+                              )
+                                  : Image.file(
+                                File(controller
+                                    .imageFile.path),
+                                fit: BoxFit.cover,
+                              )
+                                  : Text(
+                                'Adicione sua Logo aqui',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.white),
                               ),
                             ),
-                            validator: (text) {
-                              if (text.isEmpty)
-                                return "O campo nome, está vazio";
-                            },
                           ),
+                        );
+                      }),
+                    ),
+                    Flexible(
+                      flex: 2,
+                      child: Container(
+                        height: height * .06,
+                        margin: EdgeInsets.only(
+                          left: width * .012,
+                        ),
+                        child: TextFormField(
+                          controller: controller.nomeController,
+                          onChanged: (newName) {
+                            controller.nome = newName;
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: new EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 10.0),
+                            labelText: "Nome",
+                            border: OutlineInputBorder(
+                              borderRadius: const BorderRadius.all(
+                                  const Radius.circular(12.0)),
+                              borderSide: BorderSide(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          validator: (text) {
+                            if (text.isEmpty)
+                              return "O campo nome, está vazio";
+                          },
                         ),
                       ),
-                    ],
-                  ),
-                ),
-              ),
-              Container(
-                height: height * .75,
-                width: width,
-                margin: EdgeInsets.only(top: height * .005),
-                decoration: BoxDecoration(
-                    color: Colors.blue[900],
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(16),
-                        bottomRight: Radius.circular(16))),
-                child: Column(
-                  children: [
-                    Container(
-                      height: height * .06,
-                      width: width,
-                      padding:
-                          EdgeInsets.only(top: height * .02, left: width * .02),
-                      child: Text(
-                        'Complementos',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
-                      ),
                     ),
-                    Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(16))),
-                        child: FormsComplemento()),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+            Container(
+              height: height * .75,
+              width: width,
+              margin: EdgeInsets.only(top: height * .005),
+              decoration: BoxDecoration(
+
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(16),
+                      bottomRight: Radius.circular(16))),
+              child: Column(
+                children: [
+                  Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                          BorderRadius.all(Radius.circular(16))),
+                      child: FormsComplemento()),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

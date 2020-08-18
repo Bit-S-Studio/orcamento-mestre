@@ -27,31 +27,7 @@ class _DadosFreelancerPageState extends State<DadosFreelancerPage> {
           physics: ClampingScrollPhysics(),
           child: Container(
             margin: EdgeInsets.only(top: height *.001,),
-            child: Column(
-              children: [
-                Container(
-                  height: height * .9,
-                  width: width,
-                  margin: EdgeInsets.only(
-                    top: height * .01,
-                  ),
-                  decoration: BoxDecoration(
-                      color: Colors.blue[900],
-                      borderRadius: BorderRadius.all(Radius.circular(16))),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 16),
-                      Text(
-                        'Dados',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
-                      ),
-                      SizedBox(height: 16),
-                      FormsComplemento(),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+            child: FormsComplemento(),
           ),
         ));
   }
