@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:orcamento_mestre/app/modules/clientes/clientes_controller.dart';
 import 'package:orcamento_mestre/app/modules/clientes/clientes_page.dart';
 
 class ClientesModule extends WidgetModule {
   @override
-  List<Bind> get binds => [Bind((i) => ClientesController())];
+  List<Bind> get binds => [];
 
   @override
   List<Router> get routers => [

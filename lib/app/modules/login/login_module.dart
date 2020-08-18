@@ -6,6 +6,7 @@ import 'package:orcamento_mestre/app/modules/login/register/dados_register.dart'
 import 'package:orcamento_mestre/app/modules/login/register/pos_register.dart';
 import 'package:orcamento_mestre/app/modules/login/register/register_page.dart';
 import 'package:orcamento_mestre/app/modules/login/reset/reset_page.dart';
+import 'package:orcamento_mestre/app/modules/perfil/perfil_module.dart';
 import 'package:orcamento_mestre/app/utils/customHasuraConnect.dart';
 import 'package:orcamento_mestre/app/utils/dados_controller.dart';
 import 'reset/reset_controller.dart';
@@ -35,6 +36,7 @@ class LoginModule extends ChildModule {
         Router('/dados', child: (_, args) => DadosRegister()),
         Router('/home', module: HomeModule()),
         Router('/base', module: BaseModule()),
+        Router('/perfil', module: PerfilModule()),
       ];
 
   static Inject get to => Inject<LoginModule>.of();

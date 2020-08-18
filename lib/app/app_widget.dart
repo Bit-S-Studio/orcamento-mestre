@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:orcamento_mestre/app/modules/base/base_controller.dart';
+import 'package:orcamento_mestre/app/modules/clientes/clientes_controller.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/projeto_controller.dart';
 import 'package:orcamento_mestre/app/modules/login/register/register_controller.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
@@ -28,6 +29,9 @@ class AppWidget extends StatelessWidget {
         Provider<ServicosController>(create: (_) => ServicosController()),
         Provider<PerfilController>(create: (_) => PerfilController()),
         Provider<CustomHasuraConnect>(create: (_) => CustomHasuraConnect()),
+        Provider<ClientesController>(
+            create: (_) => ClientesController(
+                CustomHasuraConnect.getConnect(FirebaseAuth.instance))),
         Provider<DadosController>(
             create: (_) => DadosController(
                 CustomHasuraConnect.getConnect(FirebaseAuth.instance))),

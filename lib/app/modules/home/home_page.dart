@@ -135,8 +135,9 @@ class _HomePageState extends State<HomePage> {
                 Text(
                   'Seja Bem-vindo!',
                   style: TextStyle(
-                      color: Colors.white,
-                      fontSize: ScreenUtil.instance.setSp(50),),
+                    color: Colors.white,
+                    fontSize: ScreenUtil.instance.setSp(50),
+                  ),
                   textAlign: TextAlign.left,
                 ),
                 Observer(builder: (_) {
@@ -168,8 +169,7 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.grey[100]),
             child: Padding(
               padding: EdgeInsets.only(
-                top: height *.005,
-
+                top: height * .005,
               ),
               child: Column(
                 children: [
@@ -200,8 +200,8 @@ class _HomePageState extends State<HomePage> {
         children: [
           Padding(
             padding: EdgeInsets.only(
-                top: height *.015,
-                bottom: height *.01,
+              top: height * .015,
+              bottom: height * .01,
             ),
             child: Container(
                 decoration: BoxDecoration(
@@ -209,7 +209,8 @@ class _HomePageState extends State<HomePage> {
                 child: MaterialButton(
                   onPressed: () async {
                     dadosController.getDados(dadosController.uid);
-                    Modular.to.pushNamed(rota);
+                    Modular.to.pushNamedAndRemoveUntil(
+                        rota, ModalRoute.withName('/'));
                   },
                   child: Container(
                     decoration: BoxDecoration(
