@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/Consts.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/item_description_widget.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/projeto_controller.dart';
@@ -22,16 +24,18 @@ class _AddItemState extends State<AddItem> {
       elevation: 0.0,
       backgroundColor: Colors.transparent,
       child: Container(
-          height: height * .5, width: width, child: dialogContent(context)),
+          height: height * .45, width: width, child: dialogContent(context)),
     );
   }
 
   Widget dialogContent(BuildContext context) {
+    ScreenUtil.getInstance()..init(context);
     final controller = Provider.of<ProjetoController>(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return SingleChildScrollView(
       child: Container(
+        height: height * .39,
         padding: EdgeInsets.only(
           top: height * .01,
           bottom: height * .01,
@@ -57,13 +61,16 @@ class _AddItemState extends State<AddItem> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(
-                  child: Text(
-                    'Novo Item',
-                    style: TextStyle(
-                        color: Colors.blue[900],
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold),
+                Container(
+                  width: width *.13,
+                  child: Center(
+                    child: Text(
+                      'Novo Item',
+                      style: TextStyle(
+                          color: Colors.blue[900],
+                          fontSize: ScreenUtil.instance.setSp(40),
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
                 Flexible(fit: FlexFit.tight, child: SizedBox()),
@@ -78,39 +85,37 @@ class _AddItemState extends State<AddItem> {
               ],
             ),
             Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(12)),
-                  ),
-              child: Padding(
-                padding: const EdgeInsets.all(2.0),
-                child: TextFormField(
-                  onChanged: controller.changeCategoria,
-                  controller: controller.categoriaController,
-                  decoration: InputDecoration(
-                    contentPadding: new EdgeInsets.symmetric(
-                        vertical: 10.0, horizontal: 10.0),
-                    labelText: "Categoria",
-                    labelStyle: TextStyle(fontSize: 12),
-                    border: OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(12.0)),
-                      borderSide: BorderSide(
-                        color: Colors.white,
-                      ),
+              height: height *.06,
+              child: TextFormField(
+                onChanged: controller.changeCategoria,
+                controller: controller.categoriaController,
+                decoration: InputDecoration(
+                  contentPadding: new EdgeInsets.symmetric(
+                      vertical: 10.0, horizontal: 10.0),
+                  labelText: "Categoria",
+                  labelStyle: TextStyle(fontSize: 12),
+                  border: OutlineInputBorder(
+                    borderRadius:
+                    const BorderRadius.all(const Radius.circular(12.0)),
+                    borderSide: BorderSide(
+                      color: Colors.white,
                     ),
                   ),
-                  validator: (text) {
-                    if (text.isEmpty)
-                      return "O campo Descrição do ítem está vazio!";
-                  },
                 ),
+                validator: (text) {
+                  if (text.isEmpty)
+                    return "O campo Categoria está vazio!";
+                },
               ),
             ),
-            SizedBox(height: 12),
-            ItemDescritionWidget(),
-            SizedBox(height: 12),
-            button()
+            Container(
+                height: height *.15,
+                child: ItemDescritionWidget()),
+            Container(
+                margin: EdgeInsets.only(
+                  top: height *.015
+                ),
+                child: button())
           ],
         ),
       ),

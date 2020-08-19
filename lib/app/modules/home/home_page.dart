@@ -179,13 +179,46 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   buttons('Solicitar orçamento', '/solicitar',
                       LineAwesomeIcons.paper_plane_o),
+                  Container(
+                    height: height *.016,
+                    width: width,
+                    padding: EdgeInsets.only(
+                      left: width *.33
+                    ),
+                    child: Text('Em Desenvolvimento',
+                      style: TextStyle(
+                        fontSize: ScreenUtil.instance.setSp(20),
+                      ),
+                    ),
+                  ),
                   buttons(
                       'Gerar orçamento', '/base', LineAwesomeIcons.file_pdf_o),
+                  Container(
+                    height: height *.015,
+                  ),
                   buttons('Minhas solicitações', '/solicitacoes',
                       LineAwesomeIcons.sort_amount_asc),
+                  Container(
+                    height: height *.016,
+                    width: width,
+                    padding: EdgeInsets.only(
+                        left: width *.33
+                    ),
+                    child: Text('Em Desenvolvimento',
+                      style: TextStyle(
+                        fontSize: ScreenUtil.instance.setSp(20),
+                      ),
+                    ),
+                  ),
                   buttons(
                       'Meus Orçamentos', '/orcamentos', LineAwesomeIcons.copy),
+                  Container(
+                    height: height *.015,
+                  ),
                   buttons('Meu perfil', '/perfil', LineAwesomeIcons.user),
+                  Container(
+                    height: height *.015,
+                  ),
                 ],
               ),
             ),
@@ -204,8 +237,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           Padding(
             padding: EdgeInsets.only(
-              top: height * .015,
-              bottom: height * .01,
+              top: height * .01,
             ),
             child: Container(
                 decoration: BoxDecoration(

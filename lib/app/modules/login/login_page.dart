@@ -45,12 +45,12 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                   children: [
                     Positioned(
                       top: height *.04,
+                        left: width *.022,
                         child: forms()),
                     Positioned(
-                        top: height *.06,
+                        top: height *.02,
                         left: width *.18,
-                        child: Container(
-                            child: buttons())),
+                            child: buttons()),
                   ],
                 ),
               ),
@@ -110,58 +110,50 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   Widget forms() {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
-    return Center(
-        child: Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10),
-            child: Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
-                elevation: 5.0,
-                child: Container(
-                    alignment: Alignment.center,
-                    constraints: BoxConstraints(
-                      maxWidth: 380,
-                      minWidth: 200,
-                      maxHeight: 160,
-                      minHeight: 100,
-                    ),
-                    color: Colors.white,
-                    child: Center(
-                        child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20.0, right: 20, top: 26),
-                            child: Column(children: <Widget>[
-                              textForm(
-                                context: context,
-                                icon: LineAwesomeIcons.envelope,
-                                obscure: false,
-                                tipo: TextInputType.emailAddress,
-                                hint: 'Email',
-                                onChanged: controller.changeEmail,
-                              ),
-                              Container(
-                                width: 250.0,
-                                height: 1.0,
-                                color: Colors.grey[400],
-                              ),
-                              Observer(builder: (_) {
-                                return textForm(
-                                    context: context,
-                                    tipo: TextInputType.visiblePassword,
-                                    hint: 'Senha',
-                                    obscure: controller.senhaObscure,
-                                    icon: LineAwesomeIcons.lock,
-                                    iconButton: IconButton(
-                                        icon: Icon(controller.senhaObscure
-                                            ? LineAwesomeIcons.eye_slash
-                                            : LineAwesomeIcons.eye),
-                                        onPressed: () {
-                                          controller.senhaObscure =
-                                              !controller.senhaObscure;
-                                        }),
-                                    onChanged: controller.changeSenha);
-                              }),
-                            ])))))));
+    return Card(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12)),
+        elevation: 5.0,
+        child: Container(
+            height: height *.25,
+            width: width *.55,
+            color: Colors.white,
+            child: Center(
+                child: Padding(
+                    padding: const EdgeInsets.only(
+                        left: 20.0, right: 20, top: 26),
+                    child: Column(children: <Widget>[
+                      textForm(
+                        context: context,
+                        icon: LineAwesomeIcons.envelope,
+                        obscure: false,
+                        tipo: TextInputType.emailAddress,
+                        hint: 'Email',
+                        onChanged: controller.changeEmail,
+                      ),
+                      Container(
+                        width: 250.0,
+                        height: 1.0,
+                        color: Colors.grey[400],
+                      ),
+                      Observer(builder: (_) {
+                        return textForm(
+                            context: context,
+                            tipo: TextInputType.visiblePassword,
+                            hint: 'Senha',
+                            obscure: controller.senhaObscure,
+                            icon: LineAwesomeIcons.lock,
+                            iconButton: IconButton(
+                                icon: Icon(controller.senhaObscure
+                                    ? LineAwesomeIcons.eye_slash
+                                    : LineAwesomeIcons.eye),
+                                onPressed: () {
+                                  controller.senhaObscure =
+                                  !controller.senhaObscure;
+                                }),
+                            onChanged: controller.changeSenha);
+                      }),
+                    ])))));
   }
 
   Widget buttons() {
