@@ -42,7 +42,6 @@ class _LayoutPageState extends ModularState<LayoutPage, LayoutController> {
             Row(
               children: [
                 Container(
-                  height: height,
                   width: width * .36,
                   margin: EdgeInsets.only(
                     left: width * .03,
@@ -448,15 +447,37 @@ class _LayoutPageState extends ModularState<LayoutPage, LayoutController> {
                     ],
                   ),
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    botoes('cabecalio'),
-                    botoes('base'),
-                    botoes('rodape')
-                  ],
-                )
+                Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        height: height *.15,
+                          margin: EdgeInsets.only(
+                            bottom: height *.1,
+                            left: width *.003
+                          ),
+                          padding: EdgeInsets.only(
+                              bottom: height *.05
+                          ),
+                          child: botoes('cabecalio')),
+                      Container(
+                          height: height *.1,
+                          margin: EdgeInsets.only(
+                              bottom: height *.01
+                          ),
+                          child: botoes('base')),
+                      Container(
+                          height: height *.1,
+                          margin: EdgeInsets.only(
+                            top: height *.015,
+
+                          ),
+                          child: botoes('rodape'))
+                    ],
+                  ),
+                ),
               ],
             ),
           ],
@@ -472,14 +493,10 @@ class _LayoutPageState extends ModularState<LayoutPage, LayoutController> {
       height: height * .08,
       width: width * .08,
       margin: EdgeInsets.only(
-        top: height * .06,
-        bottom: height * .06,
         left: width * .003,
       ),
       child: Material(
         child: Ink(
-          decoration: const ShapeDecoration(
-              color: Colors.transparent, shape: CircleBorder()),
           child: CircleAvatar(
             child: RaisedButton(
               color: Colors.transparent,

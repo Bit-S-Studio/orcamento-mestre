@@ -146,7 +146,17 @@ class _ResetPageState extends ModularState<ResetPage, ResetController> {
   Widget button() {
     return Observer(builder: (_) {
       return Container(
-        decoration: buttonDecoration,
+        decoration: BoxDecoration(
+          color: Colors.blue[900],
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.black,
+              offset: Offset(1.0, 6.0),
+              blurRadius: 20.0,
+            ),
+          ],
+        ),
         child: MaterialButton(
           onPressed: controller.isValid
               ? () {
@@ -156,7 +166,7 @@ class _ResetPageState extends ModularState<ResetPage, ResetController> {
                   Fluttertoast.showToast(msg: controller.validate());
                 },
           highlightColor: Colors.transparent,
-          splashColor: Colors.lightBlueAccent,
+          splashColor: Colors.black,
           //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
           child: Padding(
             padding:

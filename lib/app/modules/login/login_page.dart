@@ -32,20 +32,31 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              logo(),
               Container(
-                height: height * .35,
+                  height: height *.32,
+                  width: width,
+                  child: logo()
+              ),
+              Container(
+                height: height *.45,
                 child: Stack(
                   children: [
-                    forms(),
-                    Container(
-                        margin: EdgeInsets.only(top: height * .005),
-                        child: buttons()),
+                    Positioned(
+                      top: height *.04,
+                        child: forms()),
+                    Positioned(
+                        top: height *.06,
+                        left: width *.18,
+                        child: Container(
+                            child: buttons())),
                   ],
                 ),
               ),
-              Container(child: buttons2()),
+              Container(
+                child: buttons2(),
+              )
             ],
           ),
         ));
@@ -97,9 +108,11 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   }
 
   Widget forms() {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.height;
     return Center(
         child: Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
+            padding: const EdgeInsets.only(left: 10, right: 10),
             child: Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)),
@@ -107,7 +120,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                 child: Container(
                     alignment: Alignment.center,
                     constraints: BoxConstraints(
-                      maxWidth: 400,
+                      maxWidth: 380,
                       minWidth: 200,
                       maxHeight: 160,
                       minHeight: 100,
@@ -179,7 +192,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
       child: Column(
         children: [
           SizedBox(
-            height: 20,
+            height: 12,
           ),
           Container(
               child: FlatButton(
@@ -189,7 +202,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
             child: Text('Esqueceu a senha?', style: letraPreta),
           )),
           SizedBox(
-            height: 20,
+            height: 08,
           ),
           Container(
               child: FlatButton(

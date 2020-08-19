@@ -238,7 +238,17 @@ class _RegisterPageState extends State<RegisterPage> {
     final dadosController = Provider.of<DadosController>(context);
     return Observer(builder: (_) {
       return Container(
-        decoration: buttonDecoration,
+        decoration: BoxDecoration(
+          color: Colors.blue[900],
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.black,
+              offset: Offset(1.0, 6.0),
+              blurRadius: 20.0,
+            ),
+          ],
+        ),
         child: MaterialButton(
           onPressed: controller.isValid
               ? () async {
