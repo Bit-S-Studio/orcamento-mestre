@@ -26,13 +26,13 @@ abstract class _OrcamentoControllerBase with Store {
   String base;
 
   @observable
-  String colorLetraCabecalio;
+  String letraCabecalio;
 
   @observable
-  String colorLetraRodape;
+  String letraRodape;
 
   @observable
-  String colorLetraBase;
+  String letraBase;
 
   @observable
   bool letraPreta = true;
@@ -42,6 +42,25 @@ abstract class _OrcamentoControllerBase with Store {
 
   @observable
   String corLetra = 'Preta';
+
+  @observable
+  Color colorCabecalio = Colors.blue[900];
+
+  @observable
+  Color colorRodape = Colors.grey[200];
+
+  @observable
+  Color colorBase = Colors.grey[800];
+
+  @observable
+  Color colorLetraCabecalio = Colors.white;
+
+  @observable
+  Color colorLetraRodape = Colors.black;
+
+  @observable
+  Color colorLetraBase = Colors.white;
+
   @action
   Future<String> convertColor(Color color, String nome, String letra) async {
     String colorString = color.toString(); // Color(0x12345678)
@@ -49,29 +68,29 @@ abstract class _OrcamentoControllerBase with Store {
         colorString.split('(0x')[1].split(')')[0]; // kind of hacky..
     String colorHex = valueString.toString();
     String colorLetra;
+    Color colors;
     if (letra == 'Preta') {
       colorLetra = '000000';
+      colors = Colors.black;
     } else {
       colorLetra = 'FFFFFF';
+      colors = Colors.white;
     }
     if (nome == 'cabecalio') {
       cabecalio = colorHex;
-      colorLetraCabecalio = colorLetra;
-      print('cabecalio');
-      print(cabecalio);
-      print(colorLetraCabecalio);
+      letraCabecalio = colorLetra;
+      colorCabecalio = color;
+      colorLetraCabecalio = colors;
     } else if (nome == 'rodape') {
       rodape = colorHex;
-      colorLetraRodape = colorLetra;
-      print('rodape');
-      print(rodape);
-      print(colorLetraRodape);
+      letraRodape = colorLetra;
+      colorLetraRodape = colors;
+      colorRodape = color;
     } else {
       base = colorHex;
-      colorLetraBase = colorLetra;
-      print('base');
-      print(base);
-      print(colorLetraBase);
+      colorLetraBase = colors;
+      letraBase = colorLetra;
+      colorBase = color;
     }
     return colorHex;
   }
