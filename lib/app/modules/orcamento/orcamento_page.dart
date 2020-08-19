@@ -102,9 +102,8 @@ class _OrcamentoPageState
         ),
         child: MaterialButton(
             onPressed: () async {
-              pdfController.writeOnPdf();
-              await pdfController.savePdf();
-              await pdfController.viewPdf('name');
+              pdfController.writeOnPdf('000000');
+              await pdfController.savePdf(controller.nome);
             },
             highlightColor: Colors.transparent,
             splashColor: Colors.black,
@@ -116,7 +115,7 @@ class _OrcamentoPageState
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 25.0,
+                  fontSize: 16.0,
                 ),
               ),
             )),

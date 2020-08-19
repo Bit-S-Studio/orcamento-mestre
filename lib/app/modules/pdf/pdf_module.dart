@@ -1,10 +1,11 @@
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:dio/dio.dart';
 import 'package:orcamento_mestre/app/modules/pdf/pdf_controller.dart';
 import 'package:orcamento_mestre/app/modules/pdf/pdf_page.dart';
 import 'package:pdf/pdf.dart';
 
-class PdfModule extends ChildModule {
+class PdfModule extends WidgetModule {
   @override
   List<Bind> get binds => [Bind((i) => PdfController())];
 
@@ -15,4 +16,7 @@ class PdfModule extends ChildModule {
       ];
 
   static Inject get to => Inject<PdfModule>.of();
+
+  @override
+  Widget get view => PagePDF();
 }

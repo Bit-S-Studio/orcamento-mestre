@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:orcamento_mestre/app/modules/base/base_controller.dart';
 import 'package:orcamento_mestre/app/modules/base/base_page.dart';
 import 'package:orcamento_mestre/app/modules/clientes/clientes_controller.dart';
+import 'package:orcamento_mestre/app/modules/pdf/pdf_module.dart';
 import 'package:orcamento_mestre/app/utils/customHasuraConnect.dart';
 
 class BaseModule extends ChildModule {
@@ -18,6 +19,8 @@ class BaseModule extends ChildModule {
   @override
   List<Router> get routers => [
         Router(Modular.initialRoute, child: (_, args) => BasePage()),
+        Router('/', child: (_, args) => BasePage()),
+        Router('/pdf', module: PdfModule()),
       ];
 
   static Inject get to => Inject<BaseModule>.of();

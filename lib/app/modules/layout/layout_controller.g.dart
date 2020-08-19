@@ -9,18 +9,33 @@ part of 'layout_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$LayoutController on _LayoutControllerBase, Store {
-  final _$valueAtom = Atom(name: '_LayoutControllerBase.value');
+  final _$pickerColorAtom = Atom(name: '_LayoutControllerBase.pickerColor');
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  Color get pickerColor {
+    _$pickerColorAtom.reportRead();
+    return super.pickerColor;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set pickerColor(Color value) {
+    _$pickerColorAtom.reportWrite(value, super.pickerColor, () {
+      super.pickerColor = value;
+    });
+  }
+
+  final _$currentColorAtom = Atom(name: '_LayoutControllerBase.currentColor');
+
+  @override
+  Color get currentColor {
+    _$currentColorAtom.reportRead();
+    return super.currentColor;
+  }
+
+  @override
+  set currentColor(Color value) {
+    _$currentColorAtom.reportWrite(value, super.currentColor, () {
+      super.currentColor = value;
     });
   }
 
@@ -28,11 +43,11 @@ mixin _$LayoutController on _LayoutControllerBase, Store {
       ActionController(name: '_LayoutControllerBase');
 
   @override
-  void increment() {
+  void changeColor(Color color) {
     final _$actionInfo = _$_LayoutControllerBaseActionController.startAction(
-        name: '_LayoutControllerBase.increment');
+        name: '_LayoutControllerBase.changeColor');
     try {
-      return super.increment();
+      return super.changeColor(color);
     } finally {
       _$_LayoutControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -41,7 +56,8 @@ mixin _$LayoutController on _LayoutControllerBase, Store {
   @override
   String toString() {
     return '''
-value: ${value}
+pickerColor: ${pickerColor},
+currentColor: ${currentColor}
     ''';
   }
 }

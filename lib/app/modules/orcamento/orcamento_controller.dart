@@ -17,16 +17,64 @@ abstract class _OrcamentoControllerBase with Store {
   double valorTotal;
 
   @observable
-  Colors colorCabecalio;
+  String cabecalio;
 
   @observable
-  Colors colorRodape;
+  String rodape;
 
   @observable
-  Colors colorBase;
+  String base;
 
   @observable
-  Colors colorLetra;
+  String colorLetraCabecalio;
+
+  @observable
+  String colorLetraRodape;
+
+  @observable
+  String colorLetraBase;
+
+  @observable
+  bool letraPreta = true;
+
+  @observable
+  bool letraBranca = false;
+
+  @observable
+  String corLetra = 'Preta';
+  @action
+  Future<String> convertColor(Color color, String nome, String letra) async {
+    String colorString = color.toString(); // Color(0x12345678)
+    String valueString =
+        colorString.split('(0x')[1].split(')')[0]; // kind of hacky..
+    String colorHex = valueString.toString();
+    String colorLetra;
+    if (letra == 'Preta') {
+      colorLetra = '000000';
+    } else {
+      colorLetra = 'FFFFFF';
+    }
+    if (nome == 'cabecalio') {
+      cabecalio = colorHex;
+      colorLetraCabecalio = colorLetra;
+      print('cabecalio');
+      print(cabecalio);
+      print(colorLetraCabecalio);
+    } else if (nome == 'rodape') {
+      rodape = colorHex;
+      colorLetraRodape = colorLetra;
+      print('rodape');
+      print(rodape);
+      print(colorLetraRodape);
+    } else {
+      base = colorHex;
+      colorLetraBase = colorLetra;
+      print('base');
+      print(base);
+      print(colorLetraBase);
+    }
+    return colorHex;
+  }
 
   @observable
   String nome;

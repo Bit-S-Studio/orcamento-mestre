@@ -417,9 +417,7 @@ abstract class _DadosControllerBase with Store {
         if (doc["data"]["freelancers"].isEmpty) {
           print('vazio');
         } else {
-          print('aqui2');
           if (doc["data"]["freelancers"].length > 0) {
-            print('aqui2');
             for (var document in doc["data"]["freelancers"]) {
               emailController.text = document["email"];
               nomeController.text = document["nome"];

@@ -54,64 +54,141 @@ mixin _$OrcamentoController on _OrcamentoControllerBase, Store {
     });
   }
 
-  final _$colorCabecalioAtom =
-      Atom(name: '_OrcamentoControllerBase.colorCabecalio');
+  final _$cabecalioAtom = Atom(name: '_OrcamentoControllerBase.cabecalio');
 
   @override
-  Colors get colorCabecalio {
-    _$colorCabecalioAtom.reportRead();
-    return super.colorCabecalio;
+  String get cabecalio {
+    _$cabecalioAtom.reportRead();
+    return super.cabecalio;
   }
 
   @override
-  set colorCabecalio(Colors value) {
-    _$colorCabecalioAtom.reportWrite(value, super.colorCabecalio, () {
-      super.colorCabecalio = value;
+  set cabecalio(String value) {
+    _$cabecalioAtom.reportWrite(value, super.cabecalio, () {
+      super.cabecalio = value;
     });
   }
 
-  final _$colorRodapeAtom = Atom(name: '_OrcamentoControllerBase.colorRodape');
+  final _$rodapeAtom = Atom(name: '_OrcamentoControllerBase.rodape');
 
   @override
-  Colors get colorRodape {
-    _$colorRodapeAtom.reportRead();
-    return super.colorRodape;
+  String get rodape {
+    _$rodapeAtom.reportRead();
+    return super.rodape;
   }
 
   @override
-  set colorRodape(Colors value) {
-    _$colorRodapeAtom.reportWrite(value, super.colorRodape, () {
-      super.colorRodape = value;
+  set rodape(String value) {
+    _$rodapeAtom.reportWrite(value, super.rodape, () {
+      super.rodape = value;
     });
   }
 
-  final _$colorBaseAtom = Atom(name: '_OrcamentoControllerBase.colorBase');
+  final _$baseAtom = Atom(name: '_OrcamentoControllerBase.base');
 
   @override
-  Colors get colorBase {
-    _$colorBaseAtom.reportRead();
-    return super.colorBase;
+  String get base {
+    _$baseAtom.reportRead();
+    return super.base;
   }
 
   @override
-  set colorBase(Colors value) {
-    _$colorBaseAtom.reportWrite(value, super.colorBase, () {
-      super.colorBase = value;
+  set base(String value) {
+    _$baseAtom.reportWrite(value, super.base, () {
+      super.base = value;
     });
   }
 
-  final _$colorLetraAtom = Atom(name: '_OrcamentoControllerBase.colorLetra');
+  final _$colorLetraCabecalioAtom =
+      Atom(name: '_OrcamentoControllerBase.colorLetraCabecalio');
 
   @override
-  Colors get colorLetra {
-    _$colorLetraAtom.reportRead();
-    return super.colorLetra;
+  String get colorLetraCabecalio {
+    _$colorLetraCabecalioAtom.reportRead();
+    return super.colorLetraCabecalio;
   }
 
   @override
-  set colorLetra(Colors value) {
-    _$colorLetraAtom.reportWrite(value, super.colorLetra, () {
-      super.colorLetra = value;
+  set colorLetraCabecalio(String value) {
+    _$colorLetraCabecalioAtom.reportWrite(value, super.colorLetraCabecalio, () {
+      super.colorLetraCabecalio = value;
+    });
+  }
+
+  final _$colorLetraRodapeAtom =
+      Atom(name: '_OrcamentoControllerBase.colorLetraRodape');
+
+  @override
+  String get colorLetraRodape {
+    _$colorLetraRodapeAtom.reportRead();
+    return super.colorLetraRodape;
+  }
+
+  @override
+  set colorLetraRodape(String value) {
+    _$colorLetraRodapeAtom.reportWrite(value, super.colorLetraRodape, () {
+      super.colorLetraRodape = value;
+    });
+  }
+
+  final _$colorLetraBaseAtom =
+      Atom(name: '_OrcamentoControllerBase.colorLetraBase');
+
+  @override
+  String get colorLetraBase {
+    _$colorLetraBaseAtom.reportRead();
+    return super.colorLetraBase;
+  }
+
+  @override
+  set colorLetraBase(String value) {
+    _$colorLetraBaseAtom.reportWrite(value, super.colorLetraBase, () {
+      super.colorLetraBase = value;
+    });
+  }
+
+  final _$letraPretaAtom = Atom(name: '_OrcamentoControllerBase.letraPreta');
+
+  @override
+  bool get letraPreta {
+    _$letraPretaAtom.reportRead();
+    return super.letraPreta;
+  }
+
+  @override
+  set letraPreta(bool value) {
+    _$letraPretaAtom.reportWrite(value, super.letraPreta, () {
+      super.letraPreta = value;
+    });
+  }
+
+  final _$letraBrancaAtom = Atom(name: '_OrcamentoControllerBase.letraBranca');
+
+  @override
+  bool get letraBranca {
+    _$letraBrancaAtom.reportRead();
+    return super.letraBranca;
+  }
+
+  @override
+  set letraBranca(bool value) {
+    _$letraBrancaAtom.reportWrite(value, super.letraBranca, () {
+      super.letraBranca = value;
+    });
+  }
+
+  final _$corLetraAtom = Atom(name: '_OrcamentoControllerBase.corLetra');
+
+  @override
+  String get corLetra {
+    _$corLetraAtom.reportRead();
+    return super.corLetra;
+  }
+
+  @override
+  set corLetra(String value) {
+    _$corLetraAtom.reportWrite(value, super.corLetra, () {
+      super.corLetra = value;
     });
   }
 
@@ -194,16 +271,30 @@ mixin _$OrcamentoController on _OrcamentoControllerBase, Store {
     });
   }
 
+  final _$convertColorAsyncAction =
+      AsyncAction('_OrcamentoControllerBase.convertColor');
+
+  @override
+  Future<String> convertColor(Color color, String nome, String letra) {
+    return _$convertColorAsyncAction
+        .run(() => super.convertColor(color, nome, letra));
+  }
+
   @override
   String toString() {
     return '''
 texto: ${texto},
 listItens: ${listItens},
 valorTotal: ${valorTotal},
-colorCabecalio: ${colorCabecalio},
-colorRodape: ${colorRodape},
-colorBase: ${colorBase},
-colorLetra: ${colorLetra},
+cabecalio: ${cabecalio},
+rodape: ${rodape},
+base: ${base},
+colorLetraCabecalio: ${colorLetraCabecalio},
+colorLetraRodape: ${colorLetraRodape},
+colorLetraBase: ${colorLetraBase},
+letraPreta: ${letraPreta},
+letraBranca: ${letraBranca},
+corLetra: ${corLetra},
 nome: ${nome},
 nomeController: ${nomeController},
 observacao: ${observacao},

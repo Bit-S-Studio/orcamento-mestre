@@ -57,8 +57,8 @@ mixin _$PdfController on _PdfControllerBase, Store {
   final _$savePdfAsyncAction = AsyncAction('_PdfControllerBase.savePdf');
 
   @override
-  Future<dynamic> savePdf() {
-    return _$savePdfAsyncAction.run(() => super.savePdf());
+  Future<dynamic> savePdf(String name) {
+    return _$savePdfAsyncAction.run(() => super.savePdf(name));
   }
 
   final _$viewPdfAsyncAction = AsyncAction('_PdfControllerBase.viewPdf');
@@ -72,11 +72,11 @@ mixin _$PdfController on _PdfControllerBase, Store {
       ActionController(name: '_PdfControllerBase');
 
   @override
-  dynamic writeOnPdf() {
+  dynamic writeOnPdf(String color) {
     final _$actionInfo = _$_PdfControllerBaseActionController.startAction(
         name: '_PdfControllerBase.writeOnPdf');
     try {
-      return super.writeOnPdf();
+      return super.writeOnPdf(color);
     } finally {
       _$_PdfControllerBaseActionController.endAction(_$actionInfo);
     }
