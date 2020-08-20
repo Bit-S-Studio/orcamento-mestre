@@ -58,7 +58,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                   Positioned(
                     top: height *.23,
                       child: Container(
-                          height: height *.28,
                           padding: EdgeInsets.only(
                               left: width *.18,
                           ),
@@ -171,6 +170,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   }
 
   Widget buttons() {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.height;
     return Center(
       child: Column(
         children: [
@@ -180,8 +181,24 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                 Visibility(visible: controller.box1, child: button()),
                 Visibility(
                     visible: controller.box2,
-                    child: CircularProgressIndicator(
-                        backgroundColor: Colors.blue[900])),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.blue[900],
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                        boxShadow: <BoxShadow>[
+                          BoxShadow(
+                            color: Colors.black,
+                            offset: Offset(1.0, 6.0),
+                            blurRadius: 20.0,
+                          ),
+                        ],
+                      ),
+                      margin: EdgeInsets.only(
+                        left: width *.08
+                          ),
+                      child: CircularProgressIndicator(
+                          backgroundColor: Colors.blue[900]),
+                    )),
               ],
             );
           }),
