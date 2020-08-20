@@ -31,13 +31,7 @@ class _ResetPageState extends ModularState<ResetPage, ResetController> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
-                height: 40,
-              ),
               logo(),
-              SizedBox(
-                height: 40,
-              ),
               Stack(
                 children: [
                   forms(),

@@ -31,8 +31,8 @@ class _LayoutPageState extends State<LayoutPage> {
           children: [
             Container(
               height: height * .1,
-              width: width * .3,
-              padding: EdgeInsets.only(top: height * .02),
+              width: width,
+              padding: EdgeInsets.only(top: height * .035),
               child: Text(
                 'Personalize as cores do seu orçamento',
                 textAlign: TextAlign.center,
@@ -47,7 +47,7 @@ class _LayoutPageState extends State<LayoutPage> {
                   Container(
                     width: width * .36,
                     margin: EdgeInsets.only(
-                      left: width * .03,
+                      left: width * .02,
                     ),
                     child: Column(
                       children: <Widget>[
@@ -483,19 +483,35 @@ class _LayoutPageState extends State<LayoutPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Container(
-                            height: height * .15,
+                            height: height * .1,
+                            width: width *.1,
                             margin: EdgeInsets.only(
-                                bottom: height * .1, left: width * .003),
-                            padding: EdgeInsets.only(bottom: height * .05),
+                                bottom: height * .05, left: width * .003),
+                            padding: EdgeInsets.only(
+                                bottom: height * .05,
+                              right: width *.025
+                            ),
                             child: botoes('cabecalio')),
                         Container(
                             height: height * .1,
-                            margin: EdgeInsets.only(bottom: height * .01),
+                            width: width *.1,
+                            margin: EdgeInsets.only(
+                              top: height *.080,
+                                bottom: height * .010),
+                            padding: EdgeInsets.only(
+                                bottom: height * .05,
+                                right: width *.025
+                            ),
                             child: botoes('base')),
                         Container(
                             height: height * .1,
+                            width: width *.1,
                             margin: EdgeInsets.only(
-                              top: height * .015,
+                              top: height * .060,
+                            ),
+                            padding: EdgeInsets.only(
+                                bottom: height * .05,
+                                right: width *.025
                             ),
                             child: botoes('rodape'))
                       ],
@@ -516,12 +532,10 @@ class _LayoutPageState extends State<LayoutPage> {
     return Container(
       height: height * .08,
       width: width * .08,
-      margin: EdgeInsets.only(
-        left: width * .003,
-      ),
       child: Material(
         child: Ink(
           child: CircleAvatar(
+            backgroundColor: Colors.blue[900],
             child: RaisedButton(
               color: Colors.transparent,
               elevation: 0.0,
@@ -530,7 +544,7 @@ class _LayoutPageState extends State<LayoutPage> {
               },
               child: Icon(
                 Icons.edit,
-                color: Colors.blue[900],
+                color: Colors.white,
               ),
             ),
           ),
