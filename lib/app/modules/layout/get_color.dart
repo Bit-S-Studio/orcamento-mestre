@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:orcamento_mestre/app/modules/layout/layout_controller.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
 import 'package:provider/provider.dart';
@@ -17,10 +18,15 @@ class GetColor extends StatefulWidget {
 class _GetColorState extends State<GetColor> {
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.getInstance()..init(context);
     final controller = Provider.of<LayoutController>(context);
     final oController = Provider.of<OrcamentoController>(context);
     return AlertDialog(
-      title: const Text('Escolha uma cor!'),
+      title: Text('Escolha uma cor!',
+        style: TextStyle(
+            fontSize: ScreenUtil.instance.setSp(40),
+            fontWeight: FontWeight.bold),
+      ),
       content: SingleChildScrollView(
         child: Column(
           children: [
@@ -29,7 +35,7 @@ class _GetColorState extends State<GetColor> {
                   pickerColor: controller.pickerColor,
                   onColorChanged: controller.changeColor,
                   showLabel: true,
-                  pickerAreaHeightPercent: 0.8,
+                  pickerAreaHeightPercent: 0.5,
                   colorPickerWidth: 300.0,
                   displayThumbColor: true,
                   enableAlpha: true,

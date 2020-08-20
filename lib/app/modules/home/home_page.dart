@@ -154,76 +154,64 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.only(
-            top: height * .05,
-            left: width * .02,
-            right: width * .02,
-          ),
-          child: Container(
-            height: height * 0.5,
-            width: width,
-            margin: EdgeInsets.only(
-                top: height * .025,
-                bottom: height * .03,
-                left: width * .045,
-                right: width * .045),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.grey[100]),
-            child: Padding(
-              padding: EdgeInsets.only(
-                top: height * .005,
+        Container(
+          height: height * 0.59,
+          width: width,
+          margin: EdgeInsets.only(
+              top: height * .045,
+              bottom: height * .03,
+              left: width * .045,
+              right: width * .045),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: Colors.grey[100]),
+          child: Column(
+            children: [
+              buttons('Solicitar orçamento', '/solicitar',
+                  LineAwesomeIcons.paper_plane_o),
+              Container(
+                height: height *.015,
+                width: width,
+                padding: EdgeInsets.only(
+                    left: width *.33
+                ),
+                child: Text('Em Desenvolvimento',
+                  style: TextStyle(
+                    fontSize: ScreenUtil.instance.setSp(20),
+                  ),
+                ),
               ),
-              child: Column(
-                children: [
-                  buttons('Solicitar orçamento', '/solicitar',
-                      LineAwesomeIcons.paper_plane_o),
-                  Container(
-                    height: height *.016,
-                    width: width,
-                    padding: EdgeInsets.only(
-                      left: width *.33
-                    ),
-                    child: Text('Em Desenvolvimento',
-                      style: TextStyle(
-                        fontSize: ScreenUtil.instance.setSp(20),
-                      ),
-                    ),
-                  ),
-                  buttons(
-                      'Gerar orçamento', '/base', LineAwesomeIcons.file_pdf_o),
-                  Container(
-                    height: height *.015,
-                  ),
-                  buttons('Minhas solicitações', '/solicitacoes',
-                      LineAwesomeIcons.sort_amount_asc),
-                  Container(
-                    height: height *.016,
-                    width: width,
-                    padding: EdgeInsets.only(
-                        left: width *.33
-                    ),
-                    child: Text('Em Desenvolvimento',
-                      style: TextStyle(
-                        fontSize: ScreenUtil.instance.setSp(20),
-                      ),
-                    ),
-                  ),
-                  buttons(
-                      'Meus Orçamentos', '/orcamentos', LineAwesomeIcons.copy),
-                  Container(
-                    height: height *.015,
-                  ),
-                  buttons('Meu perfil', '/perfil', LineAwesomeIcons.user),
-                  Container(
-                    height: height *.015,
-                  ),
-                ],
+              buttons(
+                  'Gerar orçamento', '/base', LineAwesomeIcons.file_pdf_o),
+              Container(
+                height: height *.015,
               ),
-            ),
+              buttons('Minhas solicitações', '/solicitacoes',
+                  LineAwesomeIcons.sort_amount_asc),
+              Container(
+                height: height *.016,
+                width: width,
+                padding: EdgeInsets.only(
+                    left: width *.33
+                ),
+                child: Text('Em Desenvolvimento',
+                  style: TextStyle(
+                    fontSize: ScreenUtil.instance.setSp(20),
+                  ),
+                ),
+              ),
+              buttons(
+                  'Meus Orçamentos', '/orcamentos', LineAwesomeIcons.copy),
+              Container(
+                height: height *.015,
+              ),
+              buttons('Meu perfil', '/perfil', LineAwesomeIcons.user),
+              Container(
+                height: height *.015,
+              ),
+            ],
           ),
-        )
+        ),
       ],
     );
   }

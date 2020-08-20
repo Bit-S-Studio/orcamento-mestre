@@ -484,34 +484,31 @@ class _LayoutPageState extends State<LayoutPage> {
                       children: <Widget>[
                         Container(
                             height: height * .1,
-                            width: width *.1,
+                            width: width *.05,
                             margin: EdgeInsets.only(
-                                bottom: height * .05, left: width * .003),
+                                bottom: height * .05),
                             padding: EdgeInsets.only(
                                 bottom: height * .05,
-                              right: width *.025
                             ),
                             child: botoes('cabecalio')),
                         Container(
                             height: height * .1,
-                            width: width *.1,
+                            width: width *.05,
                             margin: EdgeInsets.only(
                               top: height *.080,
                                 bottom: height * .010),
                             padding: EdgeInsets.only(
                                 bottom: height * .05,
-                                right: width *.025
                             ),
                             child: botoes('base')),
                         Container(
-                            height: height * .1,
-                            width: width *.1,
+                            height: height * .06,
+                            width: width *.05,
                             margin: EdgeInsets.only(
                               top: height * .060,
                             ),
                             padding: EdgeInsets.only(
                                 bottom: height * .05,
-                                right: width *.025
                             ),
                             child: botoes('rodape'))
                       ],
@@ -529,26 +526,15 @@ class _LayoutPageState extends State<LayoutPage> {
   Widget botoes(String nome) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
-    return Container(
-      height: height * .08,
-      width: width * .08,
-      child: Material(
-        child: Ink(
-          child: CircleAvatar(
-            backgroundColor: Colors.blue[900],
-            child: RaisedButton(
-              color: Colors.transparent,
-              elevation: 0.0,
-              onPressed: () {
-                showAlertDialog1(context, nome);
-              },
-              child: Icon(
-                Icons.edit,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ),
+    return RaisedButton(
+      color: Colors.transparent,
+      elevation: 0.0,
+      onPressed: () {
+        showAlertDialog1(context, nome);
+      },
+      child: Icon(
+        Icons.edit,
+        color: Colors.blue[900],
       ),
     );
   }
