@@ -73,6 +73,55 @@ mixin _$ProjetoController on _ProjetoControllerBase, Store {
     });
   }
 
+  final _$quantidadeControllerAtom =
+      Atom(name: '_ProjetoControllerBase.quantidadeController');
+
+  @override
+  TextEditingController get quantidadeController {
+    _$quantidadeControllerAtom.reportRead();
+    return super.quantidadeController;
+  }
+
+  @override
+  set quantidadeController(TextEditingController value) {
+    _$quantidadeControllerAtom.reportWrite(value, super.quantidadeController,
+        () {
+      super.quantidadeController = value;
+    });
+  }
+
+  final _$volumeControllerAtom =
+      Atom(name: '_ProjetoControllerBase.volumeController');
+
+  @override
+  TextEditingController get volumeController {
+    _$volumeControllerAtom.reportRead();
+    return super.volumeController;
+  }
+
+  @override
+  set volumeController(TextEditingController value) {
+    _$volumeControllerAtom.reportWrite(value, super.volumeController, () {
+      super.volumeController = value;
+    });
+  }
+
+  final _$medidaControllerAtom =
+      Atom(name: '_ProjetoControllerBase.medidaController');
+
+  @override
+  TextEditingController get medidaController {
+    _$medidaControllerAtom.reportRead();
+    return super.medidaController;
+  }
+
+  @override
+  set medidaController(TextEditingController value) {
+    _$medidaControllerAtom.reportWrite(value, super.medidaController, () {
+      super.medidaController = value;
+    });
+  }
+
   final _$indexCategoriaAtom =
       Atom(name: '_ProjetoControllerBase.indexCategoria');
 
@@ -182,15 +231,60 @@ mixin _$ProjetoController on _ProjetoControllerBase, Store {
   final _$tempoAtom = Atom(name: '_ProjetoControllerBase.tempo');
 
   @override
-  DateTime get tempo {
+  String get tempo {
     _$tempoAtom.reportRead();
     return super.tempo;
   }
 
   @override
-  set tempo(DateTime value) {
+  set tempo(String value) {
     _$tempoAtom.reportWrite(value, super.tempo, () {
       super.tempo = value;
+    });
+  }
+
+  final _$quantidadeAtom = Atom(name: '_ProjetoControllerBase.quantidade');
+
+  @override
+  double get quantidade {
+    _$quantidadeAtom.reportRead();
+    return super.quantidade;
+  }
+
+  @override
+  set quantidade(double value) {
+    _$quantidadeAtom.reportWrite(value, super.quantidade, () {
+      super.quantidade = value;
+    });
+  }
+
+  final _$volumeAtom = Atom(name: '_ProjetoControllerBase.volume');
+
+  @override
+  String get volume {
+    _$volumeAtom.reportRead();
+    return super.volume;
+  }
+
+  @override
+  set volume(String value) {
+    _$volumeAtom.reportWrite(value, super.volume, () {
+      super.volume = value;
+    });
+  }
+
+  final _$medidaAtom = Atom(name: '_ProjetoControllerBase.medida');
+
+  @override
+  String get medida {
+    _$medidaAtom.reportRead();
+    return super.medida;
+  }
+
+  @override
+  set medida(String value) {
+    _$medidaAtom.reportWrite(value, super.medida, () {
+      super.medida = value;
     });
   }
 
@@ -199,6 +293,15 @@ mixin _$ProjetoController on _ProjetoControllerBase, Store {
   @override
   Future<double> setValor(String newValor) {
     return _$setValorAsyncAction.run(() => super.setValor(newValor));
+  }
+
+  final _$setQuantidadeAsyncAction =
+      AsyncAction('_ProjetoControllerBase.setQuantidade');
+
+  @override
+  Future<double> setQuantidade(String newQuantidade) {
+    return _$setQuantidadeAsyncAction
+        .run(() => super.setQuantidade(newQuantidade));
   }
 
   final _$setItemAsyncAction = AsyncAction('_ProjetoControllerBase.setItem');
@@ -219,7 +322,7 @@ mixin _$ProjetoController on _ProjetoControllerBase, Store {
       ActionController(name: '_ProjetoControllerBase');
 
   @override
-  dynamic changeTempo(DateTime newTempo) {
+  dynamic changeTempo(String newTempo) {
     final _$actionInfo = _$_ProjetoControllerBaseActionController.startAction(
         name: '_ProjetoControllerBase.changeTempo');
     try {
@@ -252,12 +355,37 @@ mixin _$ProjetoController on _ProjetoControllerBase, Store {
   }
 
   @override
+  dynamic changeVolume(String newVolume) {
+    final _$actionInfo = _$_ProjetoControllerBaseActionController.startAction(
+        name: '_ProjetoControllerBase.changeVolume');
+    try {
+      return super.changeVolume(newVolume);
+    } finally {
+      _$_ProjetoControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic changeMedida(String newMedida) {
+    final _$actionInfo = _$_ProjetoControllerBaseActionController.startAction(
+        name: '_ProjetoControllerBase.changeMedida');
+    try {
+      return super.changeMedida(newMedida);
+    } finally {
+      _$_ProjetoControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 categoriaController: ${categoriaController},
 itemController: ${itemController},
 valorController: ${valorController},
 tempoController: ${tempoController},
+quantidadeController: ${quantidadeController},
+volumeController: ${volumeController},
+medidaController: ${medidaController},
 indexCategoria: ${indexCategoria},
 indexItem: ${indexItem},
 itemHeight: ${itemHeight},
@@ -265,7 +393,10 @@ listItens: ${listItens},
 valor: ${valor},
 categoria: ${categoria},
 descricao: ${descricao},
-tempo: ${tempo}
+tempo: ${tempo},
+quantidade: ${quantidade},
+volume: ${volume},
+medida: ${medida}
     ''';
   }
 }

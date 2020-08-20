@@ -4,9 +4,17 @@ class ItemModel {
   final String descricao;
   final double valor;
   final String categoria;
-  final DateTime tempo;
+  final String tempo;
+  final String medida;
+  final double quantidade;
 
-  ItemModel({this.tempo, this.descricao, this.valor, this.categoria});
+  ItemModel(
+      {this.medida,
+      this.quantidade,
+      this.tempo,
+      this.descricao,
+      this.valor,
+      this.categoria});
 
   factory ItemModel.fromJson(String str) => ItemModel.fromMap(json.decode(str));
 
@@ -17,6 +25,8 @@ class ItemModel {
         categoria: json["categoria"],
         valor: json["valor"],
         tempo: json["tempo"],
+        medida: json["medida"],
+        quantidade: json["quantidade"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -24,17 +34,22 @@ class ItemModel {
         "categoria": categoria,
         "valor": valor,
         "tempo": tempo,
+        "medida": medida,
+        "quantidade": quantidade,
       };
-  ItemModel copyWith({
-    String descricao,
-    double valor,
-    String categoria,
-    DateTime tempo,
-  }) =>
+  ItemModel copyWith(
+          {String descricao,
+          double valor,
+          String categoria,
+          String tempo,
+          String medida,
+          double quantidade}) =>
       ItemModel(
         descricao: descricao ?? this.descricao,
         categoria: categoria ?? this.categoria,
         valor: valor ?? this.valor,
         tempo: tempo ?? this.tempo,
+        medida: medida ?? this.medida,
+        quantidade: quantidade ?? this.quantidade,
       );
 }

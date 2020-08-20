@@ -236,6 +236,11 @@ class _BasePageState extends State<BasePage> {
     controller.itemController.text = '';
     controller.valorController.text = '';
     controller.tempoController.text = '';
+    controller.tempo = '';
+    controller.medida = '';
+    controller.medidaController.text = '';
+    controller.quantidadeController.text = '';
+    controller.quantidade = 0;
     showDialog(
       context: context,
       builder: (BuildContext context) {

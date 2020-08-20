@@ -35,7 +35,7 @@ class _AddItemState extends State<AddItem> {
     var width = MediaQuery.of(context).size.height;
     return SingleChildScrollView(
       child: Container(
-        height: height * .39,
+        height: height * .5,
         padding: EdgeInsets.only(
           top: height * .01,
           bottom: height * .01,
@@ -62,7 +62,7 @@ class _AddItemState extends State<AddItem> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: width *.13,
+                  width: width * .13,
                   child: Center(
                     child: Text(
                       'Novo Item',
@@ -85,7 +85,7 @@ class _AddItemState extends State<AddItem> {
               ],
             ),
             Container(
-              height: height *.06,
+              height: height * .06,
               child: TextFormField(
                 onChanged: controller.changeCategoria,
                 controller: controller.categoriaController,
@@ -96,26 +96,20 @@ class _AddItemState extends State<AddItem> {
                   labelStyle: TextStyle(fontSize: 12),
                   border: OutlineInputBorder(
                     borderRadius:
-                    const BorderRadius.all(const Radius.circular(12.0)),
+                        const BorderRadius.all(const Radius.circular(12.0)),
                     borderSide: BorderSide(
                       color: Colors.white,
                     ),
                   ),
                 ),
                 validator: (text) {
-                  if (text.isEmpty)
-                    return "O campo Categoria está vazio!";
+                  if (text.isEmpty) return "O campo Categoria está vazio!";
                 },
               ),
             ),
+            Container(height: height * .2, child: ItemDescritionWidget()),
             Container(
-                height: height *.15,
-                child: ItemDescritionWidget()),
-            Container(
-                margin: EdgeInsets.only(
-                  top: height *.015
-                ),
-                child: button())
+                margin: EdgeInsets.only(top: height * .015), child: button())
           ],
         ),
       ),

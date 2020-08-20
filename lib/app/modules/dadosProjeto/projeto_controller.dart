@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:mobx/mobx.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/itemModel.dart';
 
@@ -18,6 +19,15 @@ abstract class _ProjetoControllerBase with Store {
 
   @observable
   TextEditingController tempoController = TextEditingController();
+
+  @observable
+  TextEditingController quantidadeController = TextEditingController();
+
+  @observable
+  TextEditingController volumeController = TextEditingController();
+
+  @observable
+  TextEditingController medidaController = TextEditingController();
 
   @observable
   int indexCategoria = 0;
@@ -41,16 +51,26 @@ abstract class _ProjetoControllerBase with Store {
   String descricao;
 
   @observable
-  DateTime tempo;
+  String tempo;
+
+  @observable
+  double quantidade;
+
+  @observable
+  String volume;
+
+  @observable
+  String medida;
 
   @action
   Future<double> setValor(String newValor) async {
-    valor = double.parse(newValor);
+    String newValor2 = newValor.replaceAll('.', '');
+    valor = double.parse(newValor2.replaceAll(',', '.'));
     return valor;
   }
 
   @action
-  changeTempo(DateTime newTempo) => tempo = newTempo;
+  changeTempo(String newTempo) => tempo = newTempo;
 
   @action
   changeCategoria(String newCategoria) => categoria = newCategoria;
@@ -59,12 +79,35 @@ abstract class _ProjetoControllerBase with Store {
   changeDescricao(String newDescricao) => descricao = newDescricao;
 
   @action
+  Future<double> setQuantidade(String newQuantidade) async {
+    quantidade = double.parse(newQuantidade);
+    return valor;
+  }
+
+  @action
+  changeVolume(String newVolume) => volume = newVolume;
+
+  @action
+  changeMedida(String newMedida) => medida = newMedida;
+
+  @action
   Future<dynamic> setItem() async {
+    if (tempo == null) {
+      tempo = '';
+    }
+    if (medida == null) {
+      medida = '';
+    }
+    if (quantidade == null) {
+      quantidade = 0;
+    }
     listItens.add(ItemModel(
         categoria: categoria,
         descricao: descricao,
         valor: valor,
-        tempo: tempo));
+        tempo: tempo,
+        quantidade: quantidade,
+        medida: medida));
     return listItens;
   }
 

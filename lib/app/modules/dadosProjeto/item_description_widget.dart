@@ -1,4 +1,6 @@
+import 'package:brasil_fields/formatter/real_input_formatter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/projeto_controller.dart';
@@ -18,12 +20,9 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
     final controller = Provider.of<ProjetoController>(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
-    final format = DateFormat("HH:mm");
-    final initialValue = DateTime.now();
-    DateTime value = DateTime.now();
     final oController = Provider.of<OrcamentoController>(context);
     return Container(
-        height: height * 0.09,
+        height: height * 0.4,
         width: width,
         child: Padding(
           padding: const EdgeInsets.all(2.0),
@@ -31,86 +30,20 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: height * .06,
-                child: Center(
-                  child: TextFormField(
-                    controller: controller.itemController,
-                    onChanged: controller.changeDescricao,
-                    decoration: InputDecoration(
-                      contentPadding: new EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 10.0),
-                      labelText: "Descrição do Ítem*",
-                      labelStyle: TextStyle(
-                        fontSize: ScreenUtil.instance.setSp(25),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: const BorderRadius.all(
-                            const Radius.circular(12.0)),
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    validator: (text) {
-                      if (text.isEmpty)
-                        return "O campo Descrição do ítem está vazio!";
-                    },
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                  top: height *.01
-                ),
                 child: Row(
                   children: [
                     Flexible(
-                      flex: 3,
+                      flex: 1,
                       child: Container(
                           height: height * .06,
-                          width: width * .11,
-                          margin: EdgeInsets.only(
-                              left: width * .005),
                           child: Center(
                             child: TextFormField(
-                              controller: controller.itemController,
-                              onChanged: controller.changeDescricao,
+                              controller: controller.quantidadeController,
+                              onChanged: controller.setQuantidade,
                               decoration: InputDecoration(
                                 contentPadding: new EdgeInsets.symmetric(
                                     vertical: 10.0, horizontal: 10.0),
-                                labelText: "Tempo",
-                                labelStyle: TextStyle(
-                                    fontSize: ScreenUtil.instance.setSp(25),
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: const BorderRadius.all(
-                                      const Radius.circular(12.0)),
-                                  borderSide: BorderSide(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                              validator: (text) {
-                                if (text.isEmpty)
-                                  return "O campo Tempo está vazio!";
-                              },
-                            ),)),
-                    ),
-                    Flexible(
-                      flex: 3,
-                      child: Container(
-                          height: height * .06,
-                          width: width * .11,
-                          margin: EdgeInsets.only(
-                              left: width * .005),
-                          child: Center(
-                            child: TextFormField(
-                              controller: controller.itemController,
-                              onChanged: controller.changeDescricao,
-                              decoration: InputDecoration(
-                                contentPadding: new EdgeInsets.symmetric(
-                                    vertical: 10.0, horizontal: 10.0),
-                                labelText: "Unidade",
+                                labelText: "Quantidade",
                                 labelStyle: TextStyle(
                                   fontSize: ScreenUtil.instance.setSp(25),
                                 ),
@@ -122,23 +55,18 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                                   ),
                                 ),
                               ),
-                              validator: (text) {
-                                if (text.isEmpty)
-                                  return "O campo Unidade está vazio!";
-                              },
-                            ),)),
+                            ),
+                          )),
                     ),
                     Flexible(
-                      flex: 3,
+                      flex: 1,
                       child: Container(
                           height: height * .06,
-                          width: width * .11,
-                          margin: EdgeInsets.only(
-                              left: width * .005),
+                          margin: EdgeInsets.only(left: width * .005),
                           child: Center(
                             child: TextFormField(
-                              controller: controller.itemController,
-                              onChanged: controller.changeDescricao,
+                              controller: controller.medidaController,
+                              onChanged: controller.changeMedida,
                               decoration: InputDecoration(
                                 contentPadding: new EdgeInsets.symmetric(
                                     vertical: 10.0, horizontal: 10.0),
@@ -154,28 +82,63 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                                   ),
                                 ),
                               ),
-                              validator: (text) {
-                                if (text.isEmpty)
-                                  return "O campo Medida está vazio!";
-                              },
-                            ),)),
+                            ),
+                          )),
                     ),
+                  ],
+                ),
+              ),
+              Container(
+                height: height * .06,
+                margin: EdgeInsets.only(top: height * 0.005),
+                child: Center(
+                  child: TextFormField(
+                    controller: controller.itemController,
+                    onChanged: controller.changeDescricao,
+                    decoration: InputDecoration(
+                      contentPadding: new EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 10.0),
+                      labelText: "Descrição do Ítem*",
+                      labelStyle: TextStyle(
+                        fontSize: ScreenUtil.instance.setSp(25),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius:
+                            const BorderRadius.all(const Radius.circular(12.0)),
+                        borderSide: BorderSide(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    validator: (text) {
+                      if (text.isEmpty)
+                        return "O campo Descrição do ítem está vazio!";
+                    },
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: height * 0.005),
+                child: Row(
+                  children: <Widget>[
                     Flexible(
-                      flex: 3,
+                      flex: 1,
                       child: Container(
                         height: height * .06,
-                        width: width * .11,
-                        margin: EdgeInsets.only(left: width * .005),
                         child: Center(
                           child: TextFormField(
                             controller: controller.valorController,
                             onChanged: controller.setValor,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly,
+                              RealInputFormatter(centavos: true)
+                            ],
                             decoration: InputDecoration(
                               contentPadding: new EdgeInsets.symmetric(
                                   vertical: 10.0, horizontal: 10.0),
                               labelText: "R\$ 0.000,00*",
                               labelStyle: TextStyle(
-                                  fontSize: ScreenUtil.instance.setSp(25),
+                                fontSize: ScreenUtil.instance.setSp(25),
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: const BorderRadius.all(
@@ -192,6 +155,33 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                           ),
                         ),
                       ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: Container(
+                          height: height * .06,
+                          margin: EdgeInsets.only(left: width * .005),
+                          child: Center(
+                            child: TextFormField(
+                              controller: controller.tempoController,
+                              onChanged: controller.changeTempo,
+                              decoration: InputDecoration(
+                                contentPadding: new EdgeInsets.symmetric(
+                                    vertical: 10.0, horizontal: 10.0),
+                                labelText: "Tempo",
+                                labelStyle: TextStyle(
+                                  fontSize: ScreenUtil.instance.setSp(25),
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: const BorderRadius.all(
+                                      const Radius.circular(12.0)),
+                                  borderSide: BorderSide(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )),
                     ),
                   ],
                 ),
