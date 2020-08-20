@@ -275,7 +275,8 @@ class _HomePageState extends State<HomePage> {
                           Flexible(fit: FlexFit.tight, child: SizedBox()),
                           Text(
                             texto,
-                            style: TextStyle(fontSize: 16),
+                            style: TextStyle(
+                                fontSize: ScreenUtil.instance.setSp(40),),
                           ),
                           Flexible(fit: FlexFit.tight, child: SizedBox()),
                           Padding(

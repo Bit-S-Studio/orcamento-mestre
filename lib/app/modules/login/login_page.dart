@@ -35,26 +35,40 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                  height: height *.32,
+                  height: height *.34,
                   width: width,
+                  margin: EdgeInsets.only(
+                    bottom: height *.05
+                  ),
                   child: logo()
               ),
-              Container(
-                height: height *.45,
-                child: Stack(
-                  children: [
-                    Positioned(
-                      top: height *.04,
-                        left: width *.022,
-                        child: forms()),
-                    Positioned(
-                        top: height *.04,
-                        left: width *.18,
-                            child: buttons()),
-                  ],
-                ),
+              Stack(
+                overflow: Overflow.visible,
+                children: [
+                  Positioned(
+                      child: Container(
+                        //color: Colors.pink,
+                          height: height *.28,
+                          width: width,
+                          padding: EdgeInsets.only(
+                            left: width *.02,
+                            right: width *.02
+                          ),
+                          child: forms())),
+                  Positioned(
+                    top: height *.23,
+                      child: Container(
+                          height: height *.28,
+                          padding: EdgeInsets.only(
+                              left: width *.18,
+                          ),
+                          child: buttons())),
+                ],
               ),
               Container(
+                margin: EdgeInsets.only(
+                  top: height *.1
+                ),
                 child: buttons2(),
               )
             ],
@@ -160,9 +174,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
     return Center(
       child: Column(
         children: [
-          SizedBox(
-            height: 136,
-          ),
           Observer(builder: (_) {
             return Stack(
               children: [
@@ -177,6 +188,63 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
         ],
       ),
     );
+  }
+
+  Widget button() {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.height;
+    final userController = Provider.of<UserController>(context);
+    final dadosController = Provider.of<DadosController>(context);
+    final clientesController = Provider.of<ClientesController>(context);
+    return Observer(builder: (_) {
+      return Container(
+        decoration: BoxDecoration(
+          color: Colors.blue[900],
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.black,
+              offset: Offset(1.0, 6.0),
+              blurRadius: 20.0,
+            ),
+          ],
+        ),
+        child: MaterialButton(
+            onPressed: controller.isValid
+                ? () async {
+              controller.box1 = false;
+              controller.box2 = true;
+              var user = await controller.logar(
+                  controller.email, controller.senha, context);
+              print(user.uid);
+              dadosController.uid = user.uid;
+              clientesController.userId = user.uid;
+              await dadosController.getUser(user.uid);
+              await userController.getUser(user.uid);
+              print(dadosController.tipo);
+              await dadosController.getDados(
+                  user.uid, dadosController.tipo);
+              Modular.to.pushReplacementNamed('/home');
+            }
+                : () {
+              Fluttertoast.showToast(msg: controller.validate());
+            },
+            highlightColor: Colors.transparent,
+            splashColor: Colors.black,
+            //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
+            child: Container(
+              width: width * .2,
+              child: Text(
+                "Entrar",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25.0,
+                ),
+              ),
+            )),
+      );
+    });
   }
 
   Widget buttons2() {
@@ -213,63 +281,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
         ],
       ),
     );
-  }
-
-  Widget button() {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.height;
-    final userController = Provider.of<UserController>(context);
-    final dadosController = Provider.of<DadosController>(context);
-    final clientesController = Provider.of<ClientesController>(context);
-    return Observer(builder: (_) {
-      return Container(
-        decoration: BoxDecoration(
-          color: Colors.blue[900],
-          borderRadius: BorderRadius.all(Radius.circular(12)),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-              color: Colors.black,
-              offset: Offset(1.0, 6.0),
-              blurRadius: 20.0,
-            ),
-          ],
-        ),
-        child: MaterialButton(
-            onPressed: controller.isValid
-                ? () async {
-                    controller.box1 = false;
-                    controller.box2 = true;
-                    var user = await controller.logar(
-                        controller.email, controller.senha, context);
-                    print(user.uid);
-                    dadosController.uid = user.uid;
-                    clientesController.userId = user.uid;
-                    await dadosController.getUser(user.uid);
-                    await userController.getUser(user.uid);
-                    print(dadosController.tipo);
-                    await dadosController.getDados(
-                        user.uid, dadosController.tipo);
-                    Modular.to.pushReplacementNamed('/home');
-                  }
-                : () {
-                    Fluttertoast.showToast(msg: controller.validate());
-                  },
-            highlightColor: Colors.transparent,
-            splashColor: Colors.black,
-            //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
-            child: Container(
-              width: width * .2,
-              child: Text(
-                "Entrar",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25.0,
-                ),
-              ),
-            )),
-      );
-    });
   }
 }
 

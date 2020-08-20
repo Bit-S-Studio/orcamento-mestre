@@ -47,7 +47,7 @@ class _LayoutPageState extends State<LayoutPage> {
                   Container(
                     width: width * .36,
                     margin: EdgeInsets.only(
-                      left: width * .02,
+                    left: width * .01,
                     ),
                     child: Column(
                       children: <Widget>[

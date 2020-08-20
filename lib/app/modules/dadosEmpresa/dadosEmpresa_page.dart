@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:orcamento_mestre/app/modules/dadosEmpresa/formsComplemento.dart';
 import 'package:orcamento_mestre/app/modules/orcamento/orcamento_controller.dart';
 import 'package:orcamento_mestre/app/utils/dados_controller.dart';
@@ -25,6 +26,7 @@ class _DadosEmpresaPageState extends State<DadosEmpresaPage> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.getInstance()..init(context);
     final controller = Provider.of<DadosController>(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
@@ -96,6 +98,9 @@ class _DadosEmpresaPageState extends State<DadosEmpresaPage> {
                           left: width * .012,
                         ),
                         child: TextFormField(
+                          style: TextStyle(
+                            fontSize: ScreenUtil.instance.setSp(45),
+                          ),
                           controller: controller.nomeController,
                           onChanged: (newName) {
                             controller.nome = newName;

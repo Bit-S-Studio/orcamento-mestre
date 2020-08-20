@@ -143,7 +143,7 @@ class _BasePageState extends State<BasePage> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(24), color: Colors.white),
               child: Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Observer(builder: (_) {
                   return widgetOptions.elementAt(controller.currentIndex);
                 }),

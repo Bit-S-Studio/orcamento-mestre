@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:orcamento_mestre/app/utils/dados_controller.dart';
 import 'package:orcamento_mestre/app/utils/theme.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +12,7 @@ class FormsComplemento extends StatefulWidget {
 class _FormsComplementoState extends State<FormsComplemento> {
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.getInstance()..init(context);
     final controller = Provider.of<DadosController>(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
@@ -27,6 +29,9 @@ class _FormsComplementoState extends State<FormsComplemento> {
               top: height * .015,
             ),
             child: TextFormField(
+              style: TextStyle(
+                fontSize: ScreenUtil.instance.setSp(45),
+              ),
               controller: controller.nomeController,
               onChanged: (newNome) {
                 controller.nome = newNome;
@@ -44,6 +49,9 @@ class _FormsComplementoState extends State<FormsComplemento> {
               top: height * .015,
             ),
             child: TextFormField(
+              style: TextStyle(
+                fontSize: ScreenUtil.instance.setSp(45),
+              ),
               controller: controller.cepController,
               onChanged: (newCep) {
                 controller.getCEP(newCep);
@@ -63,6 +71,9 @@ class _FormsComplementoState extends State<FormsComplemento> {
                   margin:
                       EdgeInsets.only(top: height * .015, right: width * .005),
                   child: TextFormField(
+                    style: TextStyle(
+                      fontSize: ScreenUtil.instance.setSp(45),
+                    ),
                     controller: controller.enderecoController,
                     onChanged: (newEndereco) {
                       controller.endereco = newEndereco;
@@ -82,6 +93,9 @@ class _FormsComplementoState extends State<FormsComplemento> {
                     top: height * .015,
                   ),
                   child: TextFormField(
+                    style: TextStyle(
+                      fontSize: ScreenUtil.instance.setSp(45),
+                    ),
                     controller: controller.numController,
                     onChanged: (newNum) {
                       controller.numero = newNum;
@@ -102,6 +116,9 @@ class _FormsComplementoState extends State<FormsComplemento> {
                 top: height * .015,
             ),
             child: TextFormField(
+              style: TextStyle(
+                fontSize: ScreenUtil.instance.setSp(45),
+              ),
               controller: controller.bairroController,
               onChanged: (newBairro) {
                 controller.bairro = newBairro;
@@ -124,6 +141,9 @@ class _FormsComplementoState extends State<FormsComplemento> {
                           top: height * .015,
                       ),
                   child: TextFormField(
+                    style: TextStyle(
+                      fontSize: ScreenUtil.instance.setSp(45),
+                    ),
                     controller: controller.cidadeController,
                     onChanged: (newCidade) {
                       controller.cidade = newCidade;
@@ -143,6 +163,9 @@ class _FormsComplementoState extends State<FormsComplemento> {
                   margin:
                       EdgeInsets.only(top: height * .015, left: width * .005),
                   child: TextFormField(
+                    style: TextStyle(
+                      fontSize: ScreenUtil.instance.setSp(45),
+                    ),
                     controller: controller.ufController,
                     onChanged: (newUF) {
                       controller.uf = newUF;
@@ -163,6 +186,9 @@ class _FormsComplementoState extends State<FormsComplemento> {
                 top: height * .015,
             ),
             child: TextFormField(
+              style: TextStyle(
+                fontSize: ScreenUtil.instance.setSp(45),
+              ),
               controller: controller.docController,
               onChanged: (newDoc) {
                 controller.documento = newDoc;
@@ -182,6 +208,9 @@ class _FormsComplementoState extends State<FormsComplemento> {
                           top: height * .015,
                       ),
                   child: TextFormField(
+                    style: TextStyle(
+                      fontSize: ScreenUtil.instance.setSp(45),
+                    ),
                     controller: controller.tel1Controller,
                     onChanged: (newTel1) {
                       controller.telefone1 = newTel1;
@@ -201,6 +230,9 @@ class _FormsComplementoState extends State<FormsComplemento> {
                   margin:
                       EdgeInsets.only(top: height * .015, left: width * .005),
                   child: TextFormField(
+                    style: TextStyle(
+                      fontSize: ScreenUtil.instance.setSp(45),
+                    ),
                     controller: controller.tel2Controller,
                     onChanged: (newTel2) {
                       controller.telefone2 = newTel2;
@@ -218,6 +250,9 @@ class _FormsComplementoState extends State<FormsComplemento> {
                 top: height * .015,
             ),
             child: TextFormField(
+              style: TextStyle(
+                fontSize: ScreenUtil.instance.setSp(45),
+              ),
               controller: controller.emailController,
               onChanged: (newEmail) {
                 controller.email = newEmail;
@@ -235,6 +270,9 @@ class _FormsComplementoState extends State<FormsComplemento> {
                 top: height * .015,
             ),
             child: TextFormField(
+              style: TextStyle(
+                fontSize: ScreenUtil.instance.setSp(45),
+              ),
               controller: controller.siteController,
               onChanged: (newSite) {
                 controller.site = newSite;
