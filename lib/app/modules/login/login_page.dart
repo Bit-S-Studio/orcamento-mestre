@@ -48,7 +48,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                         left: width *.022,
                         child: forms()),
                     Positioned(
-                        top: height *.02,
+                        top: height *.04,
                         left: width *.18,
                             child: buttons()),
                   ],
