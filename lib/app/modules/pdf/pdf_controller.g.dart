@@ -72,11 +72,23 @@ mixin _$PdfController on _PdfControllerBase, Store {
       ActionController(name: '_PdfControllerBase');
 
   @override
-  dynamic writeOnPdf(String color) {
+  dynamic writeOnPdf(
+      {String colorBase,
+      String colorCabecalio,
+      String colorRodape,
+      String colorLetraCabecalio,
+      String colorLetraBase,
+      String colorLetraRodape}) {
     final _$actionInfo = _$_PdfControllerBaseActionController.startAction(
         name: '_PdfControllerBase.writeOnPdf');
     try {
-      return super.writeOnPdf(color);
+      return super.writeOnPdf(
+          colorBase: colorBase,
+          colorCabecalio: colorCabecalio,
+          colorRodape: colorRodape,
+          colorLetraCabecalio: colorLetraCabecalio,
+          colorLetraBase: colorLetraBase,
+          colorLetraRodape: colorLetraRodape);
     } finally {
       _$_PdfControllerBaseActionController.endAction(_$actionInfo);
     }

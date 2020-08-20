@@ -31,8 +31,8 @@ class _GetColorState extends State<GetColor> {
                   showLabel: true,
                   pickerAreaHeightPercent: 0.8,
                   colorPickerWidth: 300.0,
-                  enableAlpha: true,
                   displayThumbColor: true,
+                  enableAlpha: true,
                   paletteType: PaletteType.hsv,
                   pickerAreaBorderRadius: const BorderRadius.only(
                       topLeft: const Radius.circular(2.0),

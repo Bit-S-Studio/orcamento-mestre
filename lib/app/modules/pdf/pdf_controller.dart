@@ -20,7 +20,13 @@ abstract class _PdfControllerBase with Store {
   String fullPath;
 
   @action
-  writeOnPdf(String color) {
+  writeOnPdf(
+      {String colorBase,
+      String colorCabecalio,
+      String colorRodape,
+      String colorLetraCabecalio,
+      String colorLetraBase,
+      String colorLetraRodape}) {
     pdf.addPage(pw.MultiPage(
         pageTheme: pw.PageTheme(
           orientation: pw.PageOrientation.natural,
@@ -29,7 +35,7 @@ abstract class _PdfControllerBase with Store {
           pageFormat: PdfPageFormat.a4,
           buildBackground: (context) => pw.Container(
               decoration: pw.BoxDecoration(
-            color: PdfColor.fromHex(color),
+            color: PdfColor.fromHex(colorBase),
           )),
         ),
         header: (pw.Context context) {
@@ -37,27 +43,43 @@ abstract class _PdfControllerBase with Store {
               height: 100,
               width: double.infinity,
               decoration: pw.BoxDecoration(
-                color: PdfColors.grey800,
+                color: PdfColor.fromHex(colorCabecalio),
               ),
-              child: pw.Text('Logo'));
+              child: pw.Text('Logo',
+                  style: pw.TextStyle(
+                      color: PdfColor.fromHex(colorLetraCabecalio))));
         },
         footer: (pw.Context context) {
           return pw.Container(
               height: 100,
               width: double.infinity,
               decoration: pw.BoxDecoration(
-                color: PdfColors.grey800,
+                color: PdfColor.fromHex(colorRodape),
               ),
-              child: pw.Text('infos'));
+              child: pw.Text('Logo',
+                  style:
+                      pw.TextStyle(color: PdfColor.fromHex(colorLetraRodape))));
         },
         build: (pw.Context context) {
           return <pw.Widget>[
-            pw.Paragraph(text: "Um texto"),
-            pw.Paragraph(text: "Um texto"),
-            pw.Paragraph(text: "Um texto"),
-            pw.Paragraph(text: "Um texto"),
-            pw.Paragraph(text: "Um texto"),
-            pw.Paragraph(text: "Um texto"),
+            pw.Paragraph(
+                text: "Um texto",
+                style: pw.TextStyle(color: PdfColor.fromHex(colorLetraBase))),
+            pw.Paragraph(
+                text: "Um texto",
+                style: pw.TextStyle(color: PdfColor.fromHex(colorLetraBase))),
+            pw.Paragraph(
+                text: "Um texto",
+                style: pw.TextStyle(color: PdfColor.fromHex(colorLetraBase))),
+            pw.Paragraph(
+                text: "Um texto",
+                style: pw.TextStyle(color: PdfColor.fromHex(colorLetraBase))),
+            pw.Paragraph(
+                text: "Um texto",
+                style: pw.TextStyle(color: PdfColor.fromHex(colorLetraBase))),
+            pw.Paragraph(
+                text: "Um texto",
+                style: pw.TextStyle(color: PdfColor.fromHex(colorLetraBase))),
           ];
         }));
   }

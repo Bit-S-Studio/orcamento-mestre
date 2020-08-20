@@ -13,13 +13,13 @@ class OrcamentoPage extends StatefulWidget {
   _OrcamentoPageState createState() => _OrcamentoPageState();
 }
 
-class _OrcamentoPageState
-    extends ModularState<OrcamentoPage, OrcamentoController> {
+class _OrcamentoPageState extends State<OrcamentoPage> {
   //use 'controller' variable to access controller
 
   @override
   Widget build(BuildContext context) {
-    final pdfController = Provider.of<OrcamentoController>(context);
+    final pdfController = Provider.of<PdfController>(context);
+    final controller = Provider.of<OrcamentoController>(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -87,6 +87,7 @@ class _OrcamentoPageState
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     final pdfController = Provider.of<PdfController>(context);
+    final controller = Provider.of<OrcamentoController>(context);
     return Observer(builder: (_) {
       return Container(
         decoration: BoxDecoration(
@@ -102,7 +103,14 @@ class _OrcamentoPageState
         ),
         child: MaterialButton(
             onPressed: () async {
-              pdfController.writeOnPdf('000000');
+              pdfController.writeOnPdf(
+                colorCabecalio: controller.cabecalio,
+                colorBase: controller.base,
+                colorRodape: controller.rodape,
+                colorLetraCabecalio: controller.letraCabecalio,
+                colorLetraBase: controller.letraBase,
+                colorLetraRodape: controller.letraRodape,
+              );
               await pdfController.savePdf(controller.nome);
             },
             highlightColor: Colors.transparent,

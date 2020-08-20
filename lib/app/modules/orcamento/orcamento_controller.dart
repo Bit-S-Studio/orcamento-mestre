@@ -17,22 +17,22 @@ abstract class _OrcamentoControllerBase with Store {
   double valorTotal;
 
   @observable
-  String cabecalio;
+  String cabecalio = '0d47a1ff';
 
   @observable
-  String rodape;
+  String rodape = '37474fff';
 
   @observable
-  String base;
+  String base = 'cfd8dcff';
 
   @observable
-  String letraCabecalio;
+  String letraCabecalio = '000000';
 
   @observable
-  String letraRodape;
+  String letraRodape = '000000';
 
   @observable
-  String letraBase;
+  String letraBase = 'FFFFFF';
 
   @observable
   bool letraPreta = true;
@@ -47,26 +47,33 @@ abstract class _OrcamentoControllerBase with Store {
   Color colorCabecalio = Colors.blue[900];
 
   @observable
-  Color colorRodape = Colors.grey[200];
+  Color colorRodape = Colors.grey[800];
 
   @observable
-  Color colorBase = Colors.grey[800];
+  Color colorBase = Colors.grey[100];
 
   @observable
   Color colorLetraCabecalio = Colors.white;
 
   @observable
-  Color colorLetraRodape = Colors.black;
+  Color colorLetraRodape = Colors.white;
 
   @observable
-  Color colorLetraBase = Colors.white;
+  Color colorLetraBase = Colors.black;
 
   @action
   Future<String> convertColor(Color color, String nome, String letra) async {
-    String colorString = color.toString(); // Color(0x12345678)
+    String colorString = color
+        .toString(); // recebe o valor da cor do colorpicker = Color(0x12345678)
     String valueString =
-        colorString.split('(0x')[1].split(')')[0]; // kind of hacky..
-    String colorHex = valueString.toString();
+        colorString.split('(0x')[1].split(')')[0]; //retira o 0x e )
+    String alfa1 = valueString.split(
+        "")[0]; //tranforma a string em uma lista e pega o primeiro item = alfa1
+    String alfa2 = valueString.split(
+        "")[1]; //tranforma a string em uma lista e pega o segundo item = alfa2
+    String color1 =
+        valueString.substring(2); //retira os primeiros 2 itens da string
+    String colorHex = '$color1$alfa1$alfa2'; //gera a string com o alfa no final
     String colorLetra;
     Color colors;
     if (letra == 'Preta') {
