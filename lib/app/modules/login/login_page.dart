@@ -35,39 +35,35 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                  height: height *.34,
+                  height: height * .34,
                   width: width,
-                  margin: EdgeInsets.only(
-                    bottom: height *.05
-                  ),
-                  child: logo()
-              ),
+                  margin: EdgeInsets.only(bottom: height * .03),
+                  child: logo()),
               Stack(
                 overflow: Overflow.visible,
                 children: [
                   Positioned(
                       child: Container(
-                        //color: Colors.pink,
-                          height: height *.28,
+                          //color: Colors.pink,
+                          height: height * .28,
                           width: width,
-                          padding: EdgeInsets.only(
+                          margin: EdgeInsets.only(
                             left: width *.02,
-                            right: width *.02
+                            right: width *.02,
                           ),
                           child: forms())),
                   Positioned(
-                    top: height *.23,
                       child: Container(
-                          padding: EdgeInsets.only(
-                              left: width *.18,
+                          height: height * .1,
+                          width: width,
+                          margin: EdgeInsets.only(
+                            top: height *.24,
                           ),
                           child: buttons())),
                 ],
               ),
               Container(
-                margin: EdgeInsets.only(
-                  top: height *.1
-                ),
+                margin: EdgeInsets.only(top: height * .05),
                 child: buttons2(),
               )
             ],
@@ -81,7 +77,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
     return Container(
       height: height * .2,
       width: width * .2,
-      margin: EdgeInsets.only(top: width * .13),
+      margin: EdgeInsets.only(top: height * .13),
       child: Image.asset(
         'assets/logo_orcamento_mestre.png',
         scale: 1.0,
@@ -124,17 +120,16 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Card(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         elevation: 5.0,
         child: Container(
-            height: height *.25,
-            width: width *.55,
+            height: height * .25,
+            width: width * .55,
             color: Colors.white,
             child: Center(
                 child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: 20.0, right: 20, top: 26),
+                    padding:
+                        const EdgeInsets.only(left: 20.0, right: 20, top: 26),
                     child: Column(children: <Widget>[
                       textForm(
                         context: context,
@@ -162,7 +157,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                                     : LineAwesomeIcons.eye),
                                 onPressed: () {
                                   controller.senhaObscure =
-                                  !controller.senhaObscure;
+                                      !controller.senhaObscure;
                                 }),
                             onChanged: controller.changeSenha);
                       }),
@@ -182,22 +177,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                 Visibility(
                     visible: controller.box2,
                     child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.blue[900],
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
-                        boxShadow: <BoxShadow>[
-                          BoxShadow(
-                            color: Colors.black,
-                            offset: Offset(1.0, 6.0),
-                            blurRadius: 20.0,
-                          ),
-                        ],
-                      ),
-                      margin: EdgeInsets.only(
-                        left: width *.08
-                          ),
                       child: CircularProgressIndicator(
-                          backgroundColor: Colors.blue[900]),
+                          ),
                     )),
               ],
             );
@@ -229,23 +210,23 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
         child: MaterialButton(
             onPressed: controller.isValid
                 ? () async {
-              controller.box1 = false;
-              controller.box2 = true;
-              var user = await controller.logar(
-                  controller.email, controller.senha, context);
-              print(user.uid);
-              dadosController.uid = user.uid;
-              clientesController.userId = user.uid;
-              await dadosController.getUser(user.uid);
-              await userController.getUser(user.uid);
-              print(dadosController.tipo);
-              await dadosController.getDados(
-                  user.uid, dadosController.tipo);
-              Modular.to.pushReplacementNamed('/home');
-            }
+                    controller.box1 = false;
+                    controller.box2 = true;
+                    var user = await controller.logar(
+                        controller.email, controller.senha, context);
+                    print(user.uid);
+                    dadosController.uid = user.uid;
+                    clientesController.userId = user.uid;
+                    await dadosController.getUser(user.uid);
+                    await userController.getUser(user.uid);
+                    print(dadosController.tipo);
+                    await dadosController.getDados(
+                        user.uid, dadosController.tipo);
+                    Modular.to.pushReplacementNamed('/home');
+                  }
                 : () {
-              Fluttertoast.showToast(msg: controller.validate());
-            },
+                    Fluttertoast.showToast(msg: controller.validate());
+                  },
             highlightColor: Colors.transparent,
             splashColor: Colors.black,
             //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),

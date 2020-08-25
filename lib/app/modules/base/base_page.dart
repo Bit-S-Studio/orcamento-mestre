@@ -240,7 +240,7 @@ class _BasePageState extends State<BasePage> {
     controller.medida = '';
     controller.medidaController.text = '';
     controller.quantidadeController.text = '';
-    controller.quantidade = 0;
+    controller.quantidade = 0.0;
     showDialog(
       context: context,
       builder: (BuildContext context) {
