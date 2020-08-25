@@ -62,10 +62,18 @@ abstract class _ProjetoControllerBase with Store {
   @observable
   String medida;
 
+  @observable
+  double valorTotal = 0.00;
+
   @action
   Future<double> setValor(String newValor) async {
     String newValor2 = newValor.replaceAll('.', '');
     valor = double.parse(newValor2.replaceAll(',', '.'));
+    if (quantidade == 0) {
+      valorTotal = valor;
+    } else {
+      valorTotal = quantidade * valor;
+    }
     return valor;
   }
 
@@ -98,16 +106,14 @@ abstract class _ProjetoControllerBase with Store {
     if (medida == null) {
       medida = '';
     }
-    if (quantidade == null) {
-      quantidade = 0;
-    }
     listItens.add(ItemModel(
         categoria: categoria,
         descricao: descricao,
         valor: valor,
         tempo: tempo,
         quantidade: quantidade,
-        medida: medida));
+        medida: medida,
+        valorTotal: valorTotal));
     return listItens;
   }
 

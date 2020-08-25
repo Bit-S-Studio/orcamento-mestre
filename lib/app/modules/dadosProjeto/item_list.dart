@@ -14,12 +14,14 @@ class ItemList extends StatefulWidget {
   final String medida;
   final double quantidade;
   final ItemModel itemModel;
+  final double valorTotal;
 
   const ItemList({
     Key key,
     @required this.categoria,
     @required this.descricao,
     @required this.valor,
+    @required this.valorTotal,
     this.tempo,
     @required this.itemModel,
     this.medida,
@@ -39,7 +41,7 @@ class _ItemListState extends State<ItemList> {
     var itemheight = height * 0.2;
     controller.itemHeight = itemheight;
     return Container(
-        height: height * 0.18,
+        height: (widget.tempo != '') ? height * 0.18 : height * 0.12,
         width: width,
         margin: EdgeInsets.only(
             top: height * .015,
@@ -63,8 +65,44 @@ class _ItemListState extends State<ItemList> {
             children: [
               Row(
                 children: [
+                  (widget.quantidade != 0)
+                      ? Flexible(
+                          flex: 10,
+                          child: Container(
+                            height: height * .036,
+                            width: width * 5,
+                            margin: EdgeInsets.only(
+                                top: height * .005,
+                                bottom: height * .005,
+                                right: width * .005),
+                            child: Text(
+                              '${widget.quantidade}',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 14),
+                            ),
+                          ),
+                        )
+                      : Container(),
+                  (widget.medida != '')
+                      ? Flexible(
+                          flex: 10,
+                          child: Container(
+                            height: height * .036,
+                            width: width * 5,
+                            margin: EdgeInsets.only(
+                                top: height * .005,
+                                bottom: height * .005,
+                                right: width * .005),
+                            child: Text(
+                              '${widget.medida}',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 14),
+                            ),
+                          ),
+                        )
+                      : Container(),
                   Flexible(
-                    flex: 9,
+                    flex: 60,
                     child: Container(
                       height: height * .036,
                       width: width * 5,
@@ -74,17 +112,20 @@ class _ItemListState extends State<ItemList> {
                           right: width * .005),
                       child: Text(
                         widget.descricao,
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(color: Colors.white, fontSize: 14),
                       ),
                     ),
                   ),
-                  Container(
-                    color: Colors.white,
-                    height: height * .03,
-                    width: width * .001,
+                  Flexible(
+                    flex: 1,
+                    child: Container(
+                      color: Colors.white,
+                      height: height * .03,
+                      width: width * .001,
+                    ),
                   ),
                   Flexible(
-                    flex: 5,
+                    flex: 30,
                     child: Container(
                         height: height * .03,
                         margin: EdgeInsets.only(
@@ -93,65 +134,67 @@ class _ItemListState extends State<ItemList> {
                             left: width * .012),
                         child: Text(
                           'R\$ ${widget.valor.toStringAsFixed(2)}',
-                          style: TextStyle(color: Colors.white, fontSize: 16),
+                          style: TextStyle(color: Colors.white, fontSize: 14),
                         )),
                   ),
                 ],
               ),
-              Container(
-                color: Colors.white,
-                height: height * .001,
-                width: width,
-              ),
-              Container(
-                height: height * .05,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Flexible(
-                      flex: 10,
-                      child: Container(
-                        height: height * .03,
-                        width: width * 15,
-                        margin: EdgeInsets.only(
-                            top: height * .005,
-                            bottom: height * .005,
-                            right: width * .05),
-                        child: Text(
-                          'Tempo de execução',
-                          style: TextStyle(color: Colors.white, fontSize: 14),
+              (widget.tempo != '')
+                  ? Container(
+                      color: Colors.white,
+                      height: height * .001,
+                      width: width,
+                    )
+                  : Container(),
+              (widget.tempo != '')
+                  ? Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Flexible(
+                          flex: 10,
+                          child: Container(
+                            height: height * .03,
+                            margin: EdgeInsets.only(
+                                top: height * .005,
+                                bottom: height * .005,
+                                right: width * .05),
+                            child: Text(
+                              'Tempo de execução',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 14),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    Flexible(
-                      flex: 1,
-                      child: Container(
-                        margin: EdgeInsets.only(
-                          top: height * .005,
-                          bottom: height * .005,
+                        Flexible(
+                          flex: 1,
+                          child: Container(
+                            margin: EdgeInsets.only(
+                              top: height * .005,
+                              bottom: height * .005,
+                            ),
+                            child: Icon(
+                              Icons.timer,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
-                        child: Icon(
-                          Icons.timer,
-                          color: Colors.white,
+                        Flexible(
+                          flex: 2,
+                          child: Container(
+                            margin: EdgeInsets.only(
+                              top: height * .005,
+                              bottom: height * .005,
+                            ),
+                            child: Text(
+                              widget.tempo,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 14),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    Flexible(
-                      flex: 2,
-                      child: Container(
-                        margin: EdgeInsets.only(
-                          top: height * .005,
-                          bottom: height * .005,
-                        ),
-                        child: Text(
-                          widget.tempo,
-                          style: TextStyle(color: Colors.white, fontSize: 18),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                      ],
+                    )
+                  : Container(),
               Container(
                 color: Colors.white,
                 height: height * .001,
@@ -161,41 +204,55 @@ class _ItemListState extends State<ItemList> {
                 children: [
                   Container(
                     width: width,
-                    margin:
-                        EdgeInsets.only(top: height * .001, left: width * .33),
+                    margin: EdgeInsets.only(top: height * .001),
                     child: Row(
-                      mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
-                        Container(
-                          height: height * .04,
-                          width: width * .045,
-                          child: IconButton(
-                              icon: Icon(
-                                Icons.edit,
-                                color: Colors.white,
-                              ),
-                              onPressed: () {
-                                showAlertDialog1(
-                                    controller,
-                                    context,
-                                    widget.categoria,
-                                    widget.descricao,
-                                    widget.valor,
-                                    widget.tempo,
-                                    widget.quantidade);
-                              }),
+                        Flexible(
+                          flex: 6,
+                          child: Container(
+                            height: height * .04,
+                            child: Text(
+                              'R\$ ${widget.valorTotal.toStringAsFixed(2)}',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 14),
+                            ),
+                          ),
                         ),
-                        Container(
-                          height: height * .04,
-                          width: width * .045,
-                          child: IconButton(
-                              icon: Icon(
-                                Icons.delete_forever,
-                                color: Colors.white,
-                              ),
-                              onPressed: () {
-                                controller.listItens.remove(widget.itemModel);
-                              }),
+                        Flexible(
+                          flex: 1,
+                          child: Container(
+                            height: height * .04,
+                            child: IconButton(
+                                icon: Icon(
+                                  Icons.edit,
+                                  color: Colors.white,
+                                ),
+                                onPressed: () {
+                                  showAlertDialog1(
+                                      controller,
+                                      context,
+                                      widget.categoria,
+                                      widget.descricao,
+                                      widget.valor,
+                                      widget.tempo,
+                                      widget.quantidade,
+                                      widget.medida);
+                                }),
+                          ),
+                        ),
+                        Flexible(
+                          flex: 1,
+                          child: Container(
+                            height: height * .04,
+                            child: IconButton(
+                                icon: Icon(
+                                  Icons.delete_forever,
+                                  color: Colors.white,
+                                ),
+                                onPressed: () {
+                                  controller.listItens.remove(widget.itemModel);
+                                }),
+                          ),
                         ),
                       ],
                     ),
@@ -207,13 +264,24 @@ class _ItemListState extends State<ItemList> {
         ));
   }
 
-  showAlertDialog1(controller, BuildContext context, String categoria,
-      String descricao, double valor, String tempo, double quantidade) {
+  showAlertDialog1(
+      controller,
+      BuildContext context,
+      String categoria,
+      String descricao,
+      double valor,
+      String tempo,
+      double quantidade,
+      String medida) {
     controller.listItens.remove(widget.itemModel);
     String valorS = '$valor';
+    String quantidadeS = '$quantidade';
     controller.categoriaController.text = categoria;
     controller.itemController.text = descricao;
     controller.valorController.text = valorS;
+    controller.tempoController.text = tempo;
+    controller.medidaController.text = medida;
+    controller.quantidadeController.text = quantidadeS;
     showDialog(
       context: context,
       builder: (BuildContext context) {

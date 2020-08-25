@@ -63,13 +63,15 @@ class _DadosProjetoPageState extends State<DadosProjetoPage> {
                 style: TextStyle(color: Colors.black, fontSize: 24))),
       ),
       listBuilder: (BuildContext context, ItemModel g) => ItemList(
-          itemModel: g,
-          descricao: g.descricao,
-          categoria: g.categoria,
-          valor: g.valor,
-          tempo: g.tempo,
-          quantidade: g.quantidade,
-          medida: g.medida),
+        itemModel: g,
+        descricao: g.descricao,
+        categoria: g.categoria,
+        valor: g.valor,
+        tempo: g.tempo,
+        quantidade: g.quantidade,
+        medida: g.medida,
+        valorTotal: g.valorTotal,
+      ),
     );
   }
 }

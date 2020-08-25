@@ -288,6 +288,21 @@ mixin _$ProjetoController on _ProjetoControllerBase, Store {
     });
   }
 
+  final _$valorTotalAtom = Atom(name: '_ProjetoControllerBase.valorTotal');
+
+  @override
+  double get valorTotal {
+    _$valorTotalAtom.reportRead();
+    return super.valorTotal;
+  }
+
+  @override
+  set valorTotal(double value) {
+    _$valorTotalAtom.reportWrite(value, super.valorTotal, () {
+      super.valorTotal = value;
+    });
+  }
+
   final _$setValorAsyncAction = AsyncAction('_ProjetoControllerBase.setValor');
 
   @override
@@ -396,7 +411,8 @@ descricao: ${descricao},
 tempo: ${tempo},
 quantidade: ${quantidade},
 volume: ${volume},
-medida: ${medida}
+medida: ${medida},
+valorTotal: ${valorTotal}
     ''';
   }
 }

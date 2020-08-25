@@ -1,6 +1,7 @@
 import 'package:brasil_fields/formatter/real_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/projeto_controller.dart';
@@ -183,6 +184,18 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                             ),
                           )),
                     ),
+                    Observer(builder: (_) {
+                      return Flexible(
+                        flex: 1,
+                        child: Container(
+                            height: height * .06,
+                            margin: EdgeInsets.only(left: width * .005),
+                            child: Center(
+                              child: Text(
+                                  'R\$ ${controller.valorTotal.toStringAsFixed(2)}'),
+                            )),
+                      );
+                    }),
                   ],
                 ),
               ),
