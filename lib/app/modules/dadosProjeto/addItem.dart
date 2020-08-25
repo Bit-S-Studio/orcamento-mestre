@@ -110,7 +110,10 @@ class _AddItemState extends State<AddItem> {
             ),
             Container(height: height *.2, child: ItemDescritionWidget()),
             Container(
-                margin: EdgeInsets.only(top: height *.02), child: button())
+                margin: EdgeInsets.only(
+                    top: height *.02
+                ),
+                child: button())
           ],
         ),
       ),
@@ -121,32 +124,28 @@ class _AddItemState extends State<AddItem> {
     ScreenUtil.getInstance()..init(context);
     final controller = Provider.of<ProjetoController>(context);
     return Center(
-      child: Stack(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height *.08,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-                color: Colors.blue[900]),
-            child: MaterialButton(
-              onPressed: () async {
-                controller.setItem();
-              },
-              highlightColor: Colors.transparent,
-              splashColor: Colors.white,
-              child: Container(
-                child:  Text(
-                  "Salvar",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: ScreenUtil.instance.setSp(75),
-                  ),
-                ),
+      child: Container(
+        height: MediaQuery.of(context).size.height *.08,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+            color: Colors.blue[900]),
+        child: MaterialButton(
+          onPressed: () async {
+            controller.setItem();
+          },
+          highlightColor: Colors.transparent,
+          splashColor: Colors.white,
+          child: Container(
+            child:  Text(
+              "Salvar",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: ScreenUtil.instance.setSp(75),
               ),
             ),
           ),
-        ],
+        ),
       ),
     );
   }

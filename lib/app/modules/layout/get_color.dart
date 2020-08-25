@@ -35,10 +35,10 @@ class _GetColorState extends State<GetColor> {
                   pickerColor: controller.pickerColor,
                   onColorChanged: controller.changeColor,
                   showLabel: true,
-                  pickerAreaHeightPercent: 0.5,
+                  pickerAreaHeightPercent: 0.4,
                   colorPickerWidth: 300.0,
                   displayThumbColor: true,
-                  enableAlpha: true,
+                  enableAlpha: false,
                   paletteType: PaletteType.hsv,
                   pickerAreaBorderRadius: const BorderRadius.only(
                       topLeft: const Radius.circular(2.0),
@@ -89,6 +89,9 @@ class _GetColorState extends State<GetColor> {
     final oController = Provider.of<OrcamentoController>(context);
     return Observer(builder: (_) {
       return Container(
+        margin: EdgeInsets.only(
+          bottom: height *.01
+        ),
         decoration: BoxDecoration(
           color: Colors.blue[900],
           borderRadius: BorderRadius.all(Radius.circular(12)),
