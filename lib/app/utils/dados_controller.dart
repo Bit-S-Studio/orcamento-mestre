@@ -130,7 +130,6 @@ abstract class _DadosControllerBase with Store {
       imageFile = pickedFile;
       upImage(imageFile);
     } catch (e) {}
-    (imageFile != null) ? logoStatus = true : logoStatus = false;
     return imageFile;
   }
 
@@ -145,6 +144,7 @@ abstract class _DadosControllerBase with Store {
     StorageUploadTask uploadTask = firebaseStorageRef.putFile(File(image.path));
     var completedTask = await uploadTask.onComplete;
     imgUrl = await completedTask.ref.getDownloadURL();
+    (imgUrl != null) ? logoStatus = true : logoStatus = false;
     return imgUrl;
   }
 
