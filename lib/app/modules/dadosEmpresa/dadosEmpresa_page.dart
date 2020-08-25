@@ -55,36 +55,24 @@ class _DadosEmpresaPageState extends State<DadosEmpresaPage> {
                             var image = await controller.getImage();
                             controller.logo = image;
                           },
-                          child: (controller.logoStatus)
-                              ? (kIsWeb)
-                              ? Image.network(controller.imageFile.path)
-                              : Image.file(
-                              File(controller.imageFile.path))
-                              : Container(
+                          child: Container(
                             height: height * .125,
                             decoration: BoxDecoration(
                                 color: Colors.grey[600],
-                                borderRadius: BorderRadius.all(
-                                    Radius.circular(16))),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(16))),
                             margin: EdgeInsets.only(left: width * .02),
                             child: Center(
                               child: (controller.logoStatus)
-                                  ? (kIsWeb)
                                   ? Image.network(
-                                controller.imageFile.path,
-                                fit: BoxFit.cover,
-                              )
-                                  : Image.file(
-                                File(controller
-                                    .imageFile.path),
-                                fit: BoxFit.cover,
-                              )
+                                      controller.imgUrl,
+                                      fit: BoxFit.cover,
+                                    )
                                   : Text(
-                                'Adicione sua Logo aqui',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.white),
-                              ),
+                                      'Adicione sua Logo aqui',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(color: Colors.white),
+                                    ),
                             ),
                           ),
                         );
@@ -118,8 +106,7 @@ class _DadosEmpresaPageState extends State<DadosEmpresaPage> {
                             ),
                           ),
                           validator: (text) {
-                            if (text.isEmpty)
-                              return "O campo nome, está vazio";
+                            if (text.isEmpty) return "O campo nome, está vazio";
                           },
                         ),
                       ),
@@ -133,7 +120,6 @@ class _DadosEmpresaPageState extends State<DadosEmpresaPage> {
               width: width,
               margin: EdgeInsets.only(top: height * .005),
               decoration: BoxDecoration(
-
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(16),
                       bottomRight: Radius.circular(16))),
@@ -142,8 +128,7 @@ class _DadosEmpresaPageState extends State<DadosEmpresaPage> {
                   Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius:
-                          BorderRadius.all(Radius.circular(16))),
+                          borderRadius: BorderRadius.all(Radius.circular(16))),
                       child: FormsComplemento()),
                 ],
               ),
