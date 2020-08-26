@@ -57,7 +57,7 @@ class _DadosProjetoPageState extends State<DadosProjetoPage> {
             height: MediaQuery.of(context).size.height * .01,
             width: MediaQuery.of(context).size.width,
             padding: EdgeInsets.only(
-                top: MediaQuery.of(context).size.height * .02,
+                top: MediaQuery.of(context).size.height * .015,
                 left: MediaQuery.of(context).size.width * .025),
             child: Text(name,
                 style: TextStyle(color: Colors.black, fontSize: 24))),

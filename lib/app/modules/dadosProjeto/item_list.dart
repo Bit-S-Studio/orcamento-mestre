@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/addItem.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/projeto_controller.dart';
 import 'package:provider/provider.dart';
@@ -35,19 +36,19 @@ class ItemList extends StatefulWidget {
 class _ItemListState extends State<ItemList> {
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.getInstance()..init(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     final controller = Provider.of<ProjetoController>(context);
     var itemheight = height * 0.2;
     controller.itemHeight = itemheight;
     return Container(
-        height: (widget.tempo != '') ? height * 0.18 : height * 0.12,
+        height: (widget.tempo != '') ? height * 0.175 : height * 0.12,
         width: width,
         margin: EdgeInsets.only(
-            top: height * .015,
-            bottom: height * .015,
-            left: width * .015,
-            right: width * .015),
+            top: height * .005,
+            left: width * .005,
+            right: width * .005),
         decoration: BoxDecoration(
             color: Colors.blue[900],
             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -63,70 +64,32 @@ class _ItemListState extends State<ItemList> {
           padding: EdgeInsets.all(12.0),
           child: Column(
             children: [
-              Row(
-                children: [
-                  (widget.quantidade != 0)
-                      ? Flexible(
-                          flex: 10,
-                          child: Container(
-                            height: height * .036,
-                            width: width * 5,
-                            margin: EdgeInsets.only(
-                                top: height * .005,
-                                bottom: height * .005,
-                                right: width * .005),
-                            child: Text(
-                              '${widget.quantidade}',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 14),
-                            ),
-                          ),
-                        )
-                      : Container(),
-                  (widget.medida != '')
-                      ? Flexible(
-                          flex: 10,
-                          child: Container(
-                            height: height * .036,
-                            width: width * 5,
-                            margin: EdgeInsets.only(
-                                top: height * .005,
-                                bottom: height * .005,
-                                right: width * .005),
-                            child: Text(
-                              '${widget.medida}',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 14),
-                            ),
-                          ),
-                        )
-                      : Container(),
-                  Flexible(
-                    flex: 60,
-                    child: Container(
+              Flexible(
+                flex: 1,
+                child: Row(
+                  children: [
+                    Container(
                       height: height * .036,
-                      width: width * 5,
+                      width: width * .31,
                       margin: EdgeInsets.only(
                           top: height * .005,
                           bottom: height * .005,
-                          right: width * .005),
+                          ),
                       child: Text(
                         widget.descricao,
-                        style: TextStyle(color: Colors.white, fontSize: 14),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: ScreenUtil.instance.setSp(35),
+                        ),
+                        maxLines: 1,
                       ),
                     ),
-                  ),
-                  Flexible(
-                    flex: 1,
-                    child: Container(
+                    Container(
                       color: Colors.white,
                       height: height * .03,
                       width: width * .001,
                     ),
-                  ),
-                  Flexible(
-                    flex: 30,
-                    child: Container(
+                    Container(
                         height: height * .03,
                         margin: EdgeInsets.only(
                             top: height * .005,
@@ -134,10 +97,14 @@ class _ItemListState extends State<ItemList> {
                             left: width * .012),
                         child: Text(
                           'R\$ ${widget.valor.toStringAsFixed(2)}',
-                          style: TextStyle(color: Colors.white, fontSize: 14),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: ScreenUtil.instance.setSp(35),
+                          ),
+                          maxLines: 1,
                         )),
-                  ),
-                ],
+                  ],
+                ),
               ),
               (widget.tempo != '')
                   ? Container(
@@ -147,117 +114,214 @@ class _ItemListState extends State<ItemList> {
                     )
                   : Container(),
               (widget.tempo != '')
-                  ? Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Flexible(
-                          flex: 10,
-                          child: Container(
+                  ? Flexible(
+                flex: 1,
+                    child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: <Widget>[
+                          Container(
+                            height: height * .036,
+                            margin: EdgeInsets.only(
+                                top: height * .005,
+                                bottom: height * .005,
+                                right: width * .005),
+                            child: Text(
+                              'Quantidade:',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: ScreenUtil.instance.setSp(35),
+                              ),
+                              maxLines: 1,
+                            ),
+                          ),
+                          (widget.quantidade != 0)
+                              ? Container(
+                            height: height * .03,
+                            width: width *.045,
+                            margin: EdgeInsets.only(
+                                top: height * .005,
+                                bottom: height * .005,
+                                right: width * .005),
+                            child: Text(
+                              '${widget.quantidade}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: ScreenUtil.instance.setSp(35),
+                              ),
+                              maxLines: 1,
+                            ),
+                          )
+                              : Container(),
+                          Container(
+                            color: Colors.white,
+                            height: height * .03,
+                            width: width * .001,
+                          ),
+                          Container(
                             height: height * .03,
                             margin: EdgeInsets.only(
                                 top: height * .005,
                                 bottom: height * .005,
-                                right: width * .05),
+                                right: width * .005,
+                              left: width *.005
+                            ),
                             child: Text(
-                              'Tempo de execução',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 14),
+                              'Medida:',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: ScreenUtil.instance.setSp(35),
+                              ),
+                              maxLines: 1,
                             ),
                           ),
-                        ),
-                        Flexible(
-                          flex: 1,
-                          child: Container(
+                          (widget.medida != '')
+                              ? Container(
+                            height: height * .03,
+                            width: width * .08,
+                            margin: EdgeInsets.only(
+                                top: height * .005,
+                                bottom: height * .005,
+                                right: width * .005),
+                            child: Text(
+                              '${widget.medida}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: ScreenUtil.instance.setSp(35),
+                              ),
+                              maxLines: 1,
+                            ),
+                          )
+                              : Container(),
+                          Container(
+                            color: Colors.white,
+                            height: height * .03,
+                            width: width * .001,
+                          ),
+                          Container(
                             margin: EdgeInsets.only(
                               top: height * .005,
                               bottom: height * .005,
+                              left: width *.005,
+                              right: width *.005,
                             ),
                             child: Icon(
                               Icons.timer,
                               color: Colors.white,
+                              size: 16,
                             ),
                           ),
-                        ),
-                        Flexible(
-                          flex: 2,
-                          child: Container(
+                          Container(
                             margin: EdgeInsets.only(
                               top: height * .005,
                               bottom: height * .005,
                             ),
                             child: Text(
                               widget.tempo,
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 14),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: ScreenUtil.instance.setSp(35),
+                              ),
+                              maxLines: 1,
                             ),
                           ),
-                        ),
-                      ],
-                    )
+                        ],
+                      ),
+                  )
                   : Container(),
               Container(
                 color: Colors.white,
                 height: height * .001,
                 width: width,
               ),
-              Stack(
-                children: [
-                  Container(
-                    width: width,
-                    margin: EdgeInsets.only(top: height * .001),
-                    child: Row(
-                      children: <Widget>[
-                        Flexible(
-                          flex: 6,
-                          child: Container(
-                            height: height * .04,
-                            child: Text(
-                              'R\$ ${widget.valorTotal.toStringAsFixed(2)}',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 14),
+              Flexible(
+                flex: 1,
+                child: Container(
+                  height: height *.042,
+                  width: width,
+                  margin: EdgeInsets.only(top: height * .001),
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        height: height * .045,
+                        margin: EdgeInsets.only(
+                            top: height * .01,
+                            bottom: height * .005,
+                            right: width * .005,
+                            left: width *.005
+                        ),
+                        padding: EdgeInsets.only(
+                          top: height * .005,
+                        ),
+                        child: Text(
+                          'Total:',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: ScreenUtil.instance.setSp(35),
+                          ),
+                          maxLines: 1,
+                        ),
+                      ),
+                      Container(
+                        height: height * .045,
+                        width: width *.18,
+                        margin: EdgeInsets.only(
+                          top: height * .01,
+                          bottom: height * .005,
+                        ),
+                        padding: EdgeInsets.only(
+                          top: height * .005,
+                        ),
+                        child: Text(
+                          'R\$ ${widget.valorTotal.toStringAsFixed(2)}',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: ScreenUtil.instance.setSp(35),
+                          ),
+                          maxLines: 1,
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                          left: width *.008
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              height: height * .05,
+                              child: IconButton(
+                                  icon: Icon(
+                                    Icons.edit,
+                                    color: Colors.white,
+                                  ),
+                                  onPressed: () {
+                                    showAlertDialog1(
+                                        controller,
+                                        context,
+                                        widget.categoria,
+                                        widget.descricao,
+                                        widget.valor,
+                                        widget.tempo,
+                                        widget.quantidade,
+                                        widget.medida);
+                                  }),
                             ),
-                          ),
+                            Container(
+                              height: height * .05,
+                              child: IconButton(
+                                  icon: Icon(
+                                    Icons.delete_forever,
+                                    color: Colors.white,
+                                  ),
+                                  onPressed: () {
+                                    controller.listItens.remove(widget.itemModel);
+                                  }),
+                            ),
+                          ],
                         ),
-                        Flexible(
-                          flex: 1,
-                          child: Container(
-                            height: height * .04,
-                            child: IconButton(
-                                icon: Icon(
-                                  Icons.edit,
-                                  color: Colors.white,
-                                ),
-                                onPressed: () {
-                                  showAlertDialog1(
-                                      controller,
-                                      context,
-                                      widget.categoria,
-                                      widget.descricao,
-                                      widget.valor,
-                                      widget.tempo,
-                                      widget.quantidade,
-                                      widget.medida);
-                                }),
-                          ),
-                        ),
-                        Flexible(
-                          flex: 1,
-                          child: Container(
-                            height: height * .04,
-                            child: IconButton(
-                                icon: Icon(
-                                  Icons.delete_forever,
-                                  color: Colors.white,
-                                ),
-                                onPressed: () {
-                                  controller.listItens.remove(widget.itemModel);
-                                }),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ],
           ),

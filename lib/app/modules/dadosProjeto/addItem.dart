@@ -24,7 +24,9 @@ class _AddItemState extends State<AddItem> {
       elevation: 0.0,
       backgroundColor: Colors.transparent,
       child: Container(
-          height: height * .45, width: width, child: dialogContent(context)),
+          height: height * .53,
+          width: width,
+          child: dialogContent(context)),
     );
   }
 
@@ -35,14 +37,13 @@ class _AddItemState extends State<AddItem> {
     var width = MediaQuery.of(context).size.height;
     return SingleChildScrollView(
       child: Container(
-        height: height * .5,
+        height: height * .47,
         padding: EdgeInsets.only(
           top: height * .01,
           bottom: height * .01,
           left: width * .01,
           right: width * .01,
         ),
-        margin: EdgeInsets.only(top: Consts.avatarRadius),
         decoration: new BoxDecoration(
           color: Colors.white,
           shape: BoxShape.rectangle,
@@ -107,9 +108,12 @@ class _AddItemState extends State<AddItem> {
                 },
               ),
             ),
-            Container(height: height * .2, child: ItemDescritionWidget()),
+            Container(height: height *.2, child: ItemDescritionWidget()),
             Container(
-                margin: EdgeInsets.only(top: height * .015), child: button())
+                margin: EdgeInsets.only(
+                    top: height *.02
+                ),
+                child: button())
           ],
         ),
       ),
@@ -117,35 +121,31 @@ class _AddItemState extends State<AddItem> {
   }
 
   Widget button() {
+    ScreenUtil.getInstance()..init(context);
     final controller = Provider.of<ProjetoController>(context);
     return Center(
-      child: Stack(
-        children: [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-                color: Colors.blue[900]),
-            child: MaterialButton(
-              onPressed: () async {
-                controller.setItem();
-              },
-              highlightColor: Colors.transparent,
-              splashColor: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    vertical: 10.0, horizontal: 42.0),
-                child: Text(
-                  "Salvar",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25.0,
-                  ),
-                ),
+      child: Container(
+        height: MediaQuery.of(context).size.height *.08,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+            color: Colors.blue[900]),
+        child: MaterialButton(
+          onPressed: () async {
+            controller.setItem();
+          },
+          highlightColor: Colors.transparent,
+          splashColor: Colors.white,
+          child: Container(
+            child:  Text(
+              "Salvar",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: ScreenUtil.instance.setSp(75),
               ),
             ),
           ),
-        ],
+        ),
       ),
     );
   }

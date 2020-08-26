@@ -188,20 +188,24 @@ class _BasePageState extends State<BasePage> {
     final userController = Provider.of<UserController>(context);
     return Observer(builder: (_) {
       return (controller.currentIndex == 2)
-          ? FloatingActionButton(
-              backgroundColor: Colors.blue[900],
-              child: Icon(LineAwesomeIcons.plus),
-              onPressed: () {
-                showAlertDialog1(context, projetoController);
-              })
+          ? Container(
+            child: FloatingActionButton(
+                backgroundColor: Colors.blue[900],
+                child: Icon(LineAwesomeIcons.plus,
+                ),
+                mini: true,
+                onPressed: () {
+                  showAlertDialog1(context, projetoController);
+                }),
+          )
           : FabCircularMenu(
               fabOpenColor: Colors.blue[900],
               fabCloseColor: Colors.blue[900],
               fabColor: Colors.blue[900],
-              fabSize: 56,
+              fabSize: 41,
               ringColor: Colors.blue[900].withAlpha(50),
-              ringDiameter: 300.0,
-              fabOpenIcon: Icon(Icons.menu, color: Colors.white),
+              ringDiameter: 200.0,
+              fabOpenIcon: Icon(Icons.menu, color: Colors.white,),
               fabCloseIcon: Icon(Icons.close, color: Colors.white),
               children: <Widget>[
                   IconButton(
@@ -240,7 +244,7 @@ class _BasePageState extends State<BasePage> {
     controller.medida = '';
     controller.medidaController.text = '';
     controller.quantidadeController.text = '';
-    controller.quantidade = 0;
+    controller.quantidade = 0.0;
     showDialog(
       context: context,
       builder: (BuildContext context) {

@@ -24,12 +24,69 @@ class _HomePageState extends State<HomePage> {
     ScreenUtil.getInstance()..init(context);
     return Scaffold(
       backgroundColor: Colors.blue[900],
-      body: Stack(
-        children: <Widget>[
-          background(),
-          page(),
-          foto(),
-        ],
+      body: Container(
+        child: Column(
+          children: [
+            Stack(
+              children: <Widget>[
+                Container(
+                    height: height,
+                    width: width,
+                    child: background()),
+                Container(
+                  height: height *.2,
+                  width: width,
+                  margin: EdgeInsets.only(
+                    left: width *.03,
+                    right: width *.03
+                  ),
+                  child: Center(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Container(
+                            height: height *.065,
+                            margin: EdgeInsets.only(
+                                top: height *.13,
+                                right: width *.04
+                            ),
+                            child: wellcome(),
+                          ),
+                        ),
+                        Flexible(
+                          flex: 1,
+                          child: Container(
+                              margin: EdgeInsets.only(
+                                  top: height *.1,
+                              ),
+                              child: buttonsUp()),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  height: height,
+                    width: width,
+                    padding: EdgeInsets.only(
+                      top: height *.25
+                    ),
+                    child: Stack(
+                      overflow: Overflow.visible,
+                      children: [
+                        page(),
+                        Positioned(
+                          bottom: height *.615,
+                            left: width *.4,
+                            child: Container(
+                                child: foto()))
+                      ],
+                    )),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -53,30 +110,20 @@ class _HomePageState extends State<HomePage> {
     final controller = Provider.of<UserController>(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
-    return Column(
-      children: <Widget>[
-        SizedBox(
-          height: height * 0.23,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 200),
-          child: Center(
-            child: StreamBuilder<Object>(
-                stream: null,
-                builder: (context, snapshot) {
-                  return CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 50,
-                    child: CircleAvatar(
-                      backgroundImage:
-                          NetworkImage(controller.imagem.toString()),
-                      radius: 56,
-                    ),
-                  );
-                }),
-          ),
-        ),
-      ],
+    return Center(
+      child: StreamBuilder<Object>(
+          stream: null,
+          builder: (context, snapshot) {
+            return CircleAvatar(
+              backgroundColor: Colors.white,
+              radius: 50,
+              child: CircleAvatar(
+                backgroundImage:
+                NetworkImage(controller.imagem.toString()),
+                radius: 56,
+              ),
+            );
+          }),
     );
   }
 
@@ -86,133 +133,100 @@ class _HomePageState extends State<HomePage> {
     final controller = Provider.of<UserController>(context);
     var teste = controller.setUser();
     print(teste);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        SizedBox(
-          height: height * 0.14,
-        ),
-        SizedBox(
-          height: height * 0.02,
-          child: FractionallySizedBox(
-            widthFactor: 1,
-            alignment: Alignment.topRight,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                IconButton(
-                    icon: Icon(
-                      LineAwesomeIcons.bell_o,
-                      color: Colors.white,
+    return Container(
+      padding: EdgeInsets.only(
+          top: height * .09,
+          bottom: height * .08,
+          left: width * .045,
+          right: width * .045),
+      child: Container(
+        height: height,
+        width: width,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: Colors.grey[100]),
+        child: Column(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Column(
+                children: [
+                  buttons('Solicitar orçamento', '/solicitar',
+                      LineAwesomeIcons.paper_plane_o),
+                  Container(
+                    height: height *.015,
+                    width: width,
+                    padding: EdgeInsets.only(
+                        left: width *.33
                     ),
-                    onPressed: () {}),
-                IconButton(
-                    icon: Icon(
-                      LineAwesomeIcons.comments_o,
-                      color: Colors.white,
+                    child: Text('Em Desenvolvimento',
+                      style: TextStyle(
+                        fontSize: ScreenUtil.instance.setSp(20),
+                      ),
                     ),
-                    onPressed: () {}),
-                IconButton(
-                    icon: Icon(
-                      LineAwesomeIcons.cog,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {}),
-                SizedBox(
-                  width: width * 0.04,
-                )
-              ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ),
-        SizedBox(
-          height: height * 0.1,
-          child: FractionallySizedBox(
-            alignment: Alignment.topLeft,
-            widthFactor: 0.5,
-            child: Column(
-              children: [
-                Text(
-                  'Seja Bem-vindo!',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: ScreenUtil.instance.setSp(50),
+            Expanded(
+              flex: 1,
+              child: Column(
+                children: [
+                  buttons(
+                      'Gerar orçamento', '/base', LineAwesomeIcons.file_pdf_o),
+                  Container(
+                    height: height *.015,
                   ),
-                  textAlign: TextAlign.left,
-                ),
-                Observer(builder: (_) {
-                  return Text(
-                    'Mestre ${controller.nome}',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: ScreenUtil.instance.setSp(50),
-                        fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.left,
-                  );
-                }),
-              ],
+                ],
+              ),
             ),
-          ),
-        ),
-        Container(
-          height: height * 0.59,
-          width: width,
-          margin: EdgeInsets.only(
-              top: height * .045,
-              bottom: height * .03,
-              left: width * .045,
-              right: width * .045),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: Colors.grey[100]),
-          child: Column(
-            children: [
-              buttons('Solicitar orçamento', '/solicitar',
-                  LineAwesomeIcons.paper_plane_o),
-              Container(
-                height: height *.015,
-                width: width,
-                padding: EdgeInsets.only(
-                    left: width *.33
-                ),
-                child: Text('Em Desenvolvimento',
-                  style: TextStyle(
-                    fontSize: ScreenUtil.instance.setSp(20),
+            Expanded(
+              flex: 1,
+              child: Column(
+                children: [
+                  buttons('Minhas solicitações', '/solicitacoes',
+                      LineAwesomeIcons.sort_amount_asc),
+                  Container(
+                    height: height *.016,
+                    width: width,
+                    padding: EdgeInsets.only(
+                        left: width *.33
+                    ),
+                    child: Text('Em Desenvolvimento',
+                      style: TextStyle(
+                        fontSize: ScreenUtil.instance.setSp(20),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
-              buttons(
-                  'Gerar orçamento', '/base', LineAwesomeIcons.file_pdf_o),
-              Container(
-                height: height *.015,
-              ),
-              buttons('Minhas solicitações', '/solicitacoes',
-                  LineAwesomeIcons.sort_amount_asc),
-              Container(
-                height: height *.016,
-                width: width,
-                padding: EdgeInsets.only(
-                    left: width *.33
-                ),
-                child: Text('Em Desenvolvimento',
-                  style: TextStyle(
-                    fontSize: ScreenUtil.instance.setSp(20),
+            ),
+            Expanded(
+              flex: 1,
+              child: Column(
+                children: [
+                  buttons(
+                      'Meus Orçamentos', '/orcamentos', LineAwesomeIcons.copy),
+                  Container(
+                    height: height *.015,
                   ),
-                ),
+                ],
               ),
-              buttons(
-                  'Meus Orçamentos', '/orcamentos', LineAwesomeIcons.copy),
-              Container(
-                height: height *.015,
+            ),
+            Expanded(
+              flex: 1,
+              child: Column(
+                children: [
+                  buttons('Meu perfil', '/perfil', LineAwesomeIcons.user),
+                  Container(
+                    height: height *.015,
+                  ),
+                ],
               ),
-              buttons('Meu perfil', '/perfil', LineAwesomeIcons.user),
-              Container(
-                height: height *.015,
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 
@@ -280,4 +294,67 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  Widget buttonsUp() {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.height;
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          IconButton(
+              icon: Icon(
+                LineAwesomeIcons.bell_o,
+                color: Colors.white,
+              ),
+              onPressed: () {}),
+          IconButton(
+              icon: Icon(
+                LineAwesomeIcons.comments_o,
+                color: Colors.white,
+              ),
+              onPressed: () {}),
+          IconButton(
+              icon: Icon(
+                LineAwesomeIcons.cog,
+                color: Colors.white,
+              ),
+              onPressed: () {}),
+        ],
+      ),
+    );
+  }
+
+  Widget wellcome(){
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.height;
+    final controller = Provider.of<UserController>(context);
+    var teste = controller.setUser();
+    print(teste);
+    return Container(
+      child: Column(
+        children: [
+          Text(
+            'Seja Bem-vindo!',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: ScreenUtil.instance.setSp(50),
+            ),
+            textAlign: TextAlign.left,
+          ),
+          Observer(builder: (_) {
+            return Text(
+              'Mestre ${controller.nome}',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: ScreenUtil.instance.setSp(50),
+                  fontWeight: FontWeight.bold),
+              textAlign: TextAlign.left,
+            );
+          }),
+        ],
+      ),
+    );
+  }
+
 }
