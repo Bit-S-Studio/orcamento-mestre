@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:orcamento_mestre/app/modules/clientes/clientes_controller.dart';
 import 'package:orcamento_mestre/app/modules/pdf/pdf_controller.dart';
+import 'package:orcamento_mestre/app/utils/dados_controller.dart';
 import 'package:provider/provider.dart';
 import 'orcamento_controller.dart';
 
@@ -88,6 +90,8 @@ class _OrcamentoPageState extends State<OrcamentoPage> {
     var width = MediaQuery.of(context).size.height;
     final pdfController = Provider.of<PdfController>(context);
     final controller = Provider.of<OrcamentoController>(context);
+    final dadosController = Provider.of<DadosController>(context);
+    final clienteController = Provider.of<ClientesController>(context);
     return Observer(builder: (_) {
       return Container(
         decoration: BoxDecoration(
@@ -104,13 +108,20 @@ class _OrcamentoPageState extends State<OrcamentoPage> {
         child: MaterialButton(
             onPressed: () async {
               pdfController.writeOnPdf(
-                colorCabecalio: controller.cabecalio,
-                colorBase: controller.base,
-                colorRodape: controller.rodape,
-                colorLetraCabecalio: controller.letraCabecalio,
-                colorLetraBase: controller.letraBase,
-                colorLetraRodape: controller.letraRodape,
-              );
+                  colorCabecalio: controller.cabecalio,
+                  colorBase: controller.base,
+                  colorRodape: controller.rodape,
+                  colorLetraCabecalio: controller.letraCabecalio,
+                  colorLetraBase: controller.letraBase,
+                  colorLetraRodape: controller.letraRodape,
+                  nomeEmpresa: dadosController.nome,
+                  emailEmpresa: dadosController.email,
+                  telefoneEmpresa: dadosController.telefone1,
+                  enderecoEmpresa: dadosController.endereco,
+                  numeroEmpresa: dadosController.numero,
+                  cidadeEmpresa: dadosController.cidade,
+                  ufEmpresa: dadosController.uf,
+                  nomeCliente: clienteController.nome);
               await pdfController.savePdf(controller.nome);
             },
             highlightColor: Colors.transparent,

@@ -54,6 +54,51 @@ mixin _$PdfController on _PdfControllerBase, Store {
     });
   }
 
+  final _$logoConverterAsyncAction =
+      AsyncAction('_PdfControllerBase.logoConverter');
+
+  @override
+  Future<Uint8List> logoConverter(String logo) {
+    return _$logoConverterAsyncAction.run(() => super.logoConverter(logo));
+  }
+
+  final _$writeOnPdfAsyncAction = AsyncAction('_PdfControllerBase.writeOnPdf');
+
+  @override
+  Future writeOnPdf(
+      {String colorBase,
+      String colorCabecalio,
+      String colorRodape,
+      String colorLetraCabecalio,
+      String colorLetraBase,
+      String colorLetraRodape,
+      String logo,
+      String nomeEmpresa,
+      String nomeCliente,
+      String emailEmpresa,
+      String telefoneEmpresa,
+      String enderecoEmpresa,
+      String numeroEmpresa,
+      String cidadeEmpresa,
+      String ufEmpresa}) {
+    return _$writeOnPdfAsyncAction.run(() => super.writeOnPdf(
+        colorBase: colorBase,
+        colorCabecalio: colorCabecalio,
+        colorRodape: colorRodape,
+        colorLetraCabecalio: colorLetraCabecalio,
+        colorLetraBase: colorLetraBase,
+        colorLetraRodape: colorLetraRodape,
+        logo: logo,
+        nomeEmpresa: nomeEmpresa,
+        nomeCliente: nomeCliente,
+        emailEmpresa: emailEmpresa,
+        telefoneEmpresa: telefoneEmpresa,
+        enderecoEmpresa: enderecoEmpresa,
+        numeroEmpresa: numeroEmpresa,
+        cidadeEmpresa: cidadeEmpresa,
+        ufEmpresa: ufEmpresa));
+  }
+
   final _$savePdfAsyncAction = AsyncAction('_PdfControllerBase.savePdf');
 
   @override
@@ -66,32 +111,6 @@ mixin _$PdfController on _PdfControllerBase, Store {
   @override
   Future<dynamic> viewPdf(String name) {
     return _$viewPdfAsyncAction.run(() => super.viewPdf(name));
-  }
-
-  final _$_PdfControllerBaseActionController =
-      ActionController(name: '_PdfControllerBase');
-
-  @override
-  dynamic writeOnPdf(
-      {String colorBase,
-      String colorCabecalio,
-      String colorRodape,
-      String colorLetraCabecalio,
-      String colorLetraBase,
-      String colorLetraRodape}) {
-    final _$actionInfo = _$_PdfControllerBaseActionController.startAction(
-        name: '_PdfControllerBase.writeOnPdf');
-    try {
-      return super.writeOnPdf(
-          colorBase: colorBase,
-          colorCabecalio: colorCabecalio,
-          colorRodape: colorRodape,
-          colorLetraCabecalio: colorLetraCabecalio,
-          colorLetraBase: colorLetraBase,
-          colorLetraRodape: colorLetraRodape);
-    } finally {
-      _$_PdfControllerBaseActionController.endAction(_$actionInfo);
-    }
   }
 
   @override

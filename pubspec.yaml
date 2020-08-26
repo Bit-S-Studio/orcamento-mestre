@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  network_image_to_byte: ^0.0.1
   brasil_fields: ^0.4.0
   flutter_masked_text: ^0.8.0
   fab_circular_menu: ^1.0.0

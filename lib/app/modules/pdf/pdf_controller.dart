@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
+import 'package:network_image_to_byte/network_image_to_byte.dart';
+import 'dart:typed_data';
 part 'pdf_controller.g.dart';
 
 class PdfController = _PdfControllerBase with _$PdfController;
@@ -18,6 +21,11 @@ abstract class _PdfControllerBase with Store {
 
   @observable
   String fullPath;
+  @action
+  Future<Uint8List> logoConverter(String logo) async {
+    Uint8List byteImage = await networkImageToByte(logo);
+    return byteImage;
+  }
 
   @action
   writeOnPdf(
@@ -26,7 +34,21 @@ abstract class _PdfControllerBase with Store {
       String colorRodape,
       String colorLetraCabecalio,
       String colorLetraBase,
-      String colorLetraRodape}) {
+      String colorLetraRodape,
+      String logo,
+      String nomeEmpresa,
+      String nomeCliente,
+      String emailEmpresa,
+      String telefoneEmpresa,
+      String enderecoEmpresa,
+      String numeroEmpresa,
+      String cidadeEmpresa,
+      String ufEmpresa}) async {
+    final logoN = await logoConverter(logo);
+    final image = PdfImage.file(
+      pdf.document,
+      bytes: logoN,
+    );
     pdf.addPage(pw.MultiPage(
         pageTheme: pw.PageTheme(
           orientation: pw.PageOrientation.natural,
@@ -45,9 +67,18 @@ abstract class _PdfControllerBase with Store {
               decoration: pw.BoxDecoration(
                 color: PdfColor.fromHex(colorCabecalio),
               ),
-              child: pw.Text('Logo',
-                  style: pw.TextStyle(
-                      color: PdfColor.fromHex(colorLetraCabecalio))));
+              child: pw.Row(children: <pw.Widget>[
+                pw.Image(image),
+                pw.Column(children: <pw.Widget>[
+                  pw.Text('Orçamento de $nomeEmpresa para $nomeCliente',
+                      textAlign: pw.TextAlign.center),
+                  pw.Align(
+                    alignment: pw.Alignment.bottomRight,
+                    child: pw.Text('Data ${DateTime.now()}',
+                        textAlign: pw.TextAlign.center),
+                  )
+                ])
+              ]));
         },
         footer: (pw.Context context) {
           return pw.Container(
@@ -56,9 +87,15 @@ abstract class _PdfControllerBase with Store {
               decoration: pw.BoxDecoration(
                 color: PdfColor.fromHex(colorRodape),
               ),
-              child: pw.Text('Logo',
-                  style:
-                      pw.TextStyle(color: PdfColor.fromHex(colorLetraRodape))));
+              child: pw.Center(
+                  child: pw.Column(children: <pw.Widget>[
+                pw.Text(nomeEmpresa, textAlign: pw.TextAlign.center),
+                pw.Text(emailEmpresa, textAlign: pw.TextAlign.center),
+                pw.Text(telefoneEmpresa, textAlign: pw.TextAlign.center),
+                pw.Text(
+                    '$enderecoEmpresa $numeroEmpresa, $cidadeEmpresa - $ufEmpresa',
+                    textAlign: pw.TextAlign.center),
+              ])));
         },
         build: (pw.Context context) {
           return <pw.Widget>[
