@@ -40,15 +40,15 @@ class _ItemListState extends State<ItemList> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     final controller = Provider.of<ProjetoController>(context);
-    var itemheight = height * 0.2;
-    controller.itemHeight = itemheight;
     return Container(
-        height: (widget.tempo != '') ? height * 0.175 : height * 0.12,
+        height: (widget.tempo == '' &&
+                widget.quantidade == 0 &&
+                widget.medida == '')
+            ? height * 0.12
+            : height * 0.175,
         width: width,
         margin: EdgeInsets.only(
-            top: height * .005,
-            left: width * .005,
-            right: width * .005),
+            top: height * .005, left: width * .005, right: width * .005),
         decoration: BoxDecoration(
             color: Colors.blue[900],
             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -60,26 +60,27 @@ class _ItemListState extends State<ItemList> {
             ]),
         child: Container(
           height: height,
-          width: width,
+          width: width * 0.9,
           padding: EdgeInsets.all(12.0),
           child: Column(
             children: [
               Flexible(
                 flex: 1,
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
                       height: height * .036,
-                      width: width * .31,
+                      width: width * .3,
                       margin: EdgeInsets.only(
-                          top: height * .005,
-                          bottom: height * .005,
-                          ),
+                        top: height * .005,
+                        bottom: height * .005,
+                      ),
                       child: Text(
                         widget.descricao,
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: ScreenUtil.instance.setSp(35),
+                          color: Colors.white,
+                          fontSize: ScreenUtil.instance.setSp(35),
                         ),
                         maxLines: 1,
                       ),
@@ -106,128 +107,140 @@ class _ItemListState extends State<ItemList> {
                   ],
                 ),
               ),
-              (widget.tempo != '')
-                  ? Container(
+              (widget.tempo == '' &&
+                      widget.quantidade == 0 &&
+                      widget.medida == '')
+                  ? Container()
+                  : Container(
                       color: Colors.white,
                       height: height * .001,
                       width: width,
-                    )
-                  : Container(),
-              (widget.tempo != '')
-                  ? Flexible(
-                flex: 1,
-                    child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: <Widget>[
-                          Container(
-                            height: height * .036,
-                            margin: EdgeInsets.only(
-                                top: height * .005,
-                                bottom: height * .005,
-                                right: width * .005),
-                            child: Text(
-                              'Quantidade:',
-                              style: TextStyle(
+                    ),
+              (widget.tempo == '' &&
+                      widget.quantidade == 0 &&
+                      widget.medida == '')
+                  ? Container()
+                  : Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: <Widget>[
+                        (widget.quantidade != 0)
+                            ? Container(
+                                height: height * .036,
+                                margin: EdgeInsets.only(
+                                    top: height * .005,
+                                    bottom: height * .005,
+                                    right: width * .005),
+                                child: Text(
+                                  'Quantidade:',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: ScreenUtil.instance.setSp(35),
+                                  ),
+                                  maxLines: 1,
+                                ),
+                              )
+                            : Container(),
+                        (widget.quantidade != 0)
+                            ? Container(
+                                height: height * .03,
+                                width: width * .045,
+                                margin: EdgeInsets.only(
+                                    top: height * .005,
+                                    bottom: height * .005,
+                                    right: width * .005),
+                                child: Text(
+                                  '${widget.quantidade}',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: ScreenUtil.instance.setSp(35),
+                                  ),
+                                  maxLines: 1,
+                                ),
+                              )
+                            : Container(),
+                        (widget.quantidade != 0)
+                            ? Container(
                                 color: Colors.white,
-                                fontSize: ScreenUtil.instance.setSp(35),
-                              ),
-                              maxLines: 1,
-                            ),
-                          ),
-                          (widget.quantidade != 0)
-                              ? Container(
-                            height: height * .03,
-                            width: width *.045,
-                            margin: EdgeInsets.only(
-                                top: height * .005,
-                                bottom: height * .005,
-                                right: width * .005),
-                            child: Text(
-                              '${widget.quantidade}',
-                              style: TextStyle(
+                                height: height * .03,
+                                width: width * .001,
+                              )
+                            : Container(),
+                        (widget.medida != '')
+                            ? Container(
+                                height: height * .03,
+                                margin: EdgeInsets.only(
+                                    top: height * .005,
+                                    bottom: height * .005,
+                                    right: width * .005,
+                                    left: width * .005),
+                                child: Text(
+                                  'Medida:',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: ScreenUtil.instance.setSp(35),
+                                  ),
+                                  maxLines: 1,
+                                ),
+                              )
+                            : Container(),
+                        (widget.medida != '')
+                            ? Container(
+                                height: height * .03,
+                                width: width * .08,
+                                margin: EdgeInsets.only(
+                                    top: height * .005,
+                                    bottom: height * .005,
+                                    right: width * .005),
+                                child: Text(
+                                  '${widget.medida}',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: ScreenUtil.instance.setSp(35),
+                                  ),
+                                  maxLines: 1,
+                                ),
+                              )
+                            : Container(),
+                        (widget.medida != '')
+                            ? Container(
                                 color: Colors.white,
-                                fontSize: ScreenUtil.instance.setSp(35),
-                              ),
-                              maxLines: 1,
-                            ),
-                          )
-                              : Container(),
-                          Container(
-                            color: Colors.white,
-                            height: height * .03,
-                            width: width * .001,
-                          ),
-                          Container(
-                            height: height * .03,
-                            margin: EdgeInsets.only(
-                                top: height * .005,
-                                bottom: height * .005,
-                                right: width * .005,
-                              left: width *.005
-                            ),
-                            child: Text(
-                              'Medida:',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: ScreenUtil.instance.setSp(35),
-                              ),
-                              maxLines: 1,
-                            ),
-                          ),
-                          (widget.medida != '')
-                              ? Container(
-                            height: height * .03,
-                            width: width * .08,
-                            margin: EdgeInsets.only(
-                                top: height * .005,
-                                bottom: height * .005,
-                                right: width * .005),
-                            child: Text(
-                              '${widget.medida}',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: ScreenUtil.instance.setSp(35),
-                              ),
-                              maxLines: 1,
-                            ),
-                          )
-                              : Container(),
-                          Container(
-                            color: Colors.white,
-                            height: height * .03,
-                            width: width * .001,
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(
-                              top: height * .005,
-                              bottom: height * .005,
-                              left: width *.005,
-                              right: width *.005,
-                            ),
-                            child: Icon(
-                              Icons.timer,
-                              color: Colors.white,
-                              size: 16,
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(
-                              top: height * .005,
-                              bottom: height * .005,
-                            ),
-                            child: Text(
-                              widget.tempo,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: ScreenUtil.instance.setSp(35),
-                              ),
-                              maxLines: 1,
-                            ),
-                          ),
-                        ],
-                      ),
-                  )
-                  : Container(),
+                                height: height * .03,
+                                width: width * .001,
+                              )
+                            : Container(),
+                        (widget.tempo != '')
+                            ? Container(
+                                margin: EdgeInsets.only(
+                                  top: height * .005,
+                                  bottom: height * .005,
+                                  left: width * .005,
+                                  right: width * .005,
+                                ),
+                                child: Icon(
+                                  Icons.timer,
+                                  color: Colors.white,
+                                  size: 16,
+                                ),
+                              )
+                            : Container(),
+                        (widget.tempo != '')
+                            ? Container(
+                                margin: EdgeInsets.only(
+                                  top: height * .005,
+                                  bottom: height * .005,
+                                ),
+                                child: Text(
+                                  widget.tempo,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: ScreenUtil.instance.setSp(35),
+                                  ),
+                                  maxLines: 1,
+                                ),
+                              )
+                            : Container()
+                      ],
+                    ),
               Container(
                 color: Colors.white,
                 height: height * .001,
@@ -236,7 +249,7 @@ class _ItemListState extends State<ItemList> {
               Flexible(
                 flex: 1,
                 child: Container(
-                  height: height *.042,
+                  height: height * .042,
                   width: width,
                   margin: EdgeInsets.only(top: height * .001),
                   child: Row(
@@ -247,8 +260,7 @@ class _ItemListState extends State<ItemList> {
                             top: height * .01,
                             bottom: height * .005,
                             right: width * .005,
-                            left: width *.005
-                        ),
+                            left: width * .005),
                         padding: EdgeInsets.only(
                           top: height * .005,
                         ),
@@ -263,7 +275,7 @@ class _ItemListState extends State<ItemList> {
                       ),
                       Container(
                         height: height * .045,
-                        width: width *.18,
+                        width: width * .18,
                         margin: EdgeInsets.only(
                           top: height * .01,
                           bottom: height * .005,
@@ -281,9 +293,7 @@ class _ItemListState extends State<ItemList> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(
-                          left: width *.008
-                        ),
+                        margin: EdgeInsets.only(left: width * .008),
                         child: Row(
                           children: [
                             Container(
@@ -313,7 +323,8 @@ class _ItemListState extends State<ItemList> {
                                     color: Colors.white,
                                   ),
                                   onPressed: () {
-                                    controller.listItens.remove(widget.itemModel);
+                                    controller.listItens
+                                        .remove(widget.itemModel);
                                   }),
                             ),
                           ],

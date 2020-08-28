@@ -189,15 +189,16 @@ class _BasePageState extends State<BasePage> {
     return Observer(builder: (_) {
       return (controller.currentIndex == 2)
           ? Container(
-            child: FloatingActionButton(
-                backgroundColor: Colors.blue[900],
-                child: Icon(LineAwesomeIcons.plus,
-                ),
-                mini: true,
-                onPressed: () {
-                  showAlertDialog1(context, projetoController);
-                }),
-          )
+              child: FloatingActionButton(
+                  backgroundColor: Colors.blue[900],
+                  child: Icon(
+                    LineAwesomeIcons.plus,
+                  ),
+                  mini: true,
+                  onPressed: () {
+                    showAlertDialog1(context, projetoController);
+                  }),
+            )
           : FabCircularMenu(
               fabOpenColor: Colors.blue[900],
               fabCloseColor: Colors.blue[900],
@@ -205,7 +206,10 @@ class _BasePageState extends State<BasePage> {
               fabSize: 41,
               ringColor: Colors.blue[900].withAlpha(50),
               ringDiameter: 200.0,
-              fabOpenIcon: Icon(Icons.menu, color: Colors.white,),
+              fabOpenIcon: Icon(
+                Icons.menu,
+                color: Colors.white,
+              ),
               fabCloseIcon: Icon(Icons.close, color: Colors.white),
               children: <Widget>[
                   IconButton(
@@ -216,12 +220,6 @@ class _BasePageState extends State<BasePage> {
                   IconButton(
                       icon: Icon(LineAwesomeIcons.save, color: Colors.white),
                       onPressed: () async {
-                        print(clientesController.userId);
-                        print(clientesController.nome);
-                        print(clientesController.email);
-                        print(clientesController.telefone);
-                        print(clientesController.endereco);
-                        print(clientesController.numero);
                         await clientesController.setClientes(
                             clientesController.userId,
                             clientesController.nome,
@@ -245,6 +243,10 @@ class _BasePageState extends State<BasePage> {
     controller.medidaController.text = '';
     controller.quantidadeController.text = '';
     controller.quantidade = 0.0;
+    controller.valorTotal = 0.0;
+    controller.categoria = '';
+    controller.descricao = '';
+    controller.valor = 0.0;
     showDialog(
       context: context,
       builder: (BuildContext context) {
