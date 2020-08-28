@@ -21,6 +21,10 @@ abstract class _PdfControllerBase with Store {
 
   @observable
   String fullPath;
+
+  @observable
+  PdfImage image;
+
   @action
   Future<Uint8List> logoConverter(String logo) async {
     Uint8List byteImage = await networkImageToByte(logo);
@@ -44,11 +48,16 @@ abstract class _PdfControllerBase with Store {
       String numeroEmpresa,
       String cidadeEmpresa,
       String ufEmpresa}) async {
-    final logoN = await logoConverter(logo);
-    final image = PdfImage.file(
-      pdf.document,
-      bytes: logoN,
-    );
+    if (logo == '') {
+      print(image);
+    } else {
+      final logoN = await logoConverter(logo);
+      image = PdfImage.file(
+        pdf.document,
+        bytes: logoN,
+      );
+      print(image);
+    }
     pdf.addPage(pw.MultiPage(
         pageTheme: pw.PageTheme(
           orientation: pw.PageOrientation.natural,
@@ -68,7 +77,7 @@ abstract class _PdfControllerBase with Store {
                 color: PdfColor.fromHex(colorCabecalio),
               ),
               child: pw.Row(children: <pw.Widget>[
-                pw.Image(image),
+                (image != null) ? pw.Image(image) : pw.Container(),
                 pw.Column(children: <pw.Widget>[
                   pw.Text('Orçamento de $nomeEmpresa para $nomeCliente',
                       textAlign: pw.TextAlign.center),

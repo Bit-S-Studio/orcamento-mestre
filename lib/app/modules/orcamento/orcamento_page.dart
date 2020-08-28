@@ -107,6 +107,9 @@ class _OrcamentoPageState extends State<OrcamentoPage> {
         ),
         child: MaterialButton(
             onPressed: () async {
+              if (dadosController.imgUrl == null) {
+                dadosController.imgUrl = '';
+              }
               pdfController.writeOnPdf(
                   colorCabecalio: controller.cabecalio,
                   colorBase: controller.base,
@@ -121,7 +124,9 @@ class _OrcamentoPageState extends State<OrcamentoPage> {
                   numeroEmpresa: dadosController.numero,
                   cidadeEmpresa: dadosController.cidade,
                   ufEmpresa: dadosController.uf,
+                  logo: dadosController.imgUrl,
                   nomeCliente: clienteController.nome);
+
               await pdfController.savePdf(controller.nome);
             },
             highlightColor: Colors.transparent,

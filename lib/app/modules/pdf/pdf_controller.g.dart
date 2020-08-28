@@ -54,6 +54,21 @@ mixin _$PdfController on _PdfControllerBase, Store {
     });
   }
 
+  final _$imageAtom = Atom(name: '_PdfControllerBase.image');
+
+  @override
+  PdfImage get image {
+    _$imageAtom.reportRead();
+    return super.image;
+  }
+
+  @override
+  set image(PdfImage value) {
+    _$imageAtom.reportWrite(value, super.image, () {
+      super.image = value;
+    });
+  }
+
   final _$logoConverterAsyncAction =
       AsyncAction('_PdfControllerBase.logoConverter');
 
@@ -118,7 +133,8 @@ mixin _$PdfController on _PdfControllerBase, Store {
     return '''
 pdf: ${pdf},
 pdfName: ${pdfName},
-fullPath: ${fullPath}
+fullPath: ${fullPath},
+image: ${image}
     ''';
   }
 }

@@ -114,8 +114,11 @@ class _DadosRegisterState extends State<DadosRegister> {
                           (dadosController.listServicos.length >= 5)
                               ? Fluttertoast.showToast(
                                   msg: 'Você só pode adicionar 5 itens')
-                              : dadosController.listServicos
-                                  .add(servicosController.servico);
+                              : (servicosController.servico = null)
+                                  ? Fluttertoast.showToast(
+                                      msg: 'Por favor escolha um item da lista')
+                                  : dadosController.listServicos
+                                      .add(servicosController.servico);
                         });
                   }),
                 )

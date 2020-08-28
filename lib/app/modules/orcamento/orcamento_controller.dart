@@ -26,13 +26,13 @@ abstract class _OrcamentoControllerBase with Store {
   String base = 'cfd8dcff';
 
   @observable
-  String letraCabecalio = '000000';
+  String letraCabecalio = 'FFFFFF';
 
   @observable
-  String letraRodape = '000000';
+  String letraRodape = 'FFFFFF';
 
   @observable
-  String letraBase = 'FFFFFF';
+  String letraBase = '000000';
 
   @observable
   bool letraPreta = true;

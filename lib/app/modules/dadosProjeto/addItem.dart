@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/Consts.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/item_description_widget.dart';
 import 'package:orcamento_mestre/app/modules/dadosProjeto/projeto_controller.dart';
@@ -24,9 +25,7 @@ class _AddItemState extends State<AddItem> {
       elevation: 0.0,
       backgroundColor: Colors.transparent,
       child: Container(
-          height: height * .53,
-          width: width,
-          child: dialogContent(context)),
+          height: height * .53, width: width, child: dialogContent(context)),
     );
   }
 
@@ -108,12 +107,9 @@ class _AddItemState extends State<AddItem> {
                 },
               ),
             ),
-            Container(height: height *.2, child: ItemDescritionWidget()),
+            Container(height: height * .2, child: ItemDescritionWidget()),
             Container(
-                margin: EdgeInsets.only(
-                    top: height *.02
-                ),
-                child: button())
+                margin: EdgeInsets.only(top: height * .02), child: button())
           ],
         ),
       ),
@@ -125,19 +121,26 @@ class _AddItemState extends State<AddItem> {
     final controller = Provider.of<ProjetoController>(context);
     return Center(
       child: Container(
-        height: MediaQuery.of(context).size.height *.08,
+        height: MediaQuery.of(context).size.height * .08,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(12)),
             color: Colors.blue[900]),
         child: MaterialButton(
           onPressed: () async {
-            controller.setItem();
+            if (controller.categoria == null ||
+                controller.descricao == null ||
+                controller.valor == null) {
+              Fluttertoast.showToast(
+                  msg: 'Por favor preencha os dados obrigatórios');
+            } else {
+              controller.setItem();
+            }
           },
           highlightColor: Colors.transparent,
           splashColor: Colors.white,
           child: Container(
-            child:  Text(
+            child: Text(
               "Salvar",
               style: TextStyle(
                 color: Colors.white,

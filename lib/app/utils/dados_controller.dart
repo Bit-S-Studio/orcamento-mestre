@@ -378,16 +378,27 @@ abstract class _DadosControllerBase with Store {
           if (doc["data"]["empresas"].length > 0) {
             for (var document in doc["data"]["empresas"]) {
               emailController.text = document["email"];
+              email = document["email"];
               logo = document["imagem"];
+              imgUrl = document["imagem"];
               nomeController.text = document["nome"];
+              nome = document["nome"];
               cepController.text = document["cep"];
+              cep = document["cep"];
               enderecoController.text = document["logradouro"];
+              endereco = document["logradouro"];
               tel1Controller.text = document["telefone1"];
+              telefone1 = document["telefone1"];
               tel2Controller.text = document["telefone2"];
+              telefone2 = document["telefone2"];
               bairroController.text = document["bairro"];
+              bairro = document["bairro"];
               cidadeController.text = document["cidade"];
+              cidade = document["cidade"];
               ufController.text = document["uf"];
+              uf = document["uf"];
               siteController.text = document["telefone2"];
+              site = document["site"];
             }
           }
         }
@@ -420,16 +431,25 @@ abstract class _DadosControllerBase with Store {
           if (doc["data"]["freelancers"].length > 0) {
             for (var document in doc["data"]["freelancers"]) {
               emailController.text = document["email"];
+              email = document["email"];
               nomeController.text = document["nome"];
+              nome = document["nome"];
               cepController.text = document["cep"];
+              cep = document["cep"];
               enderecoController.text = document["logradouro"];
+              endereco = document["logradouro"];
               tel1Controller.text = document["telefone1"];
+              telefone1 = document["telefone1"];
               tel2Controller.text = document["telefone2"];
+              telefone2 = document["telefone2"];
               bairroController.text = document["bairro"];
+              bairro = document["bairro"];
               cidadeController.text = document["cidade"];
+              cidade = document["cidade"];
               ufController.text = document["uf"];
+              uf = document["uf"];
               siteController.text = document["telefone2"];
-              docController.text = document["documento"];
+              site = document["site"];
             }
           }
         }

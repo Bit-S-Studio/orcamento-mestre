@@ -29,28 +29,21 @@ class _HomePageState extends State<HomePage> {
           children: [
             Stack(
               children: <Widget>[
+                Container(height: height, width: width, child: background()),
                 Container(
-                    height: height,
-                    width: width,
-                    child: background()),
-                Container(
-                  height: height *.2,
+                  height: height * .2,
                   width: width,
-                  margin: EdgeInsets.only(
-                    left: width *.03,
-                    right: width *.03
-                  ),
+                  margin:
+                      EdgeInsets.only(left: width * .03, right: width * .03),
                   child: Center(
                     child: Row(
                       children: [
                         Expanded(
                           flex: 1,
                           child: Container(
-                            height: height *.065,
+                            height: height * .065,
                             margin: EdgeInsets.only(
-                                top: height *.13,
-                                right: width *.04
-                            ),
+                                top: height * .13, right: width * .04),
                             child: wellcome(),
                           ),
                         ),
@@ -58,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                           flex: 1,
                           child: Container(
                               margin: EdgeInsets.only(
-                                  top: height *.1,
+                                top: height * .1,
                               ),
                               child: buttonsUp()),
                         ),
@@ -67,20 +60,17 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Container(
-                  height: height,
+                    height: height,
                     width: width,
-                    padding: EdgeInsets.only(
-                      top: height *.25
-                    ),
+                    padding: EdgeInsets.only(top: height * .25),
                     child: Stack(
                       overflow: Overflow.visible,
                       children: [
                         page(),
                         Positioned(
-                          bottom: height *.615,
-                            left: width *.4,
-                            child: Container(
-                                child: foto()))
+                            bottom: height * .615,
+                            left: width * .4,
+                            child: Container(child: foto()))
                       ],
                     )),
               ],
@@ -118,8 +108,7 @@ class _HomePageState extends State<HomePage> {
               backgroundColor: Colors.white,
               radius: 50,
               child: CircleAvatar(
-                backgroundImage:
-                NetworkImage(controller.imagem.toString()),
+                backgroundImage: NetworkImage(controller.imagem.toString()),
                 radius: 56,
               ),
             );
@@ -143,8 +132,7 @@ class _HomePageState extends State<HomePage> {
         height: height,
         width: width,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: Colors.grey[100]),
+            borderRadius: BorderRadius.circular(12), color: Colors.grey[100]),
         child: Column(
           children: [
             Expanded(
@@ -154,12 +142,11 @@ class _HomePageState extends State<HomePage> {
                   buttons('Solicitar orçamento', '/solicitar',
                       LineAwesomeIcons.paper_plane_o),
                   Container(
-                    height: height *.015,
+                    height: height * .015,
                     width: width,
-                    padding: EdgeInsets.only(
-                        left: width *.33
-                    ),
-                    child: Text('Em Desenvolvimento',
+                    padding: EdgeInsets.only(left: width * .33),
+                    child: Text(
+                      'Em Desenvolvimento',
                       style: TextStyle(
                         fontSize: ScreenUtil.instance.setSp(20),
                       ),
@@ -175,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                   buttons(
                       'Gerar orçamento', '/base', LineAwesomeIcons.file_pdf_o),
                   Container(
-                    height: height *.015,
+                    height: height * .015,
                   ),
                 ],
               ),
@@ -187,12 +174,11 @@ class _HomePageState extends State<HomePage> {
                   buttons('Minhas solicitações', '/solicitacoes',
                       LineAwesomeIcons.sort_amount_asc),
                   Container(
-                    height: height *.016,
+                    height: height * .016,
                     width: width,
-                    padding: EdgeInsets.only(
-                        left: width *.33
-                    ),
-                    child: Text('Em Desenvolvimento',
+                    padding: EdgeInsets.only(left: width * .33),
+                    child: Text(
+                      'Em Desenvolvimento',
                       style: TextStyle(
                         fontSize: ScreenUtil.instance.setSp(20),
                       ),
@@ -208,7 +194,7 @@ class _HomePageState extends State<HomePage> {
                   buttons(
                       'Meus Orçamentos', '/orcamentos', LineAwesomeIcons.copy),
                   Container(
-                    height: height *.015,
+                    height: height * .015,
                   ),
                 ],
               ),
@@ -219,7 +205,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   buttons('Meu perfil', '/perfil', LineAwesomeIcons.user),
                   Container(
-                    height: height *.015,
+                    height: height * .015,
                   ),
                 ],
               ),
@@ -233,7 +219,6 @@ class _HomePageState extends State<HomePage> {
   Widget buttons(String texto, String rota, IconData icon) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
-    final dadosController = Provider.of<DadosController>(context);
     return Center(
       child: Stack(
         children: [
@@ -278,7 +263,8 @@ class _HomePageState extends State<HomePage> {
                           Text(
                             texto,
                             style: TextStyle(
-                                fontSize: ScreenUtil.instance.setSp(40),),
+                              fontSize: ScreenUtil.instance.setSp(40),
+                            ),
                           ),
                           Flexible(fit: FlexFit.tight, child: SizedBox()),
                           Padding(
@@ -325,7 +311,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget wellcome(){
+  Widget wellcome() {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     final controller = Provider.of<UserController>(context);
@@ -356,5 +342,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
 }
