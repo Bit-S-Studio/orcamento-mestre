@@ -140,12 +140,22 @@ class _ClientesPageState
                     decoration: InputDecoration(
                       contentPadding: new EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 10.0),
-                      labelText: "Email",
-                      border: OutlineInputBorder(
-                        borderRadius:
-                            const BorderRadius.all(const Radius.circular(12.0)),
+                      labelText: "E-mail",
+                      labelStyle: TextStyle(
+                          color: Colors.blue
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                            const Radius.circular(12.0)),
                         borderSide: BorderSide(
-                          color: Colors.white,
+                            color: Colors.blue, width: 2.0
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                            const Radius.circular(12.0)),
+                        borderSide: BorderSide(
+                            color: Colors.blue[900], width: 3.0
                         ),
                       ),
                     ),
@@ -168,11 +178,21 @@ class _ClientesPageState
                       contentPadding: new EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 10.0),
                       labelText: "Telefone",
-                      border: OutlineInputBorder(
-                        borderRadius:
-                            const BorderRadius.all(const Radius.circular(12.0)),
+                      labelStyle: TextStyle(
+                          color: Colors.blue
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                            const Radius.circular(12.0)),
                         borderSide: BorderSide(
-                          color: Colors.white,
+                            color: Colors.blue, width: 2.0
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                            const Radius.circular(12.0)),
+                        borderSide: BorderSide(
+                            color: Colors.blue[900], width: 3.0
                         ),
                       ),
                     ),
@@ -198,11 +218,21 @@ class _ClientesPageState
                             contentPadding: new EdgeInsets.symmetric(
                                 vertical: 10.0, horizontal: 10.0),
                             labelText: "Endereço",
-                            border: OutlineInputBorder(
+                            labelStyle: TextStyle(
+                                color: Colors.blue
+                            ),
+                            enabledBorder: OutlineInputBorder(
                               borderRadius: const BorderRadius.all(
                                   const Radius.circular(12.0)),
                               borderSide: BorderSide(
-                                color: Colors.white,
+                                  color: Colors.blue, width: 2.0
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: const BorderRadius.all(
+                                  const Radius.circular(12.0)),
+                              borderSide: BorderSide(
+                                  color: Colors.blue[900], width: 3.0
                               ),
                             ),
                           ),
@@ -228,12 +258,22 @@ class _ClientesPageState
                           decoration: InputDecoration(
                             contentPadding: new EdgeInsets.symmetric(
                                 vertical: 10.0, horizontal: 10.0),
-                            labelText: "Numero",
-                            border: OutlineInputBorder(
+                            labelText: "N°",
+                            labelStyle: TextStyle(
+                                color: Colors.blue
+                            ),
+                            enabledBorder: OutlineInputBorder(
                               borderRadius: const BorderRadius.all(
                                   const Radius.circular(12.0)),
                               borderSide: BorderSide(
-                                color: Colors.white,
+                                  color: Colors.blue, width: 2.0
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: const BorderRadius.all(
+                                  const Radius.circular(12.0)),
+                              borderSide: BorderSide(
+                                  color: Colors.blue[900], width: 3.0
                               ),
                             ),
                           ),

@@ -93,12 +93,22 @@ class _AddItemState extends State<AddItem> {
                   contentPadding: new EdgeInsets.symmetric(
                       vertical: 05.0, horizontal: 10.0),
                   labelText: "Categoria",
-                  labelStyle: TextStyle(fontSize: 12),
-                  border: OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(12.0)),
+                  labelStyle: TextStyle(
+                      color: Colors.blue,
+                    fontSize: ScreenUtil.instance.setSp(25),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(
+                        const Radius.circular(12.0)),
                     borderSide: BorderSide(
-                      color: Colors.white,
+                        color: Colors.blue, width: 2.0
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(
+                        const Radius.circular(12.0)),
+                    borderSide: BorderSide(
+                        color: Colors.blue[900], width: 3.0
                     ),
                   ),
                 ),

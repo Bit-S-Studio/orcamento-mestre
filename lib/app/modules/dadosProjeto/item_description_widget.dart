@@ -46,13 +46,21 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                                     vertical: 05.0, horizontal: 10.0),
                                 labelText: "Quantidade",
                                 labelStyle: TextStyle(
+                                    color: Colors.blue,
                                   fontSize: ScreenUtil.instance.setSp(25),
                                 ),
-                                border: OutlineInputBorder(
+                                enabledBorder: OutlineInputBorder(
                                   borderRadius: const BorderRadius.all(
                                       const Radius.circular(12.0)),
                                   borderSide: BorderSide(
-                                    color: Colors.white,
+                                      color: Colors.blue, width: 2.0
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: const BorderRadius.all(
+                                      const Radius.circular(12.0)),
+                                  borderSide: BorderSide(
+                                      color: Colors.blue[900], width: 3.0
                                   ),
                                 ),
                               ),
@@ -73,13 +81,21 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                                     vertical: 05.0, horizontal: 10.0),
                                 labelText: "Medida",
                                 labelStyle: TextStyle(
+                                  color: Colors.blue,
                                   fontSize: ScreenUtil.instance.setSp(25),
                                 ),
-                                border: OutlineInputBorder(
+                                enabledBorder: OutlineInputBorder(
                                   borderRadius: const BorderRadius.all(
                                       const Radius.circular(12.0)),
                                   borderSide: BorderSide(
-                                    color: Colors.white,
+                                      color: Colors.blue, width: 2.0
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: const BorderRadius.all(
+                                      const Radius.circular(12.0)),
+                                  borderSide: BorderSide(
+                                      color: Colors.blue[900], width: 3.0
                                   ),
                                 ),
                               ),
@@ -99,15 +115,23 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                     decoration: InputDecoration(
                       contentPadding: new EdgeInsets.symmetric(
                           vertical: 05.0, horizontal: 10.0),
-                      labelText: "Descrição do Ítem*",
+                      labelText: "Descrição do item*",
                       labelStyle: TextStyle(
+                        color: Colors.blue,
                         fontSize: ScreenUtil.instance.setSp(25),
                       ),
-                      border: OutlineInputBorder(
-                        borderRadius:
-                            const BorderRadius.all(const Radius.circular(12.0)),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                            const Radius.circular(12.0)),
                         borderSide: BorderSide(
-                          color: Colors.white,
+                            color: Colors.blue, width: 2.0
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                            const Radius.circular(12.0)),
+                        borderSide: BorderSide(
+                            color: Colors.blue[900], width: 3.0
                         ),
                       ),
                     ),
@@ -139,13 +163,21 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                                   vertical: 05.0, horizontal: 10.0),
                               labelText: "R\$ 0.000,00*",
                               labelStyle: TextStyle(
+                                color: Colors.blue,
                                 fontSize: ScreenUtil.instance.setSp(25),
                               ),
-                              border: OutlineInputBorder(
+                              enabledBorder: OutlineInputBorder(
                                 borderRadius: const BorderRadius.all(
                                     const Radius.circular(12.0)),
                                 borderSide: BorderSide(
-                                  color: Colors.white,
+                                    color: Colors.blue, width: 2.0
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                    const Radius.circular(12.0)),
+                                borderSide: BorderSide(
+                                    color: Colors.blue[900], width: 3.0
                                 ),
                               ),
                             ),
@@ -171,13 +203,21 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                                     vertical: 05.0, horizontal: 10.0),
                                 labelText: "Tempo",
                                 labelStyle: TextStyle(
+                                  color: Colors.blue,
                                   fontSize: ScreenUtil.instance.setSp(25),
                                 ),
-                                border: OutlineInputBorder(
+                                enabledBorder: OutlineInputBorder(
                                   borderRadius: const BorderRadius.all(
                                       const Radius.circular(12.0)),
                                   borderSide: BorderSide(
-                                    color: Colors.white,
+                                      color: Colors.blue, width: 2.0
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: const BorderRadius.all(
+                                      const Radius.circular(12.0)),
+                                  borderSide: BorderSide(
+                                      color: Colors.blue[900], width: 3.0
                                   ),
                                 ),
                               ),
@@ -189,11 +229,16 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                         flex: 1,
                         child: Container(
                             height: height * .06,
-                            margin: EdgeInsets.only(left: width * .005),
-                            child: Center(
-                              child: Text(
-                                  'R\$ ${controller.valorTotal.toStringAsFixed(2)}'),
-                            )),
+                            padding: EdgeInsets.only(
+                              top: height *.018,
+                                left: width * .01),
+                            child: Text(
+                              'R\$ ${controller.valorTotal.toStringAsFixed(2)}',
+                              style: TextStyle(
+                                color: Colors.blue[900],
+                                fontSize: ScreenUtil.instance.setSp(40),
+                              ),
+                            ),),
                       );
                     }),
                   ],
