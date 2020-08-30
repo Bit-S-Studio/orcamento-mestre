@@ -58,11 +58,21 @@ class _ClientesPageState
                                       contentPadding: new EdgeInsets.symmetric(
                                           vertical: 10.0, horizontal: 10.0),
                                       labelText: "Nome do cliente",
-                                      border: OutlineInputBorder(
+                                      labelStyle: TextStyle(
+                                        color: Colors.blue
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
                                         borderRadius: const BorderRadius.all(
                                             const Radius.circular(12.0)),
                                         borderSide: BorderSide(
-                                          color: Colors.white,
+                                          color: Colors.blue, width: 2.0
+                                        ),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: const BorderRadius.all(
+                                            const Radius.circular(12.0)),
+                                        borderSide: BorderSide(
+                                          color: Colors.blue[900], width: 3.0
                                         ),
                                       ),
                                     ),
@@ -239,7 +249,11 @@ class _ClientesPageState
                 Container(
                   height: height * .25,
                   width: width,
-                  margin: EdgeInsets.only(top: height * .05),
+                  margin: EdgeInsets.only(
+                      top: height * .05,
+                    left: width *.03,
+                    right: width *.03
+                  ),
                   padding: EdgeInsets.only(top: height * .09),
                   child: Text(
                     'Clique na lupa para pesquisar um cliente existente, ou cadastre um novo cliente',

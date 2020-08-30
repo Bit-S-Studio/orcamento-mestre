@@ -58,7 +58,7 @@ class _DadosEmpresaPageState extends State<DadosEmpresaPage> {
                           child: Container(
                             height: height * .125,
                             decoration: BoxDecoration(
-                                color: Colors.grey[600],
+                                color: Colors.blue[900],
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(16))),
                             margin: EdgeInsets.only(left: width * .02),
@@ -97,11 +97,21 @@ class _DadosEmpresaPageState extends State<DadosEmpresaPage> {
                             contentPadding: new EdgeInsets.symmetric(
                                 vertical: 10.0, horizontal: 10.0),
                             labelText: "Nome",
-                            border: OutlineInputBorder(
+                            labelStyle: TextStyle(
+                                color: Colors.blue
+                            ),
+                            enabledBorder: OutlineInputBorder(
                               borderRadius: const BorderRadius.all(
                                   const Radius.circular(12.0)),
                               borderSide: BorderSide(
-                                color: Colors.white,
+                                  color: Colors.blue, width: 2.0
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: const BorderRadius.all(
+                                  const Radius.circular(12.0)),
+                              borderSide: BorderSide(
+                                  color: Colors.blue[900], width: 3.0
                               ),
                             ),
                           ),

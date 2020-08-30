@@ -36,7 +36,28 @@ class _FormsComplementoState extends State<FormsComplemento> {
               onChanged: (newNome) {
                 controller.nome = newNome;
               },
-              decoration: inputDecoration('Nome completo*'),
+              decoration: InputDecoration(
+                contentPadding: new EdgeInsets.symmetric(
+                    vertical: 10.0, horizontal: 10.0),
+                labelText: 'Nome Completo*',
+                labelStyle: TextStyle(
+                    color: Colors.blue
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(
+                      const Radius.circular(12.0)),
+                  borderSide: BorderSide(
+                      color: Colors.blue, width: 2.0
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(
+                      const Radius.circular(12.0)),
+                  borderSide: BorderSide(
+                      color: Colors.blue[900], width: 3.0
+                  ),
+                ),
+              ),
               validator: (text) {
                 if (text.isEmpty) return "O campo nome, está vazio";
               },
@@ -56,7 +77,28 @@ class _FormsComplementoState extends State<FormsComplemento> {
               onChanged: (newCep) {
                 controller.getCEP(newCep);
               },
-              decoration: inputDecoration('Cep*'),
+              decoration: InputDecoration(
+                contentPadding: new EdgeInsets.symmetric(
+                    vertical: 10.0, horizontal: 10.0),
+                labelText: 'CEP*',
+                labelStyle: TextStyle(
+                    color: Colors.blue
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(
+                      const Radius.circular(12.0)),
+                  borderSide: BorderSide(
+                      color: Colors.blue, width: 2.0
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(
+                      const Radius.circular(12.0)),
+                  borderSide: BorderSide(
+                      color: Colors.blue[900], width: 3.0
+                  ),
+                ),
+              ),
               validator: (text) {
                 if (text.isEmpty) return "O campo cep, está vazio";
               },
@@ -78,7 +120,28 @@ class _FormsComplementoState extends State<FormsComplemento> {
                     onChanged: (newEndereco) {
                       controller.endereco = newEndereco;
                     },
-                    decoration: inputDecoration('Logradouro*'),
+                    decoration: InputDecoration(
+                      contentPadding: new EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 10.0),
+                      labelText: 'Lagradouro*',
+                      labelStyle: TextStyle(
+                          color: Colors.blue
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                            const Radius.circular(12.0)),
+                        borderSide: BorderSide(
+                            color: Colors.blue, width: 2.0
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                            const Radius.circular(12.0)),
+                        borderSide: BorderSide(
+                            color: Colors.blue[900], width: 3.0
+                        ),
+                      ),
+                    ),
                     validator: (text) {
                       if (text.isEmpty) return "O campo logradouro está vazio";
                     },
@@ -100,7 +163,28 @@ class _FormsComplementoState extends State<FormsComplemento> {
                     onChanged: (newNum) {
                       controller.numero = newNum;
                     },
-                    decoration: inputDecoration('N°*'),
+                    decoration: InputDecoration(
+                      contentPadding: new EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 10.0),
+                      labelText: 'N°*',
+                      labelStyle: TextStyle(
+                          color: Colors.blue
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                            const Radius.circular(12.0)),
+                        borderSide: BorderSide(
+                            color: Colors.blue, width: 2.0
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                            const Radius.circular(12.0)),
+                        borderSide: BorderSide(
+                            color: Colors.blue[900], width: 3.0
+                        ),
+                      ),
+                    ),
                     validator: (text) {
                       if (text.isEmpty) return "O campo numero está vazio";
                     },
@@ -123,7 +207,28 @@ class _FormsComplementoState extends State<FormsComplemento> {
               onChanged: (newBairro) {
                 controller.bairro = newBairro;
               },
-              decoration: inputDecoration('Bairro*'),
+              decoration: InputDecoration(
+                contentPadding: new EdgeInsets.symmetric(
+                    vertical: 10.0, horizontal: 10.0),
+                labelText: 'Bairro*',
+                labelStyle: TextStyle(
+                    color: Colors.blue
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(
+                      const Radius.circular(12.0)),
+                  borderSide: BorderSide(
+                      color: Colors.blue, width: 2.0
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(
+                      const Radius.circular(12.0)),
+                  borderSide: BorderSide(
+                      color: Colors.blue[900], width: 3.0
+                  ),
+                ),
+              ),
               validator: (text) {
                 if (text.isEmpty) return "O campo bairro está vazio";
               },
@@ -148,7 +253,28 @@ class _FormsComplementoState extends State<FormsComplemento> {
                     onChanged: (newCidade) {
                       controller.cidade = newCidade;
                     },
-                    decoration: inputDecoration('Cidade*'),
+                    decoration: InputDecoration(
+                      contentPadding: new EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 10.0),
+                      labelText: 'Cidade*',
+                      labelStyle: TextStyle(
+                          color: Colors.blue
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                            const Radius.circular(12.0)),
+                        borderSide: BorderSide(
+                            color: Colors.blue, width: 2.0
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                            const Radius.circular(12.0)),
+                        borderSide: BorderSide(
+                            color: Colors.blue[900], width: 3.0
+                        ),
+                      ),
+                    ),
                     validator: (text) {
                       if (text.isEmpty) return "O campo cidade está vazio";
                     },
@@ -170,7 +296,28 @@ class _FormsComplementoState extends State<FormsComplemento> {
                     onChanged: (newUF) {
                       controller.uf = newUF;
                     },
-                    decoration: inputDecoration('UF*'),
+                    decoration: InputDecoration(
+                      contentPadding: new EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 10.0),
+                      labelText: 'UF*',
+                      labelStyle: TextStyle(
+                          color: Colors.blue
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                            const Radius.circular(12.0)),
+                        borderSide: BorderSide(
+                            color: Colors.blue, width: 2.0
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                            const Radius.circular(12.0)),
+                        borderSide: BorderSide(
+                            color: Colors.blue[900], width: 3.0
+                        ),
+                      ),
+                    ),
                     validator: (text) {
                       if (text.isEmpty) return "O campo UF está vazio";
                     },
@@ -193,7 +340,28 @@ class _FormsComplementoState extends State<FormsComplemento> {
               onChanged: (newDoc) {
                 controller.documento = newDoc;
               },
-              decoration: inputDecoration('CNPJ ou CPF'),
+              decoration: InputDecoration(
+                contentPadding: new EdgeInsets.symmetric(
+                    vertical: 10.0, horizontal: 10.0),
+                labelText: 'CPF ou CNPJ',
+                labelStyle: TextStyle(
+                    color: Colors.blue
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(
+                      const Radius.circular(12.0)),
+                  borderSide: BorderSide(
+                      color: Colors.blue, width: 2.0
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(
+                      const Radius.circular(12.0)),
+                  borderSide: BorderSide(
+                      color: Colors.blue[900], width: 3.0
+                  ),
+                ),
+              ),
             ),
           ),
           Row(
@@ -215,7 +383,28 @@ class _FormsComplementoState extends State<FormsComplemento> {
                     onChanged: (newTel1) {
                       controller.telefone1 = newTel1;
                     },
-                    decoration: inputDecoration('Telefone 1*'),
+                    decoration: InputDecoration(
+                      contentPadding: new EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 10.0),
+                      labelText: 'Telefone 1*',
+                      labelStyle: TextStyle(
+                          color: Colors.blue
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                            const Radius.circular(12.0)),
+                        borderSide: BorderSide(
+                            color: Colors.blue, width: 2.0
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                            const Radius.circular(12.0)),
+                        borderSide: BorderSide(
+                            color: Colors.blue[900], width: 3.0
+                        ),
+                      ),
+                    ),
                     validator: (text) {
                       if (text.isEmpty) return "O campo Telefone 1 está vazio";
                     },
@@ -237,7 +426,28 @@ class _FormsComplementoState extends State<FormsComplemento> {
                     onChanged: (newTel2) {
                       controller.telefone2 = newTel2;
                     },
-                    decoration: inputDecoration('Telefone 2'),
+                    decoration: InputDecoration(
+                      contentPadding: new EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 10.0),
+                      labelText: 'Telefone 2',
+                      labelStyle: TextStyle(
+                          color: Colors.blue
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                            const Radius.circular(12.0)),
+                        borderSide: BorderSide(
+                            color: Colors.blue, width: 2.0
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: const BorderRadius.all(
+                            const Radius.circular(12.0)),
+                        borderSide: BorderSide(
+                            color: Colors.blue[900], width: 3.0
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -257,7 +467,28 @@ class _FormsComplementoState extends State<FormsComplemento> {
               onChanged: (newEmail) {
                 controller.email = newEmail;
               },
-              decoration: inputDecoration('E-mail*'),
+              decoration: InputDecoration(
+                contentPadding: new EdgeInsets.symmetric(
+                    vertical: 10.0, horizontal: 10.0),
+                labelText: 'E-mail*',
+                labelStyle: TextStyle(
+                    color: Colors.blue
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(
+                      const Radius.circular(12.0)),
+                  borderSide: BorderSide(
+                      color: Colors.blue, width: 2.0
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(
+                      const Radius.circular(12.0)),
+                  borderSide: BorderSide(
+                      color: Colors.blue[900], width: 3.0
+                  ),
+                ),
+              ),
               validator: (text) {
                 if (text.isEmpty) return "O campo nome, está vazio";
               },
@@ -278,14 +509,24 @@ class _FormsComplementoState extends State<FormsComplemento> {
                 controller.site = newSite;
               },
               decoration: InputDecoration(
-                contentPadding:
-                    new EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                labelText: "Site",
-                border: OutlineInputBorder(
-                  borderRadius:
-                      const BorderRadius.all(const Radius.circular(12.0)),
+                contentPadding: new EdgeInsets.symmetric(
+                    vertical: 10.0, horizontal: 10.0),
+                labelText: 'Site',
+                labelStyle: TextStyle(
+                    color: Colors.blue
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(
+                      const Radius.circular(12.0)),
                   borderSide: BorderSide(
-                    color: Colors.white,
+                      color: Colors.blue, width: 2.0
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(
+                      const Radius.circular(12.0)),
+                  borderSide: BorderSide(
+                      color: Colors.blue[900], width: 3.0
                   ),
                 ),
               ),

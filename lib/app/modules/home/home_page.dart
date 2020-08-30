@@ -59,20 +59,16 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                Container(
-                    height: height,
-                    width: width,
-                    padding: EdgeInsets.only(top: height * .25),
-                    child: Stack(
-                      overflow: Overflow.visible,
-                      children: [
-                        page(),
-                        Positioned(
-                            bottom: height * .615,
-                            left: width * .4,
-                            child: Container(child: foto()))
-                      ],
-                    )),
+                Positioned(
+                    top: height *.25,
+                    left: width *.005,
+                    right: width *.005,
+                    child: page()),
+                Positioned(
+                    bottom: height * .625,
+                    left: width * .38,
+                    right: width *.005,
+                    child: Container(child: foto())),
               ],
             ),
           ],
@@ -125,12 +121,17 @@ class _HomePageState extends State<HomePage> {
     return Container(
       padding: EdgeInsets.only(
           top: height * .09,
-          bottom: height * .08,
+          bottom: height * .09,
           left: width * .045,
           right: width * .045),
       child: Container(
-        height: height,
+        height: height *.61,
         width: width,
+        padding: EdgeInsets.only(
+            top: height * .015,
+            bottom: height * .015,
+            left: width * .005,
+            right: width * .005),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12), color: Colors.grey[100]),
         child: Column(
@@ -144,7 +145,7 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     height: height * .015,
                     width: width,
-                    padding: EdgeInsets.only(left: width * .33),
+                    padding: EdgeInsets.only(left: width * .1),
                     child: Text(
                       'Em Desenvolvimento',
                       style: TextStyle(
@@ -174,9 +175,9 @@ class _HomePageState extends State<HomePage> {
                   buttons('Minhas solicitações', '/solicitacoes',
                       LineAwesomeIcons.sort_amount_asc),
                   Container(
-                    height: height * .016,
+                    height: height * .015,
                     width: width,
-                    padding: EdgeInsets.only(left: width * .33),
+                    padding: EdgeInsets.only(left: width * .1),
                     child: Text(
                       'Em Desenvolvimento',
                       style: TextStyle(

@@ -47,6 +47,7 @@ class _DadosProjetoPageState extends State<DadosProjetoPage> {
   }
 
   Widget item() {
+    ScreenUtil.getInstance()..init(context);
     final controller = Provider.of<ProjetoController>(context);
     return GroupedListView<ItemModel, String>(
       collection: controller.listItens,
@@ -60,7 +61,12 @@ class _DadosProjetoPageState extends State<DadosProjetoPage> {
                 top: MediaQuery.of(context).size.height * .015,
                 left: MediaQuery.of(context).size.width * .025),
             child: Text(name,
-                style: TextStyle(color: Colors.black, fontSize: 24))),
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: ScreenUtil.instance.setSp(65),
+                ),
+              maxLines: 1,
+            )),
       ),
       listBuilder: (BuildContext context, ItemModel g) => ItemList(
         itemModel: g,

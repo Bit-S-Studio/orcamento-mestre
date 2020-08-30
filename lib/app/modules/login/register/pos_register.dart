@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:orcamento_mestre/app/modules/login/register/register_controller.dart';
 import 'package:orcamento_mestre/app/utils/dados_controller.dart';
 import 'package:orcamento_mestre/app/utils/users/user_controller.dart';
@@ -13,11 +14,13 @@ class PosRegister extends StatefulWidget {
 class _PosRegisterState extends State<PosRegister> {
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.getInstance()..init(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue[900],
         onPressed: () {
           Modular.to.pushNamedAndRemoveUntil(
               '/home', (Route<dynamic> route) => false);
@@ -26,7 +29,7 @@ class _PosRegisterState extends State<PosRegister> {
           'Pular',
           style: TextStyle(
             color: Colors.white,
-            fontSize: 14,
+            fontSize: ScreenUtil.instance.setSp(35),
           ),
         ),
       ),
@@ -36,23 +39,34 @@ class _PosRegisterState extends State<PosRegister> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: height * 0.02),
-            Text(
-              'E ai Mestre! Quer faturar uma grana? Então completa seu cadastro pra poder receber solicitações de orçamento',
-              style: TextStyle(
-                color: Colors.blue[900],
-                fontSize: 32,
+            Container(
+              margin: EdgeInsets.only(
+                top: height *.1,
+                bottom: height *.05,
+                left: width *.04,
+                right: width *.04
               ),
-              textAlign: TextAlign.center,
+              child: Text(
+                'E ai Mestre, quer faturar uma grana? Então complete seu cadastro para receber solicitações de orçamento!',
+                style: TextStyle(
+                  color: Colors.blue[900],
+                  fontSize: ScreenUtil.instance.setSp(50),
+                ),
+                textAlign: TextAlign.center,
+              ),
             ),
-            SizedBox(height: height * 0.04),
-            Text(
-              'Pra começar, diz ai, você é:',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
+            Container(
+              margin: EdgeInsets.only(
+                top: height *.05
               ),
-              textAlign: TextAlign.center,
+              child: Text(
+                'Pra começar, diz ai, você é:',
+                style: TextStyle(
+                  color: Colors.blue[900],
+                  fontSize: ScreenUtil.instance.setSp(60),
+                ),
+                textAlign: TextAlign.center,
+              ),
             ),
             SizedBox(height: height * 0.04),
             button('Empresa'),
@@ -65,6 +79,8 @@ class _PosRegisterState extends State<PosRegister> {
   }
 
   Widget button(String nome) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.height;
     final dadosController = Provider.of<DadosController>(context);
     final registerController = Provider.of<RegisterController>(context);
     return Center(
@@ -72,9 +88,21 @@ class _PosRegisterState extends State<PosRegister> {
         children: [
           Container(
             width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(
+              left: width *.05,
+              right: width *.05,
+            ),
             decoration: BoxDecoration(
+                color: Colors.blue[900],
                 borderRadius: BorderRadius.all(Radius.circular(12)),
-                color: Colors.white),
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                    color: Colors.black,
+                    offset: Offset(1.0, 6.0),
+                    blurRadius: 20.0,
+                  ),
+                ],
+            ),
             child: MaterialButton(
               onPressed: () async {
                 await registerController.updateTipo(dadosController.uid, nome);
@@ -90,7 +118,7 @@ class _PosRegisterState extends State<PosRegister> {
                 child: Text(
                   nome,
                   style: TextStyle(
-                    color: Colors.blue[900],
+                    color: Colors.white,
                     fontSize: 25.0,
                   ),
                 ),

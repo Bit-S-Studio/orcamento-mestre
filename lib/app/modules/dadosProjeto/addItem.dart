@@ -91,7 +91,7 @@ class _AddItemState extends State<AddItem> {
                 controller: controller.categoriaController,
                 decoration: InputDecoration(
                   contentPadding: new EdgeInsets.symmetric(
-                      vertical: 10.0, horizontal: 10.0),
+                      vertical: 05.0, horizontal: 10.0),
                   labelText: "Categoria",
                   labelStyle: TextStyle(fontSize: 12),
                   border: OutlineInputBorder(

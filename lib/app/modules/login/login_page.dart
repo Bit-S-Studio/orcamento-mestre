@@ -120,12 +120,15 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.height;
     return Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        elevation: 5.0,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+        elevation: 8.0,
         child: Container(
             height: height * .25,
             width: width * .55,
-            color: Colors.white,
+            decoration: BoxDecoration(
+                color: Colors.white,
+              borderRadius: BorderRadius.circular(18)
+            ),
             child: Center(
                 child: Padding(
                     padding:

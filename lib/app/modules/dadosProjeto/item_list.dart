@@ -44,7 +44,7 @@ class _ItemListState extends State<ItemList> {
         height: (widget.tempo == '' &&
                 widget.quantidade == 0 &&
                 widget.medida == '')
-            ? height * 0.12
+            ? height * 0.13
             : height * 0.175,
         width: width,
         margin: EdgeInsets.only(
@@ -69,41 +69,51 @@ class _ItemListState extends State<ItemList> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      height: height * .036,
-                      width: width * .3,
-                      margin: EdgeInsets.only(
-                        top: height * .005,
-                        bottom: height * .005,
-                      ),
-                      child: Text(
-                        widget.descricao,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: ScreenUtil.instance.setSp(35),
-                        ),
-                        maxLines: 1,
-                      ),
-                    ),
-                    Container(
-                      color: Colors.white,
-                      height: height * .03,
-                      width: width * .001,
-                    ),
-                    Container(
-                        height: height * .03,
+                    Flexible(
+                      flex: 8,
+                      child: Container(
+                        height: height * .036,
+                        width: width *.45,
                         margin: EdgeInsets.only(
-                            top: height * .005,
-                            bottom: height * .005,
-                            left: width * .012),
+                          top: height * .005,
+                          bottom: height * .005,
+                        ),
                         child: Text(
-                          'R\$ ${widget.valor.toStringAsFixed(2)}',
+                          widget.descricao,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: ScreenUtil.instance.setSp(35),
                           ),
                           maxLines: 1,
-                        )),
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: Container(
+                        color: Colors.white,
+                        height: height * .03,
+                        width: width * .001,
+                      ),
+                    ),
+                    Flexible(
+                      flex: 4,
+                      child: Container(
+                          height: height * .036,
+                          margin: EdgeInsets.only(
+                              top: height * .005,
+                              bottom: height * .005,
+                            left: width *.005
+                              ),
+                          child: Text(
+                            'R\$ ${widget.valor.toStringAsFixed(2)}',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: ScreenUtil.instance.setSp(35),
+                            ),
+                            maxLines: 1,
+                          )),
+                    ),
                   ],
                 ),
               ),
@@ -124,25 +134,26 @@ class _ItemListState extends State<ItemList> {
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
                         (widget.quantidade != 0)
-                            ? Container(
-                                height: height * .036,
-                                margin: EdgeInsets.only(
-                                    top: height * .005,
-                                    bottom: height * .005,
-                                    right: width * .005),
-                                child: Text(
-                                  'Quantidade:',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: ScreenUtil.instance.setSp(35),
+                            ? Flexible(
+                          flex: 2,
+                              child: Container(
+                                  margin: EdgeInsets.only(
+                                      top: height * .005,
+                                      bottom: height * .005,
+                                      right: width * .005),
+                                  child: Text(
+                                    'Qtd:',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: ScreenUtil.instance.setSp(35),
+                                    ),
+                                    maxLines: 1,
                                   ),
-                                  maxLines: 1,
                                 ),
-                              )
+                            )
                             : Container(),
                         (widget.quantidade != 0)
                             ? Container(
-                                height: height * .03,
                                 width: width * .045,
                                 margin: EdgeInsets.only(
                                     top: height * .005,
@@ -161,31 +172,36 @@ class _ItemListState extends State<ItemList> {
                         (widget.quantidade != 0)
                             ? Container(
                                 color: Colors.white,
-                                height: height * .03,
+                                height: height * .036,
                                 width: width * .001,
+                          margin: EdgeInsets.only(
+                            top: height *.005,
+                            bottom: height *.005
+                          ),
                               )
                             : Container(),
                         (widget.medida != '')
-                            ? Container(
-                                height: height * .03,
-                                margin: EdgeInsets.only(
-                                    top: height * .005,
-                                    bottom: height * .005,
-                                    right: width * .005,
-                                    left: width * .005),
-                                child: Text(
-                                  'Medida:',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: ScreenUtil.instance.setSp(35),
+                            ? Flexible(
+                          flex: 2,
+                              child: Container(
+                                  margin: EdgeInsets.only(
+                                      top: height * .005,
+                                      bottom: height * .005,
+                                      right: width * .005,
+                                      left: width * .005),
+                                  child: Text(
+                                    'Med:',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: ScreenUtil.instance.setSp(35),
+                                    ),
+                                    maxLines: 1,
                                   ),
-                                  maxLines: 1,
                                 ),
-                              )
+                            )
                             : Container(),
                         (widget.medida != '')
                             ? Container(
-                                height: height * .03,
                                 width: width * .08,
                                 margin: EdgeInsets.only(
                                     top: height * .005,
@@ -203,25 +219,32 @@ class _ItemListState extends State<ItemList> {
                             : Container(),
                         (widget.medida != '')
                             ? Container(
-                                color: Colors.white,
-                                height: height * .03,
-                                width: width * .001,
-                              )
+                          color: Colors.white,
+                          height: height * .036,
+                          width: width * .001,
+                          margin: EdgeInsets.only(
+                              top: height *.005,
+                              bottom: height *.005
+                          ),
+                        )
                             : Container(),
                         (widget.tempo != '')
-                            ? Container(
-                                margin: EdgeInsets.only(
-                                  top: height * .005,
-                                  bottom: height * .005,
-                                  left: width * .005,
-                                  right: width * .005,
+                            ? Flexible(
+                          flex: 1,
+                              child: Container(
+                                  margin: EdgeInsets.only(
+                                    top: height * .005,
+                                    bottom: height * .005,
+                                    left: width * .005,
+                                    right: width * .005,
+                                  ),
+                                  child: Icon(
+                                    Icons.timer,
+                                    color: Colors.white,
+                                    size: 16,
+                                  ),
                                 ),
-                                child: Icon(
-                                  Icons.timer,
-                                  color: Colors.white,
-                                  size: 16,
-                                ),
-                              )
+                            )
                             : Container(),
                         (widget.tempo != '')
                             ? Container(
@@ -251,7 +274,6 @@ class _ItemListState extends State<ItemList> {
                 child: Container(
                   height: height * .042,
                   width: width,
-                  margin: EdgeInsets.only(top: height * .001),
                   child: Row(
                     children: <Widget>[
                       Container(

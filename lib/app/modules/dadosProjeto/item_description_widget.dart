@@ -43,7 +43,7 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                               onChanged: controller.setQuantidade,
                               decoration: InputDecoration(
                                 contentPadding: new EdgeInsets.symmetric(
-                                    vertical: 10.0, horizontal: 10.0),
+                                    vertical: 05.0, horizontal: 10.0),
                                 labelText: "Quantidade",
                                 labelStyle: TextStyle(
                                   fontSize: ScreenUtil.instance.setSp(25),
@@ -70,7 +70,7 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                               onChanged: controller.changeMedida,
                               decoration: InputDecoration(
                                 contentPadding: new EdgeInsets.symmetric(
-                                    vertical: 10.0, horizontal: 10.0),
+                                    vertical: 05.0, horizontal: 10.0),
                                 labelText: "Medida",
                                 labelStyle: TextStyle(
                                   fontSize: ScreenUtil.instance.setSp(25),
@@ -98,7 +98,7 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                     onChanged: controller.changeDescricao,
                     decoration: InputDecoration(
                       contentPadding: new EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 10.0),
+                          vertical: 05.0, horizontal: 10.0),
                       labelText: "Descrição do Ítem*",
                       labelStyle: TextStyle(
                         fontSize: ScreenUtil.instance.setSp(25),
@@ -136,7 +136,7 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                             ],
                             decoration: InputDecoration(
                               contentPadding: new EdgeInsets.symmetric(
-                                  vertical: 10.0, horizontal: 10.0),
+                                  vertical: 05.0, horizontal: 10.0),
                               labelText: "R\$ 0.000,00*",
                               labelStyle: TextStyle(
                                 fontSize: ScreenUtil.instance.setSp(25),
@@ -168,7 +168,7 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                               onChanged: controller.changeTempo,
                               decoration: InputDecoration(
                                 contentPadding: new EdgeInsets.symmetric(
-                                    vertical: 10.0, horizontal: 10.0),
+                                    vertical: 05.0, horizontal: 10.0),
                                 labelText: "Tempo",
                                 labelStyle: TextStyle(
                                   fontSize: ScreenUtil.instance.setSp(25),
