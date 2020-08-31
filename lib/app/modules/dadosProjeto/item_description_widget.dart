@@ -53,7 +53,7 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                                   borderRadius: const BorderRadius.all(
                                       const Radius.circular(12.0)),
                                   borderSide: BorderSide(
-                                      color: Colors.blue, width: 2.0
+                                      color: Colors.grey[500], width: 2.0
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
@@ -88,7 +88,7 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                                   borderRadius: const BorderRadius.all(
                                       const Radius.circular(12.0)),
                                   borderSide: BorderSide(
-                                      color: Colors.blue, width: 2.0
+                                      color: Colors.grey[500], width: 2.0
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
@@ -124,7 +124,7 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                         borderRadius: const BorderRadius.all(
                             const Radius.circular(12.0)),
                         borderSide: BorderSide(
-                            color: Colors.blue, width: 2.0
+                            color: Colors.grey[500], width: 2.0
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
@@ -170,7 +170,7 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                                 borderRadius: const BorderRadius.all(
                                     const Radius.circular(12.0)),
                                 borderSide: BorderSide(
-                                    color: Colors.blue, width: 2.0
+                                    color: Colors.grey[500], width: 2.0
                                 ),
                               ),
                               focusedBorder: OutlineInputBorder(
@@ -210,7 +210,7 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                                   borderRadius: const BorderRadius.all(
                                       const Radius.circular(12.0)),
                                   borderSide: BorderSide(
-                                      color: Colors.blue, width: 2.0
+                                      color: Colors.grey[500], width: 2.0
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
@@ -237,6 +237,7 @@ class _ItemDescritionWidgetState extends State<ItemDescritionWidget> {
                               style: TextStyle(
                                 color: Colors.blue[900],
                                 fontSize: ScreenUtil.instance.setSp(40),
+                                fontWeight: FontWeight.bold
                               ),
                             ),),
                       );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:orcamento_mestre/app/modules/clientes/clientes_controller.dart';
 import 'package:orcamento_mestre/app/modules/pdf/pdf_controller.dart';
 import 'package:orcamento_mestre/app/utils/dados_controller.dart';
@@ -20,6 +21,7 @@ class _OrcamentoPageState extends State<OrcamentoPage> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.getInstance()..init(context);
     final pdfController = Provider.of<PdfController>(context);
     final controller = Provider.of<OrcamentoController>(context);
     var height = MediaQuery.of(context).size.height;
@@ -40,18 +42,29 @@ class _OrcamentoPageState extends State<OrcamentoPage> {
                 },
                 decoration: InputDecoration(
                   contentPadding: new EdgeInsets.symmetric(
-                      vertical: 10.0, horizontal: 10.0),
-                  labelText: "Nome do orçamento",
-                  border: OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(12.0)),
+                      vertical: 05.0, horizontal: 10.0),
+                  labelText: "Nome do Orçamento",
+                  labelStyle: TextStyle(
+                    color: Colors.blue,
+                    fontSize: ScreenUtil.instance.setSp(40),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(
+                        const Radius.circular(12.0)),
                     borderSide: BorderSide(
-                      color: Colors.white,
+                        color: Colors.grey[500], width: 2.0
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(
+                        const Radius.circular(12.0)),
+                    borderSide: BorderSide(
+                        color: Colors.blue[900], width: 3.0
                     ),
                   ),
                 ),
                 validator: (text) {
-                  if (text.isEmpty) return "O campo nome, está vazio";
+                  if (text.isEmpty) return "O campo Nome do Orçamento, está vazio";
                 },
               ),
             ),
@@ -68,13 +81,24 @@ class _OrcamentoPageState extends State<OrcamentoPage> {
                 },
                 decoration: InputDecoration(
                   contentPadding: new EdgeInsets.symmetric(
-                      vertical: 10.0, horizontal: 10.0),
+                      vertical: 05.0, horizontal: 10.0),
                   labelText: "Observação",
-                  border: OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(12.0)),
+                  labelStyle: TextStyle(
+                    color: Colors.blue,
+                    fontSize: ScreenUtil.instance.setSp(45),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(
+                        const Radius.circular(12.0)),
                     borderSide: BorderSide(
-                      color: Colors.white,
+                        color: Colors.grey[500], width: 2.0
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(
+                        const Radius.circular(12.0)),
+                    borderSide: BorderSide(
+                        color: Colors.blue[900], width: 3.0
                     ),
                   ),
                 ),

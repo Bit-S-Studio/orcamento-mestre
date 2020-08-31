@@ -65,7 +65,7 @@ class _ClientesPageState
                                         borderRadius: const BorderRadius.all(
                                             const Radius.circular(12.0)),
                                         borderSide: BorderSide(
-                                          color: Colors.blue, width: 2.0
+                                            color: Colors.grey[500], width: 2.0
                                         ),
                                       ),
                                       focusedBorder: OutlineInputBorder(
@@ -148,7 +148,7 @@ class _ClientesPageState
                         borderRadius: const BorderRadius.all(
                             const Radius.circular(12.0)),
                         borderSide: BorderSide(
-                            color: Colors.blue, width: 2.0
+                            color: Colors.grey[500], width: 2.0
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
@@ -185,7 +185,7 @@ class _ClientesPageState
                         borderRadius: const BorderRadius.all(
                             const Radius.circular(12.0)),
                         borderSide: BorderSide(
-                            color: Colors.blue, width: 2.0
+                            color: Colors.grey[500], width: 2.0
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
@@ -225,7 +225,7 @@ class _ClientesPageState
                               borderRadius: const BorderRadius.all(
                                   const Radius.circular(12.0)),
                               borderSide: BorderSide(
-                                  color: Colors.blue, width: 2.0
+                                  color: Colors.grey[500], width: 2.0
                               ),
                             ),
                             focusedBorder: OutlineInputBorder(
@@ -266,7 +266,7 @@ class _ClientesPageState
                               borderRadius: const BorderRadius.all(
                                   const Radius.circular(12.0)),
                               borderSide: BorderSide(
-                                  color: Colors.blue, width: 2.0
+                                  color: Colors.grey[500], width: 2.0
                               ),
                             ),
                             focusedBorder: OutlineInputBorder(
